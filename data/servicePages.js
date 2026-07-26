@@ -11,6 +11,7 @@
 // (main + city + detail).
 
 import { services as baseServices } from '@/data/site';
+import { SEMINAR_TYPES } from '@/data/seminars';
 
 export const servicePages = {
   // ============================================
@@ -107,16 +108,23 @@ export const servicePages = {
           'Beyond lectures: Q&A, group exercises, real case studies, and one-on-one follow-up slots for attendees who want a deeper conversation.',
       },
     ],
+    // 4 seminar types we offer — rendered as a 4-card grid on the
+    // main seminar service page and on every city seminar page.
+    seminarTypes: SEMINAR_TYPES,
     cityLead:
-      'GCDA conducts career counselling seminars and workshops in {city} for schools, colleges, parent groups, and institutions. Book a single session or a structured seminar series for your campus or community.',
+      'GCDA conducts career counselling seminars and workshops in {city} for schools, colleges, parent groups, and institutions. We run 4 core seminar tracks — Career Counselling, Self Management, Emotional Intelligence, and Leadership Skills — each with structured topics, hands-on activities, and expert facilitators. Book a single session or a structured seminar series for your campus or community.',
     cityFaqs: [
       {
         q: 'Can GCDA conduct a career counselling seminar at our school in {city}?',
-        a: 'Yes. GCDA regularly runs in-person and online seminars at schools and colleges in {city} and nearby. Sessions are tailored by grade, stream, and audience, and can include a free career interest mini-assessment for attendees.',
+        a: 'Yes. GCDA regularly runs in-person and online seminars at schools and colleges in {city} and nearby. We offer 4 seminar tracks — Career Counselling, Self Management, Emotional Intelligence, and Leadership Skills — each tailored by grade, stream, and audience, and can include a free career interest mini-assessment for attendees.',
+      },
+      {
+        q: 'What are the 4 types of seminars GCDA offers in {city}?',
+        a: 'GCDA runs 4 core seminar tracks: (1) Career Counselling Seminar — how to make a career decision, degrees and entrance exams after 12th, offbeat careers, study abroad; (2) Self Management Seminar — study habits, time management, goal alignment, handling exam anxiety (4 hrs, 2 weekends); (3) Emotional Intelligence Seminar — relationship management, managing success/failure/stress, anxiety and peer pressure, healthy habits, identifying addictions (4 hrs, 2 weekends); (4) Leadership Skills Seminar — communication, interpersonal, negotiation, conflict management, and interview skills (4 hrs, 2 weekends).',
       },
       {
         q: 'What is the typical duration and batch size for a seminar in {city}?',
-        a: 'Standard seminars are 60–90 minutes and work well for batches of 50–300 students. We can run shorter parent sessions, full-day workshops, or multi-day series depending on your needs in {city}.',
+        a: 'Standard seminars are 60–90 minutes and work well for batches of 50–300 students. The Self Management, Emotional Intelligence, and Leadership Skills tracks run for 4 hours total across 2 weekends. We can run shorter parent sessions, full-day workshops, or multi-day series depending on your needs in {city}.',
       },
       {
         q: 'Do you offer online career seminars for institutions in {city}?',

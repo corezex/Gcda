@@ -4,6 +4,7 @@ import SectionHeader from '@/components/SectionHeader';
 import FAQList from '@/components/FAQList';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
 import {
   STATES,
@@ -430,6 +431,21 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
+      {/* Seminar types — only on the seminar service city page */}
+      {serviceSlug === 'career-counselling-seminar' && servicePage.seminarTypes ? (
+        <section className="section" id="seminar-types">
+          <div className="container">
+            <SectionHeader
+              eyebrow="4 seminar tracks"
+              title={`Types of seminars and workshops we run in ${city.name}`}
+              description="GCDA offers 4 core seminar tracks. Each one is structured, expert-led, and built around real student and professional outcomes — available in-person at your campus or online across India."
+              center
+            />
+            <SeminarTypesGrid seminars={servicePage.seminarTypes} city={city.name} />
+          </div>
+        </section>
+      ) : null}
+
       <section className="section">
         <div className="container two-column">
           <div>
@@ -662,6 +678,21 @@ function MainServicePage({ serviceSlug, servicePage }) {
           </div>
         </div>
       </section>
+
+      {/* Seminar types — only on the main /career-counselling-seminar page */}
+      {serviceSlug === 'career-counselling-seminar' && servicePage.seminarTypes ? (
+        <section className="section" id="seminar-types">
+          <div className="container">
+            <SectionHeader
+              eyebrow="4 seminar tracks"
+              title="Types of seminars and workshops we run"
+              description="GCDA offers 4 core seminar tracks. Each one is structured, expert-led, and built around real student and professional outcomes — available in-person at your campus or online across India."
+              center
+            />
+            <SeminarTypesGrid seminars={servicePage.seminarTypes} city="India" />
+          </div>
+        </section>
+      ) : null}
 
       <section className="section">
         <div className="container">
