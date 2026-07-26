@@ -147,7 +147,7 @@ export function generateMetadata({ params }) {
     const topCities = cities.slice(0, 5).map((c) => c.name).join(', ');
     return {
       title: `Career Counselling in ${state.name} | GCDA`,
-      description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person guidance everywhere.`,
+      description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person sessions everywhere in ${state.name}.`,
       alternates: { canonical: `/${stateSlug}` },
       openGraph: {
         title: `Career Counselling in ${state.name} | GCDA`,
@@ -215,7 +215,7 @@ function StateHub({ stateSlug, state }) {
   const stateFaqs = [
     {
       q: `Does GCDA offer career counselling in ${state.name}?`,
-      a: `Yes. GCDA provides online career counselling across ${state.name} and in-person sessions everywhere. We cover all major cities in ${state.name} including ${cities.slice(0, 3).map((c) => c.name).join(', ')}.`,
+      a: `Yes. GCDA provides online career counselling across ${state.name} and in-person sessions in all major cities in ${state.name}. We cover ${cities.slice(0, 3).map((c) => c.name).join(', ')} and more.`,
     },
     {
       q: `Which cities in ${state.name} do you cover?`,
@@ -236,7 +236,7 @@ function StateHub({ stateSlug, state }) {
             <span className="eyebrow">{state.region}</span>
             <h1>Career Counselling in {state.name}</h1>
             <p className="page-hero-copy">
-              Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person everywhere.
+              Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person.
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
@@ -252,7 +252,7 @@ function StateHub({ stateSlug, state }) {
       <section className="section section-tight-top">
         <div className="container">
           <AnswerBlock>
-            GCDA provides career counselling in {state.name} across {cities.length} cities. We offer online video sessions for students, parents, and working professionals in {state.name}, plus in-person sessions at our Mumbai office. Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a personalised roadmap.
+            GCDA provides career counselling in {state.name} across {cities.length} cities. We offer online video sessions for students, parents, and working professionals in {state.name}, plus in-person sessions when needed. Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a personalised roadmap.
           </AnswerBlock>
         </div>
       </section>
@@ -374,7 +374,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             </div>
             <div className="hero-proof">
               <span>Online sessions across {city.name}</span>
-              <span>in-person everywhere</span>
+              <span>in-person {city.name}</span>
               <span>50K+ career sessions delivered</span>
             </div>
           </div>
@@ -689,7 +689,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            {`GCDA provides ${servicePage.title.toLowerCase()} across India — online sessions in 300+ cities plus in-person guidance at our Mumbai office. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector.`}
+            {`GCDA provides ${servicePage.title.toLowerCase()} across India — online sessions in 300+ cities plus in-person sessions everywhere. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector.`}
           </AnswerBlock>
         </div>
       </section>
@@ -825,7 +825,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
         <div className="container narrow-center cta-band-inner">
           <div>
             <h2>Ready to get started?</h2>
-            <p>Connect with GCDA for a structured, assessment-led {servicePage.title.toLowerCase()} journey — online across India, in-person everywhere.</p>
+            <p>Connect with GCDA for a structured, assessment-led {servicePage.title.toLowerCase()} journey — online across India, in-person.</p>
           </div>
           <div className="cta-actions">
             <Link href="/contact" className="button button-primary">Book a Session</Link>

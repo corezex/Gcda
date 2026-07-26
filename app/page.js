@@ -41,7 +41,7 @@ export default function HomePage() {
             <div className="hero-proof">
               <span>98% satisfied clients</span>
               <span>50K+ career sessions</span>
-              <span>Online + in-person everywhere</span>
+              <span>Online + in-person</span>
             </div>
           </div>
           <div className="hero-visual surface-card">
@@ -177,7 +177,7 @@ export default function HomePage() {
 
       <CTASection
         title="Ready to shape your career with clarity?"
-        description="Connect with GCDA experts for personalised counselling, assessments, and practical next-step guidance — online or in-person everywhere."
+        description="Connect with GCDA experts for personalised counselling, assessments, and practical next-step guidance — online or in-person."
       />
     </>
   );

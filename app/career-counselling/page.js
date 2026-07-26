@@ -57,7 +57,7 @@ export default function CareerCounsellingPage() {
       <section className="section section-tight-top">
         <div className="container">
           <AnswerBlock>
-            GCDA offers 6 core career counselling services: Personal Counselling, Career Assessment, Workshops &amp; Seminars, Stream Selection Guidance, Degree Selection Guidance, and Working Professional Guidance. All services are available online across India and in-person everywhere.
+            GCDA offers 6 core career counselling services: Personal Counselling, Career Assessment, Workshops &amp; Seminars, Stream Selection Guidance, Degree Selection Guidance, and Working Professional Guidance. All services are available online across India and in-person.
           </AnswerBlock>
         </div>
       </section>

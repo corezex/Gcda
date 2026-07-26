@@ -47,7 +47,7 @@ export default function CitiesHubPage() {
             description="Click any state to see all cities we cover in that state."
           />
           <AnswerBlock>
-            GCDA career counselling is available across 36 Indian states and union territories, covering 300+ cities — including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, Kolkata, and Ahmedabad. We offer online video sessions across India and in-person sessions at our Mumbai office.
+            GCDA career counselling is available across 36 Indian states and union territories, covering 300+ cities — including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, Kolkata, and Ahmedabad. We offer online video sessions across India and in-person sessions everywhere.
           </AnswerBlock>
         </div>
       </section>
@@ -62,7 +62,7 @@ export default function CitiesHubPage() {
                   <h3><Link href={`/${s.slug}`}>{s.name}</Link></h3>
                   <p className="city-state">Capital: {s.capital} • {s.cityCount} cities</p>
                   <p className="city-blurb">
-                    GCDA offers online career counselling and career assessments across {s.cityCount} {s.name} cities. Sessions are available online and in-person everywhere.
+                    GCDA offers online career counselling and career assessments across {s.cityCount} {s.name} cities. Sessions are available online and in-person.
                   </p>
                   <Link href={`/${s.slug}`} className="text-link">View {s.name} cities →</Link>
                 </div>

@@ -22,7 +22,7 @@ export function generateMetadata({ params }) {
   if (!service) return { title: 'Service not found' };
 
   const title = `${service.title} | GCDA Career Counselling`;
-  const description = `${service.shortDescription} Available online across India and in-person everywhere.`;
+  const description = `${service.shortDescription} Available online across India and in-person.`;
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
 
   return {
@@ -70,7 +70,7 @@ export default function ServiceDetailPage({ params }) {
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            {service.title} is a structured GCDA service that combines personalised counselling, relevant assessments, and a practical action plan. It is delivered one-on-one, online across India and in-person everywhere, and is ideal for {service.idealFor[0].toLowerCase()} and similar profiles.
+            {service.title} is a structured GCDA service that combines personalised counselling, relevant assessments, and a practical action plan. It is delivered one-on-one, online across India and in-person, and is ideal for {service.idealFor[0].toLowerCase()} and similar profiles.
           </AnswerBlock>
         </div>
       </section>

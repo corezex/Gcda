@@ -71,7 +71,7 @@ function city(name, district, population, tier, opts = {}) {
     landmarks: opts.landmarks || `${name} town center, district headquarters, local market`,
     studentNote: opts.studentNote || `${name} students commonly weigh engineering, medical, commerce, and arts paths after 10th and 12th. Career guidance helps them shortlist branches, colleges, and entrance exams realistically given their location and family context.`,
     professionalNote: opts.professionalNote || `Working professionals in and around ${name} use career counselling for transitions, MBA planning, and skill alignment. Online sessions make it easy to access expert guidance from ${name} without travel.`,
-    deliveryNote: opts.deliveryNote || `GCDA offers online video career counselling across ${name} and ${district}, plus in-person sessions at our Mumbai office for families who prefer face-to-face guidance.`,
+    deliveryNote: opts.deliveryNote || `GCDA offers online video career counselling across ${name} and ${district}, plus in-person sessions everywhere for families who prefer face-to-face guidance.`,
     faqs: opts.faqs || [
       {
         q: `Do you offer online career counselling for students in ${name}?`,
