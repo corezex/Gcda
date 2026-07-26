@@ -74,28 +74,31 @@ export default function CareerCounsellingPage() {
                 </div>
                 <div className="card-body">
                   <div className="icon-badge">{service.icon}</div>
-                  <h3>{service.title}</h3>
+                  <h3>
+                    <Link href={`/career-counselling/${service.slug}`}>{service.title}</Link>
+                  </h3>
                   <p>{service.shortDescription}</p>
-                  <details>
-                    <summary className="text-link">Learn more →</summary>
-                    <div style={{ marginTop: '1rem' }}>
-                      <p><strong>For:</strong> {service.idealFor.join('; ')}.</p>
-                      <p><strong>Outcomes:</strong> {service.outcomes.join('; ')}.</p>
-                      <p><strong>Includes:</strong> {service.includes.join('; ')}.</p>
-                      <h4 style={{ marginTop: '1rem', fontSize: '1rem' }}>How it works</h4>
-                      <ol style={{ paddingLeft: '1.2rem' }}>
-                        {service.steps.map((step) => (
-                          <li key={step} style={{ marginBottom: '0.4rem' }}>{step}</li>
-                        ))}
-                      </ol>
-                      <div style={{ marginTop: '1rem' }}>
-                        <Link href="/contact" className="button button-primary">Book {service.title}</Link>
-                      </div>
-                    </div>
-                  </details>
+                  <Link href={`/career-counselling/${service.slug}`} className="text-link">Learn more →</Link>
                 </div>
               </article>
             ))}
+
+            {/* Career Counselling Certification — separate programme */}
+            <article className="card service-card" id="career-certification">
+              <div className="service-card-media">
+                <img src="/assets/career-7.png" alt="Career Counselling Certification" />
+              </div>
+              <div className="card-body">
+                <div className="icon-badge">🎓</div>
+                <h3>
+                  <Link href="/career-certification">Career Counselling Certification</Link>
+                </h3>
+                <p>
+                  A comprehensive offline + online certification programme for aspiring and practising career counsellors. Build the skills to guide students and professionals with confidence.
+                </p>
+                <Link href="/career-certification" className="text-link">Learn more →</Link>
+              </div>
+            </article>
           </div>
         </div>
         {services.map((service) => (

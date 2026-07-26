@@ -307,6 +307,15 @@ ul {
   background: rgba(15, 118, 110, 0.04);
 }
 
+.nav-dropdown-feature {
+  background: linear-gradient(135deg, rgba(196, 91, 64, 0.08), rgba(15, 118, 110, 0.06));
+  border: 1px solid rgba(196, 91, 64, 0.18);
+}
+
+.nav-dropdown-feature:hover {
+  background: linear-gradient(135deg, rgba(196, 91, 64, 0.12), rgba(15, 118, 110, 0.1));
+}
+
 .nav-dropdown-icon {
   display: inline-flex;
   align-items: center;

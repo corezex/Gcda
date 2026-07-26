@@ -22,6 +22,7 @@ const nextConfig = {
       { source: '/en/about', destination: '/about', permanent: true },
       { source: '/en/contact', destination: '/contact', permanent: true },
       { source: '/en/career-counselling', destination: '/career-counselling', permanent: true },
+      { source: '/en/career-certification', destination: '/career-certification', permanent: true },
       { source: '/en/plan', destination: '/plan', permanent: true },
       { source: '/en/blog', destination: '/blog', permanent: true },
       { source: '/en/blog/:slug', destination: '/blog/:slug', permanent: true },

@@ -99,6 +99,19 @@ export default function Header() {
                           </span>
                         </Link>
                       ))}
+                      <div className="nav-dropdown-divider" />
+                      <Link
+                        href="/career-certification"
+                        className="nav-dropdown-item nav-dropdown-feature"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      >
+                        <span className="nav-dropdown-icon" aria-hidden="true">🎓</span>
+                        <span className="nav-dropdown-text">
+                          <strong>Career Counselling Certification</strong>
+                          <small>Become a certified career counsellor — hybrid online + in-person</small>
+                        </span>
+                      </Link>
                     </div>
                   ) : null}
                 </div>

@@ -12,6 +12,7 @@ export default function sitemap() {
     { path: '', priority: 1.0, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
     { path: '/career-counselling', priority: 0.9, changeFrequency: 'monthly' },
+    { path: '/career-certification', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/cities', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/plan', priority: 0.9, changeFrequency: 'monthly' },
     { path: '/blog', priority: 0.9, changeFrequency: 'weekly' },
@@ -45,7 +46,7 @@ export default function sitemap() {
 
   // Service detail pages
   const serviceRoutes = services.map((service) => ({
-    url: `${SITE_URL}/career-counselling#${service.slug}`,
+    url: `${SITE_URL}/career-counselling/${service.slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,

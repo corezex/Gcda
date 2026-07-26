@@ -18,6 +18,7 @@ export const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/career-counselling', label: 'Services' },
+  { href: '/career-certification', label: 'Certification' },
   { href: '/plan', label: 'Plans' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact' },

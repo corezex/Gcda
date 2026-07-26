@@ -263,6 +263,56 @@ export function breadcrumbSchema(items) {
   };
 }
 
+// ----- Course schema (used on the Career Counselling Certification page) -----
+export function courseSchema({
+  name,
+  description,
+  provider,
+  url,
+  slug,
+  hasCourseInstance = false,
+}) {
+  const course = {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    '@id': `${url}#course`,
+    name,
+    description,
+    provider: {
+      '@type': 'Organization',
+      name: provider || company.name,
+      sameAs: SITE_URL,
+    },
+    url,
+    inLanguage: 'en-IN',
+    isAccessibleForFree: false,
+    offers: {
+      '@type': 'Offer',
+      url,
+      availability: 'https://schema.org/InStock',
+      priceCurrency: 'INR',
+      seller: { '@id': `${SITE_URL}/#organization` },
+    },
+  };
+
+  if (hasCourseInstance) {
+    course.hasCourseInstance = {
+      '@type': 'CourseInstance',
+      courseMode: ['online', 'onsite'],
+      courseWorkload: 'PT40H',
+      inLanguage: 'en-IN',
+      instructor: [
+        {
+          '@type': 'Organization',
+          name: provider || company.name,
+        },
+      ],
+    };
+  }
+
+  return course;
+}
+
 // ----- City page schema (Service + LocalBusiness-ish with areaServed) -----
 export function cityServiceSchema(city, url) {
   return {
