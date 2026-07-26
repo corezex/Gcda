@@ -5,18 +5,42 @@ import SectionHeader from '@/components/SectionHeader';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
+import Link from 'next/link';
 import { plans, siteFaqs } from '@/data/site';
-import { faqSchema, productSchema, breadcrumbSchema } from '@/data/schema';
+import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Plans & Pricing | GCDA',
+  title: 'Career Counselling Plans & Pricing',
   description:
     'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals. Transparent pricing, structured plans.',
+  keywords: [
+    'career counselling plans',
+    'career counselling pricing',
+    'career counselling cost India',
+    'stream selector plan',
+    'degree selector plan',
+    'working professional counselling plan',
+  ],
   alternates: { canonical: '/plan' },
   openGraph: {
-    title: 'Career Counselling Plans & Pricing | GCDA',
+    title: 'Career Counselling Plans & Pricing',
     description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
     url: 'https://gcdassociation.org/plan',
+    images: [
+      {
+        url: '/assets/career-6.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling plans and pricing',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Counselling Plans & Pricing',
+    description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
   },
 };
 
@@ -77,15 +101,15 @@ export default function PlanPage() {
             <div className="stack-list">
               <article className="feature-row">
                 <h3>Stream Selector</h3>
-                <p>Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction.</p>
+                <p>Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction. See <Link href="/career-counselling/stream-selection-guidance" className="text-link">stream selection guidance</Link>.</p>
               </article>
               <article className="feature-row">
                 <h3>Degree Selector</h3>
-                <p>Ideal when students need course, degree, and college-level clarity after school.</p>
+                <p>Ideal when students need course, degree, and college-level clarity after school. See <Link href="/career-counselling/degree-selection-guidance" className="text-link">degree selection guidance</Link>.</p>
               </article>
               <article className="feature-row">
                 <h3>Working Professionals</h3>
-                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning.</p>
+                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href="/career-counselling/working-professionals-guidance" className="text-link">working professional guidance</Link>.</p>
               </article>
             </div>
           </div>
@@ -107,6 +131,15 @@ export default function PlanPage() {
       />
 
       <JsonLd id="ld-breadcrumb-plans" data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd
+        id="ld-webpage-plans"
+        data={webPageSchema({
+          url: `${SITE_URL}/plan`,
+          name: 'Career Counselling Plans & Pricing',
+          description: 'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals.',
+          primaryImage: `${SITE_URL}/assets/career-6.png`,
+        })}
+      />
     </>
   );
 }

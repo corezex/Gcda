@@ -11,7 +11,7 @@ import { faqSchema, breadcrumbSchema, courseSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Certification in India | GCDA',
+  title: 'Career Counselling Certification in India',
   description:
     'Become a certified career counsellor with GCDA. Our comprehensive offline + online certification programme equips you with the skills, assessments, and mentoring techniques to guide students and working professionals across India.',
   keywords: [
@@ -24,11 +24,24 @@ export const metadata = {
   ],
   alternates: { canonical: '/career-certification' },
   openGraph: {
-    title: 'Career Counselling Certification in India | GCDA',
+    title: 'Career Counselling Certification in India',
     description:
       'Become a certified career counsellor with GCDA. Comprehensive certification programme for aspiring and practising counsellors.',
     url: 'https://gcdassociation.org/career-certification',
     type: 'article',
+    images: [
+      {
+        url: '/assets/career-7.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling certification programme',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Counselling Certification in India',
+    description: 'Become a certified career counsellor with GCDA. Comprehensive certification programme for aspiring and practising counsellors.',
   },
 };
 

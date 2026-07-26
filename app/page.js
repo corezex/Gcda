@@ -11,7 +11,7 @@ import { audience, company, journeySteps, services, siteFaqs, statsHome, testimo
 import { faqSchema, howToSchema } from '@/data/schema';
 
 export const metadata = {
-  title: 'Career Counselling & Career Guidance in India | GCDA',
+  title: 'Career Counselling & Career Guidance in India',
   description:
     'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
   alternates: { canonical: '/' },
@@ -23,7 +23,7 @@ export const metadata = {
     'online career counselling',
   ],
   openGraph: {
-    title: 'Career Counselling & Career Guidance in India | GCDA',
+    title: 'Career Counselling & Career Guidance in India',
     description:
       'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
     url: 'https://gcdassociation.org/',
@@ -38,7 +38,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling & Career Guidance in India | GCDA',
+    title: 'Career Counselling & Career Guidance in India',
     description:
       'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
   },

@@ -39,6 +39,14 @@ export function generateMetadata({ params }) {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: [
+        {
+          url: post.image || '/assets/service-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
   };
 }

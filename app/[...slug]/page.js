@@ -15,7 +15,7 @@ import {
 } from '@/data/indiaLocations';
 import { services as baseServices, company } from '@/data/site';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
-import { faqSchema, breadcrumbSchema } from '@/data/schema';
+import { faqSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
 import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -147,13 +147,33 @@ export function generateMetadata({ params }) {
     const cityCount = cities.length;
     const topCities = cities.slice(0, 5).map((c) => c.name).join(', ');
     return {
-      title: `Career Counselling in ${state.name} | GCDA`,
+      title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
       description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person sessions everywhere in ${state.name}.`,
+      keywords: [
+        `career counselling in ${state.name}`,
+        `career counselling ${state.name} cities`,
+        `career counsellor ${state.name}`,
+        `career assessment ${state.name}`,
+        `career guidance ${state.name}`,
+      ],
       alternates: { canonical: `/${stateSlug}` },
       openGraph: {
-        title: `Career Counselling in ${state.name} | GCDA`,
+        title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
         description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities.`,
         url: `${SITE_URL}/${stateSlug}`,
+        images: [
+          {
+            url: '/assets/hero-illustration.png',
+            width: 1200,
+            height: 630,
+            alt: `Career counselling in ${state.name}`,
+          },
+        ],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
+        description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities.`,
       },
     };
   }
@@ -163,7 +183,7 @@ export function generateMetadata({ params }) {
   const servicePage = getServicePage(serviceSlug);
   if (!servicePage) return { title: 'Not found' };
 
-  const title = `${pageTitle(city, servicePage.title)} | GCDA`;
+  const title = `${pageTitle(city, servicePage.title)} – ${state.name}`;
   const description = `${servicePage.shortDescription} Available for students, graduates, and working professionals in ${city.name}, ${state.name}.`;
   const pattern = SERVICE_CITY_PATTERNS[serviceSlug];
   const url = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
@@ -179,7 +199,33 @@ export function generateMetadata({ params }) {
       `${servicePage.title.toLowerCase()} ${state.name}`,
     ],
     alternates: { canonical: pattern.urlPattern(stateSlug, citySlug) },
-    openGraph: { title, description, url, type: 'article' },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      images: [
+        {
+          url: '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${servicePage.title} in ${city.name}, ${state.name}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [
+        {
+          url: '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${servicePage.title} in ${city.name}, ${state.name}`,
+        },
+      ],
+    },
   };
 }
 
@@ -319,6 +365,15 @@ function StateHub({ stateSlug, state }) {
       </section>
 
       <JsonLd id={`ld-breadcrumb-state-${stateSlug}`} data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd
+        id={`ld-webpage-state-${stateSlug}`}
+        data={webPageSchema({
+          url: `${SITE_URL}/${stateSlug}`,
+          name: `Career Counselling in ${state.name}`,
+          description: `GCDA offers career counselling and career assessments in ${cities.length} ${state.name} cities.`,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+        })}
+      />
     </>
   );
 }
@@ -611,7 +666,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             <SectionHeader
               eyebrow="Local context"
               title={`Top colleges near ${city.name}`}
-              description={`A non-exhaustive list of institutions our students in and around ${city.name} typically shortlist.`}
+              description={`A non-exhaustive list of institutions our students in and around ${city.name} typically shortlist. For personalised college shortlisting, see our degree selection guidance or talk to a counsellor.`}
             />
             {city.topColleges.length > 0 ? (
               <ul className="bullet-list">
@@ -620,12 +675,17 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             ) : (
               <p>{city.name} students typically consider a mix of local and regional colleges.</p>
             )}
+            <p className="inline-link-row">
+              <Link href="/career-counselling/degree-selection-guidance" className="text-link">Degree selection guidance →</Link>
+              <span aria-hidden="true"> · </span>
+              <Link href="/contact" className="text-link">Talk to a counsellor →</Link>
+            </p>
           </div>
           <div>
             <SectionHeader
               eyebrow="Exams that matter"
               title={`Entrance exams for ${city.name} students`}
-              description={`Most ${city.name} students plan for a mix of national and state-level exams.`}
+              description={`Most ${city.name} students plan for a mix of national and state-level exams. Read our stream selection guide for exam planning context.`}
             />
             {city.topExams.length > 0 ? (
               <ul className="bullet-list">
@@ -634,6 +694,11 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             ) : (
               <p>For {city.name}, the most common entrance tracks are JEE Main, NEET, state CETs, and CAT.</p>
             )}
+            <p className="inline-link-row">
+              <Link href="/blog/how-to-choose-the-right-stream-after-10th" className="text-link">Stream selection guide →</Link>
+              <span aria-hidden="true"> · </span>
+              <Link href="/career-counselling/stream-selection-guidance" className="text-link">Stream guidance service →</Link>
+            </p>
           </div>
         </div>
       </section>
@@ -742,6 +807,15 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
 
       <JsonLd id={`ld-breadcrumb-${serviceSlug}-${stateSlug}-${citySlug}`} data={breadcrumbSchema(breadcrumbs)} />
       <JsonLd
+        id={`ld-webpage-${serviceSlug}-${stateSlug}-${citySlug}`}
+        data={webPageSchema({
+          url: pageUrl,
+          name: `${servicePage.title} in ${city.name}, ${stateName}`,
+          description: `${servicePage.title} in ${city.name}, ${stateName}. ${servicePage.shortDescription}`,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+        })}
+      />
+      <JsonLd
         id={`ld-service-${serviceSlug}-${stateSlug}-${citySlug}`}
         data={{
           '@context': 'https://schema.org',
@@ -773,14 +847,47 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
 
 /* ----------------- Top-level Service Main Page ----------------- */
 function generateServicePageMetadata(serviceSlug, servicePage) {
-  const title = `${servicePage.title} in India | GCDA`;
+  const title = `${servicePage.title} in India: 346+ Cities`;
   const description = servicePage.shortDescription;
   const url = `${SITE_URL}/${serviceSlug}`;
   return {
     title,
     description,
+    keywords: [
+      `${servicePage.title.toLowerCase()} India`,
+      `${servicePage.title.toLowerCase()} online`,
+      `${servicePage.title.toLowerCase()} cost`,
+      `best ${servicePage.title.toLowerCase()}`,
+      `${servicePage.title.toLowerCase()} in city`,
+    ],
     alternates: { canonical: `/${serviceSlug}` },
-    openGraph: { title, description, url, type: 'article' },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+      images: [
+        {
+          url: '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${servicePage.title} in India – GCDA`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [
+        {
+          url: '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${servicePage.title} in India – GCDA`,
+        },
+      ],
+    },
   };
 }
 
@@ -977,6 +1084,15 @@ function MainServicePage({ serviceSlug, servicePage }) {
       </section>
 
       <JsonLd id={`ld-breadcrumb-main-${serviceSlug}`} data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd
+        id={`ld-webpage-main-${serviceSlug}`}
+        data={webPageSchema({
+          url,
+          name: `${servicePage.title} in India`,
+          description: servicePage.shortDescription,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+        })}
+      />
       <JsonLd
         id={`ld-service-main-${serviceSlug}`}
         data={{

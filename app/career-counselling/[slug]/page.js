@@ -23,7 +23,7 @@ export function generateMetadata({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   if (!service) return { title: 'Service not found' };
 
-  const title = `${service.title} | GCDA Career Counselling`;
+  const title = `${service.title}`;
   const description = service.shortDescription;
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
 
@@ -43,6 +43,27 @@ export function generateMetadata({ params }) {
       description,
       url,
       type: 'article',
+      images: [
+        {
+          url: service.image || '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${service.title} – GCDA career counselling`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [
+        {
+          url: service.image || '/assets/hero-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: `${service.title} – GCDA career counselling`,
+        },
+      ],
     },
   };
 }

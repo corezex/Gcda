@@ -4,13 +4,14 @@ import StatsBar from '@/components/StatsBar';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
+import Link from 'next/link';
 import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
 import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'About GCDA – Career Counselling Association in India | Our Mission & Team',
+  title: 'About GCDA – Career Counselling Association in India: Our Mission & Team',
   description:
     'Learn about GCDA – Global Career Development Association, our mission since 2013, our certified counsellor team, and how we guide students, parents, and working professionals through smarter career decisions across India.',
   keywords: [
@@ -94,6 +95,9 @@ export default function AboutPage() {
             </p>
             <p>
               Our counselling style balances emotional reassurance with practical action. The result is a roadmap clients can actually follow.
+            </p>
+            <p className="inline-link-row">
+              Explore our <Link href="/career-counselling/personal-counselling" className="text-link">personal counselling</Link>, <Link href="/career-counselling/career-assessment" className="text-link">career assessment</Link>, <Link href="/career-counselling/stream-selection-guidance" className="text-link">stream selection</Link>, <Link href="/career-counselling/degree-selection-guidance" className="text-link">degree selection</Link>, <Link href="/career-counselling/workshops-seminars" className="text-link">workshops</Link>, <Link href="/career-counselling/working-professionals-guidance" className="text-link">working professional</Link>, and <Link href="/career-certification" className="text-link">career counsellor certification</Link> programmes.
             </p>
           </div>
           <div className="card-grid simple-grid">
@@ -192,7 +196,7 @@ export default function AboutPage() {
               <div className="card-body">
                 <h3>Updated with 2026 data</h3>
                 <p>
-                  Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months so the guidance reflects the current Indian market, not stale 2018 data.
+                  Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months so the guidance reflects the current Indian market, not stale 2018 data. See our latest analysis in the <Link href="/blog" className="text-link">career guidance blog</Link>.
                 </p>
               </div>
             </article>

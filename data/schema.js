@@ -130,9 +130,18 @@ export function websiteSchema() {
     '@id': `${SITE_URL}/#website`,
     url: SITE_URL,
     name: company.name,
+    alternateName: company.shortName,
     description:
       'GCDA is a career counselling and guidance association helping Indian students, parents, and professionals make clear education and career decisions.',
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: company.name,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE_URL}/assets/logo.png`,
+      },
+    },
     inLanguage: 'en-IN',
     potentialAction: {
       '@type': 'SearchAction',
@@ -147,12 +156,13 @@ export function serviceSchema(service) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `${SITE_URL}/services/${service.slug}#service`,
+    '@id': `${SITE_URL}/career-counselling/${service.slug}#service`,
     name: service.title,
     description: service.shortDescription,
     serviceType: 'Career Counselling',
     provider: { '@id': `${SITE_URL}/#organization` },
     areaServed: { '@type': 'Country', name: 'India' },
+    url: `${SITE_URL}/career-counselling/${service.slug}`,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'GCDA Career Counselling Services',
@@ -161,7 +171,7 @@ export function serviceSchema(service) {
         itemOffered: {
           '@type': 'Service',
           name: s.title,
-          url: `${SITE_URL}/services/${s.slug}`,
+          url: `${SITE_URL}/career-counselling/${s.slug}`,
         },
       })),
     },
@@ -176,12 +186,13 @@ export function productSchema(plan) {
     name: `GCDA ${plan.name} Plan`,
     description: plan.eyebrow,
     brand: { '@type': 'Brand', name: 'GCDA' },
+    url: `${SITE_URL}/plan#${plan.slug}`,
     offers: {
       '@type': 'Offer',
       price: plan.price.replace(/[^0-9]/g, ''),
       priceCurrency: 'INR',
       availability: 'https://schema.org/InStock',
-      url: `${SITE_URL}/plans#${plan.slug}`,
+      url: `${SITE_URL}/plan#${plan.slug}`,
       seller: { '@id': `${SITE_URL}/#organization` },
     },
   };
@@ -488,5 +499,31 @@ export function blogListSchema(posts) {
       author: { '@type': 'Organization', name: post.author || 'GCDA Editorial Team' },
       keywords: (post.keywords || []).join(', '),
     })),
+  };
+}
+
+// ----- WebPage schema (explicit page-type signal for AI Overviews) -----
+// Tells Google/AI exactly what this page is. Use this on every page that
+// does not already have a more specific @type (AboutPage, ContactPage, etc.).
+export function webPageSchema({ url, name, description, inLanguage = 'en-IN', primaryImage }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage,
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    primaryImageOfPage: primaryImage
+      ? {
+          '@type': 'ImageObject',
+          url: primaryImage,
+          width: 1200,
+          height: 630,
+        }
+      : undefined,
+    publisher: { '@id': `${SITE_URL}/#organization` },
   };
 }

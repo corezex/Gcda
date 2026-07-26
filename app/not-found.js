@@ -12,7 +12,7 @@ const notFoundBreadcrumbs = [
 ];
 
 export const metadata = {
-  title: 'Page Not Found (404) | GCDA Career Counselling',
+  title: 'Page Not Found (404)',
   description: 'The page you are looking for could not be found. Explore GCDA career counselling, career assessments, and our 346+ city pages.',
   robots: { index: false, follow: true },
 };

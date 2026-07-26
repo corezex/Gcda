@@ -10,7 +10,7 @@ import { citiesCollectionSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Across India | 36 States, 346+ Cities | GCDA City Hub',
+  title: 'Career Counselling Across India: 36 States, 346+ Cities',
   description:
     'GCDA offers career counselling, career assessments, stream and degree selection guidance, and professional mentoring across 36 Indian states and union territories, covering 346+ cities including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, and Kolkata.',
   keywords: [
@@ -23,7 +23,7 @@ export const metadata = {
   ],
   alternates: { canonical: '/cities' },
   openGraph: {
-    title: 'Career Counselling Across India | GCDA City Hub',
+    title: 'Career Counselling Across India: 36 States, 346+ Cities',
     description:
       'GCDA career counselling, career assessments, and professional mentoring across 36 Indian states and 346+ cities.',
     url: 'https://gcdassociation.org/cities',
@@ -38,7 +38,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling Across India | GCDA City Hub',
+    title: 'Career Counselling Across India: 36 States, 346+ Cities',
     description: 'GCDA career counselling across 36 states and 346+ cities in India.',
   },
 };

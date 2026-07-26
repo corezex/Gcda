@@ -9,7 +9,7 @@ import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Contact GCDA – Career Counselling in Mumbai & Across India | Phone, Email, WhatsApp',
+  title: 'Contact GCDA – Career Counselling in Mumbai & Across India: Phone, Email, WhatsApp',
   description:
     'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Visit our Mumbai office at 102, Citi Mall, Link Road, Andheri West, or reach us by phone (+91 91360 05039), email (gcda.career@gmail.com), or WhatsApp.',
   keywords: [

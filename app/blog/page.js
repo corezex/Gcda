@@ -10,7 +10,7 @@ import { blogListSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Guidance Blog India | Stream, Degree, MBA, JEE/NEET | GCDA',
+  title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET',
   description:
     'Practical, India-specific career guidance for students, parents, and working professionals. Read GCDA blog posts on stream selection after 10th, degree choices after 12th, JEE/NEET planning, MBA, career transitions, and working professional growth.',
   keywords: [
@@ -26,7 +26,7 @@ export const metadata = {
   ],
   alternates: { canonical: '/blog' },
   openGraph: {
-    title: 'Career Guidance Blog India | Stream, Degree, MBA, JEE/NEET | GCDA',
+    title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET',
     description: 'Practical, India-specific career guidance for students, parents, and working professionals.',
     url: 'https://gcdassociation.org/blog',
     images: [
@@ -40,7 +40,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Guidance Blog India | GCDA',
+    title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET',
     description: 'Practical, India-specific career guidance from the GCDA editorial team.',
   },
 };
