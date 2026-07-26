@@ -1,8 +1,15 @@
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import CTASection from '@/components/CTASection';
 import FAQList from '@/components/FAQList';
 import SectionHeader from '@/components/SectionHeader';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
 import { getServiceBySlug, services } from '@/data/site';
+import { faqSchema, serviceSchema, howToSchema, breadcrumbSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -10,36 +17,70 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }) {
   const service = getServiceBySlug(params.slug);
+  if (!service) return { title: 'Service not found' };
 
-  if (!service) {
-    return { title: 'Service not found' };
-  }
+  const title = `${service.title} | GCDA Career Counselling Service`;
+  const description = `${service.shortDescription} Available online across India and in-person at our Mumbai office. Book a session with GCDA.`;
+  const url = `${SITE_URL}/services/${service.slug}`;
 
   return {
-    title: service.title,
-    description: service.shortDescription,
+    title,
+    description,
+    keywords: [
+      service.title.toLowerCase(),
+      `${service.title.toLowerCase()} India`,
+      `${service.title.toLowerCase()} Mumbai`,
+      'career counselling service',
+    ],
+    alternates: { canonical: `/services/${service.slug}` },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: 'article',
+    },
   };
 }
 
 export default function ServiceDetailPage({ params }) {
   const service = getServiceBySlug(params.slug);
+  if (!service) notFound();
 
-  if (!service) {
-    notFound();
-  }
+  const url = `${SITE_URL}/services/${service.slug}`;
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Services', url: '/services' },
+    { name: service.title, url: `/services/${service.slug}` },
+  ];
+
+  // Related services (excluding current)
+  const related = services.filter((s) => s.slug !== service.slug).slice(0, 3);
 
   return (
     <>
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{service.title}</span>
             <h1>{service.heroDescription}</h1>
             <p>{service.shortDescription}</p>
+            <div className="button-row">
+              <Link href="/contact" className="button button-primary">Book {service.title}</Link>
+              <Link href="/services" className="button button-secondary">All services</Link>
+            </div>
           </div>
           <div className="surface-card media-card">
             <img src={service.image} alt={service.title} />
           </div>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
+        <div className="container narrow-center">
+          <AnswerBlock>
+            {service.title} is a structured GCDA service that combines a personal counselling session, an assessment where relevant, and a practical action plan. It is delivered one-on-one, online across India and in-person at our Mumbai office, and is suitable for {service.idealFor[0].toLowerCase()} and similar profiles.
+          </AnswerBlock>
         </div>
       </section>
 
@@ -101,12 +142,14 @@ export default function ServiceDetailPage({ params }) {
               <article className="card process-card" key={step}>
                 <div className="card-body">
                   <span className="step-number">0{index + 1}</span>
+                  <h3>{`Step ${index + 1}`}</h3>
                   <p>{step}</p>
                 </div>
               </article>
             ))}
           </div>
         </div>
+        <JsonLd id={`ld-howto-${service.slug}`} data={howToSchema(`How ${service.title} Works at GCDA`, service.steps, 'PT90M')} />
       </section>
 
       <section className="section alt-section">
@@ -114,12 +157,43 @@ export default function ServiceDetailPage({ params }) {
           <SectionHeader eyebrow="FAQs" title={`Questions about ${service.title}`} center />
           <FAQList items={service.faqs} />
         </div>
+        <JsonLd id={`ld-faq-${service.slug}`} data={faqSchema(service.faqs)} />
       </section>
+
+      {related.length > 0 ? (
+        <section className="section">
+          <div className="container">
+            <SectionHeader
+              eyebrow="Related services"
+              title="You may also want to explore"
+              description="Most clients combine this service with related offerings to get a complete plan."
+            />
+            <div className="card-grid service-grid">
+              {related.map((rel) => (
+                <article className="card service-card" key={rel.slug}>
+                  <div className="service-card-media">
+                    <img src={rel.image} alt={rel.title} />
+                  </div>
+                  <div className="card-body">
+                    <div className="icon-badge">{rel.icon}</div>
+                    <h3>{rel.title}</h3>
+                    <p>{rel.shortDescription}</p>
+                    <Link href={`/services/${rel.slug}`} className="text-link">Explore {rel.title.toLowerCase()} →</Link>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <CTASection
         title={`Ready to book ${service.title.toLowerCase()}?`}
         description="Connect with GCDA and we will guide you toward the right next step."
       />
+
+      <JsonLd id={`ld-service-${service.slug}`} data={serviceSchema(service)} />
+      <JsonLd id={`ld-breadcrumb-${service.slug}`} data={breadcrumbSchema(breadcrumbs)} />
     </>
   );
 }

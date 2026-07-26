@@ -1,10 +1,20 @@
 import ContactForm from '@/components/ContactForm';
 import SectionHeader from '@/components/SectionHeader';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { company } from '@/data/site';
 
 export const metadata = {
-  title: 'Contact',
-  description: 'Contact GCDA for career counselling, assessments, plans, and workshops.',
+  title: 'Contact GCDA – Career Counselling in Mumbai & Across India',
+  description:
+    'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Reach us at our Mumbai office, by phone, email, or WhatsApp.',
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact GCDA – Career Counselling in Mumbai & Across India',
+    description:
+      'Contact GCDA for career counselling, career assessments, plans, and institutional workshops.',
+    url: 'https://gcdassociation.org/contact',
+  },
 };
 
 export default function ContactPage() {
@@ -15,6 +25,7 @@ export default function ContactPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }]} />
             <span className="eyebrow">Contact us</span>
             <h1>Get in touch with GCDA for counselling, plans, and guidance.</h1>
             <p>
@@ -33,6 +44,14 @@ export default function ContactPage() {
       </section>
 
       <section className="section">
+        <div className="container">
+          <AnswerBlock>
+            You can reach GCDA by phone at {company.phoneDisplay}, by email at {company.email}, or by WhatsApp. Our Mumbai office is at {company.addressLine1} and is open Monday to Saturday. We respond to all enquiries within one business day.
+          </AnswerBlock>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
         <div className="container two-column contact-layout">
           <div>
             <SectionHeader

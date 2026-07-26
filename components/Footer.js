@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { company, navLinks, services } from '@/data/site';
+import { cities } from '@/data/cities';
 
 export default function Footer() {
+  const topCities = cities.slice(0, 6);
+
   return (
     <footer className="site-footer">
       <div className="container footer-grid">
@@ -14,7 +17,7 @@ export default function Footer() {
             </div>
           </div>
           <p className="footer-copy">
-            Helping students, parents, graduates, and professionals make clearer education and career decisions.
+            Helping students, parents, graduates, and professionals across India make clearer education and career decisions since 2013.
           </p>
         </div>
 
@@ -41,6 +44,20 @@ export default function Footer() {
         </div>
 
         <div>
+          <h4>Top Cities</h4>
+          <ul className="footer-links">
+            {topCities.map((city) => (
+              <li key={city.slug}>
+                <Link href={`/cities/${city.slug}`}>Career Counselling in {city.name}</Link>
+              </li>
+            ))}
+            <li>
+              <Link href="/cities">View all cities →</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
           <h4>Contact</h4>
           <ul className="footer-contact">
             <li>{company.addressLine1}</li>
@@ -53,7 +70,7 @@ export default function Footer() {
 
       <div className="container footer-bottom">
         <p>© {new Date().getFullYear()} {company.shortName}. All rights reserved.</p>
-        <p>Built with Next.js • Responsive • SEO-ready structure</p>
+        <p>Career Counselling across India • Built with Next.js • SEO, AEO, and AI-Overview ready</p>
       </div>
     </footer>
   );

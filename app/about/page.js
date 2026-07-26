@@ -1,11 +1,21 @@
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
 import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
 
 export const metadata = {
-  title: 'About',
-  description: 'Learn about GCDA, our mission, and how we guide students and professionals through smarter career decisions.',
+  title: 'About GCDA – Career Counselling Association in India',
+  description:
+    'Learn about GCDA – Global Career Development Association, our mission since 2013, and how we guide students, parents, and working professionals through smarter career decisions across India.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About GCDA – Career Counselling Association in India',
+    description:
+      'Learn about GCDA, our mission, and how we guide students and professionals through smarter career decisions.',
+    url: 'https://gcdassociation.org/about',
+  },
 };
 
 export default function AboutPage() {
@@ -14,15 +24,24 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }]} />
             <span className="eyebrow">About GCDA</span>
             <h1>Trusted career guidance with a practical, student-first approach.</h1>
             <p>
-              GCDA exists to help individuals explore, plan, and pursue the right education and career path with confidence. We combine counselling, assessments, mentoring, and practical decision support.
+              GCDA – Global Career Development Association – has been helping Indian students, parents, and working professionals make confident education and career decisions since 2013. We combine structured assessments, personal counselling, and practical roadmaps to turn confusion into clarity.
             </p>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/career-1.png" alt="About GCDA" />
           </div>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
+        <div className="container">
+          <AnswerBlock>
+            GCDA is a Mumbai-headquartered career counselling association founded in 2013. We work with 50,000+ students, parents, and working professionals across India through 5,000+ certified counsellors, offering personal counselling, career assessments, stream and degree selection, and professional growth mentoring.
+          </AnswerBlock>
         </div>
       </section>
 

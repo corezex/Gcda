@@ -2,11 +2,23 @@ import CTASection from '@/components/CTASection';
 import FAQList from '@/components/FAQList';
 import PlanCards from '@/components/PlanCards';
 import SectionHeader from '@/components/SectionHeader';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
 import { plans, siteFaqs } from '@/data/site';
+import { faqSchema, productSchema } from '@/data/schema';
 
 export const metadata = {
-  title: 'Plans',
-  description: 'Compare GCDA counselling plans for stream selection, degree guidance, and working professionals.',
+  title: 'Career Counselling Plans & Pricing | GCDA',
+  description:
+    'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals. Transparent pricing, structured plans.',
+  alternates: { canonical: '/plans' },
+  openGraph: {
+    title: 'Career Counselling Plans & Pricing | GCDA',
+    description:
+      'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
+    url: 'https://gcdassociation.org/plans',
+  },
 };
 
 export default function PlansPage() {
@@ -15,6 +27,7 @@ export default function PlansPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Plans', url: '/plans' }]} />
             <span className="eyebrow">Career counselling plans</span>
             <h1>Choose the plan that matches your current stage.</h1>
             <p>
@@ -24,6 +37,14 @@ export default function PlansPage() {
           <div className="surface-card media-card">
             <img src="/assets/career-6.png" alt="Career counselling plans" />
           </div>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
+        <div className="container">
+          <AnswerBlock>
+            GCDA offers 3 career counselling plans: Stream Selector (₹2,999) for school students choosing a stream, Degree Selector (₹3,499) for students choosing a degree after 12th, and Working Professionals (₹3,999) for career transitions and growth. All plans include assessments, mentor sessions, and personalized reports.
+          </AnswerBlock>
         </div>
       </section>
 
@@ -37,6 +58,9 @@ export default function PlansPage() {
           />
           <PlanCards plans={plans} />
         </div>
+        {plans.map((plan) => (
+          <JsonLd key={plan.slug} id={`ld-product-${plan.slug}`} data={productSchema(plan)} />
+        ))}
       </section>
 
       <section className="section alt-section">
@@ -71,6 +95,7 @@ export default function PlansPage() {
             <FAQList items={siteFaqs.slice(0, 3)} />
           </div>
         </div>
+        <JsonLd id="ld-faq-plans" data={faqSchema(siteFaqs.slice(0, 3))} />
       </section>
 
       <CTASection

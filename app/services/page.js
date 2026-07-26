@@ -1,11 +1,24 @@
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
 import ServiceGrid from '@/components/ServiceGrid';
-import { journeySteps, services } from '@/data/site';
+import FAQList from '@/components/FAQList';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { journeySteps, services, siteFaqs } from '@/data/site';
+import { faqSchema, howToSchema } from '@/data/schema';
 
 export const metadata = {
-  title: 'Services',
-  description: 'Explore GCDA services including personal counselling, career assessments, workshops, stream selection, and professional guidance.',
+  title: 'Career Counselling Services in India | GCDA',
+  description:
+    'Explore GCDA career counselling services in India — personal counselling, career assessments, stream and degree selection guidance, workshops, and professional mentoring for students, parents, and working professionals.',
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: 'Career Counselling Services in India | GCDA',
+    description:
+      'Personal counselling, career assessments, stream and degree selection guidance, workshops, and professional mentoring for students, parents, and working professionals across India.',
+    url: 'https://gcdassociation.org/services',
+  },
 };
 
 export default function ServicesPage() {
@@ -14,15 +27,24 @@ export default function ServicesPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Services', url: '/services' }]} />
             <span className="eyebrow">Our services</span>
-            <h1>Structured guidance that turns uncertainty into a roadmap.</h1>
+            <h1>Structured career guidance that turns uncertainty into a roadmap.</h1>
             <p>
-              GCDA offers counselling and planning services for academic choices, career exploration, degree selection, and professional growth. Every service is designed to move from confusion to clarity.
+              GCDA offers counselling and planning services for academic choices, career exploration, degree selection, and professional growth. Every service is designed to move you from confusion to clarity.
             </p>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/service-illustration.gif" alt="GCDA services" />
           </div>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
+        <div className="container">
+          <AnswerBlock>
+            GCDA offers 6 core career counselling services: Personal Counselling, Career Assessment, Workshops &amp; Seminars, Stream Selection Guidance, Degree Selection Guidance, and Working Professional Guidance. All services are available online across India and in-person at our Mumbai office.
+          </AnswerBlock>
         </div>
       </section>
 
@@ -58,6 +80,15 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
+        <JsonLd id="ld-howto-services" data={howToSchema('How GCDA Career Counselling Works', journeySteps.map((s) => ({ title: s.title, description: s.description })), 'PT90M')} />
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader eyebrow="FAQs" title="Common questions about GCDA services" center />
+          <FAQList items={siteFaqs.slice(0, 4)} />
+        </div>
+        <JsonLd id="ld-faq-services" data={faqSchema(siteFaqs.slice(0, 4))} />
       </section>
 
       <CTASection
