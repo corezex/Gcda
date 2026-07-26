@@ -1,7 +1,6 @@
 import Link from 'next/link';
-import { company, navLinks, services } from '@/data/site';
+import { company } from '@/data/site';
 import { ALL_CITIES } from '@/data/indiaLocations';
-import { SERVICE_CITY_PATTERNS } from '@/data/servicePages';
 
 export default function Footer() {
   // Pick 6 popular cities from across India for the "Top Cities" section.
@@ -20,6 +19,18 @@ export default function Footer() {
       return c ? { stateSlug, citySlug, name: c.name } : null;
     })
     .filter(Boolean);
+
+  // 7 main services + their corresponding URLs.
+  // (Replaces the old "services" list that mixed all 12 page links.)
+  const mainServices = [
+    { label: 'Personal Counselling', href: '/career-counselling/personal-counselling' },
+    { label: 'Career Assessment', href: '/career-counselling/career-assessment' },
+    { label: 'Workshops & Seminars', href: '/career-counselling/workshops-seminars' },
+    { label: 'Stream Selection Guidance', href: '/career-counselling/stream-selection-guidance' },
+    { label: 'Degree Selection Guidance', href: '/career-counselling/degree-selection-guidance' },
+    { label: 'Guidance for Working Professionals', href: '/career-counselling/working-professionals-guidance' },
+    { label: 'Career Counselling Certification', href: '/career-certification' },
+  ];
 
   // Social links (provided by the user)
   const socials = [
@@ -50,31 +61,137 @@ export default function Footer() {
         </svg>
       ),
     },
+    {
+      href: 'https://api.whatsapp.com/send?phone=919136005039',
+      label: 'WhatsApp',
+      icon: (
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+          <path d="M20.5 3.5A11 11 0 0 0 3.7 17l-1.6 5.7 5.8-1.5a11 11 0 0 0 16.2-13.2 11 11 0 0 0-3.6-4.5zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.9.9-3.3-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8zm4.6-6c-.3-.1-1.4-.7-1.6-.7-.2 0-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-3 .3.3 0 0 1 .1-.5l.4-.5.3-.4.1-.4-.1-.4-1-1.4-.3-.4-.4-.1c-.2 0-.4 0-.6.1l-.4.1a1.4 1.4 0 0 0-1 1.1c-.2 1 0 1.9.5 2.8a13.4 13.4 0 0 0 5 5.2c.7.4 1.3.6 1.7.8.5.2.9.2 1.2.1.4-.1 1.2-.5 1.4-1l.2-.6c.1-.3 0-.5-.1-.5l-.5-.3z" />
+        </svg>
+      ),
+    },
   ];
 
   return (
     <footer className="site-footer">
-      <div className="container footer-grid">
-        <div>
-          <div className="footer-brand-row">
-            <img src="/assets/logo.png" alt="GCDA logo" className="footer-logo" />
-            <div>
-              <h3>{company.name}</h3>
-              <p>{company.tagline}</p>
+      <div className="footer-top">
+        <div className="container footer-grid">
+          <div className="footer-brand-col">
+            <div className="footer-brand-row">
+              <img src="/assets/logo.png" alt="GCDA logo" className="footer-logo" />
+              <div>
+                <h3>{company.shortName}</h3>
+                <p className="footer-tagline">{company.tagline}</p>
+              </div>
+            </div>
+            <p className="footer-copy">
+              Helping students, parents, graduates, and professionals across India make clearer education and career decisions since 2013.
+            </p>
+
+            <div className="footer-socials" aria-label="Social media">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="footer-social-link"
+                  aria-label={`GCDA on ${s.label}`}
+                >
+                  {s.icon}
+                </a>
+              ))}
             </div>
           </div>
-          <p className="footer-copy">
-            Helping students, parents, graduates, and professionals across India make clearer education and career decisions since 2013.
-          </p>
 
-          <div className="footer-socials" aria-label="Social media">
+          <div>
+            <h4>Quick Links</h4>
+            <ul className="footer-links">
+              <li><Link href="/">Home</Link></li>
+              <li><Link href="/about">About GCDA</Link></li>
+              <li><Link href="/career-counselling">All Services</Link></li>
+              <li><Link href="/career-certification">Certification</Link></li>
+              <li><Link href="/plan">Plans & Pricing</Link></li>
+              <li><Link href="/blog">Blog</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
+              <li><Link href="/cities">All Cities</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Services</h4>
+            <ul className="footer-links">
+              {mainServices.map((s) => (
+                <li key={s.label}>
+                  <Link href={s.href}>{s.label}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4>Top Cities</h4>
+            <ul className="footer-links">
+              {topCities.map((c) => (
+                <li key={`${c.stateSlug}-${c.citySlug}`}>
+                  <Link href={`/${c.stateSlug}/career-counsellor-${c.citySlug}`}>
+                    Career Counselling in {c.name}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/cities" className="footer-view-all">View all cities →</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4>Get in Touch</h4>
+            <ul className="footer-contact">
+              <li className="footer-contact-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.7a1 1 0 0 0 1.4 0c.3-.2 7.3-6.3 7.3-11.7a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" /></svg>
+                <span>{company.addressLine1}</span>
+              </li>
+              <li className="footer-contact-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 15.5c-1.2 0-2.5-.2-3.6-.6a1 1 0 0 0-1 .2l-2.2 2.2a15.1 15.1 0 0 1-6.6-6.6l2.2-2.2a1 1 0 0 0 .3-1 11.4 11.4 0 0 1-.6-3.6 1 1 0 0 0-1-1H4a1 1 0 0 0-1 1 17 17 0 0 0 17 17 1 1 0 0 0 1-1v-3.5a1 1 0 0 0-1-1z" /></svg>
+                <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
+              </li>
+              <li className="footer-contact-item">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                <a href={`mailto:${company.email}`}>{company.email}</a>
+              </li>
+            </ul>
+            <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="footer-whatsapp-btn">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.7 17l-1.6 5.7 5.8-1.5a11 11 0 0 0 16.2-13.2 11 11 0 0 0-3.6-4.5zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.9.9-3.3-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8zm4.6-6c-.3-.1-1.4-.7-1.6-.7-.2 0-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-3 .3.3 0 0 1 .1-.5l.4-.5.3-.4.1-.4-.1-.4-1-1.4-.3-.4-.4-.1c-.2 0-.4 0-.6.1l-.4.1a1.4 1.4 0 0 0-1 1.1c-.2 1 0 1.9.5 2.8a13.4 13.4 0 0 0 5 5.2c.7.4 1.3.6 1.7.8.5.2.9.2 1.2.1.4-.1 1.2-.5 1.4-1l.2-.6c.1-.3 0-.5-.1-.5l-.5-.3z" /></svg>
+              Chat on WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="footer-bottom">
+        <div className="container footer-bottom-inner">
+          <p className="footer-copyright">
+            © {new Date().getFullYear()} {company.name}. All rights reserved.
+          </p>
+          <nav className="footer-bottom-links" aria-label="Footer">
+            <Link href="/sitemap.xml" className="footer-bottom-link">Sitemap</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/about" className="footer-bottom-link">About</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/contact" className="footer-bottom-link">Contact</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/plan" className="footer-bottom-link">Plans</Link>
+          </nav>
+          <div className="footer-bottom-socials" aria-label="Follow GCDA on social media">
+            <span className="footer-bottom-label">Follow us:</span>
             {socials.map((s) => (
               <a
-                key={s.label}
+                key={`bottom-${s.label}`}
                 href={s.href}
                 target="_blank"
                 rel="noreferrer"
-                className="footer-social-link"
+                className="footer-bottom-social"
                 aria-label={`GCDA on ${s.label}`}
               >
                 {s.icon}
@@ -82,81 +199,6 @@ export default function Footer() {
             ))}
           </div>
         </div>
-
-        <div>
-          <h4>Quick Links</h4>
-          <ul className="footer-links">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link href={link.href}>{link.label}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h4>Services</h4>
-          <ul className="footer-links">
-            {services.map((service) => (
-              <li key={service.slug}>
-                <Link href={`/career-counselling/${service.slug}`}>{service.title}</Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/career-certification">Career Counselling Certification</Link>
-            </li>
-            <li>
-              <Link href="/career-counselling-seminar">Seminars & Workshops</Link>
-            </li>
-            <li>
-              <Link href="/stream-selection-guidance">Stream Selection Guidance</Link>
-            </li>
-            <li>
-              <Link href="/degree-selection-guidance">Degree Selection Guidance</Link>
-            </li>
-            <li>
-              <Link href="/guidance-for-working-professionals">Working Professional Guidance</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Top Cities</h4>
-          <ul className="footer-links">
-            {topCities.map((c) => (
-              <li key={`${c.stateSlug}-${c.citySlug}`}>
-                <Link href={`/${c.stateSlug}/career-counsellor-${c.citySlug}`}>
-                  Career Counselling in {c.name}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/cities">View all cities →</Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <ul className="footer-contact">
-            <li>{company.addressLine1}</li>
-            <li><a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a></li>
-            <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
-            <li>
-              <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="footer-whatsapp">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true" style={{ verticalAlign: 'middle', marginRight: 6 }}>
-                  <path d="M20.5 3.5A11 11 0 0 0 3.7 17l-1.6 5.7 5.8-1.5a11 11 0 0 0 16.2-13.2 11 11 0 0 0-3.6-4.5zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.9.9-3.3-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8zm4.6-6c-.3-.1-1.4-.7-1.6-.7-.2 0-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-3 .3.3 0 0 1 .1-.5l.4-.5.3-.4.1-.4-.1-.4-1-1.4-.3-.4-.4-.1c-.2 0-.4 0-.6.1l-.4.1a1.4 1.4 0 0 0-1 1.1c-.2 1 0 1.9.5 2.8a13.4 13.4 0 0 0 5 5.2c.7.4 1.3.6 1.7.8.5.2.9.2 1.2.1.4-.1 1.2-.5 1.4-1l.2-.6c.1-.3 0-.5-.1-.5l-.5-.3z" />
-                </svg>
-                Chat on WhatsApp
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="container footer-bottom">
-        <p>© {new Date().getFullYear()} {company.shortName}. All rights reserved.</p>
-        <p>Career Counselling across India • Built with Next.js • SEO, AEO, and AI-Overview ready</p>
       </div>
     </footer>
   );

@@ -20,7 +20,7 @@ export const SEMINAR_TYPES = [
     shortTitle: 'Career Counselling',
     tag: 'Awareness + assessment',
     format: '60–90 min sessions • In-person or online',
-    heroImage: '/assets/career-3.png',
+    heroImage: '/assets/seminar-career-counselling.png',
     blurb:
       'A guided seminar for students and parents covering how to make a career decision, plan for entrance exams after 12th, explore offbeat options, and prepare for studying abroad.',
     topics: [
@@ -43,7 +43,7 @@ export const SEMINAR_TYPES = [
     shortTitle: 'Self Management',
     tag: 'Total 4 hrs • 2 weekends',
     format: '4 hours total • 2 weekend sessions • Online + in-person',
-    heroImage: '/assets/career-4.png',
+    heroImage: '/assets/seminar-self-management.png',
     blurb:
       'A 4-hour, 2-weekend workshop that gives students practical self-management skills — the routines, habits, and mental frameworks that determine exam and career outcomes.',
     topics: [
@@ -64,7 +64,7 @@ export const SEMINAR_TYPES = [
     shortTitle: 'Emotional Intelligence',
     tag: 'Total 4 hrs • 2 weekends',
     format: '4 hours total • 2 weekend sessions • Online + in-person',
-    heroImage: '/assets/career-5.png',
+    heroImage: '/assets/seminar-emotional-intelligence.png',
     blurb:
       'A 4-hour, 2-weekend workshop that helps students and professionals develop emotional intelligence — managing relationships, pressure, and habits in a structured, evidence-based way.',
     topics: [
@@ -86,7 +86,7 @@ export const SEMINAR_TYPES = [
     shortTitle: 'Leadership Skills',
     tag: 'Total 4 hrs • 2 weekends',
     format: '4 hours total • 2 weekend sessions • Online + in-person',
-    heroImage: '/assets/career-6.png',
+    heroImage: '/assets/seminar-leadership.png',
     blurb:
       'A 4-hour, 2-weekend workshop that builds leadership, communication, and interview skills for students and early-career professionals who want to stand out.',
     topics: [
