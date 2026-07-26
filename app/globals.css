@@ -353,9 +353,14 @@ h4 {
   gap: 0;
 }
 
+/* The label part — looks like a regular nav-link, but with no
+   trailing padding (so the trigger button hugs it tight) */
 .nav-dropdown-label {
-  /* Same look as a regular nav-link */
   text-decoration: none;
+  padding-left: 0.9rem;
+  padding-right: 0.5rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .nav-dropdown-label:hover,
 .nav-dropdown-label.active {
@@ -363,6 +368,8 @@ h4 {
   color: var(--secondary);
 }
 
+/* The trigger button — tight against the label, no left margin.
+   Smaller, more compact arrow-only button. */
 .nav-dropdown-trigger {
   display: inline-flex;
   align-items: center;
@@ -371,13 +378,16 @@ h4 {
   border: 0;
   font: inherit;
   cursor: pointer;
-  padding: 0.4rem 0.55rem;
-  margin-left: 0.15rem;
+  padding: 0.55rem 0.6rem;
+  margin-left: -2px; /* pull trigger tight against label */
   border-radius: 999px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   color: var(--ink-2);
   transition: background 0.18s ease, color 0.18s ease, transform 0.2s ease;
-  min-width: 28px;
-  height: 32px;
+  min-width: 26px;
+  height: 38px;
+  position: relative;
 }
 .nav-dropdown-trigger:hover,
 .nav-dropdown-trigger.active {
@@ -385,10 +395,21 @@ h4 {
   color: var(--secondary);
 }
 
+/* When the row is hovered, the label and trigger share a continuous
+   pill background so they look like one button group. */
+.nav-dropdown:hover .nav-dropdown-label,
+.nav-dropdown:hover .nav-dropdown-trigger,
+.nav-dropdown:focus-within .nav-dropdown-label,
+.nav-dropdown:focus-within .nav-dropdown-trigger {
+  background: var(--secondary-softer);
+  color: var(--secondary);
+}
+.nav-dropdown:hover .nav-dropdown-label,
+.nav-dropdown:focus-within .nav-dropdown-label { color: var(--secondary); }
+
 .nav-dropdown-caret {
   font-size: 0.7rem;
   line-height: 1;
-  margin-left: 0.15rem;
   transition: transform 0.2s ease;
   display: inline-block;
 }
@@ -486,7 +507,22 @@ h4 {
 
 @media (max-width: 860px) {
   .nav-dropdown { display: block; width: 100%; }
-  .nav-dropdown-trigger { width: 100%; justify-content: space-between; }
+  .nav-dropdown-row { display: flex; width: 100%; }
+  .nav-dropdown-label {
+    flex: 1;
+    border-radius: 999px 0 0 999px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .nav-dropdown-trigger {
+    width: auto;
+    border-radius: 0 999px 999px 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 0.55rem 0.9rem;
+  }
+  .nav-dropdown:hover .nav-dropdown-label,
+  .nav-dropdown:hover .nav-dropdown-trigger { background: var(--secondary-softer); }
   .nav-dropdown-menu {
     position: static;
     box-shadow: none;

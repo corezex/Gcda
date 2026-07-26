@@ -62,13 +62,18 @@ export default function Header() {
                   ref={servicesRef}
                 >
                   <div className="nav-dropdown-row">
-                    <Link
-                      href={link.href}
+                    <button
+                      type="button"
                       className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
-                      onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      onClick={() => {
+                        setOpen(false);
+                        setServicesOpen(true);
+                      }}
+                      aria-expanded={servicesOpen}
+                      aria-haspopup="true"
                     >
                       {link.label}
-                    </Link>
+                    </button>
                     <button
                       type="button"
                       className={`nav-link nav-dropdown-trigger ${isServicesActive() ? 'active' : ''}`}
