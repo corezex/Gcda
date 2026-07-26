@@ -21,16 +21,29 @@ export default function Header() {
 
   const isServicesActive = () => pathname.startsWith('/career-counselling');
 
-  // Close services dropdown when clicking outside
+  // Close services dropdown when clicking outside, when route changes,
+  // or when the user presses Escape.
   useEffect(() => {
     function onClickOutside(event) {
       if (servicesRef.current && !servicesRef.current.contains(event.target)) {
         setServicesOpen(false);
       }
     }
+    function onKeyDown(event) {
+      if (event.key === 'Escape') setServicesOpen(false);
+    }
     document.addEventListener('mousedown', onClickOutside);
-    return () => document.removeEventListener('mousedown', onClickOutside);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onClickOutside);
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, []);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setServicesOpen(false);
+  }, [pathname]);
 
   return (
     <header className="site-header">
@@ -53,7 +66,7 @@ export default function Header() {
 
         <nav className={`nav ${open ? 'nav-open' : ''}`}>
           {navLinks.map((link) => {
-            // Render Services as a click-to-open dropdown
+            // Render Services as a click-to-toggle dropdown
             if (link.href === '/career-counselling') {
               return (
                 <div
@@ -61,30 +74,16 @@ export default function Header() {
                   className="nav-dropdown"
                   ref={servicesRef}
                 >
-                  <div className="nav-dropdown-row">
-                    <button
-                      type="button"
-                      className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
-                      onClick={() => {
-                        setOpen(false);
-                        setServicesOpen(true);
-                      }}
-                      aria-expanded={servicesOpen}
-                      aria-haspopup="true"
-                    >
-                      {link.label}
-                    </button>
-                    <button
-                      type="button"
-                      className={`nav-link nav-dropdown-trigger ${isServicesActive() ? 'active' : ''}`}
-                      onClick={() => setServicesOpen((v) => !v)}
-                      aria-expanded={servicesOpen}
-                      aria-haspopup="true"
-                      aria-label={`Toggle ${link.label} menu`}
-                    >
-                      <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
-                    </button>
-                  </div>
+                  <button
+                    type="button"
+                    className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
+                    onClick={() => setServicesOpen((v) => !v)}
+                    aria-expanded={servicesOpen}
+                    aria-haspopup="true"
+                  >
+                    {link.label}
+                    <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
+                  </button>
                   {servicesOpen ? (
                     <div className="nav-dropdown-menu" role="menu">
                       <Link
