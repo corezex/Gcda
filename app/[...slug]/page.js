@@ -16,6 +16,7 @@ import {
 import { services as baseServices, company } from '@/data/site';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
 import { faqSchema, breadcrumbSchema } from '@/data/schema';
+import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
 
 const SITE_URL = 'https://gcdassociation.org';
 
@@ -333,7 +334,15 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
 
   // Get the rich base-service data (for personal-counselling, career-assessment
   // which don't have a servicePages entry) so city pages have full content.
-  const baseService = baseServices.find((s) => s.slug === serviceSlug);
+  // Some SERVICE_SLUGS map to a differently-named baseServices entry:
+  //   career-counselling-seminar  -> workshops-seminars
+  //   guidance-for-working-professionals -> working-professionals-guidance
+  const BASE_SLUG_ALIAS = {
+    'career-counselling-seminar': 'workshops-seminars',
+    'guidance-for-working-professionals': 'working-professionals-guidance',
+  };
+  const baseSlug = BASE_SLUG_ALIAS[serviceSlug] || serviceSlug;
+  const baseService = baseServices.find((s) => s.slug === baseSlug);
   const benefits = (baseService?.benefits && baseService.benefits.length)
     ? baseService.benefits
     : (servicePage.whatYouGet || []).map((i) => i.body);
@@ -346,20 +355,21 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const stepsRich = (baseService?.steps && baseService.steps.length && typeof baseService.steps[0] === 'object')
     ? baseService.steps
     : (servicePage.whatYouGet || []).map((it, i) => ({ title: it.title || `Step ${i + 1}`, body: it.body }));
-  const faqs = (baseService?.faqs && baseService.faqs.length)
+
+  // Build FAQ list: prefer the city's OWN unique 3 FAQs (pre-generated), then fall back
+  // to the service's 8 base FAQs (with city name substitution). This gives every city
+  // page 8 + 3 = 11 unique FAQs.
+  const serviceBaseFaqs = (baseService?.faqs && baseService.faqs.length)
     ? baseService.faqs
     : servicePage.cityFaqs || [];
-
-  // Build city-specific FAQs (substitute {city} and {district})
-  const cityFaqs = faqs.map((f) => ({
+  const serviceBaseFaqsCity = serviceBaseFaqs.map((f) => ({
     q: f.q.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
     a: f.a.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
   }));
-
-  // City-specific lead
-  const cityLead = servicePage.cityLead
-    .replace(/{city}/g, city.name)
-    .replace(/{district}/g, city.district);
+  const cityUniqueFaqs = (city.faqs && city.faqs.length && typeof city.faqs[0] === 'object')
+    ? city.faqs
+    : [];
+  const cityFaqs = [...serviceBaseFaqsCity, ...cityUniqueFaqs];
 
   // Breadcrumbs
   const breadcrumbs = [
@@ -375,11 +385,24 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     .slice(0, 6);
 
   // Local notes from indiaLocations.js (city-specific for student/professional)
+  // These are pre-generated unique paragraphs per city. We keep them as the
+  // "Why this matters in {city}" section content.
   const studentNote = city.studentNote;
   const professionalNote = city.professionalNote;
   const deliveryNote = city.deliveryNote;
-  const longDescription = baseService?.longDescription || servicePage.heroLead || servicePage.shortDescription;
-  const whyItMatters = baseService?.whyItMatters || null;
+
+  // Per-service, per-city unique longDescription and whyItMatters from
+  // /data/cityServiceContent.js. Falls back to the shared base service
+  // description if no per-city content is found.
+  const cityKey = stateSlug + '/' + citySlug;
+  const serviceCityContent = (CITY_SERVICE_CONTENT[serviceSlug] || {})[cityKey];
+  const longDescription = serviceCityContent?.longDescription
+    || baseService?.longDescription
+    || servicePage.heroLead
+    || servicePage.shortDescription;
+  const whyItMatters = serviceCityContent?.whyItMatters
+    || baseService?.whyItMatters
+    || null;
 
   return (
     <>
@@ -416,72 +439,59 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
-      {/* WHY IT MATTERS */}
-      {whyItMatters ? (
-        <section className="section">
-          <div className="container two-column">
-            <div>
-              <SectionHeader
-                eyebrow="Why this matters in {city.name}"
-                title={`Why families in ${city.name} choose ${servicePage.title.toLowerCase()}`}
-                description={whyItMatters}
-              />
-              <div className="button-row" style={{ marginTop: '1.4rem' }}>
-                <Link href="/contact" className="button button-primary">Talk to a Counsellor</Link>
-                <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
-              </div>
-            </div>
-            <div className="info-panel">
-              <h3>{city.name} at a glance</h3>
-              <ul className="bullet-list compact">
-                <li><strong>State:</strong> {stateName}</li>
-                <li><strong>District:</strong> {city.district}</li>
-                <li><strong>Population:</strong> {city.population}</li>
-                <li><strong>Region:</strong> {state.region}</li>
-                <li><strong>Top industries:</strong> {city.industries}</li>
-                <li><strong>Landmarks:</strong> {city.landmarks}</li>
-              </ul>
+      {/* WHY IT MATTERS — always uses per-city, per-service unique paragraph */}
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow={`Why this matters in ${city.name}`}
+              title={`Why families in ${city.name} choose ${servicePage.title.toLowerCase()}`}
+              description={whyItMatters || `We pair assessment data with real mentor experience, so the plan you receive fits your strengths, location, and family context.`}
+            />
+            <div className="button-row" style={{ marginTop: '1.4rem' }}>
+              <Link href="/contact" className="button button-primary">Talk to a Counsellor</Link>
+              <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
           </div>
-        </section>
-      ) : (
-        <section className="section">
-          <div className="container two-column">
-            <div>
-              <SectionHeader
-                eyebrow={`Why ${city.name} families choose GCDA`}
-                title={`${servicePage.title} built for ${city.name}`}
-                description="We pair assessment data with real mentor experience, so the plan you receive fits your strengths, location, and family context."
-              />
-              <div className="stack-list">
-                <article className="feature-row">
-                  <h3>For students in {city.name}</h3>
-                  <p>{studentNote}</p>
-                </article>
-                <article className="feature-row">
-                  <h3>For working professionals in {city.name}</h3>
-                  <p>{professionalNote}</p>
-                </article>
-                <article className="feature-row">
-                  <h3>How we deliver in {city.name}</h3>
-                  <p>{deliveryNote}</p>
-                </article>
-              </div>
-            </div>
-            <div className="info-panel">
-              <h3>{city.name} at a glance</h3>
-              <ul className="bullet-list compact">
-                <li><strong>State:</strong> {stateName}</li>
-                <li><strong>District:</strong> {city.district}</li>
-                <li><strong>Population:</strong> {city.population}</li>
-                <li><strong>Region:</strong> {state.region}</li>
-                <li><strong>Top industries:</strong> {city.industries}</li>
-                <li><strong>Landmarks:</strong> {city.landmarks}</li>
-              </ul>
-            </div>
+          <div className="info-panel">
+            <h3>{city.name} at a glance</h3>
+            <ul className="bullet-list compact">
+              <li><strong>State:</strong> {stateName}</li>
+              <li><strong>District:</strong> {city.district}</li>
+              <li><strong>Population:</strong> {city.population}</li>
+              <li><strong>Region:</strong> {state.region}</li>
+              <li><strong>Top industries:</strong> {city.industries}</li>
+              <li><strong>Landmarks:</strong> {city.landmarks}</li>
+            </ul>
           </div>
-        </section>
-      )}
+        </div>
+      </section>
+
+      {/* CITY-SPECIFIC NOTES — unique paragraphs generated for every city */}
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow={`Local context for ${city.name}`}
+            title={`How ${servicePage.title.toLowerCase()} is tailored to ${city.name}`}
+            description={`Three things you should know about how GCDA delivers this service specifically in ${city.name}.`}
+            center
+          />
+          <div className="stack-list">
+            <article className="feature-row">
+              <h3>For students in {city.name}</h3>
+              <p>{studentNote}</p>
+            </article>
+            <article className="feature-row">
+              <h3>For working professionals in {city.name}</h3>
+              <p>{professionalNote}</p>
+            </article>
+            <article className="feature-row">
+              <h3>How we deliver in {city.name}</h3>
+              <p>{deliveryNote}</p>
+            </article>
+          </div>
+        </div>
+      </section>
 
       {/* WHAT YOU GET — Benefits grid */}
       <section className="section alt-section" id="what-you-get">
@@ -644,13 +654,13 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </section>
       ) : null}
 
-      {/* FAQ with 8 city-specific questions */}
+      {/* FAQ with service-level + city-specific questions (11 total) */}
       <section className="section" id="faq">
         <div className="container narrow-center-wide">
           <SectionHeader
             eyebrow="FAQs"
             title={`Questions about ${servicePage.title.toLowerCase()} in ${city.name}`}
-            description={`Common questions we receive from students, parents, and working professionals in ${city.name}.`}
+            description={`Common questions from students, parents, and working professionals in ${city.name}, plus the questions we hear most often across ${city.district} and ${stateName}.`}
             center
           />
           <FAQList items={cityFaqs} />

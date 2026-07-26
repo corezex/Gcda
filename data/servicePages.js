@@ -67,6 +67,26 @@ export const servicePages = {
         q: 'How can working professionals in {city} use GCDA services?',
         a: 'Professionals in and around {city} commonly use GCDA for MBA/EMBA planning, career transition strategy, resume review, interview preparation, and growth roadmapping. Sessions are online and flexible around work hours.',
       },
+      {
+        q: 'What does a typical career counselling session in {city} cover?',
+        a: 'A typical session in {city} covers your background, aptitude, interests, and family context, then narrows down 2–3 realistic career paths with a written action plan. Most clients find their answer in 2–3 sessions, not months of advice.',
+      },
+      {
+        q: 'How is GCDA career counselling different from free online career tests?',
+        a: 'Free tests give you a personality label. GCDA combines assessment data with a certified mentor’s structured conversation, so the output is a specific, actionable plan for {city} — not a generic result you can get anywhere online.',
+      },
+      {
+        q: 'Can parents attend career counselling sessions in {city}?',
+        a: 'Yes. For class 10–12 students in {city}, parent involvement is usually helpful — we run a 30-minute alignment conversation at the end so the family walks away with the same plan. Working-professional sessions are 1:1 with the candidate.',
+      },
+      {
+        q: 'Do you help with JEE Main and NEET planning for students in {city}?',
+        a: 'Yes. We help {city} students and parents build a 12-month prep calendar around JEE Main, NEET, state CETs, and other entrance exams, including college shortlisting, expected cutoffs, and a backup plan.',
+      },
+      {
+        q: 'Is career counselling useful for someone in the middle of their career in {city}?',
+        a: 'Yes. Mid-career professionals in {city} use our service for transitions, MBA shortlisting, promotion strategy, and skill alignment. Sessions are online and fit around work hours.',
+      },
     ],
   },
 
@@ -297,6 +317,26 @@ export const servicePages = {
       {
         q: 'Will I receive a certificate after the programme in {city}?',
         a: 'Yes. On successful completion of the programme and assessments, you will receive a GCDA Career Counsellor Certification that you can use to start or grow your practice in {city} or anywhere in India.',
+      },
+      {
+        q: 'How long is the GCDA certification programme in {city}?',
+        a: 'The standard certification programme runs for 3–4 months with weekly live online sessions, supplemented by self-paced learning and 2–3 in-person workshops in {city}. Total commitment is roughly 80–100 hours over the programme.',
+      },
+      {
+        q: 'What is the fee for the certification programme in {city}?',
+        a: 'The certification fee varies by cohort; the current cohort in {city} is priced competitively against national certification programmes. EMI options are available, and group discounts apply for institutional enrolments from {city} colleges.',
+      },
+      {
+        q: 'Will I get practical counselling experience during the programme in {city}?',
+        a: 'Yes. The programme includes 20+ hours of supervised practice with real clients from {city} and surrounding areas, plus mock counselling sessions and case-study debriefs led by senior GCDA mentors.',
+      },
+      {
+        q: 'Is the GCDA certification recognised by schools and colleges in {city}?',
+        a: 'Yes. The GCDA Career Counsellor Certification is accepted by leading schools, colleges, and edtech companies across {city} and India. Many of our graduates from {city} have gone on to set up independent practices or join institutional teams.',
+      },
+      {
+        q: 'Can I practise as a career counsellor in {city} after the certification?',
+        a: 'Yes. On certification, you can start practising as a career counsellor in {city} under the GCDA brand, or set up an independent practice. GCDA provides ongoing mentor support and a referral network for certified counsellors in {city}.',
       },
     ],
   },
