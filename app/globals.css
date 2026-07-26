@@ -1149,6 +1149,161 @@ textarea { resize: vertical; min-height: 130px; }
 .city-card .city-state { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
 .city-card .city-blurb { font-size: 0.92rem; line-height: 1.55; color: var(--muted); margin-bottom: 0.5rem; }
 
+/* Service links inside a city card (used on state hubs) */
+.city-card-services {
+  margin-top: 0.7rem;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--line-2);
+}
+.city-card-services-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 0.45rem;
+}
+.city-card-services-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.55rem;
+}
+.city-card-services-list li {
+  padding: 0;
+  margin: 0;
+}
+.city-card-services-list li::before {
+  display: none;
+}
+.city-card-services-list a {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--secondary);
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  background: var(--secondary-softer);
+  transition: background 0.18s ease, color 0.18s ease;
+}
+.city-card-services-list a:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+/* Services mega-grid: 12 city rows × 8 service links each (services hub) */
+.services-mega-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem;
+  margin-top: 1rem;
+}
+.services-mega-row {
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+.services-mega-row-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line-2);
+}
+.services-mega-row-head h3 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+.services-mega-row-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.3rem;
+}
+.services-mega-row-links li { padding: 0; margin: 0; }
+.services-mega-row-links li::before { display: none; }
+.services-mega-row-links a {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--secondary);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  background: var(--secondary-softer);
+  transition: background 0.18s ease, color 0.18s ease;
+  white-space: nowrap;
+}
+.services-mega-row-links a:hover {
+  background: var(--secondary);
+  color: #fff;
+}
+
+/* Service cross-link grid (used on city pages + service main pages) */
+.services-cross-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 1rem;
+}
+.service-cross-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.9rem 1rem;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.service-cross-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: var(--secondary-soft);
+}
+.service-cross-link.is-current {
+  background: var(--secondary-softer);
+  border-color: var(--secondary);
+  cursor: default;
+}
+.service-cross-link.is-current:hover { transform: none; }
+.service-cross-label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.service-cross-state {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.service-cross-current {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary-dark);
+  margin-top: 0.15rem;
+}
+
+@media (max-width: 1080px) {
+  .services-mega-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .services-cross-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .services-mega-grid,
+  .services-cross-grid { grid-template-columns: 1fr; }
+}
+
 .center-cta {
   display: flex;
   justify-content: center;

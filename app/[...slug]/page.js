@@ -262,7 +262,7 @@ function StateHub({ stateSlug, state }) {
           <SectionHeader
             eyebrow={`${state.name} cities`}
             title={`Career counselling across ${state.name}`}
-            description={`We serve ${cities.length} cities in ${state.name}. Click any city to see locally relevant guidance, top colleges, entrance exams, and city-specific FAQs.`}
+            description={`We serve ${cities.length} cities in ${state.name}. Click any city to see locally relevant guidance, top colleges, entrance exams, and city-specific FAQs — across all 7 GCDA services.`}
           />
           {cities.length > 0 ? (
             <div className="card-grid city-grid">
@@ -277,6 +277,24 @@ function StateHub({ stateSlug, state }) {
                       </h3>
                       <p className="city-state">{c.district} • {c.population}</p>
                       <p className="city-blurb">{c.tagline}</p>
+
+                      <div className="city-card-services">
+                        <span className="city-card-services-label">All GCDA services in {c.name}:</span>
+                        <ul className="city-card-services-list">
+                          {SERVICE_SLUGS.map((sSlug) => {
+                            const pat = SERVICE_CITY_PATTERNS[sSlug];
+                            if (!pat) return null;
+                            return (
+                              <li key={sSlug}>
+                                <Link href={pat.urlPattern(stateSlug, cSlug)}>
+                                  {pat.cityLabel}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
+
                       <Link href={`/${stateSlug}/career-counsellor-${cSlug}`} className="text-link">
                         Explore {c.name} →
                       </Link>
@@ -536,6 +554,37 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </section>
       ) : null}
 
+      {/* Other GCDA services in this same city — cross-link to all 7 service variants */}
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="All GCDA services"
+            title={`Other GCDA services in ${city.name}`}
+            description="Every city page covers one GCDA service. Use the links below to switch to any of the other 6 services for the same city."
+            center
+          />
+          <div className="card-grid services-cross-grid">
+            {SERVICE_SLUGS.map((sSlug) => {
+              const pat = SERVICE_CITY_PATTERNS[sSlug];
+              if (!pat) return null;
+              const isCurrent = sSlug === serviceSlug;
+              return (
+                <Link
+                  key={sSlug}
+                  href={pat.urlPattern(stateSlug, citySlug)}
+                  className={`service-cross-link ${isCurrent ? 'is-current' : ''}`}
+                  aria-current={isCurrent ? 'page' : undefined}
+                >
+                  <span className="service-cross-label">{pat.cityLabel}</span>
+                  <span className="service-cross-state">in {city.name}</span>
+                  {isCurrent ? <span className="service-cross-current">You are here</span> : null}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="section alt-section">
         <div className="container narrow-center cta-band-inner">
           <div>
@@ -743,6 +792,33 @@ function MainServicePage({ serviceSlug, servicePage }) {
           <FAQList items={pageFaqs} />
         </div>
         <JsonLd id={`ld-faq-main-${serviceSlug}`} data={faqSchema(pageFaqs)} />
+      </section>
+
+      {/* Other GCDA services — cross-link from main service page */}
+      <section className="section" id="other-services">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Explore other services"
+            title="Other GCDA services you may need"
+            description="Every service has its own main page and 346 city pages. Use the links below to explore the full GCDA service catalog."
+            center
+          />
+          <div className="card-grid services-cross-grid">
+            {SERVICE_SLUGS.filter((s) => s !== serviceSlug).map((sSlug) => {
+              const sp = getServicePage(sSlug);
+              if (!sp) return null;
+              // If this is career-counselling, certification, or any service that has a standalone main page
+              const isStandalone = ['career-counselling-seminar', 'career-certification', 'stream-selection-guidance', 'degree-selection-guidance', 'guidance-for-working-professionals'].includes(sSlug);
+              const href = isStandalone ? `/${sSlug}` : `/career-counselling/${sSlug}`;
+              return (
+                <Link key={sSlug} href={href} className="service-cross-link">
+                  <span className="service-cross-label">{sp.title}</span>
+                  <span className="service-cross-state">in India</span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </section>
 
       <section className="section alt-section">

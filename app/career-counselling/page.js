@@ -8,6 +8,8 @@ import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
 import { journeySteps, services, siteFaqs } from '@/data/site';
 import { SEMINAR_TYPES } from '@/data/seminars';
+import { SERVICE_CITY_PATTERNS } from '@/data/servicePages';
+import { STATES } from '@/data/indiaLocations';
 import { faqSchema, howToSchema, serviceSchema, breadcrumbSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -106,6 +108,68 @@ export default function CareerCounsellingPage() {
         {services.map((service) => (
           <JsonLd key={`ld-svc-${service.slug}`} id={`ld-svc-${service.slug}`} data={serviceSchema(service)} />
         ))}
+      </section>
+
+      {/* Cross-link to city pages for every service (helps users find their city's variant) */}
+      <section className="section alt-section" id="all-cities">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Explore by city × service"
+            title="Find GCDA career counselling in your city"
+            description="We deliver 7 core services across 346 cities. Click any combination below to find a counsellor, assessment, stream, degree, working-professional, seminar, or certification programme in your city."
+            center
+          />
+          <div className="services-mega-grid">
+            {[
+              ['maharashtra', 'mumbai'],
+              ['karnataka', 'bengaluru'],
+              ['delhi', 'new-delhi'],
+              ['tamil-nadu', 'chennai'],
+              ['telangana', 'hyderabad'],
+              ['west-bengal', 'kolkata'],
+              ['gujarat', 'ahmedabad'],
+              ['rajasthan', 'jaipur'],
+              ['uttar-pradesh', 'lucknow'],
+              ['andhra-pradesh', 'amaravati'],
+              ['andhra-pradesh', 'visakhapatnam'],
+              ['punjab', 'ludhiana'],
+            ].map(([sSlug, cSlug]) => {
+              const state = STATES.find((st) => st.slug === sSlug);
+              const cityName = cSlug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase());
+              return (
+                <div className="services-mega-row" key={`${sSlug}-${cSlug}`}>
+                  <div className="services-mega-row-head">
+                    <span className="mini-label">{state ? state.name : sSlug}</span>
+                    <h3>{cityName}</h3>
+                  </div>
+                  <ul className="services-mega-row-links">
+                    {[
+                      ['career-counselling', 'Career Counsellor'],
+                      ['personal-counselling', 'Personal Counselling'],
+                      ['career-assessment', 'Career Assessment'],
+                      ['career-counselling-seminar', 'Seminar'],
+                      ['career-certification', 'Certification'],
+                      ['stream-selection-guidance', 'Stream Selection'],
+                      ['degree-selection-guidance', 'Degree Selection'],
+                      ['guidance-for-working-professionals', 'Working Pro'],
+                    ].map(([svcKey, label]) => {
+                      const pat = SERVICE_CITY_PATTERNS[svcKey];
+                      if (!pat) return null;
+                      return (
+                        <li key={svcKey}>
+                          <Link href={pat.urlPattern(sSlug, cSlug)}>{label}</Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+          <div className="center-cta">
+            <Link href="/cities" className="text-link">View all 346 cities →</Link>
+          </div>
+        </div>
       </section>
 
       <section className="section alt-section">
