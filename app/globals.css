@@ -753,12 +753,6 @@ h4 {
   display: grid;
   gap: 0.7rem;
   color: var(--muted);
-}
-
-.check-list,
-.footer-links,
-.footer-contact,
-.hours-list {
   list-style: none;
   padding: 0;
   margin: 0;
