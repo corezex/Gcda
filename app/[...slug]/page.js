@@ -147,7 +147,7 @@ export function generateMetadata({ params }) {
     const topCities = cities.slice(0, 5).map((c) => c.name).join(', ');
     return {
       title: `Career Counselling in ${state.name} | GCDA`,
-      description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person guidance via our Mumbai office.`,
+      description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person guidance everywhere.`,
       alternates: { canonical: `/${stateSlug}` },
       openGraph: {
         title: `Career Counselling in ${state.name} | GCDA`,
@@ -215,7 +215,7 @@ function StateHub({ stateSlug, state }) {
   const stateFaqs = [
     {
       q: `Does GCDA offer career counselling in ${state.name}?`,
-      a: `Yes. GCDA provides online career counselling across ${state.name} and in-person sessions via our Mumbai office. We cover all major cities in ${state.name} including ${cities.slice(0, 3).map((c) => c.name).join(', ')}.`,
+      a: `Yes. GCDA provides online career counselling across ${state.name} and in-person sessions everywhere. We cover all major cities in ${state.name} including ${cities.slice(0, 3).map((c) => c.name).join(', ')}.`,
     },
     {
       q: `Which cities in ${state.name} do you cover?`,
@@ -236,7 +236,7 @@ function StateHub({ stateSlug, state }) {
             <span className="eyebrow">{state.region}</span>
             <h1>Career Counselling in {state.name}</h1>
             <p className="page-hero-copy">
-              Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person at our Mumbai office.
+              Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person everywhere.
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
@@ -374,7 +374,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             </div>
             <div className="hero-proof">
               <span>Online sessions across {city.name}</span>
-              <span>Mumbai office in-person</span>
+              <span>in-person everywhere</span>
               <span>50K+ career sessions delivered</span>
             </div>
           </div>
@@ -825,7 +825,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
         <div className="container narrow-center cta-band-inner">
           <div>
             <h2>Ready to get started?</h2>
-            <p>Connect with GCDA for a structured, assessment-led {servicePage.title.toLowerCase()} journey — online across India, in-person at our Mumbai office.</p>
+            <p>Connect with GCDA for a structured, assessment-led {servicePage.title.toLowerCase()} journey — online across India, in-person everywhere.</p>
           </div>
           <div className="cta-actions">
             <Link href="/contact" className="button button-primary">Book a Session</Link>

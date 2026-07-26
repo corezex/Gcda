@@ -20,7 +20,7 @@ export const servicePages = {
   'career-counselling': {
     title: 'Career Counselling',
     shortDescription:
-      'Expert, assessment-led career counselling for students, graduates, parents, and working professionals. Online across India + in-person in Mumbai.',
+      'Expert, assessment-led career counselling for students, graduates, parents, and working professionals. Online across India + in-person everywhere.',
     heroEyebrow: 'Career Counselling',
     heroTitle:
       'Career counselling that turns uncertainty into a clear roadmap.',
@@ -76,7 +76,7 @@ export const servicePages = {
   'personal-counselling': {
     title: 'Personal Counselling',
     shortDescription:
-      'One-on-one personal career counselling sessions for students, graduates, parents, and working professionals. Online across India + in-person in Mumbai.',
+      'One-on-one personal career counselling sessions for students, graduates, parents, and working professionals. Online across India + in-person everywhere.',
     heroEyebrow: 'Personal Counselling',
     heroTitle:
       'Personal counselling that turns your story into a clear next step.',
@@ -109,7 +109,7 @@ export const servicePages = {
       },
     ],
     cityLead:
-      'GCDA offers personal career counselling in {city} for students, graduates, parents, and working professionals. Sessions are available online across {city} and in-person at our Mumbai office for families who prefer face-to-face.',
+      'GCDA offers personal career counselling in {city} for students, graduates, parents, and working professionals. Sessions are available online across {city} and in-person everywhere for families who prefer face-to-face.',
     cityFaqs: [
       {
         q: 'Who is personal counselling in {city} best suited for?',
@@ -132,7 +132,7 @@ export const servicePages = {
   'career-assessment': {
     title: 'Career Assessment',
     shortDescription:
-      'Structured aptitude, interest, and personality assessments that turn data into the right stream, degree, or career shortlist. Online + in-person in Mumbai.',
+      'Structured aptitude, interest, and personality assessments that turn data into the right stream, degree, or career shortlist. Online + in-person everywhere.',
     heroEyebrow: 'Career Assessment',
     heroTitle:
       'Career assessments that turn your strengths into a shortlist, not a guess.',
@@ -165,7 +165,7 @@ export const servicePages = {
       },
     ],
     cityLead:
-      'GCDA offers structured career assessments in {city}. The full assessment is completed online; the mentor debrief and report walkthrough are available online across {city} or in-person at our Mumbai office.',
+      'GCDA offers structured career assessments in {city}. The full assessment is completed online; the mentor debrief and report walkthrough are available online across {city} or in-person everywhere.',
     cityFaqs: [
       {
         q: 'What does the GCDA career assessment in {city} actually measure?',

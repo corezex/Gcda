@@ -62,7 +62,7 @@ export default function CitiesHubPage() {
                   <h3><Link href={`/${s.slug}`}>{s.name}</Link></h3>
                   <p className="city-state">Capital: {s.capital} • {s.cityCount} cities</p>
                   <p className="city-blurb">
-                    GCDA offers online career counselling and career assessments across {s.cityCount} {s.name} cities. Sessions are available online and in-person via our Mumbai office.
+                    GCDA offers online career counselling and career assessments across {s.cityCount} {s.name} cities. Sessions are available online and in-person everywhere.
                   </p>
                   <Link href={`/${s.slug}`} className="text-link">View {s.name} cities →</Link>
                 </div>
