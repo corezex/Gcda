@@ -4,8 +4,10 @@ import SectionHeader from '@/components/SectionHeader';
 import FAQList from '@/components/FAQList';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
 import { journeySteps, services, siteFaqs } from '@/data/site';
+import { SEMINAR_TYPES } from '@/data/seminars';
 import { faqSchema, howToSchema, serviceSchema, breadcrumbSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -107,6 +109,21 @@ export default function CareerCounsellingPage() {
       </section>
 
       <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Workshops & Seminars"
+            title="4 types of seminars and workshops we offer"
+            description="As part of our workshops and seminars service, GCDA runs 4 dedicated tracks. Each is structured, expert-led, and built around real student and professional outcomes — available in-person at your campus or online across India."
+            center
+          />
+          <SeminarTypesGrid seminars={SEMINAR_TYPES} city="India" />
+          <div className="center-cta">
+            <Link href="/career-counselling-seminar" className="text-link">See seminars in your city →</Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
         <div className="container">
           <SectionHeader
             eyebrow="Our process"

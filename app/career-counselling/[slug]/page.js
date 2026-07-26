@@ -5,8 +5,10 @@ import SectionHeader from '@/components/SectionHeader';
 import FAQList from '@/components/FAQList';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
 import { services, company } from '@/data/site';
+import { SEMINAR_TYPES } from '@/data/seminars';
 import { faqSchema, breadcrumbSchema, howToSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -117,6 +119,21 @@ export default function ServiceDetailPage({ params }) {
           </div>
         </div>
       </section>
+
+      {/* 4 types of seminars — only on the Workshops & Seminars service page */}
+      {service.slug === 'workshops-seminars' ? (
+        <section className="section" id="seminar-types">
+          <div className="container">
+            <SectionHeader
+              eyebrow="4 seminar tracks"
+              title="Types of seminars and workshops we offer"
+              description="GCDA runs 4 core seminar tracks. Each is structured, expert-led, and built around real student and professional outcomes — available in-person at your campus or online across India."
+              center
+            />
+            <SeminarTypesGrid seminars={SEMINAR_TYPES} city="India" />
+          </div>
+        </section>
+      ) : null}
 
       <section className="section">
         <div className="container">
