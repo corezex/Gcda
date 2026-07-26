@@ -244,7 +244,7 @@ function CityPage({ stateSlug, citySlug, city, state }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">
-              {stateName || city.district} • {city.tier === 'tier1' ? 'Tier 1 Metro' : city.tier === 'tier2' ? 'Tier 2 City' : 'Emerging City'}
+              {stateName || city.district}
             </span>
             <h1>Career Counsellor in {city.name}, {cityStateName}</h1>
             <p>
@@ -256,7 +256,7 @@ function CityPage({ stateSlug, citySlug, city, state }) {
             </div>
             <div className="hero-proof">
               <span>Online sessions across {city.name}</span>
-              <span>{city.tier === 'tier1' ? 'In-person nearby' : 'Mumbai office in-person'}</span>
+              <span>Mumbai office in-person</span>
               <span>50K+ career sessions delivered</span>
             </div>
           </div>
