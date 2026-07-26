@@ -38,6 +38,8 @@ const SITE_URL = 'https://gcdassociation.org';
 // Build a regex for each service's URL pattern
 const PATTERN_REGEXES = {
   'career-counselling': /^career-counsellor-(.+)$/,
+  'personal-counselling': /^personal-counselling-(.+)$/,
+  'career-assessment': /^career-assessment-(.+)$/,
   'career-counselling-seminar': /^career-counselling-seminar-(.+)$/,
   'career-certification': /^career-counselling-certification-(.+)$/,
   'stream-selection-guidance': /^stream-selection-(.+)$/,

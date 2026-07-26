@@ -71,7 +71,119 @@ export const servicePages = {
   },
 
   // ============================================
-  // 2. CAREER COUNSELLING SEMINAR / WORKSHOPS
+  // 2. PERSONAL COUNSELLING
+  // ============================================
+  'personal-counselling': {
+    title: 'Personal Counselling',
+    shortDescription:
+      'One-on-one personal career counselling sessions for students, graduates, parents, and working professionals. Online across India + in-person in Mumbai.',
+    heroEyebrow: 'Personal Counselling',
+    heroTitle:
+      'Personal counselling that turns your story into a clear next step.',
+    heroLead:
+      'Our personal counselling sessions are one-on-one, deeply individual conversations with a certified GCDA mentor. We listen to where you are, untangle what is blocking the decision, and leave you with a small set of concrete next steps that actually fit your life.',
+    whoItIsFor: [
+      'Students who feel confused about streams, degrees, or career options',
+      'Parents who need a neutral expert to help the family align',
+      'Graduates exploring first-job, higher-studies, or gap-year options',
+      'Working professionals stuck in a role and unsure what to do next',
+    ],
+    whatYouGet: [
+      {
+        icon: '🧑‍🏫',
+        title: 'One-on-one with a certified mentor',
+        body:
+          'Every session is 1:1 with a GCDA-certified mentor who has counselled hundreds of students or professionals — never a junior associate or a chat-bot.',
+      },
+      {
+        icon: '🪞',
+        title: 'Strengths & blockers mapping',
+        body:
+          'We map your strengths, interests, energy, and the blockers (family pressure, money fear, indecision) so the plan is honest, not aspirational.',
+      },
+      {
+        icon: '📝',
+        title: 'Written action plan',
+        body:
+          'You walk away with a written plan: top 2–3 next steps, deadlines, and what to do if plan A does not work. No vague "follow your passion" advice.',
+      },
+    ],
+    cityLead:
+      'GCDA offers personal career counselling in {city} for students, graduates, parents, and working professionals. Sessions are available online across {city} and in-person at our Mumbai office for families who prefer face-to-face.',
+    cityFaqs: [
+      {
+        q: 'Who is personal counselling in {city} best suited for?',
+        a: 'Personal counselling in {city} works for class 10–12 students choosing a stream, graduates comparing degrees or first jobs, parents wanting a neutral opinion, and working professionals considering a switch, MBA, or promotion plan. Sessions are tailored to your stage of life.',
+      },
+      {
+        q: 'Can my parents join my personal counselling session in {city}?',
+        a: 'Yes. For students in {city}, parent involvement is usually helpful — we often run a 30-minute alignment conversation at the end so the family walks away with the same plan. Working-professional sessions are 1:1 with the candidate.',
+      },
+      {
+        q: 'How many personal counselling sessions will I need in {city}?',
+        a: 'Most clients in {city} find their answer in 2–3 sessions — an initial 60-minute deep-dive, a 30-minute follow-up after reflection, and an optional 60-minute execution check-in. We do not sell long packages.',
+      },
+    ],
+  },
+
+  // ============================================
+  // 3. CAREER ASSESSMENT
+  // ============================================
+  'career-assessment': {
+    title: 'Career Assessment',
+    shortDescription:
+      'Structured aptitude, interest, and personality assessments that turn data into the right stream, degree, or career shortlist. Online + in-person in Mumbai.',
+    heroEyebrow: 'Career Assessment',
+    heroTitle:
+      'Career assessments that turn your strengths into a shortlist, not a guess.',
+    heroLead:
+      'Our career assessment uses validated aptitude, interest, and personality instruments — combined with a mentor-led debrief — to give you a data-backed shortlist of streams, degrees, or careers that genuinely fit you. No personality-type horoscopes, no 20-minute online quizzes with no human follow-up.',
+    whoItIsFor: [
+      'Students choosing between Science, Commerce, and Arts after 10th',
+      'Class 12 students comparing engineering, medical, design, law, commerce, or liberal arts',
+      'Graduates comparing MBA, civil services, design, product, or technical roles',
+      'Working professionals assessing fit for a domain switch or higher education',
+    ],
+    whatYouGet: [
+      {
+        icon: '🧠',
+        title: 'Aptitude + interest + personality battery',
+        body:
+          'A validated combination of numerical, verbal, abstract, interest (RIASEC-style), and personality instruments — completed online in 90–120 minutes.',
+      },
+      {
+        icon: '📊',
+        title: 'A printed, mentor-debriefed report',
+        body:
+          'A printed report with your scores, what they mean, and a 30-minute mentor video call to walk you through the results and answer the inevitable "but what does this actually mean for me?" question.',
+      },
+      {
+        icon: '🎯',
+        title: 'Career fit shortlist (top 5)',
+        body:
+          'A personalised shortlist of the top 5 streams / degrees / careers that match your profile — with realistic salary, growth, and entrance-exam data for each.',
+      },
+    ],
+    cityLead:
+      'GCDA offers structured career assessments in {city}. The full assessment is completed online; the mentor debrief and report walkthrough are available online across {city} or in-person at our Mumbai office.',
+    cityFaqs: [
+      {
+        q: 'What does the GCDA career assessment in {city} actually measure?',
+        a: 'Our career assessment in {city} measures numerical aptitude, verbal reasoning, abstract thinking, spatial ability, interest (RIASEC-style), and personality (Big-Five). Together, these map you to streams, degrees, and careers that match your strengths and motivations — not just your marks.',
+      },
+      {
+        q: 'Is the GCDA career assessment different from free online quizzes?',
+        a: 'Yes. Free quizzes give you a personality label. Our assessment in {city} combines multiple validated instruments, is scored by trained psychologists, and ends with a mentor-led debrief that translates scores into 5 specific career options you can act on.',
+      },
+      {
+        q: 'How long does the career assessment take in {city}?',
+        a: 'The online assessment in {city} takes 90–120 minutes (you can pause and resume). The mentor debrief call is 30 minutes. The full printed report is delivered within 3 business days after the debrief.',
+      },
+    ],
+  },
+
+  // ============================================
+  // 4. CAREER COUNSELLING SEMINAR / WORKSHOPS
   // ============================================
   'career-counselling-seminar': {
     title: 'Career Counselling Seminar',
@@ -362,6 +474,8 @@ export const servicePages = {
 // on both the main page AND the city pages.
 export const SERVICE_SLUGS = [
   'career-counselling',
+  'personal-counselling',
+  'career-assessment',
   'career-counselling-seminar',
   'career-certification',
   'stream-selection-guidance',
@@ -379,6 +493,14 @@ export const SERVICE_CITY_PATTERNS = {
   'career-counselling': {
     urlPattern: (stateSlug, citySlug) => `/${stateSlug}/career-counsellor-${citySlug}`,
     cityLabel: 'Career Counsellor',
+  },
+  'personal-counselling': {
+    urlPattern: (stateSlug, citySlug) => `/${stateSlug}/personal-counselling-${citySlug}`,
+    cityLabel: 'Personal Counselling',
+  },
+  'career-assessment': {
+    urlPattern: (stateSlug, citySlug) => `/${stateSlug}/career-assessment-${citySlug}`,
+    cityLabel: 'Career Assessment',
   },
   'career-counselling-seminar': {
     urlPattern: (stateSlug, citySlug) => `/${stateSlug}/career-counselling-seminar-${citySlug}`,
