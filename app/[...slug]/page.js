@@ -331,8 +331,27 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const pageUrl = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
   const cityLabel = pattern.cityLabel;
 
-  // Build city-specific FAQs
-  const cityFaqs = servicePage.cityFaqs.map((f) => ({
+  // Get the rich base-service data (for personal-counselling, career-assessment
+  // which don't have a servicePages entry) so city pages have full content.
+  const baseService = baseServices.find((s) => s.slug === serviceSlug);
+  const benefits = (baseService?.benefits && baseService.benefits.length)
+    ? baseService.benefits
+    : (servicePage.whatYouGet || []).map((i) => i.body);
+  const idealFor = (baseService?.idealFor && baseService.idealFor.length)
+    ? baseService.idealFor
+    : servicePage.whoItIsFor || [];
+  const outcomes = (baseService?.outcomes && baseService.outcomes.length)
+    ? baseService.outcomes
+    : [];
+  const stepsRich = (baseService?.steps && baseService.steps.length && typeof baseService.steps[0] === 'object')
+    ? baseService.steps
+    : (servicePage.whatYouGet || []).map((it, i) => ({ title: it.title || `Step ${i + 1}`, body: it.body }));
+  const faqs = (baseService?.faqs && baseService.faqs.length)
+    ? baseService.faqs
+    : servicePage.cityFaqs || [];
+
+  // Build city-specific FAQs (substitute {city} and {district})
+  const cityFaqs = faqs.map((f) => ({
     q: f.q.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
     a: f.a.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
   }));
@@ -358,18 +377,22 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   // Local notes from indiaLocations.js (city-specific for student/professional)
   const studentNote = city.studentNote;
   const professionalNote = city.professionalNote;
+  const deliveryNote = city.deliveryNote;
+  const longDescription = baseService?.longDescription || servicePage.heroLead || servicePage.shortDescription;
+  const whyItMatters = baseService?.whyItMatters || null;
 
   return (
     <>
+      {/* HERO */}
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{stateName}</span>
             <h1>{cityLabel} in {city.name}, {stateName}</h1>
-            <p className="page-hero-copy">{cityLead}</p>
+            <p className="page-hero-copy">{longDescription}</p>
             <div className="button-row">
-              <Link href="/contact" className="button button-primary">Book a Session</Link>
+              <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
             <div className="hero-proof">
@@ -384,69 +407,224 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
+      {/* ANSWER BLOCK (AEO) */}
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            {`GCDA provides ${servicePage.title.toLowerCase()} in ${city.name}, ${stateName}. Sessions are available online across ${city.name} and ${city.district}, with structured assessments, mentor-led counselling, and a personalised roadmap. ${servicePage.shortDescription}`}
+            {`${servicePage.title} in ${city.name} from GCDA is a structured, mentor-led service available online across ${city.name} and ${city.district}, with in-person sessions when needed. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a written action plan.`}
           </AnswerBlock>
         </div>
       </section>
 
-      <section className="section">
-        <div className="container two-column">
-          <div>
-            <SectionHeader
-              eyebrow={`Why ${city.name} families choose GCDA`}
-              title={`${servicePage.title} built for ${city.name}`}
-              description="We pair assessment data with real mentor experience, so the plan you receive fits your strengths, location, and family context."
-            />
-            <div className="stack-list">
-              <article className="feature-row">
-                <h3>For students in {city.name}</h3>
-                <p>{studentNote}</p>
-              </article>
-              <article className="feature-row">
-                <h3>For working professionals in {city.name}</h3>
-                <p>{professionalNote}</p>
-              </article>
-              <article className="feature-row">
-                <h3>How we deliver in {city.name}</h3>
-                <p>{city.deliveryNote}</p>
-              </article>
+      {/* WHY IT MATTERS */}
+      {whyItMatters ? (
+        <section className="section">
+          <div className="container two-column">
+            <div>
+              <SectionHeader
+                eyebrow="Why this matters in {city.name}"
+                title={`Why families in ${city.name} choose ${servicePage.title.toLowerCase()}`}
+                description={whyItMatters}
+              />
+              <div className="button-row" style={{ marginTop: '1.4rem' }}>
+                <Link href="/contact" className="button button-primary">Talk to a Counsellor</Link>
+                <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
+              </div>
+            </div>
+            <div className="info-panel">
+              <h3>{city.name} at a glance</h3>
+              <ul className="bullet-list compact">
+                <li><strong>State:</strong> {stateName}</li>
+                <li><strong>District:</strong> {city.district}</li>
+                <li><strong>Population:</strong> {city.population}</li>
+                <li><strong>Region:</strong> {state.region}</li>
+                <li><strong>Top industries:</strong> {city.industries}</li>
+                <li><strong>Landmarks:</strong> {city.landmarks}</li>
+              </ul>
             </div>
           </div>
-          <div className="info-panel">
-            <h3>{city.name} at a glance</h3>
-            <ul className="bullet-list compact">
-              <li><strong>State:</strong> {stateName}</li>
-              <li><strong>District:</strong> {city.district}</li>
-              <li><strong>Population:</strong> {city.population}</li>
-              <li><strong>Region:</strong> {state.region}</li>
-              <li><strong>Top industries:</strong> {city.industries}</li>
-              <li><strong>Landmarks:</strong> {city.landmarks}</li>
-            </ul>
+        </section>
+      ) : (
+        <section className="section">
+          <div className="container two-column">
+            <div>
+              <SectionHeader
+                eyebrow={`Why ${city.name} families choose GCDA`}
+                title={`${servicePage.title} built for ${city.name}`}
+                description="We pair assessment data with real mentor experience, so the plan you receive fits your strengths, location, and family context."
+              />
+              <div className="stack-list">
+                <article className="feature-row">
+                  <h3>For students in {city.name}</h3>
+                  <p>{studentNote}</p>
+                </article>
+                <article className="feature-row">
+                  <h3>For working professionals in {city.name}</h3>
+                  <p>{professionalNote}</p>
+                </article>
+                <article className="feature-row">
+                  <h3>How we deliver in {city.name}</h3>
+                  <p>{deliveryNote}</p>
+                </article>
+              </div>
+            </div>
+            <div className="info-panel">
+              <h3>{city.name} at a glance</h3>
+              <ul className="bullet-list compact">
+                <li><strong>State:</strong> {stateName}</li>
+                <li><strong>District:</strong> {city.district}</li>
+                <li><strong>Population:</strong> {city.population}</li>
+                <li><strong>Region:</strong> {state.region}</li>
+                <li><strong>Top industries:</strong> {city.industries}</li>
+                <li><strong>Landmarks:</strong> {city.landmarks}</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* WHAT YOU GET — Benefits grid */}
+      <section className="section alt-section" id="what-you-get">
+        <div className="container">
+          <SectionHeader
+            eyebrow="What you get"
+            title={`What's included in ${servicePage.title.toLowerCase()} in ${city.name}`}
+            description="Every engagement is structured around real outcomes. Here is exactly what you walk away with."
+            center
+          />
+          <div className="benefits-grid">
+            {benefits.map((b, i) => (
+              <article className="benefit-card" key={i}>
+                <span className="benefit-number">{(i + 1).toString().padStart(2, '0')}</span>
+                <p>{b}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section alt-section">
+      {/* WHO THIS IS FOR + OUTCOMES */}
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow="Who this is for"
+              title={`Is ${servicePage.title.toLowerCase()} in ${city.name} right for you?`}
+              description="If any of these situations sound familiar, this service can help you move forward with more confidence."
+            />
+            <ul className="bullet-list">
+              {idealFor.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="info-panel">
+            <h3>What you walk away with</h3>
+            {outcomes.length > 0 ? (
+              <ul className="bullet-list compact">
+                {outcomes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            ) : (
+              <p>A clear plan, evidence-based decisions, and confidence in the next step.</p>
+            )}
+            <div className="info-panel-cta">
+              <Link href="/contact" className="button button-primary block-button">Book a Free Consultation</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS — Steps timeline */}
+      <section className="section alt-section" id="how-it-works">
         <div className="container">
           <SectionHeader
-            eyebrow="What you get"
-            title={`What ${servicePage.title.toLowerCase()} includes`}
-            description="Every GCDA engagement is structured for outcomes, not just sessions."
+            eyebrow="How it works"
+            title={`How ${servicePage.title.toLowerCase()} works in ${city.name}`}
+            description="A straightforward 5-step process — every engagement follows the same structured framework."
             center
           />
-          <div className="card-grid process-grid">
-            {servicePage.whatYouGet.map((item, i) => (
-              <article className="card process-card" key={item.title}>
-                <div className="card-body">
-                  <span className="step-number">0{i + 1}</span>
-                  <h3>{item.title}</h3>
-                  <p style={{ marginBottom: '0.4rem', fontSize: '0.95rem' }}>{item.body}</p>
+          <ol className="steps-timeline">
+            {stepsRich.map((step, i) => (
+              <li className="steps-timeline-item" key={i}>
+                <span className="steps-timeline-number">{i + 1}</span>
+                <div className="steps-timeline-content">
+                  <h3>{step.title}</h3>
+                  <p>{step.body}</p>
                 </div>
-              </article>
+              </li>
             ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* COMPARISON: What we do / What we don't */}
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Why GCDA"
+            title={`What makes our ${servicePage.title.toLowerCase()} different in ${city.name}`}
+            description="We are not a personality-quiz app or a motivational speaker. We are a structured, mentor-led service that produces a written, defensible plan."
+            center
+          />
+          <div className="comparison-grid">
+            <div className="comparison-col">
+              <h3>What we do</h3>
+              <ul className="bullet-list">
+                <li>Certified mentor with 8+ years of field experience</li>
+                <li>Structured intake, assessment (where useful), and debrief</li>
+                <li>Written action plan delivered within 24 hours</li>
+                <li>Real salary, growth, and entrance-exam data — no vague advice</li>
+                <li>Honest pushback if a path is unrealistic</li>
+                <li>Optional follow-up to review progress</li>
+              </ul>
+            </div>
+            <div className="comparison-col comparison-col-muted">
+              <h3>What we don't do</h3>
+              <ul className="bullet-list">
+                <li>Generic personality-type horoscopes</li>
+                <li>20-minute online quizzes with no human follow-up</li>
+                <li>"Follow your passion" motivational talks</li>
+                <li>Upsells on long packages you don't need</li>
+                <li>Hidden fees for "premium" reports</li>
+                <li>Advice that ignores your family's budget and constraints</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* LOCAL CONTEXT — Colleges and exams */}
+      <section className="section alt-section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow="Local context"
+              title={`Top colleges near ${city.name}`}
+              description={`A non-exhaustive list of institutions our students in and around ${city.name} typically shortlist.`}
+            />
+            {city.topColleges.length > 0 ? (
+              <ul className="bullet-list">
+                {city.topColleges.map((c) => <li key={c}>{c}</li>)}
+              </ul>
+            ) : (
+              <p>{city.name} students typically consider a mix of local and regional colleges.</p>
+            )}
+          </div>
+          <div>
+            <SectionHeader
+              eyebrow="Exams that matter"
+              title={`Entrance exams for ${city.name} students`}
+              description={`Most ${city.name} students plan for a mix of national and state-level exams.`}
+            />
+            {city.topExams.length > 0 ? (
+              <ul className="bullet-list">
+                {city.topExams.map((e) => <li key={e}>{e}</li>)}
+              </ul>
+            ) : (
+              <p>For {city.name}, the most common entrance tracks are JEE Main, NEET, state CETs, and CAT.</p>
+            )}
           </div>
         </div>
       </section>
@@ -466,59 +644,13 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </section>
       ) : null}
 
-      <section className="section">
-        <div className="container two-column">
-          <div>
-            <SectionHeader
-              eyebrow="Colleges"
-              title={`Top colleges near ${city.name}`}
-              description="A non-exhaustive list of institutions our students in and around {city.name} typically shortlist."
-            />
-            {city.topColleges.length > 0 ? (
-              <ul className="bullet-list">
-                {city.topColleges.map((c) => <li key={c}>{c}</li>)}
-              </ul>
-            ) : (
-              <p>{city.name} students typically consider a mix of local and regional colleges.</p>
-            )}
-          </div>
-          <div>
-            <SectionHeader
-              eyebrow="Entrance exams"
-              title={`Exams that matter in ${city.name}`}
-              description="Most {city.name} students plan for a mix of national and state-level exams."
-            />
-            {city.topExams.length > 0 ? (
-              <ul className="bullet-list">
-                {city.topExams.map((e) => <li key={e}>{e}</li>)}
-              </ul>
-            ) : (
-              <p>For {city.name}, the most common entrance tracks are JEE Main, NEET, state CETs, and CAT.</p>
-            )}
-          </div>
-        </div>
-      </section>
-
-      <section className="section alt-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="Who this is for"
-            title={`Who is this ${servicePage.title.toLowerCase()} for?`}
-            description="If any of these situations sound familiar, this service will help."
-            center
-          />
-          <ul className="bullet-list" style={{ maxWidth: '780px', margin: '0 auto' }}>
-            {servicePage.whoItIsFor.map((item) => <li key={item}>{item}</li>)}
-          </ul>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container">
+      {/* FAQ with 8 city-specific questions */}
+      <section className="section" id="faq">
+        <div className="container narrow-center-wide">
           <SectionHeader
             eyebrow="FAQs"
             title={`Questions about ${servicePage.title.toLowerCase()} in ${city.name}`}
-            description="Common questions we receive from students, parents, and working professionals in {city.name}."
+            description={`Common questions we receive from students, parents, and working professionals in ${city.name}.`}
             center
           />
           <FAQList items={cityFaqs} />
@@ -527,12 +659,12 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
       </section>
 
       {otherCitySlugs.length > 0 ? (
-        <section className="section">
+        <section className="section alt-section">
           <div className="container">
             <SectionHeader
               eyebrow={`Other cities in ${stateName}`}
               title={`${servicePage.title} in other ${stateName} cities`}
-              description="Explore GCDA services in other {stateName} cities."
+              description={`Explore ${servicePage.title.toLowerCase()} in other ${stateName} cities.`}
             />
             <div className="card-grid city-grid">
               {otherCitySlugs.map((cSlug) => (
@@ -585,6 +717,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
+      {/* Final CTA */}
       <section className="section alt-section">
         <div className="container narrow-center cta-band-inner">
           <div>
