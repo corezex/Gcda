@@ -346,20 +346,38 @@ h4 {
   align-items: center;
 }
 
+/* Row containing the label link + the small arrow toggle button */
+.nav-dropdown-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+}
+
+.nav-dropdown-label {
+  /* Same look as a regular nav-link */
+  text-decoration: none;
+}
+.nav-dropdown-label:hover,
+.nav-dropdown-label.active {
+  background: var(--secondary-softer);
+  color: var(--secondary);
+}
+
 .nav-dropdown-trigger {
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
+  justify-content: center;
   background: transparent;
   border: 0;
   font: inherit;
-  color: inherit;
   cursor: pointer;
-  padding: 0.55rem 0.9rem;
+  padding: 0.4rem 0.55rem;
+  margin-left: 0.15rem;
   border-radius: 999px;
-  font-weight: 600;
-  font-size: 0.95rem;
   color: var(--ink-2);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.2s ease;
+  min-width: 28px;
+  height: 32px;
 }
 .nav-dropdown-trigger:hover,
 .nav-dropdown-trigger.active {
@@ -372,6 +390,7 @@ h4 {
   line-height: 1;
   margin-left: 0.15rem;
   transition: transform 0.2s ease;
+  display: inline-block;
 }
 .nav-dropdown-trigger[aria-expanded='true'] .nav-dropdown-caret { transform: rotate(180deg); }
 
@@ -1397,6 +1416,34 @@ textarea { resize: vertical; min-height: 130px; }
 
 .site-footer h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.15rem; }
 .site-footer h4 { font-size: 0.9rem; color: #fff; margin-bottom: 0.85rem; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* Social icons in footer */
+.footer-socials {
+  display: flex;
+  gap: 0.55rem;
+  margin-top: 1.1rem;
+}
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.footer-social-link:hover {
+  background: var(--primary);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.footer-whatsapp {
+  display: inline-flex;
+  align-items: center;
+}
 
 .footer-copy { margin-top: 0.7rem; max-width: 36ch; color: rgba(255, 255, 255, 0.7); font-size: 0.92rem; line-height: 1.55; }
 

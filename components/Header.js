@@ -53,26 +53,33 @@ export default function Header() {
 
         <nav className={`nav ${open ? 'nav-open' : ''}`}>
           {navLinks.map((link) => {
-            // Render Services as a dropdown
+            // Render Services as a click-to-open dropdown
             if (link.href === '/career-counselling') {
               return (
                 <div
                   key={link.href}
                   className="nav-dropdown"
                   ref={servicesRef}
-                  onMouseEnter={() => setServicesOpen(true)}
-                  onMouseLeave={() => setServicesOpen(false)}
                 >
-                  <button
-                    type="button"
-                    className={`nav-link nav-dropdown-trigger ${isServicesActive() ? 'active' : ''}`}
-                    onClick={() => setServicesOpen((v) => !v)}
-                    aria-expanded={servicesOpen}
-                    aria-haspopup="true"
-                  >
-                    {link.label}
-                    <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
-                  </button>
+                  <div className="nav-dropdown-row">
+                    <Link
+                      href={link.href}
+                      className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
+                      onClick={() => { setOpen(false); setServicesOpen(false); }}
+                    >
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      className={`nav-link nav-dropdown-trigger ${isServicesActive() ? 'active' : ''}`}
+                      onClick={() => setServicesOpen((v) => !v)}
+                      aria-expanded={servicesOpen}
+                      aria-haspopup="true"
+                      aria-label={`Toggle ${link.label} menu`}
+                    >
+                      <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
+                    </button>
+                  </div>
                   {servicesOpen ? (
                     <div className="nav-dropdown-menu" role="menu">
                       <Link
