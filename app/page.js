@@ -45,7 +45,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-visual surface-card">
-            <img src="/assets/hero-illustration.gif" alt="Career guidance and counselling illustration" />
+            <img src="/assets/hero-illustration.png" alt="Career guidance and counselling illustration" />
           </div>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.gif" alt="Services illustration" />
+            <img src="/assets/service-illustration.png" alt="Services illustration" />
           </div>
           <div>
             <SectionHeader

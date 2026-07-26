@@ -32,7 +32,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-1.png" alt="About GCDA" />
+            <img src="/assets/career-8.png" alt="About GCDA - career counselling session" />
           </div>
         </div>
       </section>
@@ -82,7 +82,7 @@ export default function AboutPage() {
       <section className="section alt-section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-5.png" alt="GCDA timeline" />
+            <img src="/assets/career-6.png" alt="GCDA growth journey" />
           </div>
           <div>
             <SectionHeader

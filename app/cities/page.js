@@ -34,7 +34,7 @@ export default function CitiesHubPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.gif" alt="Career counselling across India" />
+            <img src="/assets/hero-illustration.png" alt="Career counselling across India" />
           </div>
         </div>
       </section>

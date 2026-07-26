@@ -31,7 +31,7 @@ export default function BlogIndexPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.gif" alt="GCDA career guidance blog" />
+            <img src="/assets/service-illustration.png" alt="GCDA career guidance blog" />
           </div>
         </div>
       </section>

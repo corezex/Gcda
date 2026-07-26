@@ -47,7 +47,7 @@ export default function CareerCounsellingPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.gif" alt="GCDA career counselling services" />
+            <img src="/assets/service-illustration.png" alt="GCDA career counselling services" />
           </div>
         </div>
       </section>

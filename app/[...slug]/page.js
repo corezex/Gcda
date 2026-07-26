@@ -242,7 +242,7 @@ function StateHub({ stateSlug, state }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.gif" alt={`Career counselling in ${state.name}`} />
+            <img src="/assets/hero-illustration.png" alt={`Career counselling in ${state.name}`} />
           </div>
         </div>
       </section>
@@ -359,7 +359,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.gif" alt={`${servicePage.title} in ${city.name}`} />
+            <img src="/assets/hero-illustration.png" alt={`${servicePage.title} in ${city.name}`} />
           </div>
         </div>
       </section>
@@ -630,7 +630,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.gif" alt={servicePage.title} />
+            <img src="/assets/hero-illustration.png" alt={servicePage.title} />
           </div>
         </div>
       </section>
