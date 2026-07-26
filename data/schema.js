@@ -45,10 +45,10 @@ export function organizationSchema() {
       },
     ],
     sameAs: [
-      'https://www.facebook.com/gcdassociation',
-      'https://www.instagram.com/gcdassociation',
-      'https://www.linkedin.com/company/gcdassociation',
-      'https://twitter.com/gcdassociation',
+      'https://www.facebook.com/gcdaindia',
+      'https://www.instagram.com/gcdaindia',
+      'https://www.linkedin.com/company/global-career-development-association/',
+      'https://twitter.com/gcdaindia',
     ],
     knowsAbout: [
       'Career Counselling',
@@ -350,5 +350,143 @@ export function cityServiceSchema(city, url) {
         },
       })),
     },
+  };
+}
+
+// ----- AboutPage schema (for /about) -----
+// Used by AI Overviews and Google to verify GCDA's identity, mission, and team.
+export function aboutPageSchema(url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    '@id': `${url}#about`,
+    url,
+    name: 'About GCDA – Career Counselling Association in India',
+    description:
+      'GCDA is a Mumbai-headquartered career counselling association founded in 2013. We work with 50,000+ students, parents, and working professionals across India through 5,000+ certified counsellors, offering personal counselling, career assessments, stream and degree selection, and professional growth mentoring.',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/assets/career-8.png`,
+      width: 1200,
+      height: 630,
+    },
+    mainEntity: {
+      '@type': 'Organization',
+      '@id': `${SITE_URL}/#organization`,
+      name: company.name,
+      alternateName: company.shortName,
+      foundingDate: '2013',
+      description:
+        'GCDA is a Mumbai-headquartered career counselling association. Our certified counsellors deliver assessment-led personal counselling, stream selection, degree selection, and professional mentoring to students, parents, and working professionals across India.',
+      knowsAbout: [
+        'Career Counselling',
+        'Aptitude Assessment',
+        'Stream Selection after 10th',
+        'Degree Selection after 12th',
+        'MBA Counselling',
+        'JEE Planning',
+        'NEET Planning',
+        'Career Transitions',
+      ],
+      award: [
+        '50,000+ career sessions delivered',
+        '5,000+ certified counsellors in network',
+        '10+ years of career guidance',
+        '98% client satisfaction',
+      ],
+    },
+  };
+}
+
+// ----- ContactPage schema (for /contact) -----
+export function contactPageSchema(url) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    '@id': `${url}#contact`,
+    url,
+    name: 'Contact GCDA – Career Counselling in Mumbai & Across India',
+    description:
+      'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Visit our Mumbai office at 102, Citi Mall, Link Road, Andheri West, or reach us by phone, email, or WhatsApp.',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#localbusiness` },
+    primaryImageOfPage: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/assets/hero-illustration.png`,
+      width: 1200,
+      height: 630,
+    },
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      '@id': `${SITE_URL}/#localbusiness`,
+      name: `${company.name} - Mumbai Office`,
+      telephone: `+${company.phoneRaw}`,
+      email: company.email,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '102, Citi Mall, Link Road, Andheri West',
+        addressLocality: 'Mumbai',
+        addressRegion: 'Maharashtra',
+        postalCode: '400053',
+        addressCountry: 'IN',
+      },
+    },
+  };
+}
+
+// ----- CollectionPage / ItemList schema (for /cities) -----
+export function citiesCollectionSchema(states) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${SITE_URL}/cities#collection`,
+    url: `${SITE_URL}/cities`,
+    name: 'GCDA Career Counselling Across India – Cities & States',
+    description:
+      'GCDA offers career counselling, career assessments, stream and degree selection guidance, and professional mentoring across 36 Indian states and union territories, covering 346+ cities.',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    mainEntity: {
+      '@type': 'ItemList',
+      name: 'Indian states and cities where GCDA offers career counselling',
+      numberOfItems: states.length,
+      itemListElement: states.slice(0, 50).map((s, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: s.name,
+        url: `${SITE_URL}/${s.slug}`,
+        description: `GCDA career counselling in ${s.name} – ${s.cityCount || 0} cities covered, including ${s.capital || ''}.`,
+      })),
+    },
+  };
+}
+
+// ----- Blog schema (for /blog list) -----
+export function blogListSchema(posts) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${SITE_URL}/blog#blog`,
+    url: `${SITE_URL}/blog`,
+    name: 'GCDA Career Guidance Blog',
+    description:
+      'Practical, India-specific career guidance for students, parents, and working professionals from the GCDA editorial team.',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    blogPost: posts.slice(0, 20).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.datePublished,
+      dateModified: post.dateModified,
+      author: { '@type': 'Organization', name: post.author || 'GCDA Editorial Team' },
+      keywords: (post.keywords || []).join(', '),
+    })),
   };
 }

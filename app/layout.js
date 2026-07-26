@@ -16,7 +16,9 @@ export const metadata = {
   description:
     'GCDA – Global Career Development Association offers expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
   applicationName: 'GCDA Career Counselling',
-  authors: [{ name: 'GCDA Editorial Team' }],
+  authors: [
+    { name: 'GCDA Editorial Team', url: 'https://gcdassociation.org/about' },
+  ],
   generator: 'Next.js',
   keywords: [
     'career counselling',
@@ -34,6 +36,11 @@ export const metadata = {
     'career counselling Kolkata',
     'career counsellor near me',
     'best career counsellor India',
+    'online career counselling',
+    'MBA counselling',
+    'JEE planning',
+    'NEET planning',
+    'career after B.Tech',
   ],
   referrer: 'origin-when-cross-origin',
   creator: 'GCDA',
@@ -62,7 +69,7 @@ export const metadata = {
         url: '/assets/hero-illustration.png',
         width: 1200,
         height: 630,
-        alt: 'GCDA career counselling and guidance',
+        alt: 'GCDA career counselling and guidance across India',
       },
     ],
   },
@@ -72,7 +79,7 @@ export const metadata = {
     description:
       'Expert career counselling, career assessments, stream and degree selection, and professional growth mentoring across India.',
     images: ['/assets/hero-illustration.png'],
-    creator: '@gcdassociation',
+    creator: '@gcdaindia',
   },
   robots: {
     index: true,
@@ -90,9 +97,8 @@ export const metadata = {
     shortcut: '/assets/logo.png',
     apple: '/assets/logo.png',
   },
-  verification: {
-    // google: 'your-google-site-verification-token', // Add when available
-  },
+  // Note: Add real Google Search Console verification token here when available
+  // verification: { google: '...' },
   category: 'Education',
 };
 

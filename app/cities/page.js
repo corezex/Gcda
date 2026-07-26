@@ -2,20 +2,51 @@ import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
 import AnswerBlock from '@/components/AnswerBlock';
+import JsonLd from '@/components/JsonLd';
 import { STATES } from '@/data/indiaLocations';
 import { company } from '@/data/site';
+import { citiesCollectionSchema, breadcrumbSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Across India | GCDA City Hub',
+  title: 'Career Counselling Across India | 36 States, 346+ Cities | GCDA City Hub',
   description:
-    'GCDA provides expert career counselling and career assessments across India. Explore our state-by-state coverage and find a career counsellor in your city.',
+    'GCDA offers career counselling, career assessments, stream and degree selection guidance, and professional mentoring across 36 Indian states and union territories, covering 346+ cities including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, and Kolkata.',
+  keywords: [
+    'career counselling cities India',
+    'career counsellor near me',
+    'career counselling Mumbai',
+    'career counselling Delhi',
+    'career counselling Bengaluru',
+    'career counselling all states',
+  ],
   alternates: { canonical: '/cities' },
   openGraph: {
     title: 'Career Counselling Across India | GCDA City Hub',
-    description: 'GCDA provides expert career counselling and career assessments across India.',
+    description:
+      'GCDA career counselling, career assessments, and professional mentoring across 36 Indian states and 346+ cities.',
     url: 'https://gcdassociation.org/cities',
+    images: [
+      {
+        url: '/assets/hero-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling coverage across India',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Counselling Across India | GCDA City Hub',
+    description: 'GCDA career counselling across 36 states and 346+ cities in India.',
   },
 };
+
+const citiesBreadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'All Cities', url: '/cities' },
+];
 
 export default function CitiesHubPage() {
   return (
@@ -76,6 +107,9 @@ export default function CitiesHubPage() {
         title="Don’t see your city?"
         description="GCDA offers online career counselling across India. Speak to a counsellor from any city in India and get the same quality of structured guidance."
       />
+
+      <JsonLd id="ld-breadcrumb-cities" data={breadcrumbSchema(citiesBreadcrumbs)} />
+      <JsonLd id="ld-cities-collection" data={citiesCollectionSchema(STATES)} />
     </>
   );
 }

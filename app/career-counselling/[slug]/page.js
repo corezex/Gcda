@@ -235,7 +235,7 @@ export default function ServiceDetailPage({ params }) {
         <div className="container">
           <SectionHeader
             eyebrow="Why GCDA"
-            title="What makes our {service} different"
+            title={`What makes our ${service.title.toLowerCase()} different`}
             description="We are not a personality-quiz app or a motivational speaker. We are a structured, mentor-led service that produces a written, defensible plan."
             center
           />

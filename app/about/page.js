@@ -3,20 +3,50 @@ import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
 import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
+import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'About GCDA – Career Counselling Association in India',
+  title: 'About GCDA – Career Counselling Association in India | Our Mission & Team',
   description:
-    'Learn about GCDA – Global Career Development Association, our mission since 2013, and how we guide students, parents, and working professionals through smarter career decisions across India.',
+    'Learn about GCDA – Global Career Development Association, our mission since 2013, our certified counsellor team, and how we guide students, parents, and working professionals through smarter career decisions across India.',
+  keywords: [
+    'about GCDA',
+    'career counselling association India',
+    'GCDA mission',
+    'career counsellor team',
+    'career guidance experts',
+  ],
   alternates: { canonical: '/about' },
   openGraph: {
+    type: 'profile',
     title: 'About GCDA – Career Counselling Association in India',
     description:
-      'Learn about GCDA, our mission, and how we guide students and professionals through smarter career decisions.',
+      'Learn about GCDA, our certified counsellor team, and our mission to make career guidance accessible across India.',
     url: 'https://gcdassociation.org/about',
+    images: [
+      {
+        url: '/assets/career-8.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling team and mission',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About GCDA – Career Counselling Association in India',
+    description: 'GCDA team, mission, and how we help students and professionals across India.',
   },
 };
+
+const aboutBreadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About GCDA', url: '/about' },
+];
 
 export default function AboutPage() {
   return (
@@ -133,10 +163,82 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Our credentials"
+            title="Why our guidance is trusted across India"
+            description="Our methods, content, and recommendations are grounded in established frameworks, validated assessments, and a decade of field experience."
+            center
+          />
+          <div className="card-grid process-grid">
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Standardised assessment tools</h3>
+                <p>
+                  We use validated instruments — RIASEC-style interest inventories, Big-Five personality traits, numerical / verbal / abstract aptitude batteries — to translate strengths into fit scores, not personality labels.
+                </p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Certified counsellor network</h3>
+                <p>
+                  Our 5,000+ counsellor network is trained in the GCDA framework and supervised by senior mentors. Every session is structured, written, and reviewed for quality.
+                </p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Updated with 2026 data</h3>
+                <p>
+                  Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months so the guidance reflects the current Indian market, not stale 2018 data.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow="Editorial standards"
+              title="How we keep our content honest and useful"
+              description="Our blog posts, service descriptions, and city pages follow a strict editorial standard so families can trust what they read."
+            />
+            <p>
+              Every public article on GCDA is reviewed by the editorial team against a checklist: is the data current, is the advice balanced, are the alternatives honestly presented, and is the language accessible to parents and students.
+            </p>
+            <p>
+              We update articles when exams change, salary ranges shift, or new policy rules appear. Each blog post shows a "last updated" date and an author byline. If we get something wrong, we say so and correct it publicly.
+            </p>
+            <p>
+              For a private consultation, the same standard applies: evidence-based recommendations, written session summaries, and a clear action plan you can act on.
+            </p>
+          </div>
+          <div className="info-panel">
+            <h3>Editorial checklist</h3>
+            <ul className="bullet-list compact">
+              <li>Reviewed against 2026 salary and exam data</li>
+              <li>Balanced view of all realistic options</li>
+              <li>Clear separation of fact vs. opinion</li>
+              <li>Family-friendly language (parent + student readable)</li>
+              <li>Honest about limitations and when to seek more help</li>
+              <li>Original content, no AI-generated filler</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="Let’s help you make the next decision easier"
         description="Book a consultation with GCDA to get expert support for the path ahead."
       />
+
+      <JsonLd id="ld-breadcrumb-about" data={breadcrumbSchema(aboutBreadcrumbs)} />
+      <JsonLd id="ld-about" data={aboutPageSchema(SITE_URL)} />
     </>
   );
 }

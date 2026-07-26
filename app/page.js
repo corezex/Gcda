@@ -15,11 +15,32 @@ export const metadata = {
   description:
     'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
   alternates: { canonical: '/' },
+  keywords: [
+    'career counselling India',
+    'career counselling near me',
+    'career assessment',
+    'career guidance',
+    'online career counselling',
+  ],
   openGraph: {
     title: 'Career Counselling & Career Guidance in India | GCDA',
     description:
       'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
     url: 'https://gcdassociation.org/',
+    images: [
+      {
+        url: '/assets/hero-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling homepage',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Career Counselling & Career Guidance in India | GCDA',
+    description:
+      'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
   },
 };
 

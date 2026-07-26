@@ -23,6 +23,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
+    images: [`${SITE_URL}/assets/hero-illustration.png`],
   }));
 
   // Top-level service main pages (4 of them — /career-certification has its own page)
@@ -36,6 +37,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.85,
+    images: [`${SITE_URL}/assets/hero-illustration.png`],
   }));
 
   // State hub pages
@@ -44,10 +46,11 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
+    images: [`${SITE_URL}/assets/hero-illustration.png`],
   }));
 
-  // All city pages for all 6 services
-  // 344 cities x 6 services = 2,064 city pages
+  // All city pages for all 8 services
+  // 346 cities x 8 services = 2,768 city pages
   const cityRoutes = [];
   for (const u of getAllCityUrls()) {
     for (const serviceSlug of SERVICE_SLUGS) {
@@ -58,6 +61,7 @@ export default function sitemap() {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
+        images: [`${SITE_URL}/assets/hero-illustration.png`],
       });
     }
   }
@@ -68,14 +72,16 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
+    images: [`${SITE_URL}${service.image || '/assets/hero-illustration.png'}`],
   }));
 
-  // Blog posts
+  // Blog posts (with article-specific images for better image SEO)
   const blogRoutes = blogPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.dateModified),
     changeFrequency: 'monthly',
     priority: 0.7,
+    images: [`${SITE_URL}/assets/service-illustration.png`],
   }));
 
   return [
