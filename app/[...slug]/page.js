@@ -276,7 +276,7 @@ function StateHub({ stateSlug, state }) {
                       <h3>
                         <Link href={`/${stateSlug}/career-counsellor-${cSlug}`}>Career Counsellor in {c.name}</Link>
                       </h3>
-                      <p className="city-state">{c.district} • {c.population}</p>
+                      <p className="city-state">{c.district}</p>
                       <p className="city-blurb">{c.tagline}</p>
 
                       <div className="city-card-services">
@@ -458,7 +458,6 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             <ul className="bullet-list compact">
               <li><strong>State:</strong> {stateName}</li>
               <li><strong>District:</strong> {city.district}</li>
-              <li><strong>Population:</strong> {city.population}</li>
               <li><strong>Region:</strong> {state.region}</li>
               <li><strong>Top industries:</strong> {city.industries}</li>
               <li><strong>Landmarks:</strong> {city.landmarks}</li>

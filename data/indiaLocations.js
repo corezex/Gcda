@@ -1,6 +1,6 @@
 // Comprehensive India city database for programmatic SEO.
 // 500+ cities grouped by state/UT. Each city has unique data:
-// state slug, city slug, district, tier, population, region, topColleges,
+// state slug, city slug, district, tier, region, topColleges,
 // topExams, industries, landmarks, and city-specific FAQs to avoid
 // the thin/duplicate content issue that hurts the live site.
 //
@@ -59,11 +59,10 @@ export function getStateBySlug(slug) {
 // where specific data exists. This still produces genuinely unique
 // content because the city name, district, tier, region, and base
 // industries differ.
-function city(name, district, population, tier, opts = {}) {
+function city(name, district, tier, opts = {}) {
   return {
     name,
     district,
-    population,
     tier,
     industries: opts.industries || 'Mixed local economy, education, retail, services',
     topColleges: opts.topColleges || [],
@@ -93,7 +92,7 @@ function city(name, district, population, tier, opts = {}) {
 // All city slugs match the live site's pattern: state-slug/career-counsellor-city-slug
 export const CITIES_BY_STATE = {
   'andhra-pradesh': [
-    city('Visakhapatnam', 'Visakhapatnam', '~20.4 lakh', 'tier1', {
+    city('Visakhapatnam', 'Visakhapatnam', 'tier1', {
       industries: 'Defence (Navy), shipbuilding, IT, pharma, port & logistics, heavy engineering',
       topColleges: ['IIT Tirupati (regional outreach)', 'Andhra University', 'GITAM', 'GVP College of Engineering'],
       topExams: ['JEE Main', 'AP EAMCET', 'NEET', 'CAT', 'GATE', 'NDA'],
@@ -107,7 +106,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Visakhapatnam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Visakhapatnam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Visakhapatnam\'s economy is anchored in Defence (Navy) and shipbuilding, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from RK Beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Visakhapatnam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Visakhapatnam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Defence (Navy). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Visakhapatnam\'s hiring market.' },
       ]}),
-    city('Vijayawada', 'Krishna', '~14.7 lakh', 'tier2', {
+    city('Vijayawada', 'Krishna', 'tier2', {
       industries: 'Trade & commerce, agriculture, education, transport, real estate',
       topColleges: ['Andhra Loyola College', 'Vijayawada Degree College', 'SRR & CVR Govt Degree College', 'PVP Siddhartha Institute'],
       topExams: ['JEE Main', 'AP EAMCET', 'NEET', 'CAT', 'APPSC', 'AP TET'],
@@ -121,7 +120,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vijayawada different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vijayawada service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vijayawada\'s economy is anchored in Trade and commerce, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Benz Circle and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vijayawada use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vijayawada cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vijayawada\'s hiring market.' },
       ]}),
-    city('Guntur', 'Guntur', '~7.4 lakh', 'tier2', {
+    city('Guntur', 'Guntur', 'tier2', {
       industries: 'Chillies & tobacco trade, textiles, education, real estate, IT',
       topColleges: ['JNTU Kakinada (regional)', 'Hindu College Guntur', 'ANU Campus', 'Government Medical College Guntur'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -135,7 +134,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Guntur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Guntur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Guntur\'s economy is anchored in Chillies and tobacco trade, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Arundelpet and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Guntur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Guntur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Chillies. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Guntur\'s hiring market.' },
       ]}),
-    city('Tirupati', 'Tirupati', '~3.7 lakh', 'tier2', {
+    city('Tirupati', 'Tirupati', 'tier2', {
       industries: 'Religious tourism, education (SV University & IIIT), healthcare, hospitality',
       topColleges: ['Sri Venkateswara University', 'IIIT Sri City', 'SV Medical College', 'Sree Vidyanikethan Engineering College'],
       topExams: ['JEE Main', 'AP EAMCET', 'NEET', 'APPSC', 'GATE', 'CAT'],
@@ -149,7 +148,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tirupati different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tirupati service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tirupati\'s economy is anchored in Religious tourism and education (SV University, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tirumala and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tirupati use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tirupati cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Religious tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tirupati\'s hiring market.' },
       ]}),
-    city('Nellore', 'Nellore', '~6.0 lakh', 'tier2', {
+    city('Nellore', 'Nellore', 'tier2', {
       industries: 'Agriculture, aquaculture, paddy and mica mining, education',
       topColleges: ['Vikrama Simhapuri University', 'Narayana Medical College', 'Audisankara Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -163,7 +162,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nellore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nellore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nellore\'s economy is anchored in Agriculture and aquaculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nellore Tank and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nellore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nellore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nellore\'s hiring market.' },
       ]}),
-    city('Kurnool', 'Kurnool', '~4.6 lakh', 'tier2', {
+    city('Kurnool', 'Kurnool', 'tier2', {
       industries: 'Mining, cement, agriculture, power generation, textiles',
       topColleges: ['Rayalaseema University', 'Kurnool Medical College', 'G Pulla Reddy Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'GATE'],
@@ -177,7 +176,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kurnool different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kurnool service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kurnool\'s economy is anchored in Mining and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mantralayam (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kurnool use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kurnool cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kurnool\'s hiring market.' },
       ]}),
-    city('Rajahmundry', 'East Godavari', '~4.4 lakh', 'tier2', {
+    city('Rajahmundry', 'East Godavari', 'tier2', {
       industries: 'Paper, textiles, oil palm, agriculture, fishing',
       topColleges: ['Adikavi Nannaya University', 'Godavari Institute of Engineering', 'GSL Medical College (nearby)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -191,7 +190,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rajahmundry different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rajahmundry service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rajahmundry\'s economy is anchored in Paper and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Godavari Pushkaram ghats and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rajahmundry use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rajahmundry cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Paper. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rajahmundry\'s hiring market.' },
       ]}),
-    city('Kakinada', 'East Godavari', '~4.3 lakh', 'tier2', {
+    city('Kakinada', 'East Godavari', 'tier2', {
       industries: 'Edible oil, fertilizers (NFL), port, fishing, natural gas',
       topColleges: ['JNTU Kakinada', 'Kakinada Institute of Technology', 'Government Polytechnic Kakinada'],
       topExams: ['AP EAMCET', 'JEE Main', 'NEET', 'GATE', 'APPSC'],
@@ -205,7 +204,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kakinada different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kakinada service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kakinada\'s economy is anchored in Edible oil and fertilizers (NFL), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Coringa wildlife sanctuary and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kakinada use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kakinada cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Edible oil. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kakinada\'s hiring market.' },
       ]}),
-    city('Anantapur', 'Anantapur', '~3.4 lakh', 'tier2', {
+    city('Anantapur', 'Anantapur', 'tier2', {
       industries: 'Mining, granite, agriculture, cement, education',
       topColleges: ['Sri Krishnadevaraya University', 'Anantapur Medical College', 'PVKK Institute of Technology'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -219,7 +218,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Anantapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Anantapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Anantapur\'s economy is anchored in Mining and granite, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Puttaparthi (Sri Sathya Sai Baba Ashram nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Anantapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Anantapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Anantapur\'s hiring market.' },
       ]}),
-    city('Kadapa', 'Kadapa (YSR)', '~3.4 lakh', 'tier2', {
+    city('Kadapa', 'Kadapa (YSR)', 'tier2', {
       industries: 'Mining (barite, limestone), cement, agriculture, power',
       topColleges: ['Yogi Vemana University', 'Kadapa Medical College', 'GCE Kadapa'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -233,7 +232,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kadapa different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kadapa service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kadapa\'s economy is anchored in Mining (barite and limestone), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ameen Peer Dargah and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kadapa use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kadapa cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining (barite. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kadapa\'s hiring market.' },
       ]}),
-    city('Amalapuram', 'East Godavari', '~1.4 lakh', 'tier3', {
+    city('Amalapuram', 'East Godavari', 'tier3', {
       industries: 'Agriculture, aquaculture, rice, coconut, fishing, education',
       topColleges: ['Government Degree College Amalapuram', 'Konaseema Institute of Medical Sciences (nearby)', 'Aditya Engineering College (nearby)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
@@ -247,7 +246,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Amalapuram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Amalapuram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Amalapuram\'s economy is anchored in Agriculture and aquaculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Konaseema delta and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Amalapuram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Amalapuram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Amalapuram\'s hiring market.' },
       ]}),
-    city('Amaravati', 'Guntur', '~1.0 lakh', 'tier3', {
+    city('Amaravati', 'Guntur', 'tier3', {
       industries: 'Government services, agriculture, education, real estate',
       topColleges: ['Acharya Nagarjuna University (nearby)', 'Government Medical College Guntur (nearby)', 'K L University (nearby)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'CUET'],
@@ -261,7 +260,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Amaravati different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Amaravati service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Amaravati\'s economy is anchored in Government services and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Amaravati heritage site and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Amaravati use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Amaravati cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Amaravati\'s hiring market.' },
       ]}),
-    city('Eluru', 'Eluru', '~2.8 lakh', 'tier3', {
+    city('Eluru', 'Eluru', 'tier3', {
       industries: 'Handloom textiles, carpet weaving, agriculture',
       topColleges: ['VSM College', 'Sir CRR College', 'ASR Government Degree College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -275,7 +274,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Eluru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Eluru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Eluru\'s economy is anchored in Handloom textiles and carpet weaving, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vijaya Durga temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Eluru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Eluru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Eluru\'s hiring market.' },
       ]}),
-    city('Tadepalligudem', 'West Godavari', '~1.3 lakh', 'tier3', {
+    city('Tadepalligudem', 'West Godavari', 'tier3', {
       industries: 'Oil palm, paddy, education',
       topColleges: ['Government Degree College Tadepalligudem', 'NRI Academy of Sciences'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -289,7 +288,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tadepalligudem different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tadepalligudem service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tadepalligudem\'s economy is anchored in Oil palm and paddy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tadepalligudem town and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tadepalligudem use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tadepalligudem cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Oil palm. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tadepalligudem\'s hiring market.' },
       ]}),
-    city('Ongole', 'Prakasam', '~2.6 lakh', 'tier3', {
+    city('Ongole', 'Prakasam', 'tier3', {
       industries: 'Cattle breeding (Ongole cattle), granite, agriculture',
       topColleges: ['DCRM Degree College', 'QIS College of Engineering', 'Government Medical College Ongole'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -303,7 +302,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ongole different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ongole service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ongole\'s economy is anchored in Cattle breeding (Ongole cattle) and granite, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bhairavakona temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ongole use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ongole cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cattle breeding (Ongole cattle). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ongole\'s hiring market.' },
       ]}),
-    city('Chittoor', 'Chittoor', '~2.4 lakh', 'tier3', {
+    city('Chittoor', 'Chittoor', 'tier3', {
       industries: 'Mango trade, granite, agriculture, dairy',
       topColleges: ['Government Degree College Chittoor', 'PV Govt Medical College', 'Siddhartha Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -317,7 +316,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chittoor different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chittoor service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chittoor\'s economy is anchored in Mango trade and granite, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kanipakam Vinayaka temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chittoor use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chittoor cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mango trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chittoor\'s hiring market.' },
       ]}),
-    city('Machilipatnam', 'Krishna', '~2.3 lakh', 'tier3', {
+    city('Machilipatnam', 'Krishna', 'tier3', {
       industries: 'Fishing, port, Kalamkari art, agriculture',
       topColleges: ['Government Arts College Machilipatnam', 'Avanthi Engineering College', 'Krishna University (regional)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -331,7 +330,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Machilipatnam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Machilipatnam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Machilipatnam\'s economy is anchored in Fishing and port, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Machilipatnam port and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Machilipatnam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Machilipatnam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Fishing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Machilipatnam\'s hiring market.' },
       ]}),
-    city('Tenali', 'Guntur', '~2.0 lakh', 'tier3', {
+    city('Tenali', 'Guntur', 'tier3', {
       industries: 'Tobacco trade, textiles, agriculture',
       topColleges: ['Government Degree College Tenali', 'Tenali Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -345,7 +344,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tenali different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tenali service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tenali\'s economy is anchored in Tobacco trade and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tenali Ramakrishna association and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tenali use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tenali cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tobacco trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tenali\'s hiring market.' },
       ]}),
-    city('Proddatur', 'Kadapa (YSR)', '~2.0 lakh', 'tier3', {
+    city('Proddatur', 'Kadapa (YSR)', 'tier3', {
       industries: 'Gold, textiles, groundnut, agriculture',
       topColleges: ['Government Degree College Proddatur', 'Siddharth Institute of Engineering', 'Medha Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -359,7 +358,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Proddatur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Proddatur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Proddatur\'s economy is anchored in Gold and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gandhi Chowk and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Proddatur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Proddatur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Gold. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Proddatur\'s hiring market.' },
       ]}),
-    city('Adoni', 'Kurnool', '~1.7 lakh', 'tier3', {
+    city('Adoni', 'Kurnool', 'tier3', {
       industries: 'Textiles, groundnut, cotton, agriculture',
       topColleges: ['Government Arts College Adoni', 'Adoni Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -373,7 +372,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Adoni different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Adoni service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Adoni\'s economy is anchored in Textiles and groundnut, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Adoni fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Adoni use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Adoni cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Adoni\'s hiring market.' },
       ]}),
-    city('Hindupur', 'Anantapur', '~1.5 lakh', 'tier3', {
+    city('Hindupur', 'Anantapur', 'tier3', {
       industries: 'Silk, sericulture, agriculture, granite',
       topColleges: ['Government Degree College Hindupur', 'Anantapur institutions (regional)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -387,7 +386,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hindupur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hindupur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hindupur\'s economy is anchored in Silk and sericulture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Lepakshi (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hindupur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hindupur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Silk. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hindupur\'s hiring market.' },
       ]}),
-    city('Bhimavaram', 'West Godavari', '~1.4 lakh', 'tier3', {
+    city('Bhimavaram', 'West Godavari', 'tier3', {
       industries: 'Paddy, aquaculture, education, sugar',
       topColleges: ['SRKR Engineering College', 'Bhimavaram Institute of Engineering', 'Vishnu Dental College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -401,7 +400,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhimavaram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhimavaram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhimavaram\'s economy is anchored in Paddy and aquaculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Godavari delta and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhimavaram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhimavaram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Paddy. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhimavaram\'s hiring market.' },
       ]}),
-    city('Srikakulam', 'Srikakulam', '~1.4 lakh', 'tier3', {
+    city('Srikakulam', 'Srikakulam', 'tier3', {
       industries: 'Coir, cashew, fishing, agriculture',
       topColleges: ['Government Arts College Srikakulam', 'GMRIT (Rajam)', 'Aditya Institute of Technology'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -415,7 +414,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Srikakulam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Srikakulam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Srikakulam\'s economy is anchored in Coir and cashew, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Srikakulam district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Srikakulam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Srikakulam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coir. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Srikakulam\'s hiring market.' },
       ]}),
-    city('Vizianagaram', 'Vizianagaram', '~2.3 lakh', 'tier3', {
+    city('Vizianagaram', 'Vizianagaram', 'tier3', {
       industries: 'Brassware, textiles, mica, agriculture',
       topColleges: ['Vizianagaram Medical College', 'Maharajah&apos;s College', 'GITAM Vizianagaram campus'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -429,7 +428,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vizianagaram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vizianagaram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vizianagaram\'s economy is anchored in Brassware and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vizianagaram fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vizianagaram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vizianagaram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Brassware. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vizianagaram\'s hiring market.' },
       ]}),
-    city('Chilakaluripet', 'Guntur', '~1.0 lakh', 'tier3', {
+    city('Chilakaluripet', 'Guntur', 'tier3', {
       industries: 'Textiles, groundnut, trade, agriculture',
       topColleges: ['Government Degree College Chilakaluripet', 'Chilakaluripet Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -443,7 +442,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chilakaluripet different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chilakaluripet service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chilakaluripet\'s economy is anchored in Textiles and groundnut, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chilakaluripet and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chilakaluripet use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chilakaluripet cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chilakaluripet\'s hiring market.' },
       ]}),
-    city('Gudivada', 'Krishna', '~1.2 lakh', 'tier3', {
+    city('Gudivada', 'Krishna', 'tier3', {
       industries: 'Textiles, agriculture, jaggery, dairy',
       topColleges: ['Government Degree College Gudivada', 'Sai Tirumala Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -457,7 +456,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gudivada different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gudivada service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gudivada\'s economy is anchored in Textiles and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gudivada and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gudivada use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gudivada cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gudivada\'s hiring market.' },
       ]}),
-    city('Narasaraopet', 'Guntur', '~1.2 lakh', 'tier3', {
+    city('Narasaraopet', 'Guntur', 'tier3', {
       industries: 'Tobacco, cotton, education, agriculture',
       topColleges: ['Government Degree College Narasaraopet', 'Narasaraopet Engineering College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -471,7 +470,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Narasaraopet different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Narasaraopet service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Narasaraopet\'s economy is anchored in Tobacco and cotton, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Narasaraopet and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Narasaraopet use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Narasaraopet cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tobacco. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Narasaraopet\'s hiring market.' },
       ]}),
-    city('Kavali', 'Nellore', '~1.1 lakh', 'tier3', {
+    city('Kavali', 'Nellore', 'tier3', {
       industries: 'Aquaculture, agriculture, textiles',
       topColleges: ['Government Degree College Kavali', 'Audisankara Engineering (nearby)'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
@@ -488,7 +487,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'arunachal-pradesh': [
-    city('Itanagar', 'Papum Pare', '~1.0 lakh', 'tier3', {
+    city('Itanagar', 'Papum Pare', 'tier3', {
       industries: 'Hydroelectric power, tourism, agriculture, handicrafts',
       topColleges: ['Rajiv Gandhi University', 'NIT Arunachal Pradesh', 'Tomir Rikshya Institute'],
       topExams: ['JEE Main', 'NEET', 'NATA', 'APPSC', 'NIRDHAR'],
@@ -502,7 +501,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Itanagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Itanagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Itanagar\'s economy is anchored in Hydroelectric power and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ita Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Itanagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Itanagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Hydroelectric power. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Itanagar\'s hiring market.' },
       ]}),
-    city('Naharlagun', 'Papum Pare', '~1.0 lakh', 'tier3', {
+    city('Naharlagun', 'Papum Pare', 'tier3', {
       industries: 'Government services, trade, real estate, education',
       topColleges: ['NIT Arunachal Pradesh', 'Don Bosco College', 'Government College Naharlagun'],
       topExams: ['JEE Main', 'NEET', 'APPSC', 'NIRDHAR'],
@@ -516,7 +515,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Naharlagun different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Naharlagun service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Naharlagun\'s economy is anchored in Government services and trade, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Naharlagun township and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Naharlagun use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Naharlagun cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Naharlagun\'s hiring market.' },
       ]}),
-    city('Pasighat', 'East Siang', '~0.5 lakh', 'tier3', {
+    city('Pasighat', 'East Siang', 'tier3', {
       industries: 'Rice, tea, fishing, agriculture, tourism',
       topColleges: ['Jawaharlal Nehru College Pasighat', 'IIT Guwahati outreach (regional)'],
       topExams: ['JEE Main', 'NEET', 'APPSC', 'JEE Advanced'],
@@ -530,7 +529,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Pasighat different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Pasighat service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Pasighat\'s economy is anchored in Rice and tea, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Daying Ering Wildlife Sanctuary and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Pasighat use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Pasighat cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Pasighat\'s hiring market.' },
       ]}),
-    city('Tawang', 'Tawang', '~0.4 lakh', 'tier3', {
+    city('Tawang', 'Tawang', 'tier3', {
       industries: 'Tourism, monastery economy, agriculture, wool',
       topColleges: ['Tawang Govt Degree College'],
       topExams: ['APPSC', 'JEE Main', 'NEET', 'NATA'],
@@ -544,7 +543,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tawang different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tawang service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tawang\'s economy is anchored in Tourism and monastery economy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tawang Monastery and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tawang use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tawang cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tawang\'s hiring market.' },
       ]}),
-    city('Bomdila', 'West Kameng', '~0.3 lakh', 'tier3', {
+    city('Bomdila', 'West Kameng', 'tier3', {
       industries: 'Apple orchards, tourism, wool, handicrafts',
       topColleges: ['Government College Bomdila', 'North East Institute of Buddhist Studies'],
       topExams: ['APPSC', 'JEE Main', 'NEET'],
@@ -558,7 +557,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bomdila different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bomdila service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bomdila\'s economy is anchored in Apple orchards and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bomdila monastery and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bomdila use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bomdila cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Apple orchards. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bomdila\'s hiring market.' },
       ]}),
-    city('Ziro', 'Lower Subansiri', '~0.3 lakh', 'tier3', {
+    city('Ziro', 'Lower Subansiri', 'tier3', {
       industries: 'Paddy (Ziro rice), tourism, handicrafts, bamboo',
       topColleges: ['Government College Ziro', 'Indira Gandhi Govt College'],
       topExams: ['APPSC', 'JEE Main', 'NEET'],
@@ -575,7 +574,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'assam': [
-    city('Guwahati', 'Kamrup Metropolitan', '~12.4 lakh', 'tier2', {
+    city('Guwahati', 'Kamrup Metropolitan', 'tier2', {
       industries: 'Oil & gas (ONGC), tea auction, education, IT, BPO, government services',
       topColleges: ['IIT Guwahati', 'Cotton University', 'Gauhati University', 'B. Borooah College', 'AIIMS Guwahati'],
       topExams: ['JEE Main & Advanced', 'NEET', 'CAT', 'MAT', 'APSC', 'UPSC CSE'],
@@ -589,7 +588,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Guwahati different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Guwahati service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Guwahati\'s economy is anchored in Oil and gas (ONGC), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kamakhya Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Guwahati use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Guwahati cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Oil. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Guwahati\'s hiring market.' },
       ]}),
-    city('Silchar', 'Cachar', '~2.3 lakh', 'tier3', {
+    city('Silchar', 'Cachar', 'tier3', {
       industries: 'Tea, rice, paper, cement, trade',
       topColleges: ['NIT Silchar', 'Gurucharan College', 'Aurangabad College', 'Silchar Medical College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'APSC', 'UPSC CSE'],
@@ -603,7 +602,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Silchar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Silchar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Silchar\'s economy is anchored in Tea and rice, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Barak river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Silchar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Silchar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Silchar\'s hiring market.' },
       ]}),
-    city('Dibrugarh', 'Dibrugarh', '~1.5 lakh', 'tier3', {
+    city('Dibrugarh', 'Dibrugarh', 'tier3', {
       industries: 'Tea (Dibrugarh Tea City), oil, coal, agriculture',
       topColleges: ['Dibrugarh University', 'Assam Medical College', 'DHSK Commerce College'],
       topExams: ['JEE Main', 'NEET', 'APSC', 'UPSC CSE'],
@@ -617,7 +616,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dibrugarh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dibrugarh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dibrugarh\'s economy is anchored in Tea (Dibrugarh Tea City) and oil, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Brahmaputra river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dibrugarh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dibrugarh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea (Dibrugarh Tea City). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dibrugarh\'s hiring market.' },
       ]}),
-    city('Jorhat', 'Jorhat', '~1.5 lakh', 'tier3', {
+    city('Jorhat', 'Jorhat', 'tier3', {
       industries: 'Tea, agriculture, research (Tocklai), education',
       topColleges: ['Earle Law College', 'Jorhat Engineering College', 'Cinnamara College'],
       topExams: ['JEE Main', 'NEET', 'APSC', 'UPSC CSE'],
@@ -631,7 +630,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jorhat different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jorhat service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jorhat\'s economy is anchored in Tea and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tocklai tea research and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jorhat use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jorhat cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jorhat\'s hiring market.' },
       ]}),
-    city('Tezpur', 'Sonitpur', '~1.1 lakh', 'tier3', {
+    city('Tezpur', 'Sonitpur', 'tier3', {
       industries: 'Tea, rice, tourism, education',
       topColleges: ['Tezpur University', 'Darrang College', 'Tezpur College'],
       topExams: ['JEE Main', 'NEET', 'APSC', 'UPSC CSE'],
@@ -645,7 +644,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tezpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tezpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tezpur\'s economy is anchored in Tea and rice, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Agnigarh and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tezpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tezpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tezpur\'s hiring market.' },
       ]}),
-    city('Tinsukia', 'Tinsukia', '~1.2 lakh', 'tier3', {
+    city('Tinsukia', 'Tinsukia', 'tier3', {
       industries: 'Tea, oil, coal, natural gas, timber',
       topColleges: ['Tinsukia College', 'Digboi College (nearby)'],
       topExams: ['JEE Main', 'NEET', 'APSC', 'UPSC CSE'],
@@ -659,7 +658,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tinsukia different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tinsukia service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tinsukia\'s economy is anchored in Tea and oil, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Digboi oil town (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tinsukia use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tinsukia cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tinsukia\'s hiring market.' },
       ]}),
-    city('Bongaigaon', 'Bongaigaon', '~1.1 lakh', 'tier3', {
+    city('Bongaigaon', 'Bongaigaon', 'tier3', {
       industries: 'Petrochemicals (BRPL), cement, coal, paper',
       topColleges: ['Bongaigaon College', 'BN College'],
       topExams: ['JEE Main', 'NEET', 'APSC', 'UPSC CSE'],
@@ -673,7 +672,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bongaigaon different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bongaigaon service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bongaigaon\'s economy is anchored in Petrochemicals (BRPL) and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bongaigaon Refinery and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bongaigaon use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bongaigaon cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Petrochemicals (BRPL). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bongaigaon\'s hiring market.' },
       ]}),
-    city('Karimganj', 'Karimganj', '~0.7 lakh', 'tier3', {
+    city('Karimganj', 'Karimganj', 'tier3', {
       industries: 'Tea, rice, oil, trade, agriculture',
       topColleges: ['Karimganj College', 'Patharkandi College'],
       topExams: ['JEE Main', 'NEET', 'APSC'],
@@ -687,7 +686,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Karimganj different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Karimganj service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Karimganj\'s economy is anchored in Tea and rice, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Karimganj town and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Karimganj use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Karimganj cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Karimganj\'s hiring market.' },
       ]}),
-    city('North Lakhimpur', 'Lakhimpur', '~0.6 lakh', 'tier3', {
+    city('North Lakhimpur', 'Lakhimpur', 'tier3', {
       industries: 'Tea, rice, agriculture, education',
       topColleges: ['Lakhimpur Commerce College', 'North Lakhimpur College'],
       topExams: ['JEE Main', 'NEET', 'APSC'],
@@ -704,7 +703,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'bihar': [
-    city('Patna', 'Patna', '~20.4 lakh', 'tier2', {
+    city('Patna', 'Patna', 'tier2', {
       industries: 'Government services, education, trade, agro-processing, BFSI',
       topColleges: ['IIT Patna', 'AIIMS Patna', 'NIT Patna', 'Patna University', 'Patna Science College', 'Bihar National College'],
       topExams: ['JEE Main & Advanced', 'NEET', 'Bihar Combined Entrance (BCECE)', 'CAT', 'BPSC', 'UPSC CSE'],
@@ -718,7 +717,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Patna different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Patna service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Patna\'s economy is anchored in Government services and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Golghar and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Patna use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Patna cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Patna\'s hiring market.' },
       ]}),
-    city('Gaya', 'Gaya', '~4.7 lakh', 'tier3', {
+    city('Gaya', 'Gaya', 'tier3', {
       industries: 'Tourism (Buddhism & Hinduism), agriculture, handloom, education',
       topColleges: ['Magadh University', 'Gaya College', 'AN Sinha Institute'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC', 'UPSC CSE'],
@@ -732,7 +731,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gaya different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gaya service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gaya\'s economy is anchored in Tourism (Buddhism and Hinduism), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bodh Gaya (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gaya use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gaya cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Buddhism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gaya\'s hiring market.' },
       ]}),
-    city('Bhagalpur', 'Bhagalpur', '~4.0 lakh', 'tier3', {
+    city('Bhagalpur', 'Bhagalpur', 'tier3', {
       industries: 'Silk (Tussar), agriculture, education, fish',
       topColleges: ['TNB College', 'Bhagalpur College of Engineering', 'Jawaharlal Nehru Medical College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC', 'UPSC CSE'],
@@ -746,7 +745,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhagalpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhagalpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhagalpur\'s economy is anchored in Silk (Tussar) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vikramshila ruins and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhagalpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhagalpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Silk (Tussar). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhagalpur\'s hiring market.' },
       ]}),
-    city('Muzaffarpur', 'Muzaffarpur', '~3.9 lakh', 'tier3', {
+    city('Muzaffarpur', 'Muzaffarpur', 'tier3', {
       industries: 'Lychees, agriculture, education, match industry',
       topColleges: ['Langat Singh College', 'Muzaffarpur Institute of Technology', 'Sri Krishna Medical College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -760,7 +759,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Muzaffarpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Muzaffarpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Muzaffarpur\'s economy is anchored in Lychees and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Litchi gardens and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Muzaffarpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Muzaffarpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Lychees. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Muzaffarpur\'s hiring market.' },
       ]}),
-    city('Darbhanga', 'Darbhanga', '~3.0 lakh', 'tier3', {
+    city('Darbhanga', 'Darbhanga', 'tier3', {
       industries: 'Agriculture, education, mithila art, handloom',
       topColleges: ['Lalit Narayan Mithila University', 'Mithila Sanskrit University', 'Darbhanga Medical College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC', 'UPSC CSE'],
@@ -774,7 +773,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Darbhanga different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Darbhanga service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Darbhanga\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Darbhanga Raj (historic fort) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Darbhanga use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Darbhanga cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Darbhanga\'s hiring market.' },
       ]}),
-    city('Bihar Sharif', 'Nalanda', '~3.0 lakh', 'tier3', {
+    city('Bihar Sharif', 'Nalanda', 'tier3', {
       industries: 'Agriculture, education, handloom, lacquerware',
       topColleges: ['Nalanda College', 'Nalanda Medical College (regional)', 'Government Engineering College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -788,7 +787,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bihar Sharif different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bihar Sharif service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bihar Sharif\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nalanda ruins (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bihar Sharif use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bihar Sharif cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bihar Sharif\'s hiring market.' },
       ]}),
-    city('Begusarai', 'Begusarai', '~2.5 lakh', 'tier3', {
+    city('Begusarai', 'Begusarai', 'tier3', {
       industries: 'Petrochemicals (IOC Barauni), agriculture, power',
       topColleges: ['Begusarai College', 'Government Engineering College Begusarai'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -802,7 +801,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Begusarai different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Begusarai service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Begusarai\'s economy is anchored in Petrochemicals (IOC Barauni) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Barauni refinery and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Begusarai use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Begusarai cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Petrochemicals (IOC Barauni). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Begusarai\'s hiring market.' },
       ]}),
-    city('Purnia', 'Purnia', '~2.8 lakh', 'tier3', {
+    city('Purnia', 'Purnia', 'tier3', {
       industries: 'Jute, maize, agriculture, trade',
       topColleges: ['Purnia College', 'Purnia Engineering College', 'Government Medical College Purnia'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -816,7 +815,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Purnia different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Purnia service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Purnia\'s economy is anchored in Jute and maize, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kosi river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Purnia use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Purnia cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Jute. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Purnia\'s hiring market.' },
       ]}),
-    city('Ara', 'Bhojpur', '~2.6 lakh', 'tier3', {
+    city('Ara', 'Bhojpur', 'tier3', {
       industries: 'Agriculture, handloom, education',
       topColleges: ['Jagjiwan College', 'Maharaja College Ara', 'Government Engineering College Ara'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -830,7 +829,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ara\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ara town and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ara\'s hiring market.' },
       ]}),
-    city('Chhapra', 'Saran', '~2.3 lakh', 'tier3', {
+    city('Chhapra', 'Saran', 'tier3', {
       industries: 'Agriculture, trade, handloom, education',
       topColleges: ['PR College Chhapra', 'Saran College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -844,7 +843,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chhapra different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chhapra service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chhapra\'s economy is anchored in Agriculture and trade, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gandhi Chowk and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chhapra use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chhapra cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chhapra\'s hiring market.' },
       ]}),
-    city('Saharsa', 'Saharsa', '~1.8 lakh', 'tier3', {
+    city('Saharsa', 'Saharsa', 'tier3', {
       industries: 'Agriculture, fish, maize, education',
       topColleges: ['Saharsa College', 'Langat Singh Singh College', 'Government Polytechnic Saharsa'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -858,7 +857,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Saharsa different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Saharsa service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Saharsa\'s economy is anchored in Agriculture and fish, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Koshi river embankment and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Saharsa use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Saharsa cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Saharsa\'s hiring market.' },
       ]}),
-    city('Hajipur', 'Vaishali', '~1.5 lakh', 'tier3', {
+    city('Hajipur', 'Vaishali', 'tier3', {
       industries: 'Trade, agriculture, education, banana trade',
       topColleges: ['Ram Jaipal College', 'Bihar Engineering College', 'Government Degree College Hajipur'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -872,7 +871,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hajipur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hajipur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hajipur\'s economy is anchored in Trade and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vaishali (nearby and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hajipur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hajipur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hajipur\'s hiring market.' },
       ]}),
-    city('Sasaram', 'Rohtas', '~1.5 lakh', 'tier3', {
+    city('Sasaram', 'Rohtas', 'tier3', {
       industries: 'Cement, agriculture, education, tourism',
       topColleges: ['Sasaram College', 'Government Engineering College Sasaram', 'Rohtas Medical College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -886,7 +885,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sasaram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sasaram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sasaram\'s economy is anchored in Cement and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sher Shah Suri Tomb and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sasaram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sasaram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sasaram\'s hiring market.' },
       ]}),
-    city('Dehri', 'Rohtas', '~1.4 lakh', 'tier3', {
+    city('Dehri', 'Rohtas', 'tier3', {
       industries: 'Cement, railway workshop, agriculture',
       topColleges: ['Dehri College', 'Bihar Engineering College (regional)'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -900,7 +899,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dehri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dehri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dehri\'s economy is anchored in Cement and railway workshop, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dehri-on-Sone and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dehri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dehri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dehri\'s hiring market.' },
       ]}),
-    city('Siwan', 'Siwan', '~1.4 lakh', 'tier3', {
+    city('Siwan', 'Siwan', 'tier3', {
       industries: 'Agriculture, education, handloom',
       topColleges: ['Jai Prakash Vishwavidyalaya (Chhapra)', 'Siwan College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -914,7 +913,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Siwan different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Siwan service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Siwan\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Siwan district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Siwan use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Siwan cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Siwan\'s hiring market.' },
       ]}),
-    city('Motihari', 'East Champaran', '~1.3 lakh', 'tier3', {
+    city('Motihari', 'East Champaran', 'tier3', {
       industries: 'Agriculture, sugar, handloom, education',
       topColleges: ['Motihari College', 'Government Engineering College Motihari', 'Motihari Medical College'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -928,7 +927,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Motihari different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Motihari service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Motihari\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gandhi&apos;s first Satyagraha site and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Motihari use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Motihari cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Motihari\'s hiring market.' },
       ]}),
-    city('Nawada', 'Nawada', '~1.2 lakh', 'tier3', {
+    city('Nawada', 'Nawada', 'tier3', {
       industries: 'Agriculture, education, granite',
       topColleges: ['Nawada College', 'Government Degree College Nawada'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -942,7 +941,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nawada different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nawada service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nawada\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nawada district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nawada use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nawada cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nawada\'s hiring market.' },
       ]}),
-    city('Bettiah', 'West Champaran', '~1.3 lakh', 'tier3', {
+    city('Bettiah', 'West Champaran', 'tier3', {
       industries: 'Sugar, agriculture, education, handloom',
       topColleges: ['Bettiah Raj College', 'Government Degree College Bettiah'],
       topExams: ['JEE Main', 'NEET', 'BCECE', 'BPSC'],
@@ -959,7 +958,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'chhattisgarh': [
-    city('Raipur', 'Raipur', '~10.1 lakh', 'tier2', {
+    city('Raipur', 'Raipur', 'tier2', {
       industries: 'Steel, power, cement, mining, education, IT',
       topColleges: ['NIT Raipur', 'IIIT Raipur', 'AIIMS Raipur', 'Pt. Ravishankar Shukla University', 'Government Engineering College Raipur'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CAT', 'GATE', 'CGPSC'],
@@ -973,7 +972,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Raipur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Raipur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Raipur\'s economy is anchored in Steel and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mahant Ghasidas Memorial Museum and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Raipur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Raipur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Raipur\'s hiring market.' },
       ]}),
-    city('Bhilai', 'Durg', '~6.2 lakh', 'tier2', {
+    city('Bhilai', 'Durg', 'tier2', {
       industries: 'Steel (Bhilai Steel Plant), power, cement, education',
       topColleges: ['Government Engineering College Bhilai', 'Bhilai Institute of Technology', 'SSCET Bhilai'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CAT', 'GATE', 'CGPSC'],
@@ -987,7 +986,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhilai different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhilai service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhilai\'s economy is anchored in Steel (Bhilai Steel Plant) and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bhilai Steel Plant and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhilai use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhilai cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (Bhilai Steel Plant). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhilai\'s hiring market.' },
       ]}),
-    city('Bilaspur', 'Bilaspur', '~3.5 lakh', 'tier2', {
+    city('Bilaspur', 'Bilaspur', 'tier2', {
       industries: 'Cement, power, mining, rice, education',
       topColleges: ['Bilaspur University (Atal Bihar Vajpayee Vishwavidyalaya)', 'Government Engineering College Bilaspur', 'CEC Bilaspur'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC', 'CAT'],
@@ -1001,7 +1000,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bilaspur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bilaspur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bilaspur\'s economy is anchored in Cement and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ratanpur (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bilaspur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bilaspur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bilaspur\'s hiring market.' },
       ]}),
-    city('Korba', 'Korba', '~3.6 lakh', 'tier2', {
+    city('Korba', 'Korba', 'tier2', {
       industries: 'Power generation (NTPC), mining, coal, cement',
       topColleges: ['Government Engineering College Korba', 'Korba Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC', 'GATE'],
@@ -1015,7 +1014,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Korba different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Korba service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Korba\'s economy is anchored in Power generation (NTPC) and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hasdeo river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Korba use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Korba cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Power generation (NTPC). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Korba\'s hiring market.' },
       ]}),
-    city('Durg', 'Durg', '~2.7 lakh', 'tier3', {
+    city('Durg', 'Durg', 'tier3', {
       industries: 'Rice, steel, power, education, cement',
       topColleges: ['Government College Durg', 'Bhilai Institute of Technology (nearby)'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC'],
@@ -1029,7 +1028,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Durg different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Durg service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Durg\'s economy is anchored in Rice and steel, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Durg Junction and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Durg use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Durg cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Durg\'s hiring market.' },
       ]}),
-    city('Raigarh', 'Raigarh', '~1.5 lakh', 'tier3', {
+    city('Raigarh', 'Raigarh', 'tier3', {
       industries: 'Power (Jindal), mining, cement, paper',
       topColleges: ['Government Engineering College Raigarh', 'Raigarh College'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC'],
@@ -1043,7 +1042,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Raigarh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Raigarh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Raigarh\'s economy is anchored in Power (Jindal) and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Raigarh fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Raigarh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Raigarh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Power (Jindal). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Raigarh\'s hiring market.' },
       ]}),
-    city('Jagdalpur', 'Bastar', '~1.4 lakh', 'tier3', {
+    city('Jagdalpur', 'Bastar', 'tier3', {
       industries: 'Iron ore, forest produce, agriculture, education',
       topColleges: ['Government College Jagdalpur', 'Bastar University', 'Government Engineering College Jagdalpur'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC'],
@@ -1057,7 +1056,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jagdalpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jagdalpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jagdalpur\'s economy is anchored in Iron ore and forest produce, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chitrakote Falls and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jagdalpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jagdalpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Iron ore. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jagdalpur\'s hiring market.' },
       ]}),
-    city('Ambikapur', 'Surguja', '~1.3 lakh', 'tier3', {
+    city('Ambikapur', 'Surguja', 'tier3', {
       industries: 'Coal, cement, education, agriculture',
       topColleges: ['Government College Ambikapur', 'Surguja University'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC'],
@@ -1071,7 +1070,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ambikapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ambikapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ambikapur\'s economy is anchored in Coal and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mainpat (Tibet of India) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ambikapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ambikapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ambikapur\'s hiring market.' },
       ]}),
-    city('Dhamtari', 'Dhamtari', '~1.0 lakh', 'tier3', {
+    city('Dhamtari', 'Dhamtari', 'tier3', {
       industries: 'Rice, agriculture, education, brassware',
       topColleges: ['Government College Dhamtari', 'Dhamtari Institute'],
       topExams: ['JEE Main', 'NEET', 'CG PET', 'CGPSC'],
@@ -1088,7 +1087,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'goa': [
-    city('Panaji', 'North Goa', '~0.4 lakh', 'tier3', {
+    city('Panaji', 'North Goa', 'tier3', {
       industries: 'Tourism, IT, government services, fisheries',
       topColleges: ['Goa University', 'Goa Medical College', 'Government College of Arts, Science & Commerce, Sanquelim'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GATE', 'Goa PSC'],
@@ -1102,7 +1101,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Panaji different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Panaji service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Panaji\'s economy is anchored in Tourism and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Fontainhas and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Panaji use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Panaji cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Panaji\'s hiring market.' },
       ]}),
-    city('Margao', 'South Goa', '~0.9 lakh', 'tier3', {
+    city('Margao', 'South Goa', 'tier3', {
       industries: 'Mining, tourism, agriculture, commerce, real estate',
       topColleges: ['Fr. Agnel College of Arts and Commerce', 'Govind Ramnath Kare College of Commerce', 'Salgaonkar College of Engineering'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GATE', 'Goa PSC'],
@@ -1116,7 +1115,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Margao different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Margao service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Margao\'s economy is anchored in Mining and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Margao market and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Margao use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Margao cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Margao\'s hiring market.' },
       ]}),
-    city('Vasco da Gama', 'South Goa', '~0.7 lakh', 'tier3', {
+    city('Vasco da Gama', 'South Goa', 'tier3', {
       industries: 'Shipbuilding, port, mining, transport',
       topColleges: ['Government Polytechnic Vasco', 'BITS Pilani Goa (nearby Sancoale)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GATE', 'Goa PSC'],
@@ -1130,7 +1129,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vasco da Gama different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vasco da Gama service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vasco da Gama\'s economy is anchored in Shipbuilding and port, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mormugao port and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vasco da Gama use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vasco da Gama cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Shipbuilding. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vasco da Gama\'s hiring market.' },
       ]}),
-    city('Mapusa', 'North Goa', '~0.5 lakh', 'tier3', {
+    city('Mapusa', 'North Goa', 'tier3', {
       industries: 'Trade, agriculture, tourism, real estate',
       topColleges: ['DM&apos;s College of Arts and Commerce', 'Government Higher Secondary School'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'Goa PSC'],
@@ -1144,7 +1143,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mapusa different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mapusa service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mapusa\'s economy is anchored in Trade and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mapusa market (Friday market) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mapusa use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mapusa cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mapusa\'s hiring market.' },
       ]}),
-    city('Ponda', 'North Goa', '~0.5 lakh', 'tier3', {
+    city('Ponda', 'North Goa', 'tier3', {
       industries: 'Mining, agriculture, temple tourism, real estate',
       topColleges: ['Ponda Education Society&apos;s College', 'Government College Ponda'],
       topExams: ['JEE Main', 'NEET', 'Goa PSC', 'CAT'],
@@ -1161,7 +1160,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'gujarat': [
-    city('Ahmedabad', 'Ahmedabad', '~55.7 lakh', 'tier1', {
+    city('Ahmedabad', 'Ahmedabad', 'tier1', {
       industries: 'Textiles, gems & jewellery, pharma, IT, manufacturing, BFSI',
       topColleges: ['IITRAM', 'CEPT University', 'NID Ahmedabad', 'H.L. College of Commerce', 'LJ Institute of Management', 'Gujarat University'],
       topExams: ['JEE Main & Advanced', 'GUJCET', 'NEET', 'CA Foundation', 'CAT', 'CMAT'],
@@ -1175,7 +1174,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ahmedabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ahmedabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ahmedabad\'s economy is anchored in Textiles and gems, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sabarmati Ashram and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ahmedabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ahmedabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ahmedabad\'s hiring market.' },
       ]}),
-    city('Surat', 'Surat', '~49 lakh', 'tier1', {
+    city('Surat', 'Surat', 'tier1', {
       industries: 'Diamonds (90% world processing), textiles, synthetic fibres, petrochemicals, IT',
       topColleges: ['SVNIT Surat', 'Veer Narmad South Gujarat University', 'AURO University', 'CKPCET', 'Government Medical College Surat'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CA Foundation', 'CAT', 'CMAT'],
@@ -1189,7 +1188,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Surat different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Surat service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Surat\'s economy is anchored in Diamonds (90% world processing) and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dumas beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Surat use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Surat cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Diamonds (90% world processing). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Surat\'s hiring market.' },
       ]}),
-    city('Vadodara', 'Vadodara', '~21.7 lakh', 'tier2', {
+    city('Vadodara', 'Vadodara', 'tier2', {
       industries: 'Petrochemicals (ONGC, IPCL), engineering, IT, manufacturing, education',
       topColleges: ['Maharaja Sayajirao University (MSU)', 'Parul University', 'IITRAM (nearby)', 'GEC Vadodara', 'GMERS Medical College'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CA Foundation', 'CAT', 'CMAT'],
@@ -1203,7 +1202,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vadodara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vadodara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vadodara\'s economy is anchored in Petrochemicals (ONGC and IPCL), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Laxmi Vilas Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vadodara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vadodara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Petrochemicals (ONGC. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vadodara\'s hiring market.' },
       ]}),
-    city('Rajkot', 'Rajkot', '~16.7 lakh', 'tier2', {
+    city('Rajkot', 'Rajkot', 'tier2', {
       industries: 'Engineering, auto parts, ceramics, IT, oilseed, gold jewellery',
       topColleges: ['Saurashtra University', 'Government Engineering College Rajkot', 'Marwadi University', 'RK University'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CA Foundation', 'CAT'],
@@ -1217,7 +1216,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rajkot different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rajkot service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rajkot\'s economy is anchored in Engineering and auto parts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Watson Museum and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rajkot use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rajkot cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Engineering. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rajkot\'s hiring market.' },
       ]}),
-    city('Bhavnagar', 'Bhavnagar', '~6.8 lakh', 'tier3', {
+    city('Bhavnagar', 'Bhavnagar', 'tier3', {
       industries: 'Diamond cutting, plastics, shipbuilding, salt, power',
       topColleges: ['Bhavnagar University', 'Government Engineering College Bhavnagar', 'Sir P.P. Institute of Science'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1231,7 +1230,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhavnagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhavnagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhavnagar\'s economy is anchored in Diamond cutting and plastics, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Takhteshwar temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhavnagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhavnagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Diamond cutting. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhavnagar\'s hiring market.' },
       ]}),
-    city('Jamnagar', 'Jamnagar', '~6.7 lakh', 'tier3', {
+    city('Jamnagar', 'Jamnagar', 'tier3', {
       industries: 'Brass parts, petroleum (Reliance), cement, salt, ceramics',
       topColleges: ['Saurashtra University (regional)', 'Government Engineering College Jamnagar', 'Shri M.P. Shah Medical College'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1245,7 +1244,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jamnagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jamnagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jamnagar\'s economy is anchored in Brass parts and petroleum (Reliance), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Lakhota Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jamnagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jamnagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Brass parts. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jamnagar\'s hiring market.' },
       ]}),
-    city('Junagadh', 'Junagadh', '~3.6 lakh', 'tier3', {
+    city('Junagadh', 'Junagadh', 'tier3', {
       industries: 'Agriculture, cement, mining (limestone), education',
       topColleges: ['Bhakta Kavi Narsinh Mehta University', 'Government Engineering College Junagadh'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1259,7 +1258,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Junagadh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Junagadh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Junagadh\'s economy is anchored in Agriculture and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Uparkot Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Junagadh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Junagadh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Junagadh\'s hiring market.' },
       ]}),
-    city('Gandhinagar', 'Gandhinagar', '~2.9 lakh', 'tier3', {
+    city('Gandhinagar', 'Gandhinagar', 'tier3', {
       industries: 'Government services, education, real estate, IT',
       topColleges: ['Gujarat National Law University', 'IIT Gandhinagar', 'Gujarat Vidyapith', 'CEPT (regional)'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT', 'CLAT'],
@@ -1273,7 +1272,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gandhinagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gandhinagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gandhinagar\'s economy is anchored in Government services and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Akshardham Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gandhinagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gandhinagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gandhinagar\'s hiring market.' },
       ]}),
-    city('Anand', 'Anand', '~3.7 lakh', 'tier3', {
+    city('Anand', 'Anand', 'tier3', {
       industries: 'Dairy (Amul), agriculture, education, tobacco',
       topColleges: ['Charotar University of Science & Technology (CHARUSAT)', 'Anand Agricultural University', 'IITRAM (nearby)'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT', 'GATE'],
@@ -1287,7 +1286,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Anand different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Anand service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Anand\'s economy is anchored in Dairy (Amul) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Amul dairy and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Anand use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Anand cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Dairy (Amul). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Anand\'s hiring market.' },
       ]}),
-    city('Mehsana', 'Mehsana', '~1.9 lakh', 'tier3', {
+    city('Mehsana', 'Mehsana', 'tier3', {
       industries: 'Dairy, oil & gas (ONGC), power, textile',
       topColleges: ['Ganpat University', 'S.K.N. Agriculture University', 'Government Engineering College Mehsana'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1301,7 +1300,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mehsana different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mehsana service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mehsana\'s economy is anchored in Dairy and oil, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Modhera Sun Temple (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mehsana use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mehsana cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Dairy. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mehsana\'s hiring market.' },
       ]}),
-    city('Morbi', 'Morbi', '~2.1 lakh', 'tier3', {
+    city('Morbi', 'Morbi', 'tier3', {
       industries: 'Ceramics (40% world output), tiles, sanitaryware, engineering',
       topColleges: ['Government Engineering College Morbi', 'Morbi Education Society College'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1315,7 +1314,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Morbi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Morbi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Morbi\'s economy is anchored in Ceramics (40% world output) and tiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Morbi district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Morbi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Morbi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Ceramics (40% world output). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Morbi\'s hiring market.' },
       ]}),
-    city('Bharuch', 'Bharuch', '~1.7 lakh', 'tier3', {
+    city('Bharuch', 'Bharuch', 'tier3', {
       industries: 'Petrochemicals (Dahej SEZ), chemicals, pharmaceuticals, port',
       topColleges: ['Government Engineering College Bharuch', 'BMTC', 'IITRAM (regional)'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT', 'GATE'],
@@ -1329,7 +1328,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bharuch different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bharuch service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bharuch\'s economy is anchored in Petrochemicals (Dahej SEZ) and chemicals, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Golden bridge and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bharuch use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bharuch cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Petrochemicals (Dahej SEZ). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bharuch\'s hiring market.' },
       ]}),
-    city('Navsari', 'Navsari', '~1.7 lakh', 'tier3', {
+    city('Navsari', 'Navsari', 'tier3', {
       industries: 'Sugar, agriculture, paper, education',
       topColleges: ['Navsari Agricultural University', 'P.K. Kotak Institute', 'Government Medical College Navsari'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1343,7 +1342,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Navsari different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Navsari service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Navsari\'s economy is anchored in Sugar and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dandi (Salt March start) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Navsari use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Navsari cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Navsari\'s hiring market.' },
       ]}),
-    city('Porbandar', 'Porbandar', '~0.8 lakh', 'tier3', {
+    city('Porbandar', 'Porbandar', 'tier3', {
       industries: 'Fishing, cement, agriculture, salt',
       topColleges: ['Porbandar College', 'Government Engineering College Porbandar'],
       topExams: ['JEE Main', 'GUJCET', 'NEET'],
@@ -1357,7 +1356,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Porbandar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Porbandar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Porbandar\'s economy is anchored in Fishing and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kirti Mandir (Gandhi birthplace) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Porbandar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Porbandar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Fishing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Porbandar\'s hiring market.' },
       ]}),
-    city('Godhra', 'Panchmahal', '~1.4 lakh', 'tier3', {
+    city('Godhra', 'Panchmahal', 'tier3', {
       industries: 'Agriculture, tobacco, education, trade',
       topColleges: ['Government Arts & Commerce College Godhra', 'Panchmahal Engineering College'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1371,7 +1370,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Godhra different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Godhra service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Godhra\'s economy is anchored in Agriculture and tobacco, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Panchmahal district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Godhra use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Godhra cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Godhra\'s hiring market.' },
       ]}),
-    city('Valsad', 'Valsad', '~1.2 lakh', 'tier3', {
+    city('Valsad', 'Valsad', 'tier3', {
       industries: 'Agriculture (mangoes), paper, chemicals, power',
       topColleges: ['Government Science College Valsad', 'GMERS Medical College Valsad'],
       topExams: ['JEE Main', 'GUJCET', 'NEET', 'CAT'],
@@ -1388,7 +1387,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'haryana': [
-    city('Faridabad', 'Faridabad', '~14 lakh', 'tier2', {
+    city('Faridabad', 'Faridabad', 'tier2', {
       industries: 'Manufacturing, IT, BPO, automotive, pharmaceuticals',
       topColleges: ['Manav Rachna University', 'J.C. Bose University (YMCA)', 'Government Engineering College Faridabad', 'ESIC Medical College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CMAT', 'HSSC', 'UPSC CSE'],
@@ -1402,7 +1401,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Faridabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Faridabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Faridabad\'s economy is anchored in Manufacturing and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Badkhal Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Faridabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Faridabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Faridabad\'s hiring market.' },
       ]}),
-    city('Gurugram', 'Gurugram', '~29.4 lakh', 'tier1', {
+    city('Gurugram', 'Gurugram', 'tier1', {
       industries: 'IT, BFSI, consulting, automotive, e-commerce, real estate',
       topColleges: ['BML Munjal University', 'Ansal University', 'IIM Rohtak (Gurugram outreach)', 'KR Mangalam University', 'GD Goenka University'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GMAT', 'GRE', 'CUET'],
@@ -1416,7 +1415,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gurugram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gurugram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gurugram\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Cyber Hub and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gurugram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gurugram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gurugram\'s hiring market.' },
       ]}),
-    city('Panipat', 'Panipat', '~4.4 lakh', 'tier3', {
+    city('Panipat', 'Panipat', 'tier3', {
       industries: 'Textiles, carpets, agriculture, oil, chemicals',
       topColleges: ['IIT Roorkee (regional outreach)', 'Government College Panipat', 'Panipat Institute of Engineering'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1430,7 +1429,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Panipat different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Panipat service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Panipat\'s economy is anchored in Textiles and carpets, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Panipat battles and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Panipat use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Panipat cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Panipat\'s hiring market.' },
       ]}),
-    city('Ambala', 'Ambala', '~2.1 lakh', 'tier3', {
+    city('Ambala', 'Ambala', 'tier3', {
       industries: 'Scientific instruments, defence, pharma, food processing',
       topColleges: ['Government College Ambala', 'Maharishi Markandeshwar University (regional)', 'Government Engineering College Ambala'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1444,7 +1443,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ambala different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ambala service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ambala\'s economy is anchored in Scientific instruments and defence, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ambala Cantonment and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ambala use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ambala cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Scientific instruments. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ambala\'s hiring market.' },
       ]}),
-    city('Karnal', 'Karnal', '~0.8 lakh', 'tier3', {
+    city('Karnal', 'Karnal', 'tier3', {
       industries: 'Agriculture, dairy, agriculture research, food processing',
       topColleges: ['NDRI (National Dairy Research Institute)', 'Karnal College', 'Government Medical College Karnal'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1458,7 +1457,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Karnal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Karnal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Karnal\'s economy is anchored in Agriculture and dairy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Karna lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Karnal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Karnal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Karnal\'s hiring market.' },
       ]}),
-    city('Sonipat', 'Sonipat', '~2.9 lakh', 'tier3', {
+    city('Sonipat', 'Sonipat', 'tier3', {
       industries: 'Rice, agriculture, engineering, education',
       topColleges: ['Ashoka University (nearby)', 'IIT Delhi (regional)', 'Bhagat Phool Singh Medical College', 'Government College Sonipat'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1472,7 +1471,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sonipat different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sonipat service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sonipat\'s economy is anchored in Rice and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Khwaja Khizr tomb and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sonipat use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sonipat cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sonipat\'s hiring market.' },
       ]}),
-    city('Rohtak', 'Rohtak', '~3.7 lakh', 'tier3', {
+    city('Rohtak', 'Rohtak', 'tier3', {
       industries: 'Education, healthcare, agriculture, sports goods',
       topColleges: ['IIM Rohtak', 'Maharshi Dayanand University', 'PGIMS Rohtak', 'Government College Rohtak'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'MAT', 'HSSC', 'UPSC CSE'],
@@ -1486,7 +1485,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rohtak different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rohtak service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rohtak\'s economy is anchored in Education and healthcare, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Baniya Pir ki Dargah and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rohtak use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rohtak cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rohtak\'s hiring market.' },
       ]}),
-    city('Hisar', 'Hisar', '~3.1 lakh', 'tier3', {
+    city('Hisar', 'Hisar', 'tier3', {
       industries: 'Agriculture, dairy, manufacturing, education',
       topColleges: ['Chaudhary Charan Singh Haryana Agricultural University', 'Guru Jambheshwar University', 'Government College Hisar'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1500,7 +1499,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hisar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hisar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hisar\'s economy is anchored in Agriculture and dairy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Fortal of Firoz Shah and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hisar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hisar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hisar\'s hiring market.' },
       ]}),
-    city('Yamunanagar', 'Yamunanagar', '~0.9 lakh', 'tier3', {
+    city('Yamunanagar', 'Yamunanagar', 'tier3', {
       industries: 'Plywood, paper, sugar, brass, chemicals',
       topColleges: ['Jai Parkash Mukand Lal Engineering College', 'Government College Yamunanagar', 'Guru Nanak Girls College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1514,7 +1513,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Yamunanagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Yamunanagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Yamunanagar\'s economy is anchored in Plywood and paper, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kaleshwar Mahadev temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Yamunanagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Yamunanagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Plywood. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Yamunanagar\'s hiring market.' },
       ]}),
-    city('Bhiwani', 'Bhiwani', '~0.8 lakh', 'tier3', {
+    city('Bhiwani', 'Bhiwani', 'tier3', {
       industries: 'Sports goods, agriculture, handloom, cement',
       topColleges: ['Bhiwani Institute of Technology & Management', 'Government College Bhiwani', 'Ch. Bansi Lal University'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1528,7 +1527,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhiwani different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhiwani service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhiwani\'s economy is anchored in Sports goods and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bhiwani Boxing and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhiwani use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhiwani cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sports goods. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhiwani\'s hiring market.' },
       ]}),
-    city('Sirsa', 'Sirsa', '~1.8 lakh', 'tier3', {
+    city('Sirsa', 'Sirsa', 'tier3', {
       industries: 'Agriculture, dairy, mustard, cotton, oil',
       topColleges: ['Government College Sirsa', 'CDLU Sirsa', 'Jan Nayak Chaudhary Devi Lal Vidyapeeth'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HSSC'],
@@ -1545,7 +1544,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'himachal-pradesh': [
-    city('Shimla', 'Shimla', '~1.7 lakh', 'tier3', {
+    city('Shimla', 'Shimla', 'tier3', {
       industries: 'Tourism, horticulture (apple), government services, education',
       topColleges: ['HP University', 'Indian Institute of Advanced Study', 'Government College Sanjauli'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HPPSC', 'UPSC CSE'],
@@ -1559,7 +1558,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Shimla different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Shimla service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Shimla\'s economy is anchored in Tourism and horticulture (apple), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from The Ridge and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Shimla use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Shimla cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Shimla\'s hiring market.' },
       ]}),
-    city('Dharamshala', 'Kangra', '~0.5 lakh', 'tier3', {
+    city('Dharamshala', 'Kangra', 'tier3', {
       industries: 'Tourism, tea, Tibetan government-in-exile, education, handloom',
       topColleges: ['Central University of Himachal Pradesh', 'IIM Sirmaur (nearby)', 'Government College Dharamshala'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HPPSC', 'UPSC CSE'],
@@ -1573,7 +1572,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dharamshala different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dharamshala service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dharamshala\'s economy is anchored in Tourism and tea, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from McLeod Ganj and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dharamshala use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dharamshala cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dharamshala\'s hiring market.' },
       ]}),
-    city('Mandi', 'Mandi', '~0.5 lakh', 'tier3', {
+    city('Mandi', 'Mandi', 'tier3', {
       industries: 'Hydroelectric power, horticulture, tourism, education',
       topColleges: ['Government College Mandi', 'IIT Mandi (nearby Kamand)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HPPSC', 'GATE'],
@@ -1587,7 +1586,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mandi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mandi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mandi\'s economy is anchored in Hydroelectric power and horticulture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rewalsar lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mandi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mandi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Hydroelectric power. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mandi\'s hiring market.' },
       ]}),
-    city('Solan', 'Solan', '~0.4 lakh', 'tier3', {
+    city('Solan', 'Solan', 'tier3', {
       industries: 'Mushroom, pharmaceuticals, education, horticulture',
       topColleges: ['Dr. Y.S. Parmar University (Nauni)', 'Government College Solan', 'Solan Engineering College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'HPPSC'],
@@ -1601,7 +1600,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Solan different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Solan service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Solan\'s economy is anchored in Mushroom and pharmaceuticals, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mohan Shakti National Heritage Park and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Solan use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Solan cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mushroom. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Solan\'s hiring market.' },
       ]}),
-    city('Kullu', 'Kullu', '~0.2 lakh', 'tier3', {
+    city('Kullu', 'Kullu', 'tier3', {
       industries: 'Tourism, apple, wool, handicrafts, pashmina',
       topColleges: ['Government College Kullu', 'IIT Mandi (nearby)'],
       topExams: ['JEE Main', 'NEET', 'HPPSC'],
@@ -1615,7 +1614,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kullu different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kullu service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kullu\'s economy is anchored in Tourism and apple, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Raghunath temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kullu use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kullu cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kullu\'s hiring market.' },
       ]}),
-    city('Bilaspur', 'Bilaspur', '~0.2 lakh', 'tier3', {
+    city('Bilaspur', 'Bilaspur', 'tier3', {
       industries: 'Power, cement, agriculture, fisheries',
       topColleges: ['Government College Bilaspur', 'IIT Mandi (regional)'],
       topExams: ['JEE Main', 'NEET', 'HPPSC'],
@@ -1629,7 +1628,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bilaspur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bilaspur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bilaspur\'s economy is anchored in Power and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Govind Sagar lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bilaspur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bilaspur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Power. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bilaspur\'s hiring market.' },
       ]}),
-    city('Hamirpur', 'Hamirpur', '~0.2 lakh', 'tier3', {
+    city('Hamirpur', 'Hamirpur', 'tier3', {
       industries: 'Education, agriculture, horticulture, power',
       topColleges: ['NIT Hamirpur', 'Government College Hamirpur'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GATE', 'HPPSC'],
@@ -1643,7 +1642,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hamirpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hamirpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hamirpur\'s economy is anchored in Education and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from NIT campus and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hamirpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hamirpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hamirpur\'s hiring market.' },
       ]}),
-    city('Una', 'Una', '~0.2 lakh', 'tier3', {
+    city('Una', 'Una', 'tier3', {
       industries: 'Industry, transport, agriculture, fertiliser',
       topColleges: ['Government College Una', 'IIIT Una (nearby)'],
       topExams: ['JEE Main', 'NEET', 'HPPSC'],
@@ -1660,7 +1659,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'jharkhand': [
-    city('Ranchi', 'Ranchi', '~11.3 lakh', 'tier2', {
+    city('Ranchi', 'Ranchi', 'tier2', {
       industries: 'Mining, IT, education, heavy engineering, power',
       topColleges: ['IIT Dhanbad (regional)', 'BIT Mesra', 'Ranchi University', 'IIM Ranchi (outreach)', 'Rajendra Institute of Medical Sciences'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'GATE', 'JPSC'],
@@ -1674,7 +1673,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ranchi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ranchi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ranchi\'s economy is anchored in Mining and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hundru Falls and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ranchi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ranchi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ranchi\'s hiring market.' },
       ]}),
-    city('Jamshedpur', 'East Singhbhum', '~6.3 lakh', 'tier2', {
+    city('Jamshedpur', 'East Singhbhum', 'tier2', {
       industries: 'Steel (Tata Steel), automotive, IT, education, engineering',
       topColleges: ['NIT Jamshedpur', 'XLRI', 'SRM University AP (regional)', 'Jamshedpur Women&apos;s College'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'XAT', 'GMAT'],
@@ -1688,7 +1687,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jamshedpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jamshedpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jamshedpur\'s economy is anchored in Steel (Tata Steel) and automotive, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Jubilee Park and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jamshedpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jamshedpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (Tata Steel). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jamshedpur\'s hiring market.' },
       ]}),
-    city('Dhanbad', 'Dhanbad', '~3.5 lakh', 'tier2', {
+    city('Dhanbad', 'Dhanbad', 'tier2', {
       industries: 'Coal (coal capital of India), power, mining, education',
       topColleges: ['IIT (ISM) Dhanbad', 'Government Polytechnic Dhanbad', 'BINIT Dhanbad'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'GATE', 'JPSC'],
@@ -1702,7 +1701,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dhanbad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dhanbad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dhanbad\'s economy is anchored in Coal (coal capital of India) and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Topchanchi Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dhanbad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dhanbad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal (coal capital of India). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dhanbad\'s hiring market.' },
       ]}),
-    city('Bokaro', 'Bokaro', '~5.2 lakh', 'tier2', {
+    city('Bokaro', 'Bokaro', 'tier2', {
       industries: 'Steel (Bokaro Steel Plant), power, education, cement',
       topColleges: ['Bokaro Institute of Technology', 'BVS College', 'Bokaro Steel Plant college'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'GATE', 'JPSC'],
@@ -1716,7 +1715,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bokaro different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bokaro service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bokaro\'s economy is anchored in Steel (Bokaro Steel Plant) and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bokaro Steel Plant and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bokaro use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bokaro cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (Bokaro Steel Plant). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bokaro\'s hiring market.' },
       ]}),
-    city('Deoghar', 'Deoghar', '~3.6 lakh', 'tier3', {
+    city('Deoghar', 'Deoghar', 'tier3', {
       industries: 'Tourism, education, agriculture, coal',
       topColleges: ['AIIMS Deoghar', 'Deoghar College', 'Rama Krishna Vivekananda College'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'JPSC'],
@@ -1730,7 +1729,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Deoghar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Deoghar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Deoghar\'s economy is anchored in Tourism and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Baidyanath Dham (Jyotirlinga) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Deoghar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Deoghar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Deoghar\'s hiring market.' },
       ]}),
-    city('Hazaribagh', 'Hazaribagh', '~2.5 lakh', 'tier3', {
+    city('Hazaribagh', 'Hazaribagh', 'tier3', {
       industries: 'Mining, power, cement, agriculture, education',
       topColleges: ['Hazaribagh College', 'St. Columba&apos;s College', 'Government Medical College Hazaribagh'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'CAT', 'JPSC'],
@@ -1744,7 +1743,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hazaribagh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hazaribagh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hazaribagh\'s economy is anchored in Mining and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hazaribagh National Park and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hazaribagh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hazaribagh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hazaribagh\'s hiring market.' },
       ]}),
-    city('Giridih', 'Giridih', '~1.6 lakh', 'tier3', {
+    city('Giridih', 'Giridih', 'tier3', {
       industries: 'Mining, mica, power, agriculture',
       topColleges: ['Giridih College', 'Khandoli Institute'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'JPSC'],
@@ -1758,7 +1757,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Giridih different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Giridih service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Giridih\'s economy is anchored in Mining and mica, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Parasnath hills (Shikharji) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Giridih use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Giridih cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Giridih\'s hiring market.' },
       ]}),
-    city('Chaibasa', 'West Singhbhum', '~1.1 lakh', 'tier3', {
+    city('Chaibasa', 'West Singhbhum', 'tier3', {
       industries: 'Mining, minerals, agriculture, forest produce',
       topColleges: ['Chaibasa College', 'West Singhbhum College'],
       topExams: ['JEE Main', 'NEET', 'JCECE', 'JPSC'],
@@ -1775,7 +1774,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'karnataka': [
-    city('Bengaluru', 'Bengaluru Urban', '~84.3 lakh', 'tier1', {
+    city('Bengaluru', 'Bengaluru Urban', 'tier1', {
       industries: 'IT & software, semiconductor, biotech, aerospace, fintech, e-commerce',
       topColleges: ['IISc', 'IIT Bangalore', 'Christ University', 'PES University', 'RVCE', 'BMS College', 'NLSIU'],
       topExams: ['JEE Main & Advanced', 'KCET', 'COMEDK', 'CAT', 'GATE', 'GRE/GMAT'],
@@ -1789,7 +1788,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bengaluru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bengaluru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bengaluru\'s economy is anchored in IT and software, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Cubbon Park and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bengaluru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bengaluru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bengaluru\'s hiring market.' },
       ]}),
-    city('Mysuru', 'Mysuru', '~10.1 lakh', 'tier2', {
+    city('Mysuru', 'Mysuru', 'tier2', {
       industries: 'Tourism, IT, silk, sandalwood, education, manufacturing',
       topColleges: ['University of Mysore', 'JSS Academy of Higher Education & Research', 'NIE Mysuru', 'MIT Thandavapura'],
       topExams: ['JEE Main', 'KCET', 'NEET', 'CAT', 'GATE', 'KAS'],
@@ -1803,7 +1802,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mysuru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mysuru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mysuru\'s economy is anchored in Tourism and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mysore Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mysuru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mysuru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mysuru\'s hiring market.' },
       ]}),
-    city('Hubli', 'Dharwad', '~9.4 lakh', 'tier2', {
+    city('Hubli', 'Dharwad', 'tier2', {
       industries: 'Cotton, textiles, education, agriculture, BFSI',
       topColleges: ['KLE Technological University', 'Karnatak University', 'Government Engineering College Hubli'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT', 'KAS'],
@@ -1817,7 +1816,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hubli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hubli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hubli\'s economy is anchored in Cotton and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chandramouleshwara temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hubli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hubli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hubli\'s hiring market.' },
       ]}),
-    city('Mangaluru', 'Dakshina Kannada', '~6.2 lakh', 'tier2', {
+    city('Mangaluru', 'Dakshina Kannada', 'tier2', {
       industries: 'Port, fisheries, banking (SyndicateBank), coffee, cashew, education',
       topColleges: ['NIT Karnataka', 'St. Aloysius College', 'SDM College of Engineering', 'Yenepoya University'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT', 'GATE'],
@@ -1831,7 +1830,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mangaluru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mangaluru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mangaluru\'s economy is anchored in Port and fisheries, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Panambur beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mangaluru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mangaluru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Port. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mangaluru\'s hiring market.' },
       ]}),
-    city('Belagavi', 'Belagavi', '~4.9 lakh', 'tier2', {
+    city('Belagavi', 'Belagavi', 'tier2', {
       industries: 'Sugar, leather, agriculture, military, education',
       topColleges: ['Visvesvaraya Technological University (VTU)', 'KLE Society&apos;s College of Engineering', 'Government Medical College Belagavi'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1845,7 +1844,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Belagavi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Belagavi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Belagavi\'s economy is anchored in Sugar and leather, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Belagavi Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Belagavi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Belagavi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Belagavi\'s hiring market.' },
       ]}),
-    city('Davanagere', 'Davanagere', '~4.4 lakh', 'tier3', {
+    city('Davanagere', 'Davanagere', 'tier3', {
       industries: 'Cotton, textiles, education, agriculture, power',
       topColleges: ['Bapuji Institute of Engineering & Technology', 'JJM Medical College', 'Government Science College Davanagere'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1859,7 +1858,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Davanagere different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Davanagere service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Davanagere\'s economy is anchored in Cotton and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Davanagere Cotton and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Davanagere use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Davanagere cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Davanagere\'s hiring market.' },
       ]}),
-    city('Bellary', 'Ballari', '~3.2 lakh', 'tier3', {
+    city('Bellary', 'Ballari', 'tier3', {
       industries: 'Iron ore mining, steel, power, cement, education',
       topColleges: ['Government College Bellary', 'Ballari Institute of Technology & Management', 'Government Medical College Ballari'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1873,7 +1872,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bellary different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bellary service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bellary\'s economy is anchored in Iron ore mining and steel, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ballari Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bellary use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bellary cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Iron ore mining. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bellary\'s hiring market.' },
       ]}),
-    city('Gulbarga', 'Kalaburagi', '~5.4 lakh', 'tier3', {
+    city('Gulbarga', 'Kalaburagi', 'tier3', {
       industries: 'Agriculture, cement, power, mining, education',
       topColleges: ['Karnatak University (regional)', 'Khaja Banda Nawaz University', 'Government Engineering College Kalaburagi'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1887,7 +1886,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gulbarga different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gulbarga service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gulbarga\'s economy is anchored in Agriculture and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gulbarga Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gulbarga use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gulbarga cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gulbarga\'s hiring market.' },
       ]}),
-    city('Shivamogga', 'Shivamogga', '~3.2 lakh', 'tier3', {
+    city('Shivamogga', 'Shivamogga', 'tier3', {
       industries: 'Areca, paddy, education, agriculture, cement',
       topColleges: ['Kuvempu University', 'Government Engineering College Shivamogga', 'Sharavathi Engineering College'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1901,7 +1900,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Shivamogga different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Shivamogga service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Shivamogga\'s economy is anchored in Areca and paddy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Shivamogga city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Shivamogga use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Shivamogga cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Areca. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Shivamogga\'s hiring market.' },
       ]}),
-    city('Tumakuru', 'Tumakuru', '~3.0 lakh', 'tier3', {
+    city('Tumakuru', 'Tumakuru', 'tier3', {
       industries: 'Coconut, areca, education, agriculture, power',
       topColleges: ['Siddhartha Academy', 'Government Engineering College Tumakuru', 'Shridevi Institute'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1915,7 +1914,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tumakuru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tumakuru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tumakuru\'s economy is anchored in Coconut and areca, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Siddara Betta and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tumakuru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tumakuru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coconut. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tumakuru\'s hiring market.' },
       ]}),
-    city('Raichur', 'Raichur', '~2.3 lakh', 'tier3', {
+    city('Raichur', 'Raichur', 'tier3', {
       industries: 'Power (RTPS), agriculture, cement, cotton, education',
       topColleges: ['Government College Raichur', 'Raichur Institute of Medical Sciences', 'SLN College of Engineering'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1929,7 +1928,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Raichur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Raichur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Raichur\'s economy is anchored in Power (RTPS) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Raichur Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Raichur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Raichur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Power (RTPS). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Raichur\'s hiring market.' },
       ]}),
-    city('Bijapur', 'Vijayapura', '~3.2 lakh', 'tier3', {
+    city('Bijapur', 'Vijayapura', 'tier3', {
       industries: 'Agriculture, sugar, cement, education, power',
       topColleges: ['B.L.D.E.A&apos;s Engineering College', 'Sharnbasva University', 'Al Ameen Medical College'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1943,7 +1942,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bijapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bijapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bijapur\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gol Gumbaz (world&apos;s second largest dome) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bijapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bijapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bijapur\'s hiring market.' },
       ]}),
-    city('Udupi', 'Udupi', '~1.6 lakh', 'tier3', {
+    city('Udupi', 'Udupi', 'tier3', {
       industries: 'Education, banking, agriculture, fisheries, IT',
       topColleges: ['Manipal Academy (nearby)', 'Sri Krishna Math', 'Government College Udupi', 'MIT Udupi'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET', 'CAT'],
@@ -1957,7 +1956,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Udupi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Udupi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Udupi\'s economy is anchored in Education and banking, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Krishna Math and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Udupi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Udupi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Udupi\'s hiring market.' },
       ]}),
-    city('Hospet', 'Vijayanagara', '~2.1 lakh', 'tier3', {
+    city('Hospet', 'Vijayanagara', 'tier3', {
       industries: 'Steel (JSW), mining, cement, power, tourism',
       topColleges: ['Government Engineering College Hospet', 'Vijayanagara Sri Krishnadevaraya University'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1971,7 +1970,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hospet different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hospet service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hospet\'s economy is anchored in Steel (JSW) and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hospet city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hospet use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hospet cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (JSW). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hospet\'s hiring market.' },
       ]}),
-    city('Gadag', 'Gadag', '~1.7 lakh', 'tier3', {
+    city('Gadag', 'Gadag', 'tier3', {
       industries: 'Agriculture, handloom, education, cotton',
       topColleges: ['Government Engineering College Gadag', 'Gadag College'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1985,7 +1984,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gadag different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gadag service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gadag\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Trikuteshwara temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gadag use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gadag cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gadag\'s hiring market.' },
       ]}),
-    city('Mandya', 'Mandya', '~1.4 lakh', 'tier3', {
+    city('Mandya', 'Mandya', 'tier3', {
       industries: 'Sugar, agriculture, sericulture, education',
       topColleges: ['Government College Mandya', 'Mandya Institute of Medical Sciences', 'PES Mandya'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -1999,7 +1998,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mandya different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mandya service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mandya\'s economy is anchored in Sugar and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from KRS Dam and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mandya use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mandya cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mandya\'s hiring market.' },
       ]}),
-    city('Kolar', 'Kolar', '~1.4 lakh', 'tier3', {
+    city('Kolar', 'Kolar', 'tier3', {
       industries: 'Sericulture, dairy, agriculture, mining, education',
       topColleges: ['Government Arts & Science College Kolar', 'Sri Devaraj Urs Medical College (nearby)'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -2013,7 +2012,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kolar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kolar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kolar\'s economy is anchored in Sericulture and dairy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kolar Gold Fields (KGF) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kolar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kolar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sericulture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kolar\'s hiring market.' },
       ]}),
-    city('Chikkamagaluru', 'Chikkamagaluru', '~1.2 lakh', 'tier3', {
+    city('Chikkamagaluru', 'Chikkamagaluru', 'tier3', {
       industries: 'Coffee, agriculture, education, tourism',
       topColleges: ['Government College Chikkamagaluru', 'IIT Dharwad (regional)'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -2027,7 +2026,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chikkamagaluru different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chikkamagaluru service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chikkamagaluru\'s economy is anchored in Coffee and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Baba Budangiri range and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chikkamagaluru use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chikkamagaluru cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coffee. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chikkamagaluru\'s hiring market.' },
       ]}),
-    city('Hassan', 'Hassan', '~1.5 lakh', 'tier3', {
+    city('Hassan', 'Hassan', 'tier3', {
       industries: 'Agriculture, sugar, education, dairy',
       topColleges: ['Government Engineering College Hassan', 'Hassan Institute of Medical Sciences', 'Malnad College of Engineering'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -2041,7 +2040,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hassan different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hassan service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hassan\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hasanamba temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hassan use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hassan cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hassan\'s hiring market.' },
       ]}),
-    city('Karwar', 'Uttara Kannada', '~0.7 lakh', 'tier3', {
+    city('Karwar', 'Uttara Kannada', 'tier3', {
       industries: 'Naval base, port, fisheries, agriculture, education',
       topColleges: ['Government College Karwar', 'Karnatak University (regional)'],
       topExams: ['JEE Main', 'KCET', 'COMEDK', 'NEET'],
@@ -2058,7 +2057,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'kerala': [
-    city('Thiruvananthapuram', 'Thiruvananthapuram', '~7.4 lakh', 'tier2', {
+    city('Thiruvananthapuram', 'Thiruvananthapuram', 'tier2', {
       industries: 'IT (Technopark), space research (ISRO), healthcare, tourism, education',
       topColleges: ['University of Kerala', 'IIT Palakkad (regional)', 'CET Thiruvananthapuram', 'LBS Institute', 'Mar Ivanios College'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT', 'GATE', 'ISRO exams'],
@@ -2072,7 +2071,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Thiruvananthapuram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Thiruvananthapuram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Thiruvananthapuram\'s economy is anchored in IT (Technopark) and space research (ISRO), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Technopark and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Thiruvananthapuram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Thiruvananthapuram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT (Technopark). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Thiruvananthapuram\'s hiring market.' },
       ]}),
-    city('Kochi', 'Ernakulam', '~6.8 lakh', 'tier2', {
+    city('Kochi', 'Ernakulam', 'tier2', {
       industries: 'IT, marine & shipping, healthcare, tourism, banking, spices trade',
       topColleges: ['Cochin University of Science and Technology (CUSAT)', 'IIM Kozhikode (Kochi outreach)', 'SCMS Group', 'Model Engineering College'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT', 'GATE', 'GRE/GMAT'],
@@ -2086,7 +2085,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kochi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kochi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kochi\'s economy is anchored in IT and marine, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Marine Drive and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kochi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kochi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kochi\'s hiring market.' },
       ]}),
-    city('Kozhikode', 'Kozhikode', '~6.1 lakh', 'tier2', {
+    city('Kozhikode', 'Kozhikode', 'tier2', {
       industries: 'Spices, timber, education, banking, IT, fisheries',
       topColleges: ['IIITM-K', 'NIT Calicut', 'Government Engineering College Kozhikode', 'Calicut University', 'Malabar Christian College'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT', 'GATE', 'GRE'],
@@ -2100,7 +2099,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kozhikode different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kozhikode service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kozhikode\'s economy is anchored in Spices and timber, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Beypore and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kozhikode use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kozhikode cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Spices. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kozhikode\'s hiring market.' },
       ]}),
-    city('Thrissur', 'Thrissur', '~3.2 lakh', 'tier2', {
+    city('Thrissur', 'Thrissur', 'tier2', {
       industries: 'Gold (Thrissur gold market), banking, education, IT, healthcare',
       topColleges: ['Government Engineering College Thrissur', 'St. Thomas College', 'Jubilee Mission Medical College'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT', 'GATE'],
@@ -2114,7 +2113,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Thrissur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Thrissur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Thrissur\'s economy is anchored in Gold (Thrissur gold market) and banking, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vadakkunnathan temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Thrissur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Thrissur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Gold (Thrissur gold market). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Thrissur\'s hiring market.' },
       ]}),
-    city('Kollam', 'Kollam', '~3.5 lakh', 'tier2', {
+    city('Kollam', 'Kollam', 'tier2', {
       industries: 'Cashew, fisheries, IT, healthcare, tourism',
       topColleges: ['Government Engineering College Kollam', 'Kerala University (regional)', 'TKM College of Engineering'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT', 'GATE'],
@@ -2128,7 +2127,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kollam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kollam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kollam\'s economy is anchored in Cashew and fisheries, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ashtamudi Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kollam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kollam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cashew. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kollam\'s hiring market.' },
       ]}),
-    city('Alappuzha', 'Alappuzha', '~2.4 lakh', 'tier3', {
+    city('Alappuzha', 'Alappuzha', 'tier3', {
       industries: 'Tourism (houseboats), coir, fisheries, healthcare, education',
       topColleges: ['Government Engineering College Alappuzha', 'Cochin University of Science and Technology (regional)'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT'],
@@ -2142,7 +2141,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Alappuzha different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Alappuzha service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Alappuzha\'s economy is anchored in Tourism (houseboats) and coir, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Alappuzha beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Alappuzha use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Alappuzha cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (houseboats). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Alappuzha\'s hiring market.' },
       ]}),
-    city('Kannur', 'Kannur', '~5.6 lakh', 'tier3', {
+    city('Kannur', 'Kannur', 'tier3', {
       industries: 'Weaving, handloom, beedi, fisheries, education, healthcare',
       topColleges: ['Government Engineering College Kannur', 'Kannur University', 'Pariyaram Medical College'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT'],
@@ -2156,7 +2155,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kannur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kannur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kannur\'s economy is anchored in Weaving and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from St. Angelo&apos;s Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kannur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kannur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Weaving. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kannur\'s hiring market.' },
       ]}),
-    city('Palakkad', 'Palakkad', '~1.4 lakh', 'tier3', {
+    city('Palakkad', 'Palakkad', 'tier3', {
       industries: 'Rice, agriculture, education, healthcare, granite',
       topColleges: ['IIT Palakkad (nearby)', 'Government Engineering College Palakkad', 'Calicut University (regional)'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT'],
@@ -2170,7 +2169,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Palakkad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Palakkad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Palakkad\'s economy is anchored in Rice and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Palakkad Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Palakkad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Palakkad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Palakkad\'s hiring market.' },
       ]}),
-    city('Kottayam', 'Kottayam', '~1.4 lakh', 'tier3', {
+    city('Kottayam', 'Kottayam', 'tier3', {
       industries: 'Rubber, spices, education (CMS College), book publishing, banking',
       topColleges: ['CMS College Kottayam', 'Government Medical College Kottayam', 'IIMK (regional)'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT'],
@@ -2184,7 +2183,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kottayam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kottayam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kottayam\'s economy is anchored in Rubber and spices, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vembanad Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kottayam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kottayam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rubber. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kottayam\'s hiring market.' },
       ]}),
-    city('Malappuram', 'Malappuram', '~1.7 lakh', 'tier3', {
+    city('Malappuram', 'Malappuram', 'tier3', {
       industries: 'Education, remittance, food processing, trading, handloom',
       topColleges: ['MES Engineering College', 'Calicut University (regional)', 'Government College Malappuram'],
       topExams: ['JEE Main', 'KEAM', 'NEET', 'CAT'],
@@ -2198,7 +2197,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Malappuram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Malappuram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Malappuram\'s economy is anchored in Education and remittance, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kottakkunnu and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Malappuram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Malappuram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Malappuram\'s hiring market.' },
       ]}),
-    city('Kasaragod', 'Kasaragod', '~0.7 lakh', 'tier3', {
+    city('Kasaragod', 'Kasaragod', 'tier3', {
       industries: 'Rubber, cashew, fisheries, handloom, education',
       topColleges: ['Government College Kasaragod', 'CUSAT (regional)'],
       topExams: ['JEE Main', 'KEAM', 'NEET'],
@@ -2215,7 +2214,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'madhya-pradesh': [
-    city('Bhopal', 'Bhopal', '~18.8 lakh', 'tier2', {
+    city('Bhopal', 'Bhopal', 'tier2', {
       industries: 'Heavy electrical, pharmaceuticals, IT, education, manufacturing',
       topColleges: ['IIT Bhopal', 'MANIT Bhopal', 'AIIMS Bhopal', 'Barkatullah University', 'IIFM Bhopal', 'IISER Bhopal'],
       topExams: ['JEE Main & Advanced', 'NEET', 'MP PAT', 'CAT', 'IPMAT', 'UPSC CSE'],
@@ -2229,7 +2228,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhopal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhopal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhopal\'s economy is anchored in Heavy electrical and pharmaceuticals, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Upper Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhopal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhopal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Heavy electrical. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhopal\'s hiring market.' },
       ]}),
-    city('Indore', 'Indore', '~22.7 lakh', 'tier2', {
+    city('Indore', 'Indore', 'tier2', {
       industries: 'IT, pharma, textile, manufacturing, education, finance',
       topColleges: ['IIT Indore', 'IIM Indore', 'DAVV', 'Medicaps University', 'Sage University', 'SGSITS'],
       topExams: ['JEE Main & Advanced', 'NEET', 'MP PAT/MP PVFT', 'CAT', 'IPMAT', 'CA Foundation'],
@@ -2243,7 +2242,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Indore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Indore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Indore\'s economy is anchored in IT and pharma, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rajwada and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Indore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Indore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Indore\'s hiring market.' },
       ]}),
-    city('Jabalpur', 'Jabalpur', '~12.6 lakh', 'tier2', {
+    city('Jabalpur', 'Jabalpur', 'tier2', {
       industries: 'Defence (gun factory), marble, education, electric goods, ordnance',
       topColleges: ['IIT (regional)', 'Rani Durgavati University', 'Jabalpur Engineering College', 'Netaji Subhash Chandra Bose Medical College'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT', 'GATE', 'MPPSC'],
@@ -2257,7 +2256,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jabalpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jabalpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jabalpur\'s economy is anchored in Defence (gun factory) and marble, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bhedaghat (marble rocks) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jabalpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jabalpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Defence (gun factory). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jabalpur\'s hiring market.' },
       ]}),
-    city('Gwalior', 'Gwalior', '~11.5 lakh', 'tier2', {
+    city('Gwalior', 'Gwalior', 'tier2', {
       industries: 'IT, textiles, chemicals, cement, education, tourism',
       topColleges: ['IIITM Gwalior', 'Jiwaji University', 'IIT (regional)', 'Government Engineering College Gwalior', 'Gajra Raja Medical College'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT', 'GATE', 'MPPSC'],
@@ -2271,7 +2270,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gwalior different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gwalior service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gwalior\'s economy is anchored in IT and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gwalior Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gwalior use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gwalior cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gwalior\'s hiring market.' },
       ]}),
-    city('Ujjain', 'Ujjain', '~5.1 lakh', 'tier3', {
+    city('Ujjain', 'Ujjain', 'tier3', {
       industries: 'Tourism (Kumbh Mela), agriculture, education, handloom',
       topColleges: ['Vikram University', 'Government Engineering College Ujjain', 'Ujjain Engineering College'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT', 'MPPSC'],
@@ -2285,7 +2284,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ujjain different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ujjain service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ujjain\'s economy is anchored in Tourism (Kumbh Mela) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mahakaleshwar temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ujjain use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ujjain cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Kumbh Mela). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ujjain\'s hiring market.' },
       ]}),
-    city('Sagar', 'Sagar', '~3.7 lakh', 'tier3', {
+    city('Sagar', 'Sagar', 'tier3', {
       industries: 'Agriculture, education, cement, paper, handloom',
       topColleges: ['Dr. Hari Singh Gour University', 'Government Engineering College Sagar', 'BUNDELKHAND MEDICAL COLLEGE'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT', 'MPPSC'],
@@ -2299,7 +2298,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sagar\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sagar Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sagar\'s hiring market.' },
       ]}),
-    city('Dewas', 'Dewas', '~2.7 lakh', 'tier3', {
+    city('Dewas', 'Dewas', 'tier3', {
       industries: 'Agriculture, paper, chemicals, manufacturing',
       topColleges: ['Government College Dewas', 'Malwa Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT'],
@@ -2313,7 +2312,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dewas different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dewas service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dewas\'s economy is anchored in Agriculture and paper, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dewas city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dewas use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dewas cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dewas\'s hiring market.' },
       ]}),
-    city('Satna', 'Satna', '~3.5 lakh', 'tier3', {
+    city('Satna', 'Satna', 'tier3', {
       industries: 'Cement, mining, power, agriculture',
       topColleges: ['Government College Satna', 'AKS University', 'Swami Vivekanand University'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT'],
@@ -2327,7 +2326,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Satna different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Satna service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Satna\'s economy is anchored in Cement and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chitrakoot (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Satna use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Satna cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Satna\'s hiring market.' },
       ]}),
-    city('Ratlam', 'Ratlam', '~2.7 lakh', 'tier3', {
+    city('Ratlam', 'Ratlam', 'tier3', {
       industries: 'Gold, chemicals, agriculture, gold refinery',
       topColleges: ['Government College Ratlam', 'Medi-Caps University (regional)'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT'],
@@ -2341,7 +2340,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ratlam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ratlam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ratlam\'s economy is anchored in Gold and chemicals, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ratlam district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ratlam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ratlam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Gold. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ratlam\'s hiring market.' },
       ]}),
-    city('Rewa', 'Rewa', '~2.4 lakh', 'tier3', {
+    city('Rewa', 'Rewa', 'tier3', {
       industries: 'Cement, power, agriculture, education',
       topColleges: ['APS University', 'Government Engineering College Rewa', 'Rewa Engineering College'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT', 'MPPSC'],
@@ -2355,7 +2354,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rewa different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rewa service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rewa\'s economy is anchored in Cement and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rewa fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rewa use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rewa cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rewa\'s hiring market.' },
       ]}),
-    city('Chhindwara', 'Chhindwara', '~1.8 lakh', 'tier3', {
+    city('Chhindwara', 'Chhindwara', 'tier3', {
       industries: 'Coal (Pench), cotton, agriculture, mining',
       topColleges: ['Government College Chhindwara', 'Priyadarshini College of Engineering'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT'],
@@ -2369,7 +2368,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chhindwara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chhindwara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chhindwara\'s economy is anchored in Coal (Pench) and cotton, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Pench Tiger Reserve (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chhindwara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chhindwara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal (Pench). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chhindwara\'s hiring market.' },
       ]}),
-    city('Khandwa', 'Khandwa', '~2.0 lakh', 'tier3', {
+    city('Khandwa', 'Khandwa', 'tier3', {
       industries: 'Agriculture, cotton, oilseeds, power',
       topColleges: ['Government College Khandwa', 'Bhusawal Arts College (regional)'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'CAT'],
@@ -2383,7 +2382,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Khandwa different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Khandwa service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Khandwa\'s economy is anchored in Agriculture and cotton, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Omkareshwar (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Khandwa use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Khandwa cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Khandwa\'s hiring market.' },
       ]}),
-    city('Burhanpur', 'Burhanpur', '~0.7 lakh', 'tier3', {
+    city('Burhanpur', 'Burhanpur', 'tier3', {
       industries: 'Textiles, power, agriculture, handloom',
       topColleges: ['Government College Burhanpur', 'Burhanpur Engineering College'],
       topExams: ['JEE Main', 'NEET', 'MP PAT'],
@@ -2397,7 +2396,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Burhanpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Burhanpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Burhanpur\'s economy is anchored in Textiles and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Asirgarh fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Burhanpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Burhanpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Burhanpur\'s hiring market.' },
       ]}),
-    city('Singrauli', 'Singrauli', '~2.2 lakh', 'tier3', {
+    city('Singrauli', 'Singrauli', 'tier3', {
       industries: 'Coal, power (NTPC, Neyveli), mining',
       topColleges: ['Government College Singrauli', 'IIT (regional)'],
       topExams: ['JEE Main', 'NEET', 'MP PAT', 'GATE'],
@@ -2414,7 +2413,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'maharashtra': [
-    city('Mumbai', 'Mumbai', '~1.25 crore', 'tier1', {
+    city('Mumbai', 'Mumbai', 'tier1', {
       industries: 'BFSI, IT, media & entertainment, pharma, shipping & logistics, real estate',
       topColleges: ['IIT Bombay', 'University of Mumbai', 'St. Xavier&apos;s College', 'TISS Mumbai', 'JBIMS', 'KJ Somaiya'],
       topExams: ['JEE Main & Advanced', 'MHT CET', 'NEET', 'CAT', 'CLAT', 'NID/NIFT'],
@@ -2428,7 +2427,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mumbai different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mumbai service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mumbai\'s economy is anchored in BFSI and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gateway of India and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mumbai use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mumbai cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in BFSI. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mumbai\'s hiring market.' },
       ]}),
-    city('Pune', 'Pune', '~31 lakh', 'tier1', {
+    city('Pune', 'Pune', 'tier1', {
       industries: 'IT services & product, automobile, edtech, defence, manufacturing, education',
       topColleges: ['COEP', 'Fergusson College', 'Symbiosis', 'MIT-WPU', 'Pune University', 'IITM'],
       topExams: ['JEE Main & Advanced', 'MHT CET', 'NEET', 'CAT', 'XAT', 'SNAP'],
@@ -2442,7 +2441,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Pune different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Pune service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Pune\'s economy is anchored in IT and automobile, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Aga Khan Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Pune use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Pune cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Pune\'s hiring market.' },
       ]}),
-    city('Nagpur', 'Nagpur', '~24 lakh', 'tier2', {
+    city('Nagpur', 'Nagpur', 'tier2', {
       industries: 'Logistics, healthcare, education, IT, manufacturing, oranges',
       topColleges: ['VNIT Nagpur', 'AIIMS Nagpur', 'RTMNU', 'MIT Nagpur', 'IIM Nagpur'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC', 'UPSC CSE'],
@@ -2456,7 +2455,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nagpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nagpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nagpur\'s economy is anchored in Logistics and healthcare, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Deekshabhoomi and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nagpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nagpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Logistics. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nagpur\'s hiring market.' },
       ]}),
-    city('Nashik', 'Nashik', '~18 lakh', 'tier2', {
+    city('Nashik', 'Nashik', 'tier2', {
       industries: 'Wine, agriculture, IT, pharmaceuticals, engineering, Kumbh Mela tourism',
       topColleges: ['Maharashtra University of Health Sciences (regional)', 'Sandip University', 'KK Wagh Engineering', 'Government Medical College Nashik'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'CMAT'],
@@ -2470,7 +2469,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nashik different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nashik service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nashik\'s economy is anchored in Wine and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Trimbakeshwar (Jyotirlinga) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nashik use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nashik cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Wine. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nashik\'s hiring market.' },
       ]}),
-    city('Aurangabad', 'Chhatrapati Sambhajinagar', '~12 lakh', 'tier2', {
+    city('Aurangabad', 'Chhatrapati Sambhajinagar', 'tier2', {
       industries: 'Automobile, pharmaceuticals, tourism (Ajanta-Ellora), agriculture, education',
       topColleges: ['Dr. Babasaheb Ambedkar Marathwada University', 'Government Engineering College Aurangabad', 'MGM University', 'MGM Medical College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC', 'UPSC CSE'],
@@ -2484,7 +2483,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Aurangabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Aurangabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Aurangabad\'s economy is anchored in Automobile and pharmaceuticals, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ajanta & Ellora Caves (UNESCO) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Aurangabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Aurangabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Automobile. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Aurangabad\'s hiring market.' },
       ]}),
-    city('Thane', 'Thane', '~18 lakh', 'tier2', {
+    city('Thane', 'Thane', 'tier2', {
       industries: 'IT, manufacturing, retail, healthcare, real estate, BFSI',
       topColleges: ['KC College of Engineering', 'VJTI Mumbai (regional)', 'A.P. Shah Institute of Technology'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'CMAT'],
@@ -2498,7 +2497,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Thane different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Thane service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Thane\'s economy is anchored in IT and manufacturing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Upvan Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Thane use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Thane cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Thane\'s hiring market.' },
       ]}),
-    city('Kolhapur', 'Kolhapur', '~5.5 lakh', 'tier3', {
+    city('Kolhapur', 'Kolhapur', 'tier3', {
       industries: 'Sugar, leather, jaggery, foundry, education, tourism',
       topColleges: ['Shivaji University', 'Government Engineering College Kolhapur', 'D.Y. Patil Education Society'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2512,7 +2511,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kolhapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kolhapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kolhapur\'s economy is anchored in Sugar and leather, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mahalakshmi temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kolhapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kolhapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kolhapur\'s hiring market.' },
       ]}),
-    city('Solapur', 'Solapur', '~9.5 lakh', 'tier3', {
+    city('Solapur', 'Solapur', 'tier3', {
       industries: 'Textiles, beedi, sugar, agriculture, power',
       topColleges: ['Solapur University', 'Government Engineering College Solapur', 'WIT Solapur'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT'],
@@ -2526,7 +2525,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Solapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Solapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Solapur\'s economy is anchored in Textiles and beedi, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Siddheshwar temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Solapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Solapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Solapur\'s hiring market.' },
       ]}),
-    city('Amravati', 'Amravati', '~6.5 lakh', 'tier3', {
+    city('Amravati', 'Amravati', 'tier3', {
       industries: 'Cotton, agriculture, education, power',
       topColleges: ['Sant Gadge Baba Amravati University', 'Government Engineering College Amravati', 'P.R. Pote College of Engineering'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2540,7 +2539,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Amravati different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Amravati service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Amravati\'s economy is anchored in Cotton and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ambadevi temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Amravati use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Amravati cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Amravati\'s hiring market.' },
       ]}),
-    city('Nanded', 'Nanded', '~5.5 lakh', 'tier3', {
+    city('Nanded', 'Nanded', 'tier3', {
       industries: 'Agriculture, textiles, education, power',
       topColleges: ['Swami Ramanand Teerth Marathwada University', 'Government Engineering College Nanded', 'MGM Medical College Nanded'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2554,7 +2553,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nanded different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nanded service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nanded\'s economy is anchored in Agriculture and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hazur Sahib (Sikh Gurudwara) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nanded use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nanded cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nanded\'s hiring market.' },
       ]}),
-    city('Akola', 'Akola', '~4.3 lakh', 'tier3', {
+    city('Akola', 'Akola', 'tier3', {
       industries: 'Cotton, dal, oil, agriculture, education',
       topColleges: ['Sant Gadge Baba Amravati University (regional)', 'Government Engineering College Akola', 'Dr. Panjabrao Deshmukh Krishi Vidyapeeth (regional)'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2568,7 +2567,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Akola different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Akola service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Akola\'s economy is anchored in Cotton and dal, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Narnala fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Akola use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Akola cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Akola\'s hiring market.' },
       ]}),
-    city('Latur', 'Latur', '~4 lakh', 'tier3', {
+    city('Latur', 'Latur', 'tier3', {
       industries: 'Oilseeds, agriculture, education, power',
       topColleges: ['Swami Ramanand Teerth Marathwada University (regional)', 'Government Engineering College Latur', 'MIMSR Medical College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2582,7 +2581,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Latur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Latur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Latur\'s economy is anchored in Oilseeds and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Latur district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Latur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Latur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Oilseeds. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Latur\'s hiring market.' },
       ]}),
-    city('Dhule', 'Dhule', '~3.8 lakh', 'tier3', {
+    city('Dhule', 'Dhule', 'tier3', {
       industries: 'Cotton, oil, agriculture, power, education',
       topColleges: ['North Maharashtra University (regional)', 'Government Engineering College Dhule', 'SSVP College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2596,7 +2595,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dhule different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dhule service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dhule\'s economy is anchored in Cotton and oil, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Laling fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dhule use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dhule cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dhule\'s hiring market.' },
       ]}),
-    city('Jalgaon', 'Jalgaon', '~4.6 lakh', 'tier3', {
+    city('Jalgaon', 'Jalgaon', 'tier3', {
       industries: 'Banana, gold, agriculture, education, power',
       topColleges: ['North Maharashtra University (regional)', 'Government Engineering College Jalgaon', 'KCES&apos;s Institute of Management'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2610,7 +2609,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jalgaon different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jalgaon service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jalgaon\'s economy is anchored in Banana and gold, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Jalgaon city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jalgaon use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jalgaon cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Banana. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jalgaon\'s hiring market.' },
       ]}),
-    city('Nandurbar', 'Nandurbar', '~1.1 lakh', 'tier3', {
+    city('Nandurbar', 'Nandurbar', 'tier3', {
       industries: 'Agriculture, forest produce, tribal handloom, power',
       topColleges: ['Government College Nandurbar', 'SSVPS College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2624,7 +2623,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nandurbar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nandurbar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nandurbar\'s economy is anchored in Agriculture and forest produce, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nandurbar district HQ and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nandurbar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nandurbar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nandurbar\'s hiring market.' },
       ]}),
-    city('Sangli', 'Sangli', '~5.1 lakh', 'tier3', {
+    city('Sangli', 'Sangli', 'tier3', {
       industries: 'Sugar, turmeric, grapes, agriculture, engineering',
       topColleges: ['Shivaji University (regional)', 'Government Engineering College Sangli', 'Sangli Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2638,7 +2637,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sangli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sangli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sangli\'s economy is anchored in Sugar and turmeric, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sangli city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sangli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sangli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sangli\'s hiring market.' },
       ]}),
-    city('Satara', 'Satara', '~3.3 lakh', 'tier3', {
+    city('Satara', 'Satara', 'tier3', {
       industries: 'Sugar, agriculture, tourism, education',
       topColleges: ['Y.C. Institute of Science', 'Government Engineering College Satara', 'KBP College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2652,7 +2651,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Satara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Satara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Satara\'s economy is anchored in Sugar and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ajinkyatara fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Satara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Satara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Satara\'s hiring market.' },
       ]}),
-    city('Ratnagiri', 'Ratnagiri', '~0.8 lakh', 'tier3', {
+    city('Ratnagiri', 'Ratnagiri', 'tier3', {
       industries: 'Mango (Alphonso), fishing, port, agriculture, education',
       topColleges: ['Government College Ratnagiri', 'Finolex Academy'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2666,7 +2665,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ratnagiri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ratnagiri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ratnagiri\'s economy is anchored in Mango (Alphonso) and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ratnadurg fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ratnagiri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ratnagiri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mango (Alphonso). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ratnagiri\'s hiring market.' },
       ]}),
-    city('Sindhudurg', 'Sindhudurg', '~0.5 lakh', 'tier3', {
+    city('Sindhudurg', 'Sindhudurg', 'tier3', {
       industries: 'Mango, cashew, fishing, tourism, agriculture',
       topColleges: ['Government College Sindhudurg', 'Shivaji University (regional)'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2680,7 +2679,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sindhudurg different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sindhudurg service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sindhudurg\'s economy is anchored in Mango and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sindhudurg fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sindhudurg use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sindhudurg cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mango. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sindhudurg\'s hiring market.' },
       ]}),
-    city('Osmanabad', 'Dharashiv', '~1.2 lakh', 'tier3', {
+    city('Osmanabad', 'Dharashiv', 'tier3', {
       industries: 'Agriculture, power, education, cement',
       topColleges: ['Government College Osmanabad', 'Terna Medical College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2694,7 +2693,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Osmanabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Osmanabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Osmanabad\'s economy is anchored in Agriculture and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Osmanabad city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Osmanabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Osmanabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Osmanabad\'s hiring market.' },
       ]}),
-    city('Parbhani', 'Parbhani', '~3 lakh', 'tier3', {
+    city('Parbhani', 'Parbhani', 'tier3', {
       industries: 'Agriculture, education, power',
       topColleges: ['Vasantrao Naik Marathwada Agricultural University', 'Government Engineering College Parbhani', 'Nanded University (regional)'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT', 'MPSC'],
@@ -2708,7 +2707,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Parbhani different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Parbhani service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Parbhani\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Marathwada University and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Parbhani use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Parbhani cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Parbhani\'s hiring market.' },
       ]}),
-    city('Beed', 'Beed', '~1.4 lakh', 'tier3', {
+    city('Beed', 'Beed', 'tier3', {
       industries: 'Agriculture, sugar, education, power',
       topColleges: ['Government College Beed', 'Beed Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2722,7 +2721,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Beed different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Beed service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Beed\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Beed city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Beed use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Beed cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Beed\'s hiring market.' },
       ]}),
-    city('Yavatmal', 'Yavatmal', '~1.2 lakh', 'tier3', {
+    city('Yavatmal', 'Yavatmal', 'tier3', {
       industries: 'Cotton, agriculture, power, education',
       topColleges: ['Government College Yavatmal', 'Shivaji Science College', 'Yavatmal Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2736,7 +2735,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Yavatmal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Yavatmal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Yavatmal\'s economy is anchored in Cotton and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Yavatmal city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Yavatmal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Yavatmal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Yavatmal\'s hiring market.' },
       ]}),
-    city('Wardha', 'Wardha', '~0.7 lakh', 'tier3', {
+    city('Wardha', 'Wardha', 'tier3', {
       industries: 'Agriculture, cotton, education, power',
       topColleges: ['Government College Wardha', 'Bajaj Chandrapur Polytechnic'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2750,7 +2749,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Wardha different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Wardha service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Wardha\'s economy is anchored in Agriculture and cotton, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sevagram Ashram (Gandhi) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Wardha use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Wardha cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Wardha\'s hiring market.' },
       ]}),
-    city('Chandrapur', 'Chandrapur', '~3.6 lakh', 'tier3', {
+    city('Chandrapur', 'Chandrapur', 'tier3', {
       industries: 'Coal, power, cement, education',
       topColleges: ['Government College Chandrapur', 'Chandrapur Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'GATE', 'MPSC'],
@@ -2764,7 +2763,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chandrapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chandrapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chandrapur\'s economy is anchored in Coal and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tadoba Andhari Tiger Reserve (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chandrapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chandrapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chandrapur\'s hiring market.' },
       ]}),
-    city('Gadchiroli', 'Gadchiroli', '~0.6 lakh', 'tier3', {
+    city('Gadchiroli', 'Gadchiroli', 'tier3', {
       industries: 'Forest produce, agriculture, mining, education',
       topColleges: ['Government College Gadchiroli', 'Gadchiroli Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2778,7 +2777,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gadchiroli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gadchiroli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gadchiroli\'s economy is anchored in Forest produce and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tipagarh and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gadchiroli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gadchiroli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Forest produce. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gadchiroli\'s hiring market.' },
       ]}),
-    city('Bhandara', 'Bhandara', '~0.9 lakh', 'tier3', {
+    city('Bhandara', 'Bhandara', 'tier3', {
       industries: 'Rice, mining, power, education',
       topColleges: ['Government College Bhandara', 'Bhandara Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2792,7 +2791,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhandara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhandara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhandara\'s economy is anchored in Rice and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bhandara city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhandara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhandara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhandara\'s hiring market.' },
       ]}),
-    city('Gondia', 'Gondia', '~1.4 lakh', 'tier3', {
+    city('Gondia', 'Gondia', 'tier3', {
       industries: 'Rice, agriculture, mining, education',
       topColleges: ['Government College Gondia', 'MIET Gondia', 'Gondia Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2806,7 +2805,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gondia different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gondia service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gondia\'s economy is anchored in Rice and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gondia city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gondia use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gondia cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Rice. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gondia\'s hiring market.' },
       ]}),
-    city('Washim', 'Washim', '~0.8 lakh', 'tier3', {
+    city('Washim', 'Washim', 'tier3', {
       industries: 'Agriculture, education, power, mining',
       topColleges: ['Government College Washim', 'Washim Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2820,7 +2819,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Washim different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Washim service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Washim\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Washim city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Washim use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Washim cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Washim\'s hiring market.' },
       ]}),
-    city('Hingoli', 'Hingoli', '~0.9 lakh', 'tier3', {
+    city('Hingoli', 'Hingoli', 'tier3', {
       industries: 'Agriculture, education, power, mining',
       topColleges: ['Government College Hingoli', 'Hingoli Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2834,7 +2833,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hingoli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hingoli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hingoli\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hingoli city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hingoli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hingoli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hingoli\'s hiring market.' },
       ]}),
-    city('Palghar', 'Palghar', '~0.7 lakh', 'tier3', {
+    city('Palghar', 'Palghar', 'tier3', {
       industries: 'Pharma, fishing, agriculture, education',
       topColleges: ['Government College Palghar', 'St. John College of Engineering (regional)'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2848,7 +2847,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Palghar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Palghar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Palghar\'s economy is anchored in Pharma and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Palghar city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Palghar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Palghar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Pharma. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Palghar\'s hiring market.' },
       ]}),
-    city('Raigad', 'Raigad', '~0.5 lakh', 'tier3', {
+    city('Raigad', 'Raigad', 'tier3', {
       industries: 'Agriculture, fishing, port, education, tourism',
       topColleges: ['Government College Raigad', 'Raigad Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'MPSC'],
@@ -2862,7 +2861,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Raigad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Raigad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Raigad\'s economy is anchored in Agriculture and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Raigad Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Raigad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Raigad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Raigad\'s hiring market.' },
       ]}),
-    city('Mumbai Suburban', 'Mumbai Suburban', '~93 lakh', 'tier1', {
+    city('Mumbai Suburban', 'Mumbai Suburban', 'tier1', {
       industries: 'BFSI, IT, media, pharma, real estate, retail',
       topColleges: ['IIT Bombay', 'VJTI', 'Mithibai College', 'Wilson College', 'KC College'],
       topExams: ['JEE Main & Advanced', 'MHT CET', 'NEET', 'CAT', 'CLAT'],
@@ -2876,7 +2875,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mumbai Suburban different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mumbai Suburban service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mumbai Suburban\'s economy is anchored in BFSI and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Andheri and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mumbai Suburban use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mumbai Suburban cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in BFSI. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mumbai Suburban\'s hiring market.' },
       ]}),
-    city('Vasai-Virar', 'Palghar', '~21 lakh', 'tier3', {
+    city('Vasai-Virar', 'Palghar', 'tier3', {
       industries: 'Pharma, fishing, manufacturing, education',
       topColleges: ['St. John College of Engineering', 'Viva Institute', 'Royal College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET'],
@@ -2890,7 +2889,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vasai-Virar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vasai-Virar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vasai-Virar\'s economy is anchored in Pharma and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vasai Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vasai-Virar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vasai-Virar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Pharma. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vasai-Virar\'s hiring market.' },
       ]}),
-    city('Kalyan-Dombivli', 'Thane', '~12 lakh', 'tier2', {
+    city('Kalyan-Dombivli', 'Thane', 'tier2', {
       industries: 'Manufacturing, IT, retail, real estate, transport',
       topColleges: ['KC College of Engineering', 'Lokmanya Tilak College', 'AIMS'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT'],
@@ -2904,7 +2903,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kalyan-Dombivli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kalyan-Dombivli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kalyan-Dombivli\'s economy is anchored in Manufacturing and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Durgadi Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kalyan-Dombivli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kalyan-Dombivli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kalyan-Dombivli\'s hiring market.' },
       ]}),
-    city('Mira-Bhayandar', 'Thane', '~8 lakh', 'tier3', {
+    city('Mira-Bhayandar', 'Thane', 'tier3', {
       industries: 'Real estate, retail, BFSI, education, healthcare',
       topColleges: ['Kashibai Navale College', 'Royal College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT'],
@@ -2918,7 +2917,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mira-Bhayandar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mira-Bhayandar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mira-Bhayandar\'s economy is anchored in Real estate and retail, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Global Vipassana Pagoda and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mira-Bhayandar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mira-Bhayandar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Real estate. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mira-Bhayandar\'s hiring market.' },
       ]}),
-    city('Bhiwandi', 'Thane', '~7 lakh', 'tier3', {
+    city('Bhiwandi', 'Thane', 'tier3', {
       industries: 'Power loom textiles, warehousing, logistics, BFSI',
       topColleges: ['Government College Bhiwandi', 'Bhiwandi Engineering College'],
       topExams: ['JEE Main', 'MHT CET', 'NEET', 'CAT'],
@@ -2935,7 +2934,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'manipur': [
-    city('Imphal', 'Imphal West', '~3.3 lakh', 'tier3', {
+    city('Imphal', 'Imphal West', 'tier3', {
       industries: 'Handloom, handicrafts, agriculture, healthcare, education',
       topColleges: ['Manipur University', 'NIT Manipur', 'Regional Institute of Medical Sciences', 'DM College of Science'],
       topExams: ['JEE Main', 'NEET', 'MPSC', 'UPSC CSE'],
@@ -2949,7 +2948,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Imphal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Imphal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Imphal\'s economy is anchored in Handloom and handicrafts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Loktak Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Imphal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Imphal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Imphal\'s hiring market.' },
       ]}),
-    city('Thoubal', 'Thoubal', '~0.5 lakh', 'tier3', {
+    city('Thoubal', 'Thoubal', 'tier3', {
       industries: 'Agriculture, handloom, fishing, education',
       topColleges: ['Thoubal College', 'Manipur University (regional)'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -2963,7 +2962,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Thoubal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Thoubal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Thoubal\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Thoubal river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Thoubal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Thoubal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Thoubal\'s hiring market.' },
       ]}),
-    city('Churachandpur', 'Churachandpur', '~0.3 lakh', 'tier3', {
+    city('Churachandpur', 'Churachandpur', 'tier3', {
       industries: 'Agriculture, handloom, education, bamboo crafts',
       topColleges: ['Government College Churachandpur', 'Lamka College'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -2980,7 +2979,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'meghalaya': [
-    city('Shillong', 'East Khasi Hills', '~3.5 lakh', 'tier3', {
+    city('Shillong', 'East Khasi Hills', 'tier3', {
       industries: 'Tourism, education, music, government services, handloom',
       topColleges: ['North-Eastern Hill University', 'IIT Guwahati (regional outreach)', 'St. Edmund&apos;s College', 'Lady Keane College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'MPSC', 'UPSC CSE'],
@@ -2994,7 +2993,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Shillong different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Shillong service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Shillong\'s economy is anchored in Tourism and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Elephant Falls and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Shillong use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Shillong cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Shillong\'s hiring market.' },
       ]}),
-    city('Tura', 'West Garo Hills', '~0.8 lakh', 'tier3', {
+    city('Tura', 'West Garo Hills', 'tier3', {
       industries: 'Agriculture, forestry, handloom, education, mining',
       topColleges: ['Government College Tura', 'Don Bosco College Tura'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -3008,7 +3007,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tura different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tura service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tura\'s economy is anchored in Agriculture and forestry, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nokrek National Park and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tura use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tura cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tura\'s hiring market.' },
       ]}),
-    city('Jowai', 'West Jaintia Hills', '~0.4 lakh', 'tier3', {
+    city('Jowai', 'West Jaintia Hills', 'tier3', {
       industries: 'Coal, cement, agriculture, education, limestone',
       topColleges: ['Jaintia Eastern College', 'Jowai Government College'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -3025,7 +3024,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'mizoram': [
-    city('Aizawl', 'Aizawl', '~2.9 lakh', 'tier3', {
+    city('Aizawl', 'Aizawl', 'tier3', {
       industries: 'Handloom, bamboo crafts, agriculture, education, government services',
       topColleges: ['Mizoram University', 'NIT Mizoram', 'Government Aizawl College', 'Pachhunga University College'],
       topExams: ['JEE Main', 'NEET', 'MPSC', 'UPSC CSE'],
@@ -3039,7 +3038,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Aizawl different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Aizawl service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Aizawl\'s economy is anchored in Handloom and bamboo crafts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Durtlang Hills and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Aizawl use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Aizawl cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Aizawl\'s hiring market.' },
       ]}),
-    city('Lunglei', 'Lunglei', '~0.6 lakh', 'tier3', {
+    city('Lunglei', 'Lunglei', 'tier3', {
       industries: 'Agriculture, handloom, education, bamboo crafts',
       topColleges: ['Lunglei Government College', 'Mizoram University (regional)'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -3056,7 +3055,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'nagaland': [
-    city('Kohima', 'Kohima', '~1.1 lakh', 'tier3', {
+    city('Kohima', 'Kohima', 'tier3', {
       industries: 'Government services, agriculture, handloom, education, tourism',
       topColleges: ['Nagaland University', 'Government College Kohima', 'Kohima Science College'],
       topExams: ['JEE Main', 'NEET', 'MPSC', 'UPSC CSE'],
@@ -3070,7 +3069,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kohima different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kohima service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kohima\'s economy is anchored in Government services and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kohima War Cemetery and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kohima use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kohima cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kohima\'s hiring market.' },
       ]}),
-    city('Dimapur', 'Dimapur', '~1.7 lakh', 'tier3', {
+    city('Dimapur', 'Dimapur', 'tier3', {
       industries: 'Trade, coal, agriculture, transport, retail',
       topColleges: ['Dimapur Government College', 'Patkai Christian College', 'Sao Chang College'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -3084,7 +3083,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dimapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dimapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dimapur\'s economy is anchored in Trade and coal, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kachari Ruins and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dimapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dimapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dimapur\'s hiring market.' },
       ]}),
-    city('Mokokchung', 'Mokokchung', '~0.5 lakh', 'tier3', {
+    city('Mokokchung', 'Mokokchung', 'tier3', {
       industries: 'Agriculture, handloom, education, tourism',
       topColleges: ['Fazl Ali College', 'Mokokchung Government College'],
       topExams: ['JEE Main', 'NEET', 'MPSC'],
@@ -3101,7 +3100,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'odisha': [
-    city('Bhubaneswar', 'Khordha', '~8.4 lakh', 'tier2', {
+    city('Bhubaneswar', 'Khordha', 'tier2', {
       industries: 'IT, education, tourism, government services, handloom',
       topColleges: ['IIT Bhubaneswar', 'NISER', 'KIIT University', 'Utkal University', 'AIIMS Bhubaneswar'],
       topExams: ['JEE Main & Advanced', 'NEET', 'OJEE', 'CAT', 'GATE', 'OPSC'],
@@ -3115,7 +3114,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhubaneswar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhubaneswar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhubaneswar\'s economy is anchored in IT and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Lingaraja Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhubaneswar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhubaneswar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhubaneswar\'s hiring market.' },
       ]}),
-    city('Cuttack', 'Cuttack', '~6.1 lakh', 'tier2', {
+    city('Cuttack', 'Cuttack', 'tier2', {
       industries: 'Trade, handloom, silver filigree, education, manufacturing',
       topColleges: ['Ravenshaw University', 'SCB Medical College', 'Cuttack Law College'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'CAT', 'OPSC'],
@@ -3129,7 +3128,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Cuttack different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Cuttack service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Cuttack\'s economy is anchored in Trade and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Barabati Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Cuttack use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Cuttack cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Cuttack\'s hiring market.' },
       ]}),
-    city('Rourkela', 'Sundargarh', '~5.5 lakh', 'tier2', {
+    city('Rourkela', 'Sundargarh', 'tier2', {
       industries: 'Steel (Rourkela Steel Plant), mining, power, engineering',
       topColleges: ['NIT Rourkela', 'Government Engineering College Rourkela', 'IIT (regional)'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'CAT', 'GATE', 'OPSC'],
@@ -3143,7 +3142,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rourkela different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rourkela service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rourkela\'s economy is anchored in Steel (Rourkela Steel Plant) and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hanuman Vatika and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rourkela use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rourkela cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (Rourkela Steel Plant). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rourkela\'s hiring market.' },
       ]}),
-    city('Berhampur', 'Ganjam', '~3.6 lakh', 'tier3', {
+    city('Berhampur', 'Ganjam', 'tier3', {
       industries: 'Trade, education, agriculture, handloom, fishing',
       topColleges: ['Berhampur University', 'MKCG Medical College', 'Roland Institute'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'CAT', 'OPSC'],
@@ -3157,7 +3156,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Berhampur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Berhampur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Berhampur\'s economy is anchored in Trade and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Berhampur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Berhampur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Berhampur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Berhampur\'s hiring market.' },
       ]}),
-    city('Sambalpur', 'Sambalpur', '~3.4 lakh', 'tier3', {
+    city('Sambalpur', 'Sambalpur', 'tier3', {
       industries: 'Coal, mining, power, education, handloom',
       topColleges: ['Sambalpur University', 'VSS Medical College', 'Government Engineering College Sambalpur'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'CAT', 'OPSC'],
@@ -3171,7 +3170,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sambalpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sambalpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sambalpur\'s economy is anchored in Coal and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hirakud Dam and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sambalpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sambalpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sambalpur\'s hiring market.' },
       ]}),
-    city('Puri', 'Puri', '~2.0 lakh', 'tier3', {
+    city('Puri', 'Puri', 'tier3', {
       industries: 'Tourism, fishing, agriculture, handloom, hospitality',
       topColleges: ['Sri Jagannath Sanskrit University', 'Puri Law College', 'Government Medical College Puri (regional)'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'OPSC'],
@@ -3185,7 +3184,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Puri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Puri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Puri\'s economy is anchored in Tourism and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Jagannath Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Puri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Puri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Puri\'s hiring market.' },
       ]}),
-    city('Balasore', 'Balasore', '~1.4 lakh', 'tier3', {
+    city('Balasore', 'Balasore', 'tier3', {
       industries: 'Defence (DRDO), IT, agriculture, handloom, port',
       topColleges: ['Fakir Mohan University', 'Balasore Engineering College', 'IIT Bhubaneswar (regional)'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'OPSC'],
@@ -3199,7 +3198,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Balasore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Balasore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Balasore\'s economy is anchored in Defence (DRDO) and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chandipur beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Balasore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Balasore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Defence (DRDO). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Balasore\'s hiring market.' },
       ]}),
-    city('Baripada', 'Mayurbhanj', '~1.1 lakh', 'tier3', {
+    city('Baripada', 'Mayurbhanj', 'tier3', {
       industries: 'Forest produce, mining, education, agriculture',
       topColleges: ['North Orissa University', 'Mayurbhanj Engineering College'],
       topExams: ['JEE Main', 'NEET', 'OJEE', 'OPSC'],
@@ -3216,7 +3215,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'punjab': [
-    city('Ludhiana', 'Ludhiana', '~16 lakh', 'tier2', {
+    city('Ludhiana', 'Ludhiana', 'tier2', {
       industries: 'Bicycles, hosiery, automotive parts, IT, hand tools, agriculture',
       topColleges: ['Punjab Agricultural University', 'Guru Nanak Dev Engineering College', 'Christian Medical College', 'Punjabi University (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'PPSC', 'CMAT', 'UPSC CSE'],
@@ -3230,7 +3229,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ludhiana different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ludhiana service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ludhiana\'s economy is anchored in Bicycles and hosiery, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Phillaur Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ludhiana use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ludhiana cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Bicycles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ludhiana\'s hiring market.' },
       ]}),
-    city('Amritsar', 'Amritsar', '~11.6 lakh', 'tier2', {
+    city('Amritsar', 'Amritsar', 'tier2', {
       industries: 'Textiles, tourism (Golden Temple), hospitality, education, handloom',
       topColleges: ['Guru Nanak Dev University', 'Indian Institute of Management Amritsar', 'Government Medical College Amritsar'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'PPSC', 'UPSC CSE'],
@@ -3244,7 +3243,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Amritsar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Amritsar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Amritsar\'s economy is anchored in Textiles and tourism (Golden Temple), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Golden Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Amritsar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Amritsar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Amritsar\'s hiring market.' },
       ]}),
-    city('Jalandhar', 'Jalandhar', '~8.7 lakh', 'tier2', {
+    city('Jalandhar', 'Jalandhar', 'tier2', {
       industries: 'Sports goods, leather, IT, hand tools, education',
       topColleges: ['NIT Jalandhar', 'Lovely Professional University (regional)', 'DAV University', 'Government Medical College Jalandhar'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'PPSC', 'UPSC CSE'],
@@ -3258,7 +3257,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jalandhar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jalandhar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jalandhar\'s economy is anchored in Sports goods and leather, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Devi Talab Mandir and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jalandhar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jalandhar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sports goods. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jalandhar\'s hiring market.' },
       ]}),
-    city('Patiala', 'Patiala', '~4.7 lakh', 'tier3', {
+    city('Patiala', 'Patiala', 'tier3', {
       industries: 'Handloom, sports, textiles, education, agriculture',
       topColleges: ['Thapar Institute of Engineering and Technology', 'Punjabi University (regional)', 'Government Medical College Patiala'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'PPSC'],
@@ -3272,7 +3271,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Patiala different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Patiala service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Patiala\'s economy is anchored in Handloom and sports, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Qila Mubarak and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Patiala use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Patiala cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Patiala\'s hiring market.' },
       ]}),
-    city('Bathinda', 'Bathinda', '~2.9 lakh', 'tier3', {
+    city('Bathinda', 'Bathinda', 'tier3', {
       industries: 'Cotton, agriculture, oil refinery, power, education',
       topColleges: ['Central University of Punjab', 'Government Engineering College Bathinda', 'Adesh University'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'PPSC'],
@@ -3286,7 +3285,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bathinda different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bathinda service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bathinda\'s economy is anchored in Cotton and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Qila Mubarak and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bathinda use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bathinda cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cotton. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bathinda\'s hiring market.' },
       ]}),
-    city('Mohali', 'Sahibzada Ajit Singh Nagar', '~1.8 lakh', 'tier3', {
+    city('Mohali', 'Sahibzada Ajit Singh Nagar', 'tier3', {
       industries: 'IT, BPO, sports, real estate, education',
       topColleges: ['IIT Ropar (regional outreach)', 'Chandigarh University (nearby)', 'IIM Amritsar (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CMAT'],
@@ -3300,7 +3299,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mohali different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mohali service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mohali\'s economy is anchored in IT and BPO, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from PCA Stadium and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mohali use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mohali cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mohali\'s hiring market.' },
       ]}),
-    city('Pathankot', 'Pathankot', '~1.5 lakh', 'tier3', {
+    city('Pathankot', 'Pathankot', 'tier3', {
       industries: 'Defence, transport, trade, agriculture, food processing',
       topColleges: ['Government College Pathankot', 'Pathankot Engineering College'],
       topExams: ['JEE Main', 'NEET', 'PPSC'],
@@ -3314,7 +3313,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Pathankot different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Pathankot service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Pathankot\'s economy is anchored in Defence and transport, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Pathankot Junction and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Pathankot use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Pathankot cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Defence. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Pathankot\'s hiring market.' },
       ]}),
-    city('Hoshiarpur', 'Hoshiarpur', '~1.6 lakh', 'tier3', {
+    city('Hoshiarpur', 'Hoshiarpur', 'tier3', {
       industries: 'Agriculture, sports, hand tools, agro-processing, education',
       topColleges: ['Government College Hoshiarpur', 'DAV College Hoshiarpur'],
       topExams: ['JEE Main', 'NEET', 'PPSC'],
@@ -3331,7 +3330,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'rajasthan': [
-    city('Jaipur', 'Jaipur', '~30.7 lakh', 'tier1', {
+    city('Jaipur', 'Jaipur', 'tier1', {
       industries: 'Gems & jewellery, textiles, IT, tourism, manufacturing, handicrafts',
       topColleges: ['IIT Jaipur (MNIT)', 'University of Rajasthan', 'Manipal University Jaipur', 'JECRC', 'Poornima University', 'IIM Jaipur (outreach)'],
       topExams: ['JEE Main', 'REAP', 'NEET', 'CLAT', 'CUET', 'UPSC CSE', 'RPSC'],
@@ -3345,7 +3344,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jaipur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jaipur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jaipur\'s economy is anchored in Gems and jewellery, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hawa Mahal and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jaipur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jaipur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Gems. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jaipur\'s hiring market.' },
       ]}),
-    city('Jodhpur', 'Jodhpur', '~14 lakh', 'tier2', {
+    city('Jodhpur', 'Jodhpur', 'tier2', {
       industries: 'Tourism, handicrafts, textiles, IT, brass, education',
       topColleges: ['IIT Jodhpur', 'AIIMS Jodhpur', 'Jai Narain Vyas University', 'Indian Institute of Technology (regional)'],
       topExams: ['JEE Main & Advanced', 'NEET', 'CAT', 'RPSC', 'UPSC CSE'],
@@ -3359,7 +3358,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jodhpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jodhpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jodhpur\'s economy is anchored in Tourism and handicrafts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mehrangarh Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jodhpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jodhpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jodhpur\'s hiring market.' },
       ]}),
-    city('Udaipur', 'Udaipur', '~5.5 lakh', 'tier3', {
+    city('Udaipur', 'Udaipur', 'tier3', {
       industries: 'Tourism, marble, handicrafts, mining, IT, education',
       topColleges: ['Mohanlal Sukhadia University', 'IIM Udaipur', 'Pacific University', 'Government Medical College Udaipur'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC', 'UPSC CSE'],
@@ -3373,7 +3372,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Udaipur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Udaipur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Udaipur\'s economy is anchored in Tourism and marble, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from City Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Udaipur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Udaipur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Udaipur\'s hiring market.' },
       ]}),
-    city('Kota', 'Kota', '~10 lakh', 'tier2', {
+    city('Kota', 'Kota', 'tier2', {
       industries: 'Education (JEE/NEET coaching hub), cement, power, agro-processing',
       topColleges: ['IIT (regional)', 'Government Engineering College Kota', 'J.K. Lakshmipat University', 'MBS College'],
       topExams: ['JEE Main & Advanced', 'NEET', 'CAT', 'GATE', 'RPSC'],
@@ -3387,7 +3386,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kota different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kota service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kota\'s economy is anchored in Education (JEE/NEET coaching hub) and cement, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Chambal River and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kota use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kota cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education (JEE/NEET coaching hub). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kota\'s hiring market.' },
       ]}),
-    city('Bikaner', 'Bikaner', '~6.5 lakh', 'tier3', {
+    city('Bikaner', 'Bikaner', 'tier3', {
       industries: 'Tourism, wool, snacks (Bikaner bhujia), IT, education',
       topColleges: ['Bikaner Technical University', 'Government Dungar College', 'Jain Vishva Bharati Institute'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC', 'UPSC CSE'],
@@ -3401,7 +3400,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bikaner different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bikaner service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bikaner\'s economy is anchored in Tourism and wool, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Junagarh Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bikaner use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bikaner cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bikaner\'s hiring market.' },
       ]}),
-    city('Ajmer', 'Ajmer', '~5.5 lakh', 'tier3', {
+    city('Ajmer', 'Ajmer', 'tier3', {
       industries: 'Tourism (Dargah), education, cement, marble, trade',
       topColleges: ['Maharaja College', 'J.L.N. Medical College', 'Government Engineering College Ajmer'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC'],
@@ -3415,7 +3414,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ajmer different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ajmer service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ajmer\'s economy is anchored in Tourism (Dargah) and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ajmer Sharif Dargah and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ajmer use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ajmer cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Dargah). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ajmer\'s hiring market.' },
       ]}),
-    city('Bhilwara', 'Bhilwara', '~3.6 lakh', 'tier3', {
+    city('Bhilwara', 'Bhilwara', 'tier3', {
       industries: 'Textiles (suiting & fabric capital), marble, mining, power',
       topColleges: ['Government College Bhilwara', 'MLV Textile & Engineering College', 'Bhilwara Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC'],
@@ -3429,7 +3428,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bhilwara different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bhilwara service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bhilwara\'s economy is anchored in Textiles (suiting and fabric capital), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Harni Mahadev temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bhilwara use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bhilwara cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles (suiting. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bhilwara\'s hiring market.' },
       ]}),
-    city('Alwar', 'Alwar', '~3.4 lakh', 'tier3', {
+    city('Alwar', 'Alwar', 'tier3', {
       industries: 'Cement, mining, agriculture, tourism, IT',
       topColleges: ['Government College Alwar', 'Raffles University', 'Alwar Institute of Engineering'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC'],
@@ -3443,7 +3442,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Alwar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Alwar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Alwar\'s economy is anchored in Cement and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Alwar City Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Alwar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Alwar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Alwar\'s hiring market.' },
       ]}),
-    city('Sikar', 'Sikar', '~2.4 lakh', 'tier3', {
+    city('Sikar', 'Sikar', 'tier3', {
       industries: 'Education, agriculture, handloom, mining',
       topColleges: ['Government College Sikar', 'Sikar Engineering College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'RPSC'],
@@ -3457,7 +3456,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sikar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sikar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sikar\'s economy is anchored in Education and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sikar fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sikar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sikar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sikar\'s hiring market.' },
       ]}),
-    city('Tonk', 'Tonk', '~1.5 lakh', 'tier3', {
+    city('Tonk', 'Tonk', 'tier3', {
       industries: 'Tonk printing press, handloom, agriculture, education',
       topColleges: ['Government College Tonk', 'Tonk Engineering College'],
       topExams: ['JEE Main', 'NEET', 'RPSC'],
@@ -3471,7 +3470,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tonk different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tonk service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tonk\'s economy is anchored in Tonk printing press and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tonk city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tonk use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tonk cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tonk printing press. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tonk\'s hiring market.' },
       ]}),
-    city('Sri Ganganagar', 'Sri Ganganagar', '~2.4 lakh', 'tier3', {
+    city('Sri Ganganagar', 'Sri Ganganagar', 'tier3', {
       industries: 'Agriculture, cotton, mustard, dairy, power',
       topColleges: ['Government College Sri Ganganagar', 'Ch. K.R. Godara Agriculture College'],
       topExams: ['JEE Main', 'NEET', 'RPSC'],
@@ -3485,7 +3484,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sri Ganganagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sri Ganganagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sri Ganganagar\'s economy is anchored in Agriculture and cotton, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sri Ganganagar city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sri Ganganagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sri Ganganagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sri Ganganagar\'s hiring market.' },
       ]}),
-    city('Pali', 'Pali', '~2.3 lakh', 'tier3', {
+    city('Pali', 'Pali', 'tier3', {
       industries: 'Textiles, marble, mining, agriculture, leather',
       topColleges: ['Government College Pali', 'Bangur Government Medical College Pali'],
       topExams: ['JEE Main', 'NEET', 'RPSC'],
@@ -3502,7 +3501,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'tamil-nadu': [
-    city('Chennai', 'Chennai', '~46.8 lakh', 'tier1', {
+    city('Chennai', 'Chennai', 'tier1', {
       industries: 'Automobile, IT services, healthcare, education, port, BFSI, film',
       topColleges: ['IIT Madras', 'Anna University', 'Loyola College', 'SRM', 'VIT Chennai', 'CMC Vellore (regional)'],
       topExams: ['JEE Main & Advanced', 'TNEA', 'NEET', 'CAT', 'GATE', 'TANCET'],
@@ -3516,7 +3515,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Chennai different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Chennai service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Chennai\'s economy is anchored in Automobile and IT services, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Marina Beach and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Chennai use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Chennai cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Automobile. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Chennai\'s hiring market.' },
       ]}),
-    city('Coimbatore', 'Coimbatore', '~16 lakh', 'tier2', {
+    city('Coimbatore', 'Coimbatore', 'tier2', {
       industries: 'Manufacturing, engineering, IT, textiles, healthcare, education',
       topColleges: ['PSG College of Technology', 'Amrita Vishwa Vidyapeetham', 'Coimbatore Medical College', 'Karpagam University'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'GATE', 'TANCET'],
@@ -3530,7 +3529,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Coimbatore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Coimbatore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Coimbatore\'s economy is anchored in Manufacturing and engineering, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Marudamalai and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Coimbatore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Coimbatore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Coimbatore\'s hiring market.' },
       ]}),
-    city('Madurai', 'Madurai', '~14.6 lakh', 'tier2', {
+    city('Madurai', 'Madurai', 'tier2', {
       industries: 'Tourism, IT, education, textiles, auto components, hospitality',
       topColleges: ['Thiagarajar College of Engineering', 'Madurai Medical College', 'Madurai Kamaraj University'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'GATE', 'TANCET'],
@@ -3544,7 +3543,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Madurai different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Madurai service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Madurai\'s economy is anchored in Tourism and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Meenakshi Amman Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Madurai use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Madurai cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Madurai\'s hiring market.' },
       ]}),
-    city('Tiruchirappalli', 'Tiruchirappalli', '~9.2 lakh', 'tier2', {
+    city('Tiruchirappalli', 'Tiruchirappalli', 'tier2', {
       industries: 'Engineering (BHEL), education, IT, cement, agriculture, tourism',
       topColleges: ['NIT Tiruchirappalli', 'IIT (regional)', 'Anna University (BIT campus)', 'Government Medical College Trichy'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'GATE', 'TANCET'],
@@ -3558,7 +3557,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tiruchirappalli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tiruchirappalli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tiruchirappalli\'s economy is anchored in Engineering (BHEL) and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rockfort Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tiruchirappalli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tiruchirappalli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Engineering (BHEL). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tiruchirappalli\'s hiring market.' },
       ]}),
-    city('Salem', 'Salem', '~9.2 lakh', 'tier3', {
+    city('Salem', 'Salem', 'tier3', {
       industries: 'Steel, mining, textiles, handloom, education',
       topColleges: ['Government Engineering College Salem', 'Salem Co-operative Sugar College', 'Vinayaka Mission&apos;s Research Foundation'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'TANCET'],
@@ -3572,7 +3571,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Salem different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Salem service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Salem\'s economy is anchored in Steel and mining, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Yercaud hill station and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Salem use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Salem cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Salem\'s hiring market.' },
       ]}),
-    city('Tirunelveli', 'Tirunelveli', '~4.7 lakh', 'tier3', {
+    city('Tirunelveli', 'Tirunelveli', 'tier3', {
       industries: 'Cement (Ramco), tobacco, agriculture, handloom, education',
       topColleges: ['Government College of Engineering Tirunelveli', 'Tirunelveli Medical College', 'Manonmaniam Sundaranar University'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'TANCET'],
@@ -3586,7 +3585,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tirunelveli different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tirunelveli service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tirunelveli\'s economy is anchored in Cement (Ramco) and tobacco, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nellaiappar Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tirunelveli use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tirunelveli cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Cement (Ramco). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tirunelveli\'s hiring market.' },
       ]}),
-    city('Erode', 'Erode', '~2.5 lakh', 'tier3', {
+    city('Erode', 'Erode', 'tier3', {
       industries: 'Textiles (power loom capital), turmeric, rice, agriculture, dyeing',
       topColleges: ['Government College of Engineering Erode', 'Erode Sengunthar Engineering College', 'Kongu Engineering College'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'TANCET'],
@@ -3600,7 +3599,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Erode different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Erode service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Erode\'s economy is anchored in Textiles (power loom capital) and turmeric, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Erode city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Erode use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Erode cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles (power loom capital). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Erode\'s hiring market.' },
       ]}),
-    city('Vellore', 'Vellore', '~0.5 lakh', 'tier3', {
+    city('Vellore', 'Vellore', 'tier3', {
       industries: 'Healthcare (CMC), leather, education, manufacturing',
       topColleges: ['Christian Medical College (CMC) Vellore', 'VIT Vellore', 'Thiruvalluvar University'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3614,7 +3613,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Vellore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Vellore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Vellore\'s economy is anchored in Healthcare (CMC) and leather, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vellore Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Vellore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Vellore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Healthcare (CMC). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Vellore\'s hiring market.' },
       ]}),
-    city('Thoothukudi', 'Thoothukudi', '~2.4 lakh', 'tier3', {
+    city('Thoothukudi', 'Thoothukudi', 'tier3', {
       industries: 'Salt, port, power, fisheries, heavy water plant',
       topColleges: ['Thoothukudi Government Medical College', 'Inba Seva Sangam College', 'Kamaraj College'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3628,7 +3627,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Thoothukudi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Thoothukudi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Thoothukudi\'s economy is anchored in Salt and port, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Our Lady of the Snows Basilica and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Thoothukudi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Thoothukudi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Salt. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Thoothukudi\'s hiring market.' },
       ]}),
-    city('Tiruppur', 'Tiruppur', '~8.8 lakh', 'tier2', {
+    city('Tiruppur', 'Tiruppur', 'tier2', {
       industries: 'Knitwear capital of India, textiles, export, IT, education',
       topColleges: ['Kumaraguru College of Technology', 'Tiruppur Kumaran College', 'JCT College of Engineering'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT', 'TANCET'],
@@ -3642,7 +3641,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tiruppur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tiruppur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tiruppur\'s economy is anchored in Knitwear capital of India and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tiruppur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tiruppur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tiruppur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Knitwear capital of India. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tiruppur\'s hiring market.' },
       ]}),
-    city('Dindigul', 'Dindigul', '~2.4 lakh', 'tier3', {
+    city('Dindigul', 'Dindigul', 'tier3', {
       industries: 'Tanning (leather), locks, agricultural products, education',
       topColleges: ['Government College Dindigul', 'Anna University (regional)', 'St. Xavier&apos;s College'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3656,7 +3655,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dindigul different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dindigul service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dindigul\'s economy is anchored in Tanning (leather) and locks, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dindigul Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dindigul use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dindigul cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tanning (leather). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dindigul\'s hiring market.' },
       ]}),
-    city('Kanchipuram', 'Kanchipuram', '~2.2 lakh', 'tier3', {
+    city('Kanchipuram', 'Kanchipuram', 'tier3', {
       industries: 'Silk sarees, handloom, temple services, education',
       topColleges: ['Pachaiyappa&apos;s College', 'Government Arts College Kanchipuram', 'Kanchi University'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3670,7 +3669,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kanchipuram different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kanchipuram service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kanchipuram\'s economy is anchored in Silk sarees and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kailasanathar Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kanchipuram use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kanchipuram cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Silk sarees. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kanchipuram\'s hiring market.' },
       ]}),
-    city('Tanjore', 'Thanjavur', '~2.2 lakh', 'tier3', {
+    city('Tanjore', 'Thanjavur', 'tier3', {
       industries: 'Agriculture (rice), tourism, handloom silk, education',
       topColleges: ['SASTRA University', 'Government Medical College Thanjavur', 'Thanjavur Medical College'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3684,7 +3683,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Tanjore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Tanjore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Tanjore\'s economy is anchored in Agriculture (rice) and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Brihadeeswarar Temple (UNESCO) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Tanjore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Tanjore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture (rice). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Tanjore\'s hiring market.' },
       ]}),
-    city('Hosur', 'Krishnagiri', '~1.4 lakh', 'tier3', {
+    city('Hosur', 'Krishnagiri', 'tier3', {
       industries: 'Automobile (TVS), electronics, IT, manufacturing, pharma',
       topColleges: ['Hosur Institute of Technology', 'Government College Hosur', 'Adhiyamaan College of Engineering'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3698,7 +3697,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hosur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hosur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hosur\'s economy is anchored in Automobile (TVS) and electronics, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hosur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hosur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hosur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Automobile (TVS). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hosur\'s hiring market.' },
       ]}),
-    city('Karur', 'Karur', '~0.7 lakh', 'tier3', {
+    city('Karur', 'Karur', 'tier3', {
       industries: 'Textiles (bus body building, handloom), agriculture, paper',
       topColleges: ['Government Arts College Karur', 'Karur College of Engineering'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3712,7 +3711,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Karur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Karur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Karur\'s economy is anchored in Textiles (bus body building and handloom), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Karur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Karur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Karur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Textiles (bus body building. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Karur\'s hiring market.' },
       ]}),
-    city('Nagercoil', 'Kanyakumari', '~0.7 lakh', 'tier3', {
+    city('Nagercoil', 'Kanyakumari', 'tier3', {
       industries: 'Tourism (Kanyakumari), fishing, handloom, agriculture',
       topColleges: ['Scott Christian College', 'Nagercoil Government Medical College', 'CAPE Institute of Technology'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3726,7 +3725,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nagercoil different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nagercoil service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nagercoil\'s economy is anchored in Tourism (Kanyakumari) and fishing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kanyakumari (Cape Comorin) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nagercoil use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nagercoil cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Kanyakumari). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nagercoil\'s hiring market.' },
       ]}),
-    city('Kumbakonam', 'Thanjavur', '~1.4 lakh', 'tier3', {
+    city('Kumbakonam', 'Thanjavur', 'tier3', {
       industries: 'Handloom (silk), brass, education, agriculture, betel',
       topColleges: ['Government Arts College Kumbakonam', 'SASTRA (regional)', 'Indian College of Arts'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3740,7 +3739,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kumbakonam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kumbakonam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kumbakonam\'s economy is anchored in Handloom (silk) and brass, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kumbeshwara Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kumbakonam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kumbakonam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom (silk). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kumbakonam\'s hiring market.' },
       ]}),
-    city('Cuddalore', 'Cuddalore', '~1.7 lakh', 'tier3', {
+    city('Cuddalore', 'Cuddalore', 'tier3', {
       industries: 'Port, power, oil, agriculture, fishing',
       topColleges: ['Government Arts College Cuddalore', 'Manonmaniam Sundaranar University (regional)'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3754,7 +3753,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Cuddalore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Cuddalore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Cuddalore\'s economy is anchored in Port and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Cuddalore port and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Cuddalore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Cuddalore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Port. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Cuddalore\'s hiring market.' },
       ]}),
-    city('Rajapalayam', 'Virudhunagar', '~1.3 lakh', 'tier3', {
+    city('Rajapalayam', 'Virudhunagar', 'tier3', {
       industries: 'Textiles (cotton, medical textiles), sago, agriculture, fireworks',
       topColleges: ['Government College Rajapalayam', 'P.S.R. Engineering College'],
       topExams: ['JEE Main', 'TNEA', 'NEET', 'CAT'],
@@ -3771,7 +3770,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'telangana': [
-    city('Hyderabad', 'Hyderabad', '~1.05 crore', 'tier1', {
+    city('Hyderabad', 'Hyderabad', 'tier1', {
       industries: 'IT, pharma & life sciences, defence & aerospace, fintech, BFSI, GCCs',
       topColleges: ['IIIT Hyderabad', 'IIT Hyderabad', 'Osmania University', 'BITS Hyderabad', 'NALSAR', 'NIPER Hyderabad'],
       topExams: ['JEE Main & Advanced', 'TS EAMCET', 'NEET', 'CAT', 'GATE', 'GRE'],
@@ -3785,7 +3784,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hyderabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hyderabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hyderabad\'s economy is anchored in IT and pharma, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Charminar and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hyderabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hyderabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hyderabad\'s hiring market.' },
       ]}),
-    city('Warangal', 'Warangal', '~8 lakh', 'tier3', {
+    city('Warangal', 'Warangal', 'tier3', {
       industries: 'IT, textiles, handloom, education, power',
       topColleges: ['NIT Warangal', 'Kakatiya University', 'Government Medical College Warangal', 'IIIT Basar (regional)'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT', 'GATE'],
@@ -3799,7 +3798,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Warangal different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Warangal service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Warangal\'s economy is anchored in IT and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Thousand Pillar Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Warangal use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Warangal cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Warangal\'s hiring market.' },
       ]}),
-    city('Nizamabad', 'Nizamabad', '~3 lakh', 'tier3', {
+    city('Nizamabad', 'Nizamabad', 'tier3', {
       industries: 'Agriculture, handloom, education, power',
       topColleges: ['Government Medical College Nizamabad', 'Nizamabad Engineering College', 'Telangana University (regional)'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT'],
@@ -3813,7 +3812,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nizamabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nizamabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nizamabad\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Nizamabad fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nizamabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nizamabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nizamabad\'s hiring market.' },
       ]}),
-    city('Karimnagar', 'Karimnagar', '~2.6 lakh', 'tier3', {
+    city('Karimnagar', 'Karimnagar', 'tier3', {
       industries: 'Agriculture, rice, textiles, education, power',
       topColleges: ['Government Arts College Karimnagar', 'Karimnagar Medical College', 'JITS Karimnagar'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT'],
@@ -3827,7 +3826,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Karimnagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Karimnagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Karimnagar\'s economy is anchored in Agriculture and rice, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Karimnagar city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Karimnagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Karimnagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Karimnagar\'s hiring market.' },
       ]}),
-    city('Khammam', 'Khammam', '~3 lakh', 'tier3', {
+    city('Khammam', 'Khammam', 'tier3', {
       industries: 'Coal, power, agriculture, education, handloom',
       topColleges: ['Government Medical College Khammam', 'Khammam Engineering College', 'JVM College'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT'],
@@ -3841,7 +3840,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Khammam different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Khammam service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Khammam\'s economy is anchored in Coal and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Khammam fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Khammam use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Khammam cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Khammam\'s hiring market.' },
       ]}),
-    city('Mahbubnagar', 'Mahbubnagar', '~2.2 lakh', 'tier3', {
+    city('Mahbubnagar', 'Mahbubnagar', 'tier3', {
       industries: 'Agriculture, power, cement, education',
       topColleges: ['Palamuru University', 'Government College Mahbubnagar', 'Mahbubnagar Engineering College'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT'],
@@ -3855,7 +3854,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mahbubnagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mahbubnagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mahbubnagar\'s economy is anchored in Agriculture and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mahbubnagar city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mahbubnagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mahbubnagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mahbubnagar\'s hiring market.' },
       ]}),
-    city('Adilabad', 'Adilabad', '~1.1 lakh', 'tier3', {
+    city('Adilabad', 'Adilabad', 'tier3', {
       industries: 'Coal, agriculture, forest produce, education',
       topColleges: ['Government Arts College Adilabad', 'Adilabad Engineering College'],
       topExams: ['JEE Main', 'TS EAMCET', 'NEET', 'CAT'],
@@ -3872,7 +3871,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'tripura': [
-    city('Agartala', 'West Tripura', '~5.2 lakh', 'tier3', {
+    city('Agartala', 'West Tripura', 'tier3', {
       industries: 'Government services, education, handloom, handicraft, bamboo, tourism',
       topColleges: ['Tripura University', 'NIT Agartala', 'Maharaja Bir Bikram College', 'Agartala Government Medical College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'TPSC', 'UPSC CSE'],
@@ -3886,7 +3885,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Agartala different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Agartala service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Agartala\'s economy is anchored in Government services and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ujjayanta Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Agartala use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Agartala cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Agartala\'s hiring market.' },
       ]}),
-    city('Udaipur', 'Gomati', '~0.4 lakh', 'tier3', {
+    city('Udaipur', 'Gomati', 'tier3', {
       industries: 'Handloom, agriculture, education, tourism',
       topColleges: ['Maharaja Bir Bikram University (regional)', 'Bir Bikram Memorial College'],
       topExams: ['JEE Main', 'NEET', 'TPSC'],
@@ -3903,7 +3902,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'uttar-pradesh': [
-    city('Lucknow', 'Lucknow', '~29.7 lakh', 'tier2', {
+    city('Lucknow', 'Lucknow', 'tier2', {
       industries: 'Government services, IT, education, BFSI, manufacturing, BPO, chikan handloom',
       topColleges: ['IIM Lucknow', 'BBAU', 'Lucknow University', 'Amity Lucknow', 'SGPGIMS', 'IIT Kanpur (regional)'],
       topExams: ['UPSC CSE', 'JEE Main', 'NEET', 'CUET', 'CAT', 'GATE', 'UPPSC'],
@@ -3917,7 +3916,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Lucknow different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Lucknow service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Lucknow\'s economy is anchored in Government services and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bara Imambara and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Lucknow use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Lucknow cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Lucknow\'s hiring market.' },
       ]}),
-    city('Kanpur', 'Kanpur', '~30 lakh', 'tier2', {
+    city('Kanpur', 'Kanpur', 'tier2', {
       industries: 'Leather (Kanpur is the leather capital of India), textiles, IT, manufacturing, chemicals',
       topColleges: ['IIT Kanpur', 'CSJM University', 'HBTU Kanpur', 'GSVM Medical College', 'Kanpur Institute of Technology'],
       topExams: ['JEE Main & Advanced', 'NEET', 'CAT', 'GATE', 'UPPSC', 'UPSC CSE'],
@@ -3931,7 +3930,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kanpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kanpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kanpur\'s economy is anchored in Leather (Kanpur is the leather capital of India) and textiles, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from JK Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kanpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kanpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Leather (Kanpur is the leather capital of India). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kanpur\'s hiring market.' },
       ]}),
-    city('Agra', 'Agra', '~19 lakh', 'tier2', {
+    city('Agra', 'Agra', 'tier2', {
       industries: 'Tourism (Taj Mahal), handicrafts, marble, leather, education, IT',
       topColleges: ['Dr. Bhimrao Ambedkar University', 'Agra College', 'R.B.S. College', 'Dayalbagh Educational Institute'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC', 'UPSC CSE'],
@@ -3945,7 +3944,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Agra different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Agra service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Agra\'s economy is anchored in Tourism (Taj Mahal) and handicrafts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Taj Mahal and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Agra use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Agra cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Taj Mahal). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Agra\'s hiring market.' },
       ]}),
-    city('Varanasi', 'Varanasi', '~18 lakh', 'tier2', {
+    city('Varanasi', 'Varanasi', 'tier2', {
       industries: 'Tourism, handloom (Banarasi silk), education, IT, religious services',
       topColleges: ['IIT BHU', 'Banaras Hindu University (BHU)', 'Mahatma Gandhi Kashi Vidyapith', 'AIIMS Varanasi (regional)'],
       topExams: ['JEE Main & Advanced', 'NEET', 'CUET', 'CAT', 'UPSC CSE', 'UPPSC'],
@@ -3959,7 +3958,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Varanasi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Varanasi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Varanasi\'s economy is anchored in Tourism and handloom (Banarasi silk), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kashi Vishwanath Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Varanasi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Varanasi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Varanasi\'s hiring market.' },
       ]}),
-    city('Prayagraj', 'Prayagraj (Allahabad)', '~11 lakh', 'tier2', {
+    city('Prayagraj', 'Prayagraj (Allahabad)', 'tier2', {
       industries: 'Education, government services, handloom, agriculture, IT',
       topColleges: ['University of Allahabad', 'IIIT Allahabad', 'Motilal Nehru National Institute of Technology (MNNIT)', 'Ewing Christian College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'GATE', 'UPPSC', 'UPSC CSE'],
@@ -3973,7 +3972,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Prayagraj different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Prayagraj service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Prayagraj\'s economy is anchored in Education and government services, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Triveni Sangam and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Prayagraj use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Prayagraj cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Prayagraj\'s hiring market.' },
       ]}),
-    city('Ghaziabad', 'Ghaziabad', '~23.6 lakh', 'tier2', {
+    city('Ghaziabad', 'Ghaziabad', 'tier2', {
       industries: 'IT, manufacturing, real estate, retail, BFSI, education',
       topColleges: ['IIT Delhi (regional)', 'Amity University Ghaziabad', 'SRM Ghaziabad', 'IMS Ghaziabad'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'MAT', 'CMAT'],
@@ -3987,7 +3986,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ghaziabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ghaziabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ghaziabad\'s economy is anchored in IT and manufacturing, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from ISKCON Ghaziabad and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ghaziabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ghaziabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ghaziabad\'s hiring market.' },
       ]}),
-    city('Meerut', 'Meerut', '~14 lakh', 'tier2', {
+    city('Meerut', 'Meerut', 'tier2', {
       industries: 'Sports goods, scissors, handloom, agriculture, education, manufacturing',
       topColleges: ['CCS University', 'IIT (regional)', 'Subharti University', 'LLRM Medical College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC'],
@@ -4001,7 +4000,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Meerut different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Meerut service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Meerut\'s economy is anchored in Sports goods and scissors, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Augarnath Temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Meerut use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Meerut cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sports goods. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Meerut\'s hiring market.' },
       ]}),
-    city('Bareilly', 'Bareilly', '~9.8 lakh', 'tier3', {
+    city('Bareilly', 'Bareilly', 'tier3', {
       industries: 'Bamboo furniture, sugar, agriculture, handloom, education',
       topColleges: ['MJP Rohilkhand University', 'IIT (regional)', 'Government Medical College Bareilly'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC', 'UPSC CSE'],
@@ -4015,7 +4014,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bareilly different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bareilly service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bareilly\'s economy is anchored in Bamboo furniture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bareilly city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bareilly use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bareilly cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Bamboo furniture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bareilly\'s hiring market.' },
       ]}),
-    city('Aligarh', 'Aligarh', '~9 lakh', 'tier3', {
+    city('Aligarh', 'Aligarh', 'tier3', {
       industries: 'Lock (Aligarh is the lock capital of India), education, handloom, agriculture',
       topColleges: ['AMU (Aligarh Muslim University)', 'Aligarh College of Engineering', 'Government Medical College Aligarh'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC', 'UPSC CSE'],
@@ -4029,7 +4028,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Aligarh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Aligarh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Aligarh\'s economy is anchored in Lock (Aligarh is the lock capital of India) and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Aligarh Muslim University and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Aligarh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Aligarh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Lock (Aligarh is the lock capital of India). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Aligarh\'s hiring market.' },
       ]}),
-    city('Moradabad', 'Moradabad', '~9 lakh', 'tier3', {
+    city('Moradabad', 'Moradabad', 'tier3', {
       industries: 'Brassware (Brass City of India), handloom, agriculture, education',
       topColleges: ['Teerthanker Mahaveer University', 'Government Medical College Moradabad', 'Moradabad Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC'],
@@ -4043,7 +4042,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Moradabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Moradabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Moradabad\'s economy is anchored in Brassware (Brass City of India) and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Moradabad city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Moradabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Moradabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Brassware (Brass City of India). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Moradabad\'s hiring market.' },
       ]}),
-    city('Saharanpur', 'Saharanpur', '~7 lakh', 'tier3', {
+    city('Saharanpur', 'Saharanpur', 'tier3', {
       industries: 'Woodwork, handloom (carpet), agriculture, sugar, paper',
       topColleges: ['Saharanpur Institute of Advanced Studies', 'Government Medical College Saharanpur'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC'],
@@ -4057,7 +4056,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Saharanpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Saharanpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Saharanpur\'s economy is anchored in Woodwork and handloom (carpet), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Saharanpur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Saharanpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Saharanpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Woodwork. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Saharanpur\'s hiring market.' },
       ]}),
-    city('Gorakhpur', 'Gorakhpur', '~6.7 lakh', 'tier3', {
+    city('Gorakhpur', 'Gorakhpur', 'tier3', {
       industries: 'Education, agriculture, sugar, fertiliser, handloom',
       topColleges: ['DDU Gorakhpur University', 'Madan Mohan Malaviya University of Technology (regional)', 'AIIMS Gorakhpur'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC', 'UPSC CSE'],
@@ -4071,7 +4070,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Gorakhpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Gorakhpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Gorakhpur\'s economy is anchored in Education and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gorakhnath Math and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Gorakhpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Gorakhpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Gorakhpur\'s hiring market.' },
       ]}),
-    city('Mathura', 'Mathura', '~4.5 lakh', 'tier3', {
+    city('Mathura', 'Mathura', 'tier3', {
       industries: 'Tourism (Krishna Janmabhoomi), dairy, handloom, oil, education',
       topColleges: ['BSA College', 'Government College Mathura', 'Hindustan Institute (regional)'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4085,7 +4084,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mathura different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mathura service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mathura\'s economy is anchored in Tourism (Krishna Janmabhoomi) and dairy, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Krishna Janmabhoomi and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mathura use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mathura cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Krishna Janmabhoomi). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mathura\'s hiring market.' },
       ]}),
-    city('Jhansi', 'Jhansi', '~5 lakh', 'tier3', {
+    city('Jhansi', 'Jhansi', 'tier3', {
       industries: 'Brassware, handloom, power, education, agriculture',
       topColleges: ['Bundelkhand University', 'Rani Lakshmi Bai Central Agricultural University', 'Government Medical College Jhansi'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC', 'UPSC CSE'],
@@ -4099,7 +4098,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jhansi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jhansi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jhansi\'s economy is anchored in Brassware and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Jhansi Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jhansi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jhansi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Brassware. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jhansi\'s hiring market.' },
       ]}),
-    city('Muzaffarnagar', 'Muzaffarnagar', '~3.9 lakh', 'tier3', {
+    city('Muzaffarnagar', 'Muzaffarnagar', 'tier3', {
       industries: 'Sugar, jaggery, paper, agriculture, handloom',
       topColleges: ['S.D. College', 'Government Medical College Muzaffarnagar'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC'],
@@ -4113,7 +4112,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Muzaffarnagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Muzaffarnagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Muzaffarnagar\'s economy is anchored in Sugar and jaggery, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Muzaffarnagar city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Muzaffarnagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Muzaffarnagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Sugar. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Muzaffarnagar\'s hiring market.' },
       ]}),
-    city('Firozabad', 'Firozabad', '~3.2 lakh', 'tier3', {
+    city('Firozabad', 'Firozabad', 'tier3', {
       industries: 'Bangles (glass bangles capital of India), glass, education, agriculture',
       topColleges: ['Government College Firozabad', 'Firozabad Engineering College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4127,7 +4126,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Firozabad different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Firozabad service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Firozabad\'s economy is anchored in Bangles (glass bangles capital of India) and glass, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Firozabad city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Firozabad use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Firozabad cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Bangles (glass bangles capital of India). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Firozabad\'s hiring market.' },
       ]}),
-    city('Budaun', 'Budaun', '~1.6 lakh', 'tier3', {
+    city('Budaun', 'Budaun', 'tier3', {
       industries: 'Agriculture, handloom, education, sugar',
       topColleges: ['Government Degree College Budaun', 'Iftikhar Ahmad Khan Memorial Degree College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4141,7 +4140,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Budaun different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Budaun service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Budaun\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Budaun city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Budaun use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Budaun cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Budaun\'s hiring market.' },
       ]}),
-    city('Etawah', 'Etawah', '~2.6 lakh', 'tier3', {
+    city('Etawah', 'Etawah', 'tier3', {
       industries: 'Agriculture, handloom, oil, leather, education',
       topColleges: ['Government College Etawah', 'Ch. Charan Singh Post Graduate College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4155,7 +4154,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Etawah different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Etawah service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Etawah\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Etawah city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Etawah use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Etawah cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Etawah\'s hiring market.' },
       ]}),
-    city('Mirzapur', 'Mirzapur', '~3 lakh', 'tier3', {
+    city('Mirzapur', 'Mirzapur', 'tier3', {
       industries: 'Handloom (carpets), agriculture, power, brass, education',
       topColleges: ['Government College Mirzapur', 'Mirzapur Engineering College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4169,7 +4168,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mirzapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mirzapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mirzapur\'s economy is anchored in Handloom (carpets) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Vindhyavasini temple and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mirzapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mirzapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom (carpets). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mirzapur\'s hiring market.' },
       ]}),
-    city('Sonbhadra', 'Sonbhadra', '~0.8 lakh', 'tier3', {
+    city('Sonbhadra', 'Sonbhadra', 'tier3', {
       industries: 'Coal, power, mining, cement, forest produce',
       topColleges: ['Government College Sonbhadra', 'Rajkiya Engineering College Sonbhadra'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4183,7 +4182,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sonbhadra different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sonbhadra service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sonbhadra\'s economy is anchored in Coal and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sonbhadra city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sonbhadra use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sonbhadra cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sonbhadra\'s hiring market.' },
       ]}),
-    city('Azamgarh', 'Azamgarh', '~1.2 lakh', 'tier3', {
+    city('Azamgarh', 'Azamgarh', 'tier3', {
       industries: 'Handloom (Banarasi silk, jacquard), agriculture, education',
       topColleges: ['Government College Azamgarh', 'Shibli National College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4197,7 +4196,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Azamgarh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Azamgarh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Azamgarh\'s economy is anchored in Handloom (Banarasi silk and jacquard), we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Azamgarh city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Azamgarh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Azamgarh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom (Banarasi silk. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Azamgarh\'s hiring market.' },
       ]}),
-    city('Jaunpur', 'Jaunpur', '~1.8 lakh', 'tier3', {
+    city('Jaunpur', 'Jaunpur', 'tier3', {
       industries: 'Handloom (Banarasi silk), agriculture, education, perfumes',
       topColleges: ['Veer Bahadur Singh Purvanchal University (regional)', 'T.D. College Jaunpur'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4211,7 +4210,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jaunpur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jaunpur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jaunpur\'s economy is anchored in Handloom (Banarasi silk) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Atala Masjid and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jaunpur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jaunpur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom (Banarasi silk). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jaunpur\'s hiring market.' },
       ]}),
-    city('Ballia', 'Ballia', '~1.5 lakh', 'tier3', {
+    city('Ballia', 'Ballia', 'tier3', {
       industries: 'Agriculture, handloom, education, sugar',
       topColleges: ['Government Degree College Ballia', 'Ballia Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4225,7 +4224,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Ballia different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Ballia service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Ballia\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Ballia city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Ballia use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Ballia cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Ballia\'s hiring market.' },
       ]}),
-    city('Deoria', 'Deoria', '~0.9 lakh', 'tier3', {
+    city('Deoria', 'Deoria', 'tier3', {
       industries: 'Agriculture, handloom, education, sugar',
       topColleges: ['Government Degree College Deoria', 'IIT (regional)'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4239,7 +4238,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Deoria different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Deoria service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Deoria\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Deoria city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Deoria use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Deoria cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Deoria\'s hiring market.' },
       ]}),
-    city('Basti', 'Basti', '~1.2 lakh', 'tier3', {
+    city('Basti', 'Basti', 'tier3', {
       industries: 'Agriculture, handloom, education, sugar',
       topColleges: ['Government Degree College Basti', 'Mahatma Gandhi Inter College'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4253,7 +4252,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Basti different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Basti service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Basti\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Basti city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Basti use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Basti cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Basti\'s hiring market.' },
       ]}),
-    city('Hardoi', 'Hardoi', '~1.2 lakh', 'tier3', {
+    city('Hardoi', 'Hardoi', 'tier3', {
       industries: 'Agriculture, sugar, handloom, education',
       topColleges: ['Government Degree College Hardoi'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4267,7 +4266,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Hardoi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Hardoi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Hardoi\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hardoi city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Hardoi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Hardoi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Hardoi\'s hiring market.' },
       ]}),
-    city('Unnao', 'Unnao', '~1.0 lakh', 'tier3', {
+    city('Unnao', 'Unnao', 'tier3', {
       industries: 'Leather, agriculture, handloom, education',
       topColleges: ['Government College Unnao', 'Unnao Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4281,7 +4280,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Unnao different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Unnao service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Unnao\'s economy is anchored in Leather and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Unnao city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Unnao use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Unnao cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Leather. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Unnao\'s hiring market.' },
       ]}),
-    city('Sitapur', 'Sitapur', '~1.8 lakh', 'tier3', {
+    city('Sitapur', 'Sitapur', 'tier3', {
       industries: 'Agriculture, handloom, education, sugar',
       topColleges: ['Government Degree College Sitapur', 'Sitapur Institute of Engineering'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4295,7 +4294,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Sitapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Sitapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Sitapur\'s economy is anchored in Agriculture and handloom, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Sitapur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Sitapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Sitapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Sitapur\'s hiring market.' },
       ]}),
-    city('Lakhimpur Kheri', 'Lakhimpur Kheri', '~1.6 lakh', 'tier3', {
+    city('Lakhimpur Kheri', 'Lakhimpur Kheri', 'tier3', {
       industries: 'Agriculture, sugar, handloom, education',
       topColleges: ['Government Degree College Lakhimpur Kheri', 'IIT (regional)'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4309,7 +4308,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Lakhimpur Kheri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Lakhimpur Kheri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Lakhimpur Kheri\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dudhwa National Park (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Lakhimpur Kheri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Lakhimpur Kheri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Lakhimpur Kheri\'s hiring market.' },
       ]}),
-    city('Bijnor', 'Bijnor', '~1.0 lakh', 'tier3', {
+    city('Bijnor', 'Bijnor', 'tier3', {
       industries: 'Agriculture, sugar, handloom, education',
       topColleges: ['Government Degree College Bijnor', 'Mangalayatan University (regional)'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4323,7 +4322,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bijnor different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bijnor service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bijnor\'s economy is anchored in Agriculture and sugar, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bijnor city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bijnor use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bijnor cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bijnor\'s hiring market.' },
       ]}),
-    city('Rampur', 'Rampur', '~3.5 lakh', 'tier3', {
+    city('Rampur', 'Rampur', 'tier3', {
       industries: 'Handloom, agriculture, sugar, education, knife industry',
       topColleges: ['Government Raza PG College', 'Rampur Institute of Engineering'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPPSC'],
@@ -4337,7 +4336,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rampur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rampur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rampur\'s economy is anchored in Handloom and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rampur fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rampur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rampur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Handloom. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rampur\'s hiring market.' },
       ]}),
-    city('Shahjahanpur', 'Shahjahanpur', '~3.2 lakh', 'tier3', {
+    city('Shahjahanpur', 'Shahjahanpur', 'tier3', {
       industries: 'Sugar, agriculture, handloom, education',
       topColleges: ['Government College Shahjahanpur', 'Shahjahanpur Institute of Technology'],
       topExams: ['JEE Main', 'NEET', 'UPPSC'],
@@ -4354,7 +4353,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'uttarakhand': [
-    city('Dehradun', 'Dehradun', '~7.1 lakh', 'tier3', {
+    city('Dehradun', 'Dehradun', 'tier3', {
       industries: 'Education, IT, tourism, manufacturing, healthcare, handloom',
       topColleges: ['IIT Roorkee (nearby)', 'UPES', 'Graphic Era University', 'DIT University', 'Forest Research Institute'],
       topExams: ['JEE Main & Advanced', 'NEET', 'NDA', 'CAT', 'UKPSC', 'UPSC CSE'],
@@ -4368,7 +4367,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Dehradun different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Dehradun service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Dehradun\'s economy is anchored in Education and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Robber&apos;s Cave and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Dehradun use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Dehradun cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Dehradun\'s hiring market.' },
       ]}),
-    city('Haridwar', 'Haridwar', '~2.3 lakh', 'tier3', {
+    city('Haridwar', 'Haridwar', 'tier3', {
       industries: 'Tourism, religious services, manufacturing, herbal, education',
       topColleges: ['Gurukul Kangri Vishwavidyalaya', 'IIT Roorkee (nearby)', 'Government PG College Haridwar'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UKPSC'],
@@ -4382,7 +4381,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Haridwar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Haridwar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Haridwar\'s economy is anchored in Tourism and religious services, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Har Ki Pauri and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Haridwar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Haridwar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Haridwar\'s hiring market.' },
       ]}),
-    city('Rishikesh', 'Rishikesh', '~1 lakh', 'tier3', {
+    city('Rishikesh', 'Rishikesh', 'tier3', {
       industries: 'Tourism, yoga, adventure sports, IT, education',
       topColleges: ['Gurukul Kangri Vishwavidyalaya', 'University of Petroleum and Energy Studies (regional)'],
       topExams: ['JEE Main', 'NEET', 'UKPSC'],
@@ -4396,7 +4395,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rishikesh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rishikesh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rishikesh\'s economy is anchored in Tourism and yoga, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Laxman Jhula and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rishikesh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rishikesh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rishikesh\'s hiring market.' },
       ]}),
-    city('Roorkee', 'Roorkee', '~1.2 lakh', 'tier3', {
+    city('Roorkee', 'Roorkee', 'tier3', {
       industries: 'Education, engineering, manufacturing, power',
       topColleges: ['IIT Roorkee', 'Roorkee Institute of Technology', 'Quantum School of Business'],
       topExams: ['JEE Main & Advanced', 'GATE', 'CAT', 'UKPSC'],
@@ -4410,7 +4409,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Roorkee different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Roorkee service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Roorkee\'s economy is anchored in Education and engineering, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from IIT Roorkee campus and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Roorkee use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Roorkee cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Roorkee\'s hiring market.' },
       ]}),
-    city('Haldwani', 'Haldwani', '~1.6 lakh', 'tier3', {
+    city('Haldwani', 'Haldwani', 'tier3', {
       industries: 'Trade, agriculture, education, handloom',
       topColleges: ['Haldwani Institute of Technology', 'Kumaun University (regional)', 'Government Medical College Haldwani'],
       topExams: ['JEE Main', 'NEET', 'UKPSC'],
@@ -4424,7 +4423,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Haldwani different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Haldwani service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Haldwani\'s economy is anchored in Trade and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Gaula river and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Haldwani use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Haldwani cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Haldwani\'s hiring market.' },
       ]}),
-    city('Rudrapur', 'Udham Singh Nagar', '~1.5 lakh', 'tier3', {
+    city('Rudrapur', 'Udham Singh Nagar', 'tier3', {
       industries: 'Industry (Rudrapur is an industrial hub), agriculture, manufacturing',
       topColleges: ['G.B. Pant University of Agriculture and Technology (nearby)', 'Government College Rudrapur', 'IIT (regional)'],
       topExams: ['JEE Main', 'NEET', 'UKPSC'],
@@ -4438,7 +4437,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Rudrapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Rudrapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Rudrapur\'s economy is anchored in Industry (Rudrapur is an industrial hub) and agriculture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rudrapur city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Rudrapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Rudrapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Industry (Rudrapur is an industrial hub). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Rudrapur\'s hiring market.' },
       ]}),
-    city('Nainital', 'Nainital', '~0.4 lakh', 'tier3', {
+    city('Nainital', 'Nainital', 'tier3', {
       industries: 'Tourism, education, hospitality, handloom',
       topColleges: ['Kumaun University', 'Birla Institute of Applied Sciences (regional)'],
       topExams: ['JEE Main', 'NEET', 'UKPSC'],
@@ -4452,7 +4451,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Nainital different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Nainital service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Nainital\'s economy is anchored in Tourism and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Naini Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Nainital use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Nainital cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Nainital\'s hiring market.' },
       ]}),
-    city('Mussoorie', 'Dehradun', '~0.3 lakh', 'tier3', {
+    city('Mussoorie', 'Dehradun', 'tier3', {
       industries: 'Tourism, hospitality, education, handloom',
       topColleges: ['Mussoorie International School', 'Landour Language School'],
       topExams: ['UKPSC', 'JEE Main', 'NEET'],
@@ -4466,7 +4465,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Mussoorie different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Mussoorie service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Mussoorie\'s economy is anchored in Tourism and hospitality, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Kempty Falls and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Mussoorie use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Mussoorie cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Mussoorie\'s hiring market.' },
       ]}),
-    city('Kashipur', 'Udham Singh Nagar', '~1.2 lakh', 'tier3', {
+    city('Kashipur', 'Udham Singh Nagar', 'tier3', {
       industries: 'Industry, paper, sugar, handloom, agriculture',
       topColleges: ['Kashipur Institute of Technology', 'Government College Kashipur'],
       topExams: ['JEE Main', 'NEET', 'UKPSC'],
@@ -4483,7 +4482,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'west-bengal': [
-    city('Kolkata', 'Kolkata', '~45 lakh', 'tier1', {
+    city('Kolkata', 'Kolkata', 'tier1', {
       industries: 'IT, BFSI, education, jute, tea, creative industries, manufacturing',
       topColleges: ['IIT Kharagpur (regional)', 'Jadavpur University', 'Presidency University', 'Calcutta University', 'IIM Calcutta'],
       topExams: ['JEE Main & Advanced', 'WBJEE', 'NEET', 'CAT', 'CLAT', 'UPSC CSE'],
@@ -4497,7 +4496,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Kolkata different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Kolkata service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Kolkata\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Victoria Memorial and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Kolkata use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Kolkata cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Kolkata\'s hiring market.' },
       ]}),
-    city('Howrah', 'Howrah', '~10.7 lakh', 'tier2', {
+    city('Howrah', 'Howrah', 'tier2', {
       industries: 'Manufacturing, port, jute, transport, handloom',
       topColleges: ['Jadavpur University (regional)', 'IIEST Shibpur', 'Howrah Government College'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'WBPSC'],
@@ -4511,7 +4510,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Howrah different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Howrah service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Howrah\'s economy is anchored in Manufacturing and port, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Howrah Bridge and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Howrah use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Howrah cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Howrah\'s hiring market.' },
       ]}),
-    city('Asansol', 'Paschim Bardhaman', '~5.6 lakh', 'tier3', {
+    city('Asansol', 'Paschim Bardhaman', 'tier3', {
       industries: 'Coal, power, steel, education, manufacturing',
       topColleges: ['Asansol Engineering College', 'Kazi Nazrul University', 'Banwarilal Bhalotia College'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'WBPSC'],
@@ -4525,7 +4524,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Asansol different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Asansol service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Asansol\'s economy is anchored in Coal and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Maithon Dam and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Asansol use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Asansol cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Coal. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Asansol\'s hiring market.' },
       ]}),
-    city('Siliguri', 'Darjeeling', '~5.1 lakh', 'tier3', {
+    city('Siliguri', 'Darjeeling', 'tier3', {
       industries: 'Trade, tea, tourism, transport, education, handloom',
       topColleges: ['North Bengal University (regional)', 'Siliguri Institute of Technology', 'Salesian College'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'WBPSC'],
@@ -4539,7 +4538,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Siliguri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Siliguri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Siliguri\'s economy is anchored in Trade and tea, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Mahananda Wildlife Sanctuary and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Siliguri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Siliguri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Trade. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Siliguri\'s hiring market.' },
       ]}),
-    city('Durgapur', 'Paschim Bardhaman', '~5.7 lakh', 'tier3', {
+    city('Durgapur', 'Paschim Bardhaman', 'tier3', {
       industries: 'Steel (Durgapur Steel Plant), power, manufacturing, education',
       topColleges: ['National Institute of Technology Durgapur', 'Durgapur Government College', 'Dr. B.C. Roy Engineering College'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'GATE'],
@@ -4553,7 +4552,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Durgapur different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Durgapur service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Durgapur\'s economy is anchored in Steel (Durgapur Steel Plant) and power, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Durgapur Steel Plant and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Durgapur use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Durgapur cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Steel (Durgapur Steel Plant). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Durgapur\'s hiring market.' },
       ]}),
-    city('Bardhaman', 'Purba Bardhaman', '~3.1 lakh', 'tier3', {
+    city('Bardhaman', 'Purba Bardhaman', 'tier3', {
       industries: 'Agriculture, education, manufacturing, rice',
       topColleges: ['Burdwan University', 'Bardhaman Institute of Technology', 'Government College Bardhaman'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'WBPSC'],
@@ -4567,7 +4566,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Bardhaman different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Bardhaman service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Bardhaman\'s economy is anchored in Agriculture and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bardhaman Raj and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Bardhaman use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Bardhaman cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Bardhaman\'s hiring market.' },
       ]}),
-    city('Malda', 'Malda', '~1.9 lakh', 'tier3', {
+    city('Malda', 'Malda', 'tier3', {
       industries: 'Mango (Malda&apos;s Maldah mangoes), silk, agriculture, education',
       topColleges: ['University of Gour Banga', 'Malda College', 'IMPS College'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'CAT', 'WBPSC'],
@@ -4581,7 +4580,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Malda different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Malda service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Malda\'s economy is anchored in Mango (Malda and apos, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Adina Masjid and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Malda use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Malda cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Mango (Malda. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Malda\'s hiring market.' },
       ]}),
-    city('Berhampore', 'Murshidabad', '~1.9 lakh', 'tier3', {
+    city('Berhampore', 'Murshidabad', 'tier3', {
       industries: 'Agriculture, silk, education, handloom',
       topColleges: ['Berhampore Girls&apos; College', 'Krishnath College', 'Murshidabad University (regional)'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'WBPSC'],
@@ -4595,7 +4594,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Berhampore different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Berhampore service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Berhampore\'s economy is anchored in Agriculture and silk, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hazarduari Palace and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Berhampore use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Berhampore cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Berhampore\'s hiring market.' },
       ]}),
-    city('Krishnanagar', 'Nadia', '~1.8 lakh', 'tier3', {
+    city('Krishnanagar', 'Nadia', 'tier3', {
       industries: 'Agriculture, clay toys, education, handloom',
       topColleges: ['Krishnagar Government College', 'Nadia District University (regional)'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'WBPSC'],
@@ -4609,7 +4608,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Krishnanagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Krishnanagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Krishnanagar\'s economy is anchored in Agriculture and clay toys, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Krishnanagar Rajbari and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Krishnanagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Krishnanagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Krishnanagar\'s hiring market.' },
       ]}),
-    city('Darjeeling', 'Darjeeling', '~1.2 lakh', 'tier3', {
+    city('Darjeeling', 'Darjeeling', 'tier3', {
       industries: 'Tea (Darjeeling tea), tourism, education, hospitality',
       topColleges: ['St. Joseph&apos;s College Darjeeling', 'University of North Bengal (regional)'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'WBPSC'],
@@ -4623,7 +4622,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Darjeeling different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Darjeeling service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Darjeeling\'s economy is anchored in Tea (Darjeeling tea) and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Tiger Hill and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Darjeeling use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Darjeeling cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea (Darjeeling tea). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Darjeeling\'s hiring market.' },
       ]}),
-    city('Jalpaiguri', 'Jalpaiguri', '~1.2 lakh', 'tier3', {
+    city('Jalpaiguri', 'Jalpaiguri', 'tier3', {
       industries: 'Tea, tourism, agriculture, education, transport',
       topColleges: ['Jalpaiguri Government Engineering College', 'Ananda Chandra College', 'University of North Bengal (regional)'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'WBPSC'],
@@ -4637,7 +4636,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jalpaiguri different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jalpaiguri service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jalpaiguri\'s economy is anchored in Tea and tourism, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Jalpaiguri Rajbari and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jalpaiguri use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jalpaiguri cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tea. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jalpaiguri\'s hiring market.' },
       ]}),
-    city('Cooch Behar', 'Cooch Behar', '~0.7 lakh', 'tier3', {
+    city('Cooch Behar', 'Cooch Behar', 'tier3', {
       industries: 'Agriculture, education, handloom, tourism',
       topColleges: ['Cooch Behar College', 'Cooch Behar Panchanan Barma University'],
       topExams: ['JEE Main', 'WBJEE', 'NEET', 'WBPSC'],
@@ -4654,7 +4653,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'andaman-and-nicobar-islands': [
-    city('Port Blair', 'South Andaman', '~1 lakh', 'tier3', {
+    city('Port Blair', 'South Andaman', 'tier3', {
       industries: 'Tourism, fisheries, port, government services, education',
       topColleges: ['Jawaharlal Nehru Rajkeeya Mahavidyalaya', 'Dr. B.R. Ambedkar Government Polytechnic', 'Pondicherry University (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'UPSC CSE'],
@@ -4668,7 +4667,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Port Blair different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Port Blair service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Port Blair\'s economy is anchored in Tourism and fisheries, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Cellular Jail and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Port Blair use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Port Blair cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Port Blair\'s hiring market.' },
       ]}),
-    city('Diglipur', 'North Andaman', '~0.4 lakh', 'tier3', {
+    city('Diglipur', 'North Andaman', 'tier3', {
       industries: 'Agriculture, fisheries, forest produce, handloom',
       topColleges: ['Government College Diglipur'],
       topExams: ['JEE Main', 'NEET'],
@@ -4685,7 +4684,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'chandigarh': [
-    city('Chandigarh', 'Chandigarh', '~10.6 lakh', 'tier2', {
+    city('Chandigarh', 'Chandigarh', 'tier2', {
       industries: 'IT, BFSI, education, real estate, retail, government services',
       topColleges: ['Panjab University', 'PEC Chandigarh', 'Chandigarh University', 'CCET', 'MCM DAV', 'IIM Lucknow (regional)'],
       topExams: ['JEE Main', 'NEET', 'CLAT', 'CAT', 'GATE', 'PPSC'],
@@ -4702,7 +4701,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'dadra-and-nagar-haveli-and-daman-and-diu': [
-    city('Daman', 'Daman', '~0.4 lakh', 'tier3', {
+    city('Daman', 'Daman', 'tier3', {
       industries: 'Tourism, port, manufacturing, alcohol, real estate',
       topColleges: ['Government College Daman', 'Dr. B.R. Ambedkar Government College'],
       topExams: ['JEE Main', 'NEET', 'CAT'],
@@ -4716,7 +4715,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Daman different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Daman service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Daman\'s economy is anchored in Tourism and port, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Moti Daman fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Daman use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Daman cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Daman\'s hiring market.' },
       ]}),
-    city('Silvassa', 'Dadra and Nagar Haveli', '~0.5 lakh', 'tier3', {
+    city('Silvassa', 'Dadra and Nagar Haveli', 'tier3', {
       industries: 'Manufacturing, alcohol, power, tourism',
       topColleges: ['Government College Silvassa', 'Pondicherry University (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT'],
@@ -4733,7 +4732,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'delhi': [
-    city('New Delhi', 'New Delhi', '~2.5 lakh', 'tier1', {
+    city('New Delhi', 'New Delhi', 'tier1', {
       industries: 'Government, IT, BFSI, education, media, tourism, real estate',
       topColleges: ['IIT Delhi', 'JNU', 'Delhi University (north & south campus)', 'Jamia Millia Islamia', 'NLU Delhi', 'AIIMS Delhi'],
       topExams: ['UPSC CSE', 'JEE Main & Advanced', 'NEET', 'CAT', 'CLAT', 'NID/NIFT', 'CUET'],
@@ -4747,7 +4746,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in New Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our New Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that New Delhi\'s economy is anchored in Government and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from India Gate and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in New Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in New Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to New Delhi\'s hiring market.' },
       ]}),
-    city('North Delhi', 'North Delhi', '~25 lakh', 'tier1', {
+    city('North Delhi', 'North Delhi', 'tier1', {
       industries: 'Education, IT, BFSI, real estate, retail, manufacturing',
       topColleges: ['IIT Delhi', 'St. Stephen&apos;s College', 'Hindu College', 'Hansraj College', 'Kirori Mal College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4761,7 +4760,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in North Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our North Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that North Delhi\'s economy is anchored in Education and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Red Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in North Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in North Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Education. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to North Delhi\'s hiring market.' },
       ]}),
-    city('South Delhi', 'South Delhi', '~27 lakh', 'tier1', {
+    city('South Delhi', 'South Delhi', 'tier1', {
       industries: 'IT, BFSI, education, real estate, media, retail, government services',
       topColleges: ['JNU', 'Jamia Millia Islamia', 'Lady Shri Ram College', 'Gargi College', 'IIT Delhi (Hauz Khas)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET', 'UPSC CSE'],
@@ -4775,7 +4774,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in South Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our South Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that South Delhi\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Hauz Khas and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in South Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in South Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to South Delhi\'s hiring market.' },
       ]}),
-    city('West Delhi', 'West Delhi', '~25 lakh', 'tier1', {
+    city('West Delhi', 'West Delhi', 'tier1', {
       industries: 'Manufacturing, retail, IT, BFSI, education, real estate',
       topColleges: ['Maharaja Agrasen College', 'Sri Venkateswara College', 'Deen Dayal Upadhyaya College'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4789,7 +4788,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in West Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our West Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that West Delhi\'s economy is anchored in Manufacturing and retail, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rajouri Garden and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in West Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in West Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to West Delhi\'s hiring market.' },
       ]}),
-    city('East Delhi', 'East Delhi', '~22 lakh', 'tier1', {
+    city('East Delhi', 'East Delhi', 'tier1', {
       industries: 'Manufacturing, IT, retail, education, real estate, transport',
       topColleges: ['Amity University Noida (nearby)', 'IIIT Delhi (nearby)', 'DSEU colleges'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4803,7 +4802,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in East Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our East Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that East Delhi\'s economy is anchored in Manufacturing and IT, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Akshardham temple (nearby) and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in East Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in East Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to East Delhi\'s hiring market.' },
       ]}),
-    city('North East Delhi', 'North East Delhi', '~22 lakh', 'tier1', {
+    city('North East Delhi', 'North East Delhi', 'tier1', {
       industries: 'Manufacturing, retail, transport, education, real estate',
       topColleges: ['DSEU colleges', 'Zakir Husain Delhi College (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CUET'],
@@ -4817,7 +4816,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in North East Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our North East Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that North East Delhi\'s economy is anchored in Manufacturing and retail, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Yamuna Sports Complex and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in North East Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in North East Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Manufacturing. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to North East Delhi\'s hiring market.' },
       ]}),
-    city('North West Delhi', 'North West Delhi', '~36 lakh', 'tier1', {
+    city('North West Delhi', 'North West Delhi', 'tier1', {
       industries: 'IT, BFSI, retail, real estate, manufacturing, education',
       topColleges: ['DSEU colleges', 'Delhi University (regional)', 'Maharaja Surajmal Institute'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4831,7 +4830,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in North West Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our North West Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that North West Delhi\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Rohini and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in North West Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in North West Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to North West Delhi\'s hiring market.' },
       ]}),
-    city('South East Delhi', 'South East Delhi', '~18 lakh', 'tier1', {
+    city('South East Delhi', 'South East Delhi', 'tier1', {
       industries: 'IT, BFSI, government services, education, real estate, retail',
       topColleges: ['IIT Delhi (Hauz Khas)', 'Jamia Millia Islamia', 'Delhi University colleges'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4845,7 +4844,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in South East Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our South East Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that South East Delhi\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Defence Colony and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in South East Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in South East Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to South East Delhi\'s hiring market.' },
       ]}),
-    city('South West Delhi', 'South West Delhi', '~22 lakh', 'tier1', {
+    city('South West Delhi', 'South West Delhi', 'tier1', {
       industries: 'IT, BFSI, government services, education, real estate, retail',
       topColleges: ['IIT Delhi (Hauz Khas)', 'JNU', 'IGDTUW', 'Delhi University colleges'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET'],
@@ -4859,7 +4858,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in South West Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our South West Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that South West Delhi\'s economy is anchored in IT and BFSI, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dwarka and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in South West Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in South West Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in IT. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to South West Delhi\'s hiring market.' },
       ]}),
-    city('Central Delhi', 'Central Delhi', '~6 lakh', 'tier1', {
+    city('Central Delhi', 'Central Delhi', 'tier1', {
       industries: 'Government services, retail, real estate, BFSI, tourism',
       topColleges: ['Hindu College', 'St. Stephen&apos;s College', 'Zakir Husain Delhi College', 'Delhi School of Economics'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CLAT', 'CUET', 'UPSC CSE'],
@@ -4873,7 +4872,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Central Delhi different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Central Delhi service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Central Delhi\'s economy is anchored in Government services and retail, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Connaught Place and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Central Delhi use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Central Delhi cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Government services. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Central Delhi\'s hiring market.' },
       ]}),
-    city('Shahdara', 'Shahdara', '~32 lakh', 'tier1', {
+    city('Shahdara', 'Shahdara', 'tier1', {
       industries: 'Manufacturing, IT, retail, real estate, education',
       topColleges: ['DSEU colleges', 'IP University colleges (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CUET'],
@@ -4890,7 +4889,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'jammu-and-kashmir': [
-    city('Srinagar', 'Srinagar', '~12 lakh', 'tier2', {
+    city('Srinagar', 'Srinagar', 'tier2', {
       industries: 'Tourism, handicrafts (Kashmir shawls, papier-mâché), horticulture, education, IT',
       topColleges: ['University of Kashmir', 'NIT Srinagar', 'Government Medical College Srinagar', 'IIT Jammu (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'JKPSC', 'UPSC CSE'],
@@ -4904,7 +4903,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Srinagar different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Srinagar service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Srinagar\'s economy is anchored in Tourism and handicrafts (Kashmir shawls, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Dal Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Srinagar use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Srinagar cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Srinagar\'s hiring market.' },
       ]}),
-    city('Jammu', 'Jammu', '~5.7 lakh', 'tier2', {
+    city('Jammu', 'Jammu', 'tier2', {
       industries: 'Tourism (Vaishno Devi), handicrafts, education, handloom, agriculture',
       topColleges: ['University of Jammu', 'IIT Jammu', 'Government Medical College Jammu', 'Bhaderwah Campus (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'JKPSC', 'UPSC CSE'],
@@ -4918,7 +4917,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Jammu different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Jammu service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Jammu\'s economy is anchored in Tourism (Vaishno Devi) and handicrafts, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Bahu Fort and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Jammu use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Jammu cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism (Vaishno Devi). Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Jammu\'s hiring market.' },
       ]}),
-    city('Anantnag', 'Anantnag', '~1 lakh', 'tier3', {
+    city('Anantnag', 'Anantnag', 'tier3', {
       industries: 'Agriculture, horticulture, tourism, handloom, education',
       topColleges: ['Government College Anantnag', 'South Campus (University of Kashmir)'],
       topExams: ['JEE Main', 'NEET', 'JKPSC'],
@@ -4932,7 +4931,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Anantnag different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Anantnag service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Anantnag\'s economy is anchored in Agriculture and horticulture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Anantnag city and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Anantnag use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Anantnag cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Anantnag\'s hiring market.' },
       ]}),
-    city('Baramulla', 'Baramulla', '~0.8 lakh', 'tier3', {
+    city('Baramulla', 'Baramulla', 'tier3', {
       industries: 'Agriculture, horticulture, tourism, handloom, education',
       topColleges: ['Government College Baramulla', 'North Campus (University of Kashmir)'],
       topExams: ['JEE Main', 'NEET', 'JKPSC'],
@@ -4946,7 +4945,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Baramulla different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Baramulla service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Baramulla\'s economy is anchored in Agriculture and horticulture, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Baramulla town and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Baramulla use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Baramulla cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Agriculture. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Baramulla\'s hiring market.' },
       ]}),
-    city('Kathua', 'Kathua', '~0.5 lakh', 'tier3', {
+    city('Kathua', 'Kathua', 'tier3', {
       industries: 'Agriculture, handloom, education, basmati rice',
       topColleges: ['Government College Kathua', 'Kathua Campus (University of Jammu)'],
       topExams: ['JEE Main', 'NEET', 'JKPSC'],
@@ -4963,7 +4962,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'ladakh': [
-    city('Leh', 'Leh', '~0.3 lakh', 'tier3', {
+    city('Leh', 'Leh', 'tier3', {
       industries: 'Tourism, defence, horticulture, education, handloom',
       topColleges: ['University of Ladakh', 'Government College Leh', 'IIT Jammu (regional)'],
       topExams: ['JEE Main', 'NEET', 'JKPSC', 'UPSC CSE'],
@@ -4977,7 +4976,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Leh different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Leh service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Leh\'s economy is anchored in Tourism and defence, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Pangong Lake and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Leh use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Leh cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Leh\'s hiring market.' },
       ]}),
-    city('Kargil', 'Kargil', '~0.2 lakh', 'tier3', {
+    city('Kargil', 'Kargil', 'tier3', {
       industries: 'Tourism, agriculture, horticulture, handloom, education',
       topColleges: ['Government College Kargil', 'University of Ladakh (regional)'],
       topExams: ['JEE Main', 'NEET', 'JKPSC'],
@@ -4994,7 +4993,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'lakshadweep': [
-    city('Kavaratti', 'Lakshadweep', '~0.1 lakh', 'tier3', {
+    city('Kavaratti', 'Lakshadweep', 'tier3', {
       industries: 'Fisheries, coconut, coir, tourism, government services',
       topColleges: ['Government College Kavaratti', 'Pondicherry University (regional)'],
       topExams: ['JEE Main', 'NEET', 'UPSC CSE'],
@@ -5011,7 +5010,7 @@ export const CITIES_BY_STATE = {
   ],
 
   'puducherry': [
-    city('Puducherry', 'Puducherry', '~2.4 lakh', 'tier3', {
+    city('Puducherry', 'Puducherry', 'tier3', {
       industries: 'Tourism, education, IT, fishing, government services, spiritual retreats',
       topColleges: ['Pondicherry University', 'JIPMER', 'NIT Puducherry', 'Auroville (regional)'],
       topExams: ['JEE Main', 'NEET', 'CAT', 'CENTAC', 'UPSC CSE'],
@@ -5025,7 +5024,7 @@ export const CITIES_BY_STATE = {
         { q: 'How is career counselling in Puducherry different from generic online counselling?', a: 'Generic online counselling gives you personality labels. Our Puducherry service is rooted in local context — the actual colleges, exams, industries, and salary bands that apply here. Given that Puducherry\'s economy is anchored in Tourism and education, we pay special attention to careers that are realistic in this context — both the entry paths and the long-term growth. We also factor in commute, family schedules, and the realities of attending sessions from Aurobindo Ashram and surrounding neighbourhoods. The output is a plan that is implementable, not aspirational.' },
         { q: 'Can working professionals in Puducherry use GCDA for career transitions and MBA planning?', a: 'Yes. Most working-professional sessions in Puducherry cover one of three tracks: domain or industry switching, MBA / executive-MBA shortlisting, or promotion and leadership planning, particularly in Tourism. Sessions are online and timed around work hours — evenings 7–10 PM IST and weekends. We help with resume rewrites, mock interviews (MBA interview, lateral interview, CEO-level), and a 90-day execution plan tailored to Puducherry\'s hiring market.' },
       ]}),
-    city('Karaikal', 'Karaikal', '~0.9 lakh', 'tier3', {
+    city('Karaikal', 'Karaikal', 'tier3', {
       industries: 'Port, fishing, agriculture, education, tourism',
       topColleges: ['Karaikal Polytechnic', 'Government College Karaikal', 'Perunthalaivar Kamarajar Arts College'],
       topExams: ['JEE Main', 'NEET', 'CENTAC'],

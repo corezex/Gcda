@@ -118,8 +118,8 @@ function parseCities(src) {
     cities.push({
       name: nameMatch[1],
       district: argsList[1] ? argsList[1].replace(/['"]/g, '') : '?',
-      population: argsList[2] ? argsList[2].replace(/['"]/g, '') : '?',
-      tier: argsList[3] ? argsList[3].replace(/['"]/g, '') : '?',
+      population: null,
+      tier: argsList[2] ? argsList[2].replace(/['"]/g, '') : '?',
       industries: extractField('industries'),
       topColleges: extractArray('topColleges'),
       topExams: extractArray('topExams'),
@@ -261,7 +261,7 @@ function generateCityLongDescription(c, serviceKey) {
     `GCDA's ${servicePhrase} in ${c.name} is built around the realities of ${c.stateName}'s ${c.district} district. We pair structured assessments with mentor-led sessions, calibrated to the local ${indStr} economy${collegeShort ? ` and the colleges ${c.name} students realistically shortlist — including ${collegeShort}` : ''}. Sessions are online across ${c.district} and in-person on request.`,
     `In ${c.name}, ${servicePhrase} is most effective when it accounts for the local ${indStr} economy and the entrance calendar students face${examShort ? `, with ${examShort}` : ''} as the most-considered option. Our ${c.name} mentors run structured one-on-one sessions that turn aptitude data and family context into a clear next step. Plans start at Rs. 2,999 for the Stream Selector and are tailored end-to-end to ${c.district}.`,
     `${c.name} families come to GCDA for ${servicePhrase} because we work with the actual colleges, exams, and industries that apply here${collegeShort ? ` — ${collegeShort}` : ''} — not generic national averages. Sessions are hybrid: online video across ${c.district} and in-person in ${c.name} on request. Every plan ends with a written action plan delivered within 24 hours.`,
-    `For ${c.name} residents (population ${c.population}), GCDA delivers ${servicePhrase} that is locally calibrated: we work with the ${indStr} economy, the colleges and entrance exams ${c.name} students actually plan around${landmarks.length > 0 ? `, and the commute patterns around ${landmarkShort}` : ''}. Online sessions run across ${c.district} and ${c.stateName}; in-person sessions are scheduled on request.`,
+    `For ${c.name} residents, GCDA delivers ${servicePhrase} that is locally calibrated: we work with the ${indStr} economy, the colleges and entrance exams ${c.name} students actually plan around${landmarks.length > 0 ? `, and the commute patterns around ${landmarkShort}` : ''}. Online sessions run across ${c.district} and ${c.stateName}; in-person sessions are scheduled on request.`,
   ];
   return templates[hash];
 }
