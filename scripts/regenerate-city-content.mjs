@@ -128,16 +128,32 @@ function parseCities(src) {
     i = pos;
   }
   // Assign state by sequential order
-  const stateCounts = {
-    'andhra-pradesh': 28, 'arunachal-pradesh': 6, 'assam': 9, 'bihar': 18, 'chhattisgarh': 9,
-    'goa': 5, 'gujarat': 16, 'haryana': 11, 'himachal-pradesh': 8, 'jharkhand': 8,
-    'karnataka': 20, 'kerala': 11, 'madhya-pradesh': 14, 'maharashtra': 39, 'manipur': 3,
-    'meghalaya': 3, 'mizoram': 2, 'nagaland': 3, 'odisha': 8, 'punjab': 8, 'rajasthan': 12,
-    'tamil-nadu': 19, 'telangana': 7, 'tripura': 2, 'uttar-pradesh': 32, 'uttarakhand': 9,
-    'west-bengal': 12, 'andaman-and-nicobar-islands': 2, 'chandigarh': 1,
-    'dadra-and-nagar-haveli-and-daman-and-diu': 2, 'delhi': 11, 'jammu-and-kashmir': 5,
-    'ladakh': 2, 'lakshadweep': 1, 'puducherry': 2,
-  };
+  // Count cities per state by scanning the source
+  const stateCounts = {};
+  let scanPos = cbsStart;
+  const cbsEndSearchInner = source.indexOf('};', cbsStart);
+  while (scanPos < cbsEndSearchInner) {
+    const stateMatchStart = source.indexOf("'", scanPos);
+    if (stateMatchStart === -1 || stateMatchStart >= cbsEndSearchInner) break;
+    const stateMatchEnd = source.indexOf("':", stateMatchStart);
+    if (stateMatchEnd === -1) break;
+    const stateName = source.substring(stateMatchStart + 1, stateMatchEnd);
+    if (stateOrder.includes(stateName)) {
+      const blockStart = source.indexOf('[', stateMatchEnd);
+      let depth = 1, blockEnd = blockStart + 1;
+      while (blockEnd < source.length && depth > 0) {
+        if (source[blockEnd] === '[') depth++;
+        else if (source[blockEnd] === ']') depth--;
+        blockEnd++;
+      }
+      const blockContent = source.substring(blockStart, blockEnd);
+      const cityCount = (blockContent.match(/city\(/g) || []).length;
+      stateCounts[stateName] = cityCount;
+      scanPos = blockEnd;
+    } else {
+      scanPos = stateMatchEnd + 1;
+    }
+  }
   let sIdx = 0, sCount = 0;
   for (const c of cities) {
     c.stateSlug = stateOrder[sIdx];
@@ -326,18 +342,37 @@ function escapeForJsString(s) {
 
 const cbsEndSearch = patched.indexOf('};', cbsStart);
 let pos = cbsStart;
-let curState = 0, curCount = 0;
-const stateCounts = {
-  'andhra-pradesh': 28, 'arunachal-pradesh': 6, 'assam': 9, 'bihar': 18, 'chhattisgarh': 9,
-  'goa': 5, 'gujarat': 16, 'haryana': 11, 'himachal-pradesh': 8, 'jharkhand': 8,
-  'karnataka': 20, 'kerala': 11, 'madhya-pradesh': 14, 'maharashtra': 39, 'manipur': 3,
-  'meghalaya': 3, 'mizoram': 2, 'nagaland': 3, 'odisha': 8, 'punjab': 8, 'rajasthan': 12,
-  'tamil-nadu': 19, 'telangana': 7, 'tripura': 2, 'uttar-pradesh': 32, 'uttarakhand': 9,
-  'west-bengal': 12, 'andaman-and-nicobar-islands': 2, 'chandigarh': 1,
-  'dadra-and-nagar-haveli-and-daman-and-diu': 2, 'delhi': 11, 'jammu-and-kashmir': 5,
-  'ladakh': 2, 'lakshadweep': 1, 'puducherry': 2,
-};
+
+// First pass: count cities per state by scanning the source
+const stateCityCounts = {};
+let scanPos = cbsStart;
+while (scanPos < cbsEndSearch) {
+  const stateMatchStart = patched.indexOf("'", scanPos);
+  if (stateMatchStart === -1 || stateMatchStart >= cbsEndSearch) break;
+  const stateMatchEnd = patched.indexOf("':", stateMatchStart);
+  if (stateMatchEnd === -1) break;
+  const stateName = patched.substring(stateMatchStart + 1, stateMatchEnd);
+  if (stateOrder.includes(stateName)) {
+    // Count city() calls within this state block (between stateName+':[' and next '],' or ']')
+    const blockStart = patched.indexOf('[', stateMatchEnd);
+    let depth = 1, blockEnd = blockStart + 1;
+    while (blockEnd < patched.length && depth > 0) {
+      if (patched[blockEnd] === '[') depth++;
+      else if (patched[blockEnd] === ']') depth--;
+      blockEnd++;
+    }
+    const blockContent = patched.substring(blockStart, blockEnd);
+    const cityCount = (blockContent.match(/city\(/g) || []).length;
+    stateCityCounts[stateName] = cityCount;
+    scanPos = blockEnd;
+  } else {
+    scanPos = stateMatchEnd + 1;
+  }
+}
+const stateCounts = stateCityCounts;
+
 let result = patched.substring(0, cbsStart);
+let curState = 0, curCount = 0;
 while (pos < cbsEndSearch) {
   const cityStart = patched.indexOf('city(', pos);
   if (cityStart === -1 || cityStart >= cbsEndSearch) break;
