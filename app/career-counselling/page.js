@@ -36,7 +36,7 @@ export default function CareerCounsellingPage() {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Our services</span>
             <h1>Career counselling that turns uncertainty into a clear roadmap.</h1>
-            <p>
+            <p className="page-hero-copy">
               GCDA offers counselling and planning services for academic choices, career exploration, degree selection, and professional growth. Every service is designed to move you from confusion to clarity.
             </p>
             <div className="button-row">

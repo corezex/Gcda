@@ -53,7 +53,7 @@ export default function ServiceDetailPage({ params }) {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Service</span>
             <h1>{service.heroDescription}</h1>
-            <p>{service.shortDescription}</p>
+            <p className="page-hero-copy">{service.shortDescription}</p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book {service.title}</Link>
               <Link href="/plan" className="button button-secondary">View Plans</Link>

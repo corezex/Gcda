@@ -33,7 +33,7 @@ export default function PlanPage() {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Career counselling plans</span>
             <h1>Choose the plan that matches your current stage.</h1>
-            <p>
+            <p className="page-hero-copy">
               For students and professionals, our career assessment and counselling plans help narrow options and identify the right path based on interests, skills, values, and personality.
             </p>
           </div>

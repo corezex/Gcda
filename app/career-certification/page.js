@@ -74,7 +74,7 @@ export default function CareerCertificationPage() {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Certification Programme</span>
             <h1>Begin your journey to become a certified career counsellor.</h1>
-            <p>
+            <p className="page-hero-copy">
               A comprehensive certification programme designed to equip you with the knowledge, hands-on practice, and confidence to guide students and working professionals towards informed, fulfilling career decisions.
             </p>
             <div className="button-row">

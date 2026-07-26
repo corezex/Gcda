@@ -26,7 +26,7 @@ export default function BlogIndexPage() {
             <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }]} />
             <span className="eyebrow">GCDA Blog</span>
             <h1>Career guidance, written for Indian students, parents, and professionals.</h1>
-            <p>
+            <p className="page-hero-copy">
               Practical, India-specific career guidance — covering stream selection after 10th, degree choices after 12th, JEE/NEET planning, MBA, career transitions, and working professional growth.
             </p>
           </div>

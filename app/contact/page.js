@@ -28,7 +28,7 @@ export default function ContactPage() {
             <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }]} />
             <span className="eyebrow">Contact us</span>
             <h1>Get in touch with GCDA for counselling, plans, and guidance.</h1>
-            <p>
+            <p className="page-hero-copy">
               Reach out for student counselling, professional guidance, institution workshops, or plan-related questions. We would love to hear from you.
             </p>
           </div>

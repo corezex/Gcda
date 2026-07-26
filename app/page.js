@@ -31,7 +31,7 @@ export default function HomePage() {
           <div>
             <span className="eyebrow">Empowering careers since 2013</span>
             <h1>Career counselling that turns confusion into a clear plan.</h1>
-            <p className="hero-copy">
+            <p className="page-hero-copy">
               From stream selection after 10th and degree planning after 12th to professional growth and career transitions, GCDA helps students, parents, and working professionals across India make confident, well-informed career decisions.
             </p>
             <div className="button-row">

@@ -232,7 +232,7 @@ function StateHub({ stateSlug, state }) {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{state.region}</span>
             <h1>Career Counselling in {state.name}</h1>
-            <p>
+            <p className="page-hero-copy">
               Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person at our Mumbai office.
             </p>
             <div className="button-row">
@@ -346,7 +346,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{stateName}</span>
             <h1>{cityLabel} in {city.name}, {stateName}</h1>
-            <p>{cityLead}</p>
+            <p className="page-hero-copy">{cityLead}</p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
@@ -607,7 +607,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{servicePage.heroEyebrow}</span>
             <h1>{servicePage.heroTitle}</h1>
-            <p>{servicePage.heroLead}</p>
+            <p className="page-hero-copy">{servicePage.heroLead}</p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
               <Link href="/cities" className="button button-secondary">View All Cities</Link>

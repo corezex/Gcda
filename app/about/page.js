@@ -27,7 +27,7 @@ export default function AboutPage() {
             <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }]} />
             <span className="eyebrow">About GCDA</span>
             <h1>Trusted career guidance with a practical, student-first approach.</h1>
-            <p>
+            <p className="page-hero-copy">
               GCDA – Global Career Development Association – has been helping Indian students, parents, and working professionals make confident education and career decisions since 2013. We combine structured assessments, personal counselling, and practical roadmaps to turn confusion into clarity.
             </p>
           </div>

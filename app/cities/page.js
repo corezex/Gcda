@@ -25,7 +25,7 @@ export default function CitiesHubPage() {
           <div>
             <span className="eyebrow">Career Counselling in India</span>
             <h1>Find GCDA career counselling in your state and city.</h1>
-            <p>
+            <p className="page-hero-copy">
               GCDA offers structured career counselling, career assessments, stream and degree selection, and professional growth mentoring across 36 Indian states and union territories, covering 300+ cities. Pick your state to see locally relevant guidance.
             </p>
             <div className="button-row">
