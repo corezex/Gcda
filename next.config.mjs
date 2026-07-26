@@ -22,15 +22,39 @@ const nextConfig = {
       { source: '/en/about', destination: '/about', permanent: true },
       { source: '/en/contact', destination: '/contact', permanent: true },
       { source: '/en/career-counselling', destination: '/career-counselling', permanent: true },
+      { source: '/en/career-counselling-seminar', destination: '/career-counselling-seminar', permanent: true },
       { source: '/en/career-certification', destination: '/career-certification', permanent: true },
+      { source: '/en/stream-selection-guidance', destination: '/stream-selection-guidance', permanent: true },
+      { source: '/en/degree-selection-guidance', destination: '/degree-selection-guidance', permanent: true },
+      { source: '/en/guidance-for-working-professionals', destination: '/guidance-for-working-professionals', permanent: true },
       { source: '/en/plan', destination: '/plan', permanent: true },
       { source: '/en/blog', destination: '/blog', permanent: true },
       { source: '/en/blog/:slug', destination: '/blog/:slug', permanent: true },
+
+      // ----- Live site /seminar/ and /certification/ URL patterns -----
+      // (live URLs: /seminar/{state}/career-counselling-seminar-{city} and
+      // /certification/{state}/career-counselling-certification-{city})
+      // Our new build uses /{state}/career-counselling-seminar-{city} and
+      // /{state}/career-counselling-certification-{city}.
+      {
+        source: '/seminar/:state/career-counselling-seminar-:city',
+        destination: '/:state/career-counselling-seminar-:city',
+        permanent: true,
+      },
+      {
+        source: '/certification/:state/career-counselling-certification-:city',
+        destination: '/:state/career-counselling-certification-:city',
+        permanent: true,
+      },
 
       // ----- Trailing slash variants -----
       { source: '/about/', destination: '/about', permanent: true },
       { source: '/contact/', destination: '/contact', permanent: true },
       { source: '/career-counselling/', destination: '/career-counselling', permanent: true },
+      { source: '/career-counselling-seminar/', destination: '/career-counselling-seminar', permanent: true },
+      { source: '/stream-selection-guidance/', destination: '/stream-selection-guidance', permanent: true },
+      { source: '/degree-selection-guidance/', destination: '/degree-selection-guidance', permanent: true },
+      { source: '/guidance-for-working-professionals/', destination: '/guidance-for-working-professionals', permanent: true },
       { source: '/plan/', destination: '/plan', permanent: true },
       { source: '/blog/', destination: '/blog', permanent: true },
       { source: '/cities/', destination: '/cities', permanent: true },

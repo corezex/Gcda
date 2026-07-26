@@ -87,7 +87,7 @@ export default function Header() {
                       {services.map((s) => (
                         <Link
                           key={s.slug}
-                          href={`/career-counselling#${s.slug}`}
+                          href={`/career-counselling/${s.slug}`}
                           className="nav-dropdown-item"
                           role="menuitem"
                           onClick={() => { setOpen(false); setServicesOpen(false); }}
@@ -100,13 +100,63 @@ export default function Header() {
                         </Link>
                       ))}
                       <div className="nav-dropdown-divider" />
+                      <span className="nav-dropdown-heading">Topical services</span>
+                      <Link
+                        href="/career-counselling-seminar"
+                        className="nav-dropdown-item"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      >
+                        <span className="nav-dropdown-icon" aria-hidden="true">🎓</span>
+                        <span className="nav-dropdown-text">
+                          <strong>Career Counselling Seminar</strong>
+                          <small>Workshops & seminars for schools, colleges, and parents</small>
+                        </span>
+                      </Link>
+                      <Link
+                        href="/stream-selection-guidance"
+                        className="nav-dropdown-item"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      >
+                        <span className="nav-dropdown-icon" aria-hidden="true">🧭</span>
+                        <span className="nav-dropdown-text">
+                          <strong>Stream Selection Guidance</strong>
+                          <small>Choose the right stream after 10th — Science, Commerce, or Arts</small>
+                        </span>
+                      </Link>
+                      <Link
+                        href="/degree-selection-guidance"
+                        className="nav-dropdown-item"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      >
+                        <span className="nav-dropdown-icon" aria-hidden="true">🏫</span>
+                        <span className="nav-dropdown-text">
+                          <strong>Degree Selection Guidance</strong>
+                          <small>Pick the right degree and college after 12th</small>
+                        </span>
+                      </Link>
+                      <Link
+                        href="/guidance-for-working-professionals"
+                        className="nav-dropdown-item"
+                        role="menuitem"
+                        onClick={() => { setOpen(false); setServicesOpen(false); }}
+                      >
+                        <span className="nav-dropdown-icon" aria-hidden="true">💼</span>
+                        <span className="nav-dropdown-text">
+                          <strong>Guidance for Working Professionals</strong>
+                          <small>Career growth, transition, and MBA planning</small>
+                        </span>
+                      </Link>
+                      <div className="nav-dropdown-divider" />
                       <Link
                         href="/career-certification"
                         className="nav-dropdown-item nav-dropdown-feature"
                         role="menuitem"
                         onClick={() => { setOpen(false); setServicesOpen(false); }}
                       >
-                        <span className="nav-dropdown-icon" aria-hidden="true">🎓</span>
+                        <span className="nav-dropdown-icon" aria-hidden="true">🏅</span>
                         <span className="nav-dropdown-text">
                           <strong>Career Counselling Certification</strong>
                           <small>Become a certified career counsellor — hybrid online + in-person</small>

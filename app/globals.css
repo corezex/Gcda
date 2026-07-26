@@ -307,6 +307,16 @@ ul {
   background: rgba(15, 118, 110, 0.04);
 }
 
+.nav-dropdown-heading {
+  display: block;
+  padding: 0.4rem 0.8rem 0.2rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
 .nav-dropdown-feature {
   background: linear-gradient(135deg, rgba(196, 91, 64, 0.08), rgba(15, 118, 110, 0.06));
   border: 1px solid rgba(196, 91, 64, 0.18);

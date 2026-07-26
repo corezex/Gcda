@@ -154,11 +154,31 @@ export const CITIES_BY_STATE = {
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
       landmarks: 'Ameen Peer Dargah, Gandikota (Grand Canyon of India), Pushpagiri temple, Devuni Kadapa',
     }),
+    city('Amalapuram', 'East Godavari', '~1.4 lakh', 'tier3', {
+      industries: 'Agriculture, aquaculture, rice, coconut, fishing, education',
+      topColleges: ['Government Degree College Amalapuram', 'Konaseema Institute of Medical Sciences (nearby)', 'Aditya Engineering College (nearby)'],
+      topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'AP TET'],
+      landmarks: 'Konaseema delta, Godavari river, Amalapuram temple, Sakinetipalli',
+      studentNote: 'Amalapuram students commonly weigh engineering, medical, agriculture, and commerce paths after 10th and 12th, with a strong tradition of students pursuing higher studies in nearby Rajahmundry, Kakinada, and Vijayawada.',
+    }),
+    city('Amaravati', 'Guntur', '~1.0 lakh', 'tier3', {
+      industries: 'Government services, agriculture, education, real estate',
+      topColleges: ['Acharya Nagarjuna University (nearby)', 'Government Medical College Guntur (nearby)', 'K L University (nearby)'],
+      topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC', 'CUET'],
+      landmarks: 'Amaravati heritage site, Dhyana Buddha statue, Amaralingeswara temple, Kondaveedu fort (nearby)',
+      studentNote: 'Amaravati students benefit from the planned capital region\'s growing coaching and education infrastructure, and weigh engineering, medical, civil services, and law paths after 12th.',
+    }),
     city('Eluru', 'Eluru', '~2.8 lakh', 'tier3', {
       industries: 'Handloom textiles, carpet weaving, agriculture',
       topColleges: ['VSM College', 'Sir CRR College', 'ASR Government Degree College'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
       landmarks: 'Vijaya Durga temple, Satyanarayanapuram, Powerpet, Tangellamudi',
+    }),
+    city('Tadepalligudem', 'West Godavari', '~1.3 lakh', 'tier3', {
+      industries: 'Oil palm, paddy, education',
+      topColleges: ['Government Degree College Tadepalligudem', 'NRI Academy of Sciences'],
+      topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
+      landmarks: 'Tadepalligudem town, Subhadrapuram, Nuzividu road',
     }),
     city('Ongole', 'Prakasam', '~2.6 lakh', 'tier3', {
       industries: 'Cattle breeding (Ongole cattle), granite, agriculture',
@@ -219,12 +239,6 @@ export const CITIES_BY_STATE = {
       topColleges: ['Vizianagaram Medical College', 'Maharajah&apos;s College', 'GITAM Vizianagaram campus'],
       topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
       landmarks: 'Vizianagaram fort, Maharaja&apos;s palace, Kanakadurga temple, Gajapathinagaram',
-    }),
-    city('Tadepalligudem', 'West Godavari', '~1.3 lakh', 'tier3', {
-      industries: 'Oil palm, paddy, education',
-      topColleges: ['Government Degree College Tadepalligudem', 'NRI Academy of Sciences'],
-      topExams: ['AP EAMCET', 'NEET', 'JEE Main', 'APPSC'],
-      landmarks: 'Tadepalligudem town, Subhadrapuram, Nuzividu road',
     }),
     city('Chilakaluripet', 'Guntur', '~1.0 lakh', 'tier3', {
       industries: 'Textiles, groundnut, trade, agriculture',

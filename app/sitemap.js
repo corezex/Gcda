@@ -1,13 +1,14 @@
 import { services } from '@/data/site';
 import { STATES, getAllCityUrls } from '@/data/indiaLocations';
 import { blogPosts } from '@/data/blog';
+import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS } from '@/data/servicePages';
 
 const SITE_URL = 'https://gcdassociation.org';
 
 export default function sitemap() {
   const now = new Date();
 
-  // Top-level static routes (no /en/ prefix to match the new build structure)
+  // Top-level static routes
   const staticRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
@@ -24,6 +25,19 @@ export default function sitemap() {
     priority: route.priority,
   }));
 
+  // Top-level service main pages (4 of them — /career-certification has its own page)
+  const topLevelServicePages = [
+    'career-counselling-seminar',
+    'stream-selection-guidance',
+    'degree-selection-guidance',
+    'guidance-for-working-professionals',
+  ].map((slug) => ({
+    url: `${SITE_URL}/${slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.85,
+  }));
+
   // State hub pages
   const stateRoutes = STATES.map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
@@ -32,20 +46,24 @@ export default function sitemap() {
     priority: 0.8,
   }));
 
-  // All city pages at the live URL pattern
-  const cityRoutes = getAllCityUrls().map((u) => {
-    // Tier 1 cities get higher priority; tier 2 medium; tier 3 lower
-    const cityName = u.citySlug;
-    return {
-      url: `${SITE_URL}${u.fullPath}`,
-      lastModified: now,
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    };
-  });
+  // All city pages for all 6 services
+  // 344 cities x 6 services = 2,064 city pages
+  const cityRoutes = [];
+  for (const u of getAllCityUrls()) {
+    for (const serviceSlug of SERVICE_SLUGS) {
+      const pattern = SERVICE_CITY_PATTERNS[serviceSlug];
+      if (!pattern) continue;
+      cityRoutes.push({
+        url: `${SITE_URL}${pattern.urlPattern(u.stateSlug, u.citySlug)}`,
+        lastModified: now,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+      });
+    }
+  }
 
-  // Service detail pages
-  const serviceRoutes = services.map((service) => ({
+  // Service detail pages (under /career-counselling/[slug])
+  const serviceDetailRoutes = services.map((service) => ({
     url: `${SITE_URL}/career-counselling/${service.slug}`,
     lastModified: now,
     changeFrequency: 'monthly',
@@ -60,5 +78,12 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...stateRoutes, ...cityRoutes, ...serviceRoutes, ...blogRoutes];
+  return [
+    ...staticRoutes,
+    ...topLevelServicePages,
+    ...stateRoutes,
+    ...cityRoutes,
+    ...serviceDetailRoutes,
+    ...blogRoutes,
+  ];
 }
