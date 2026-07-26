@@ -6,28 +6,31 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import { plans, siteFaqs } from '@/data/site';
-import { faqSchema, productSchema } from '@/data/schema';
+import { faqSchema, productSchema, breadcrumbSchema } from '@/data/schema';
 
 export const metadata = {
   title: 'Career Counselling Plans & Pricing | GCDA',
   description:
     'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals. Transparent pricing, structured plans.',
-  alternates: { canonical: '/plans' },
+  alternates: { canonical: '/plan' },
   openGraph: {
     title: 'Career Counselling Plans & Pricing | GCDA',
-    description:
-      'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
-    url: 'https://gcdassociation.org/plans',
+    description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
+    url: 'https://gcdassociation.org/plan',
   },
 };
 
-export default function PlansPage() {
+export default function PlanPage() {
+  const breadcrumbs = [
+    { name: 'Home', url: '/' },
+    { name: 'Plans', url: '/plan' },
+  ];
   return (
     <>
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
-            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Plans', url: '/plans' }]} />
+            <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Career counselling plans</span>
             <h1>Choose the plan that matches your current stage.</h1>
             <p>
@@ -43,7 +46,7 @@ export default function PlansPage() {
       <section className="section section-tight-top">
         <div className="container">
           <AnswerBlock>
-            GCDA offers 3 career counselling plans: Stream Selector (₹2,999) for school students choosing a stream, Degree Selector (₹3,499) for students choosing a degree after 12th, and Working Professionals (₹3,999) for career transitions and growth. All plans include assessments, mentor sessions, and personalized reports.
+            GCDA offers 3 career counselling plans: Stream Selector (Rs. 2,999) for school students choosing a stream, Degree Selector (Rs. 3,499) for students choosing a degree after 12th, and Working Professionals (Rs. 3,999) for career transitions and growth. All plans include assessments, mentor sessions, and a personalised report.
           </AnswerBlock>
         </div>
       </section>
@@ -102,6 +105,8 @@ export default function PlansPage() {
         title="Still unsure which plan fits you best?"
         description="Talk to GCDA and we will help you choose the right counselling path before you book."
       />
+
+      <JsonLd id="ld-breadcrumb-plans" data={breadcrumbSchema(breadcrumbs)} />
     </>
   );
 }

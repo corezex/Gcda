@@ -78,15 +78,13 @@ export default function BlogPostPage({ params }) {
 
         <section className="section section-tight-top">
           <div className="container narrow-center">
-            <AnswerBlock>
-              {post.answerBlock}
-            </AnswerBlock>
+            <AnswerBlock>{post.answerBlock}</AnswerBlock>
           </div>
         </section>
 
         <section className="section section-tight-top">
           <div className="container narrow-center">
-            {post.sections.map((section, idx) => (
+            {post.sections.map((section) => (
               <div key={section.heading} className="article-section">
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((p, i) => (
@@ -113,7 +111,7 @@ export default function BlogPostPage({ params }) {
             <div className="container narrow-center">
               <SectionHeader
                 eyebrow="FAQs"
-                title={`Frequently asked questions`}
+                title="Frequently asked questions"
                 description="Common questions related to this guide."
                 center
               />

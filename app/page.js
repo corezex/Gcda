@@ -36,7 +36,7 @@ export default function HomePage() {
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
-              <Link href="/services" className="button button-secondary">Explore Services</Link>
+              <Link href="/career-counselling" className="button button-secondary">Explore Services</Link>
             </div>
             <div className="hero-proof">
               <span>98% satisfied clients</span>

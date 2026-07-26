@@ -37,7 +37,7 @@ export default function Footer() {
           <ul className="footer-links">
             {services.slice(0, 5).map((service) => (
               <li key={service.slug}>
-                <Link href={`/services/${service.slug}`}>{service.title}</Link>
+                <Link href={`/career-counselling#${service.slug}`}>{service.title}</Link>
               </li>
             ))}
           </ul>

@@ -12,8 +12,7 @@ export const metadata = {
   alternates: { canonical: '/blog' },
   openGraph: {
     title: 'Career Guidance Blog | GCDA India',
-    description:
-      'Practical, India-specific career guidance for students, parents, and working professionals.',
+    description: 'Practical, India-specific career guidance for students, parents, and working professionals.',
     url: 'https://gcdassociation.org/blog',
   },
 };
@@ -28,7 +27,7 @@ export default function BlogIndexPage() {
             <span className="eyebrow">GCDA Blog</span>
             <h1>Career guidance, written for Indian students, parents, and professionals.</h1>
             <p>
-              Practical, India-specific career guidance — covering stream selection after 10th, degree choices after 12th, JEE/NEET planning, MBA, career transitions, and working professional growth. Every post is structured for quick reading and lasting clarity.
+              Practical, India-specific career guidance — covering stream selection after 10th, degree choices after 12th, JEE/NEET planning, MBA, career transitions, and working professional growth.
             </p>
           </div>
           <div className="surface-card media-card">
@@ -42,7 +41,7 @@ export default function BlogIndexPage() {
           <SectionHeader
             eyebrow="Categories"
             title="Browse by topic"
-            description="All blog posts are written for Indian students, parents, and professionals. Pick a category to filter."
+            description="All blog posts are written for Indian students, parents, and professionals."
             center
           />
           <div className="category-chips">
