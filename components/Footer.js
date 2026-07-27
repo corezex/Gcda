@@ -1,10 +1,17 @@
+"use client";
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { company } from '@/data/site';
 import { ALL_CITIES } from '@/data/indiaLocations';
+import { getCurrentLangFromPath, localizePath } from '@/data/i18n';
 
 export default function Footer() {
-  // Pick 6 popular cities from across India for the "Top Cities" section.
-  // Using ALL_CITIES (the live-site URL format).
+  const pathname = usePathname();
+  const currentLang = getCurrentLangFromPath(pathname);
+  const isHi = currentLang === 'hi';
+  const lp = (path) => localizePath(path, currentLang);
+
   const popularCitySlugs = [
     ['maharashtra', 'mumbai'],
     ['delhi', 'new-delhi'],
@@ -20,9 +27,14 @@ export default function Footer() {
     })
     .filter(Boolean);
 
-  // 7 main services + their corresponding URLs.
-  // (Replaces the old "services" list that mixed all 12 page links.)
-  const mainServices = [
+  const mainServices = isHi ? [
+    { label: 'व्यक्तिगत परामर्श', href: '/career-counselling/personal-counselling' },
+    { label: 'करियर मूल्यांकन', href: '/career-counselling/career-assessment' },
+    { label: 'कार्यशालाएं और सेमिनार', href: '/career-counselling/workshops-seminars' },
+    { label: 'स्ट्रीम चयन मार्गदर्शन', href: '/career-counselling/stream-selection-guidance' },
+    { label: 'डिग्री चयन मार्गदर्शन', href: '/career-counselling/degree-selection-guidance' },
+    { label: 'करियर काउंसलिंग प्रमाणन', href: '/career-certification' },
+  ] : [
     { label: 'Personal Counselling', href: '/career-counselling/personal-counselling' },
     { label: 'Career Assessment', href: '/career-counselling/career-assessment' },
     { label: 'Workshops & Seminars', href: '/career-counselling/workshops-seminars' },
@@ -32,7 +44,6 @@ export default function Footer() {
     { label: 'Career Counselling Certification', href: '/career-certification' },
   ];
 
-  // Social links (provided by the user)
   const socials = [
     {
       href: 'https://www.facebook.com/gcdaindia',
@@ -85,7 +96,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="footer-copy">
-              Helping students, parents, graduates, and professionals across India make clearer education and career decisions since 2013.
+              {isHi ? 'भारत भर के छात्रों, अभिभावकों, स्नातकों और पेशेवरों को 2013 से स्पष्ट शिक्षा और करियर निर्णय लेने में मदद करना।' : 'Helping students, parents, graduates, and professionals across India make clearer education and career decisions since 2013.'}
             </p>
 
             <div className="footer-socials" aria-label="Social media">
@@ -105,48 +116,48 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4>Quick Links</h4>
+            <h4>{isHi ? 'त्वरित लिंक' : 'Quick Links'}</h4>
             <ul className="footer-links">
-              <li><Link href="/">Home</Link></li>
-              <li><Link href="/about">About GCDA</Link></li>
-              <li><Link href="/career-counselling">All Services</Link></li>
-              <li><Link href="/career-certification">Certification</Link></li>
-              <li><Link href="/plan">Plans & Pricing</Link></li>
-              <li><Link href="/blog">Blog</Link></li>
-              <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/cities">All Cities</Link></li>
+              <li><Link href={lp('/')}>{isHi ? 'होम' : 'Home'}</Link></li>
+              <li><Link href={lp('/about')}>{isHi ? 'GCDA के बारे में' : 'About GCDA'}</Link></li>
+              <li><Link href={lp('/career-counselling')}>{isHi ? 'सभी सेवाएं' : 'All Services'}</Link></li>
+              <li><Link href={lp('/career-certification')}>{isHi ? 'प्रमाणन' : 'Certification'}</Link></li>
+              <li><Link href={lp('/plan')}>{isHi ? 'योजनाएं और मूल्य' : 'Plans & Pricing'}</Link></li>
+              <li><Link href={lp('/blog')}>{isHi ? 'ब्लॉग' : 'Blog'}</Link></li>
+              <li><Link href={lp('/contact')}>{isHi ? 'संपर्क' : 'Contact'}</Link></li>
+              <li><Link href={lp('/cities')}>{isHi ? 'सभी शहर' : 'All Cities'}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4>Services</h4>
+            <h4>{isHi ? 'सेवाएं' : 'Services'}</h4>
             <ul className="footer-links">
               {mainServices.map((s) => (
                 <li key={s.label}>
-                  <Link href={s.href}>{s.label}</Link>
+                  <Link href={lp(s.href)}>{s.label}</Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4>Top Cities</h4>
+            <h4>{isHi ? 'शीर्ष शहर' : 'Top Cities'}</h4>
             <ul className="footer-links">
               {topCities.map((c) => (
                 <li key={`${c.stateSlug}-${c.citySlug}`}>
-                  <Link href={`/${c.stateSlug}/career-counsellor-${c.citySlug}`}>
-                    Career Counselling in {c.name}
+                  <Link href={lp(`/${c.stateSlug}/career-counsellor-${c.citySlug}`)}>
+                    {isHi ? `${c.name} में करियर काउंसलिंग` : `Career Counselling in ${c.name}`}
                   </Link>
                 </li>
               ))}
               <li>
-                <Link href="/cities" className="footer-view-all">View all cities →</Link>
+                <Link href={lp('/cities')} className="footer-view-all">{isHi ? 'सभी शहर देखें →' : 'View all cities →'}</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4>Get in Touch</h4>
+            <h4>{isHi ? 'संपर्क में रहें' : 'Get in Touch'}</h4>
             <ul className="footer-contact">
               <li className="footer-contact-item">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 5.4 7 11.5 7.3 11.7a1 1 0 0 0 1.4 0c.3-.2 7.3-6.3 7.3-11.7a8 8 0 0 0-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" /></svg>
@@ -163,7 +174,7 @@ export default function Footer() {
             </ul>
             <a href={company.whatsappLink} target="_blank" rel="noreferrer" className="footer-whatsapp-btn">
               <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11 11 0 0 0 3.7 17l-1.6 5.7 5.8-1.5a11 11 0 0 0 16.2-13.2 11 11 0 0 0-3.6-4.5zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3.4.9.9-3.3-.2-.3A8 8 0 1 1 20 12a8 8 0 0 1-8 8zm4.6-6c-.3-.1-1.4-.7-1.6-.7-.2 0-.4-.1-.6.1l-.7.9c-.1.1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-3 .3.3 0 0 1 .1-.5l.4-.5.3-.4.1-.4-.1-.4-1-1.4-.3-.4-.4-.1c-.2 0-.4 0-.6.1l-.4.1a1.4 1.4 0 0 0-1 1.1c-.2 1 0 1.9.5 2.8a13.4 13.4 0 0 0 5 5.2c.7.4 1.3.6 1.7.8.5.2.9.2 1.2.1.4-.1 1.2-.5 1.4-1l.2-.6c.1-.3 0-.5-.1-.5l-.5-.3z" /></svg>
-              Chat on WhatsApp
+              {isHi ? 'WhatsApp पर चैट करें' : 'Chat on WhatsApp'}
             </a>
           </div>
         </div>
@@ -172,19 +183,19 @@ export default function Footer() {
       <div className="footer-bottom">
         <div className="container footer-bottom-inner">
           <p className="footer-copyright">
-            © {new Date().getFullYear()} {company.name}. All rights reserved.
+            © {new Date().getFullYear()} {company.name}. {isHi ? 'सर्वाधिकार सुरक्षित।' : 'All rights reserved.'}
           </p>
           <nav className="footer-bottom-links" aria-label="Footer">
-            <Link href="/sitemap.xml" className="footer-bottom-link">Sitemap</Link>
+            <Link href="/sitemap.xml" className="footer-bottom-link">{isHi ? 'साइटमैप' : 'Sitemap'}</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
-            <Link href="/about" className="footer-bottom-link">About</Link>
+            <Link href={lp('/about')} className="footer-bottom-link">{isHi ? 'हमारे बारे में' : 'About'}</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
-            <Link href="/contact" className="footer-bottom-link">Contact</Link>
+            <Link href={lp('/contact')} className="footer-bottom-link">{isHi ? 'संपर्क' : 'Contact'}</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
-            <Link href="/plan" className="footer-bottom-link">Plans</Link>
+            <Link href={lp('/plan')} className="footer-bottom-link">{isHi ? 'योजनाएं' : 'Plans'}</Link>
           </nav>
           <div className="footer-bottom-socials" aria-label="Follow GCDA on social media">
-            <span className="footer-bottom-label">Follow us:</span>
+            <span className="footer-bottom-label">{isHi ? 'हमें फॉलो करें:' : 'Follow us:'}</span>
             {socials.map((s) => (
               <a
                 key={`bottom-${s.label}`}
