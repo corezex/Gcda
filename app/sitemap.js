@@ -88,6 +88,30 @@ export default function sitemap() {
     images: [`${SITE_URL}/assets/service-illustration.png`],
   }));
 
+  // Paginated blog hub pages – SEO optimized pagination (20 per page)
+  // Two URL formats for SEO: clean path /blog/p/[page] (static) + query ?page= (fallback)
+  const PAGE_SIZE = 20;
+  const totalBlogPages = Math.ceil(blogPosts.length / PAGE_SIZE);
+  const blogPaginatedRoutes = [];
+  for (let p = 2; p <= totalBlogPages; p++) {
+    // Clean path version – primary for SEO
+    blogPaginatedRoutes.push({
+      url: `${SITE_URL}/blog/p/${p}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.6,
+      images: [`${SITE_URL}/assets/service-illustration.png`],
+    });
+    // Query param version – secondary (kept for compatibility, lower priority)
+    blogPaginatedRoutes.push({
+      url: `${SITE_URL}/blog?page=${p}`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.4,
+      images: [`${SITE_URL}/assets/service-illustration.png`],
+    });
+  }
+
   return [
     ...staticRoutes,
     ...topLevelServicePages,
@@ -95,5 +119,6 @@ export default function sitemap() {
     ...cityRoutes,
     ...serviceDetailRoutes,
     ...blogRoutes,
+    ...blogPaginatedRoutes,
   ];
 }
