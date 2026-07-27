@@ -15,8 +15,15 @@ const LANG = 'hi';
 const SITE_URL = 'https://gcdassociation.org';
 
 export function generateStaticParams() {
-  // Only personal-counselling and career-assessment for Hindi - other 4 are same as topical pages which we deleted per user request
-  return servicesEn.filter(s => ['personal-counselling','career-assessment'].includes(s.slug)).map((service) => ({ slug: service.slug }));
+  // User wants Hindi versions of exactly these 5 service detail pages (matching English list, excluding working-professionals-guidance)
+  const allowedHi = [
+    'personal-counselling',
+    'career-assessment',
+    'workshops-seminars',
+    'stream-selection-guidance',
+    'degree-selection-guidance'
+  ];
+  return servicesEn.filter(s => allowedHi.includes(s.slug)).map((service) => ({ slug: service.slug }));
 }
 
 export function generateMetadata({ params }) {
@@ -40,7 +47,13 @@ export function generateMetadata({ params }) {
 }
 
 export default function ServiceDetailPageHi({ params }) {
-  const allowed = ['personal-counselling','career-assessment'];
+  const allowed = [
+    'personal-counselling',
+    'career-assessment',
+    'workshops-seminars',
+    'stream-selection-guidance',
+    'degree-selection-guidance'
+  ];
   if (!allowed.includes(params.slug)) notFound();
   const serviceEn = servicesEn.find((s) => s.slug === params.slug);
   if (!serviceEn) notFound();

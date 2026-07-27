@@ -80,9 +80,10 @@ export default function Header() {
 
   const localizedBrandHref = currentLang === 'en' ? '/' : `/${currentLang}`;
 
-  // For Hindi, only show 2 service details (per user request) - the other 4 are same as topical which were deleted
-  const filteredServices = currentLang === 'hi' ? services.filter(s => ['personal-counselling','career-assessment'].includes(s.slug)) : services;
-  const showTopicalForLang = currentLang !== 'hi'; // don't show topical services for hi as they were deleted
+  // For Hindi, show 5 service details matching English list (personal, assessment, workshops, stream, degree) - excluding working-professionals per user request
+  const hiAllowed = ['personal-counselling','career-assessment','workshops-seminars','stream-selection-guidance','degree-selection-guidance'];
+  const filteredServices = currentLang === 'hi' ? services.filter(s => hiAllowed.includes(s.slug)) : services;
+  const showTopicalForLang = currentLang !== 'hi'; // don't show topical services for hi as they were deleted per user request
 
   return (
     <header className="site-header">
