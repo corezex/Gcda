@@ -214,7 +214,10 @@ export const TRANSLATIONS =
       "faqTitle": "Common questions about counselling and plans",
       "faqDesc": "A few answers to help you understand how GCDA works before you book your consultation.",
       "ctaTitle": "Ready to shape your career with clarity?",
-      "ctaDesc": "Connect with GCDA experts for personalised counselling, assessments, and practical next-step guidance — online or in-person."
+      "ctaDesc": "Connect with GCDA experts for personalised counselling, assessments, and practical next-step guidance — online or in-person.",
+      "needHelpTitle": "क्या आपको सीधी मदद चाहिए?",
+      "needHelpDesc": "अपनी आवश्यकता पर चर्चा करने, योजनाओं की तुलना करने या सत्र बुक करने के लिए GCDA टीम से बात करें।",
+      "office": "कार्यालय"
     },
     "about": {
       "eyebrow": "About GCDA",
@@ -875,7 +878,34 @@ export const TRANSLATIONS =
           "करियर विकास रोडमैप"
         ]
       }
-    ]
+    ],
+    "testimonials": [
+      {
+        "name": "सामंथा एच.",
+        "role": "ग्राहक",
+        "quote": "GCDA के साथ काम करना मेरे लिए गेम-चेंजर था। उनके करियर मूल्यांकन ने मुझे अपनी ताकत समझने और करियर लक्ष्यों के साथ संरेखित करने में मदद की।"
+      },
+      {
+        "name": "हिरेंद्र एस.",
+        "role": "ग्राहक",
+        "quote": "मैं GCDA को उन सभी के लिए अत्यधिक अनुशंसा करता हूं जो अपने करियर में अटके हुए हैं। वन-ऑन-वन सत्रों ने मुझे स्पष्ट कार्य योजना विकसित करने में मदद की।"
+      },
+      {
+        "name": "टॉम एच.",
+        "role": "ग्राहक",
+        "quote": "GCDA से मिला करियर परामर्श उत्कृष्ट था। उन्होंने मुझे उपकरण, संसाधन और आत्मविश्वास प्रदान किया।"
+      }
+    ],
+    "serviceLabels": {
+      "Career Counsellor": "करियर काउंसलर",
+      "Personal Counselling": "व्यक्तिगत परामर्श",
+      "Career Assessment": "करियर मूल्यांकन",
+      "Seminar": "सेमिनार",
+      "Certification": "प्रमाणन",
+      "Stream Selection": "स्ट्रीम चयन",
+      "Degree Selection": "डिग्री चयन",
+      "Working Pro": "कार्यरत पेशेवर"
+    }
   },
   "bn": {
     "common": {

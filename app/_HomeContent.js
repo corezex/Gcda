@@ -8,7 +8,7 @@ import FAQList from '@/components/FAQList';
 import CTASection from '@/components/CTASection';
 import AnswerBlock from '@/components/AnswerBlock';
 import JsonLd from '@/components/JsonLd';
-import { audience as audienceEn, company, journeySteps as journeyStepsEn, services, siteFaqs as siteFaqsEn, statsHome as statsHomeEn, testimonials, valuePoints as valuePointsEn } from '@/data/site';
+import { audience as audienceEn, company, journeySteps as journeyStepsEn, services as servicesEn, siteFaqs as siteFaqsEn, statsHome as statsHomeEn, testimonials as testimonialsEn, valuePoints as valuePointsEn } from '@/data/site';
 import { faqSchema, howToSchema } from '@/data/schema';
 import { TRANSLATIONS, getLocaleDetails, localizePath } from '@/data/i18n';
 
@@ -23,6 +23,12 @@ function HomePage({ lang = 'en' }) {
   const journeySteps = t.journeySteps || journeyStepsEn;
   const siteFaqs = t.siteFaqs || siteFaqsEn;
   const statsHome = t.statsHome || statsHomeEn;
+  const testimonialsData = t.testimonials || testimonialsEn;
+  const services = t.serviceDetails ? Object.keys(t.serviceDetails).map(k => {
+    const en = servicesEn.find(s => s.slug === k);
+    const hi = t.serviceDetails[k];
+    return en ? { ...en, title: hi.title || en.title, shortDescription: hi.shortDescription || en.shortDescription } : null;
+  }).filter(Boolean) : servicesEn;
 
   return (
     <>
@@ -146,7 +152,7 @@ function HomePage({ lang = 'en' }) {
             description={t.home.testimonialsDesc}
             center
           />
-          <TestimonialGrid testimonials={testimonials} />
+          <TestimonialGrid testimonials={testimonialsData} />
         </div>
       </section>
 
@@ -161,8 +167,8 @@ function HomePage({ lang = 'en' }) {
             <FAQList items={siteFaqs} />
           </div>
           <div className="info-panel">
-            <h3>Need direct help?</h3>
-            <p>Speak to the GCDA team to discuss your requirement, compare plans, or book a session.</p>
+            <h3>{t.home.needHelpTitle || "Need direct help?"}</h3>
+            <p>{t.home.needHelpDesc || "Speak to the GCDA team to discuss your requirement, compare plans, or book a session."}</p>
             <div className="mini-contact-card">
               <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
               <a href={`mailto:${company.email}`}>{company.email}</a>

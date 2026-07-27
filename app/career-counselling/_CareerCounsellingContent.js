@@ -110,14 +110,14 @@ function CareerCounsellingPage({ lang = 'en' }) {
                   <div className="services-mega-row-head"><span className="mini-label">{state ? state.name : sSlug}</span><h3>{cityName}</h3></div>
                   <ul className="services-mega-row-links">
                     {[
-                      ['career-counselling', 'Career Counsellor'],
-                      ['personal-counselling', 'Personal Counselling'],
-                      ['career-assessment', 'Career Assessment'],
-                      ['career-counselling-seminar', 'Seminar'],
-                      ['career-certification', 'Certification'],
-                      ['stream-selection-guidance', 'Stream Selection'],
-                      ['degree-selection-guidance', 'Degree Selection'],
-                      ['guidance-for-working-professionals', 'Working Pro'],
+                      ['career-counselling', fullT.serviceLabels?.['Career Counsellor'] || 'Career Counsellor'],
+                      ['personal-counselling', fullT.serviceLabels?.['Personal Counselling'] || 'Personal Counselling'],
+                      ['career-assessment', fullT.serviceLabels?.['Career Assessment'] || 'Career Assessment'],
+                      ['career-counselling-seminar', fullT.serviceLabels?.['Seminar'] || 'Seminar'],
+                      ['career-certification', fullT.serviceLabels?.['Certification'] || 'Certification'],
+                      ['stream-selection-guidance', fullT.serviceLabels?.['Stream Selection'] || 'Stream Selection'],
+                      ['degree-selection-guidance', fullT.serviceLabels?.['Degree Selection'] || 'Degree Selection'],
+                      ['guidance-for-working-professionals', fullT.serviceLabels?.['Working Pro'] || 'Working Pro'],
                     ].map(([svcKey, label]) => {
                       const pat = SERVICE_CITY_PATTERNS[svcKey];
                       if (!pat) return null;
