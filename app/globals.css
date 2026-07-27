@@ -2078,3 +2078,152 @@ textarea { resize: vertical; min-height: 130px; }
   .stat-card { padding: 1.1rem 1.1rem; }
   .stat-card strong { font-size: 1.5rem; }
 }
+
+/* ============================================================
+   Language Switcher
+   ============================================================ */
+.lang-switcher {
+  position: relative;
+  margin-left: 0.6rem;
+}
+.lang-switcher-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink-2);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+.lang-switcher-trigger:hover {
+  border-color: var(--secondary);
+  color: var(--secondary);
+  background: var(--secondary-softer);
+}
+.lang-switcher-flag { font-size: 1rem; }
+.lang-switcher-current { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lang-switcher-caret { font-size: 0.7rem; opacity: 0.7; transition: transform 0.2s; }
+.lang-switcher-trigger[aria-expanded="true"] .lang-switcher-caret { transform: rotate(180deg); }
+
+.lang-switcher-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 260px;
+  max-height: 360px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--line-2);
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+  padding: 0.4rem;
+  z-index: 60;
+  display: grid;
+  gap: 2px;
+}
+.lang-switcher-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  transition: background 0.15s, color 0.15s;
+}
+.lang-switcher-item:hover {
+  background: var(--secondary-softer);
+  color: var(--secondary);
+}
+.lang-switcher-item.active {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  font-weight: 700;
+}
+.lang-switcher-item-flag { font-size: 1.1rem; }
+.lang-switcher-item-text { display: flex; flex-direction: column; line-height: 1.2; flex: 1; }
+.lang-switcher-item-text strong { font-size: 0.92rem; }
+.lang-switcher-item-text small { font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+.lang-switcher-check { color: var(--primary); font-weight: 800; }
+
+@media (max-width: 860px) {
+  .lang-switcher { width: 100%; margin-left: 0; margin-top: 0.6rem; }
+  .lang-switcher-trigger { width: 100%; justify-content: space-between; }
+  .lang-switcher-menu { left: 0; right: 0; min-width: 0; }
+}
+
+/* ============================================================
+   Improved Contact Form
+   ============================================================ */
+.form-field {
+  display: grid;
+  gap: 0.4rem;
+}
+.field-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--ink);
+}
+.field-hint {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+.field-error {
+  font-size: 0.8rem;
+  color: #d14343;
+  font-weight: 600;
+}
+.input-error {
+  border-color: #e05a5a !important;
+  background: #fff5f5 !important;
+}
+.field-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+.char-count {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-left: auto;
+}
+.select-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
+  font: inherit;
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--ink);
+}
+.form-note {
+  margin-top: 0.8rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.success-panel {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--secondary-softer);
+  border: 1px solid var(--secondary-soft);
+  border-radius: 16px;
+}
+.success-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.success-panel h3 {
+  margin-bottom: 0.5rem;
+  color: var(--secondary-dark);
+}
+.success-panel p {
+  color: var(--ink-2);
+  font-size: 0.95rem;
+}

@@ -1,12 +1,14 @@
 import Link from 'next/link';
+import { localizePath } from '@/data/i18n';
 
-export default function BlogCard({ post }) {
+export default function BlogCard({ post, lang = 'en' }) {
+  const lp = (p) => localizePath(p, lang);
   return (
     <article className="card blog-card">
       <div className="card-body">
         <span className="mini-label">{post.category}</span>
         <h3>
-          <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+          <Link href={lp(`/blog/${post.slug}`)}>{post.title}</Link>
         </h3>
         <p>{post.description}</p>
         <div className="blog-meta">
@@ -16,7 +18,7 @@ export default function BlogCard({ post }) {
           <span aria-hidden="true">•</span>
           <span>{post.readTime}</span>
         </div>
-        <Link href={`/blog/${post.slug}`} className="text-link">Read full guide →</Link>
+        <Link href={lp(`/blog/${post.slug}`)} className="text-link">Read full guide →</Link>
       </div>
     </article>
   );

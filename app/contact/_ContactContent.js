@@ -1,35 +1,34 @@
-// Auto-generated: extracted default export from contact/page.js
+// Localized Contact Content
 import ContactForm from '@/components/ContactForm';
-
-const SITE_URL = 'https://gcdassociation.org';
 import SectionHeader from '@/components/SectionHeader';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import { company } from '@/data/site';
 import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
-import { hreflang } from '@/data/hreflang';
+import { TRANSLATIONS, localizePath } from '@/data/i18n';
 
+const SITE_URL = 'https://gcdassociation.org';
 
-const contactBreadcrumbs = [
-  { name: 'Home', url: '/' },
-  { name: 'Contact', url: '/contact' },
-];
-
-function ContactPage() {
+function ContactPage({ lang = 'en' }) {
+  const t = (TRANSLATIONS[lang] || TRANSLATIONS.en).contact;
+  const lp = (p) => localizePath(p, lang);
   const mapQuery = encodeURIComponent(company.addressLine1);
+
+  const contactBreadcrumbs = [
+    { name: 'Home', url: lp('/') },
+    { name: 'Contact', url: lp('/contact') },
+  ];
 
   return (
     <>
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
-            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }]} />
-            <span className="eyebrow">Contact us</span>
-            <h1>Get in touch with GCDA for counselling, plans, and guidance.</h1>
-            <p className="page-hero-copy">
-              Reach out for student counselling, professional guidance, institution workshops, or plan-related questions. We would love to hear from you.
-            </p>
+            <Breadcrumbs items={[{ name: 'Home', url: lp('/') }, { name: 'Contact', url: lp('/contact') }]} />
+            <span className="eyebrow">{t.eyebrow}</span>
+            <h1>{t.title}</h1>
+            <p className="page-hero-copy">{t.desc}</p>
           </div>
           <div className="surface-card contact-highlight">
             <h3>Office</h3>
@@ -54,11 +53,11 @@ function ContactPage() {
         <div className="container two-column contact-layout">
           <div>
             <SectionHeader
-              eyebrow="Send us a message"
-              title="Tell us what you need help with"
-              description="Use the form below to send an enquiry by email, or jump directly to WhatsApp for a faster conversation."
+              eyebrow={t.formEyebrow}
+              title={t.formTitle}
+              description={t.formDesc}
             />
-            <ContactForm />
+            <ContactForm lang={lang} />
           </div>
           <div className="contact-sidebar">
             <div className="info-panel">

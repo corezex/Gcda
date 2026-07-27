@@ -1,21 +1,12 @@
-import Link from 'next/link';
-import SectionHeader from '@/components/SectionHeader';
-import StatsBar from '@/components/StatsBar';
-import ServiceGrid from '@/components/ServiceGrid';
-import TestimonialGrid from '@/components/TestimonialGrid';
-import FAQList from '@/components/FAQList';
-import CTASection from '@/components/CTASection';
-import AnswerBlock from '@/components/AnswerBlock';
-import JsonLd from '@/components/JsonLd';
-import { audience, company, journeySteps, services, siteFaqs, statsHome, testimonials, valuePoints } from '@/data/site';
-import { faqSchema, howToSchema } from '@/data/schema';
-import { hreflang } from '@/data/hreflang';
+import PageContent from './_HomeContent';
+import { hreflang, getMetaForLang, getLocaleDetails } from '@/data/i18n';
+
+const meta = getMetaForLang('en', 'home');
 
 export const metadata = {
   alternates: hreflang('/'),
-  title: 'Career Counselling & Career Guidance in India',
-  description:
-    'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
+  title: meta.title,
+  description: meta.description,
   keywords: [
     'career counselling India',
     'career counselling near me',
@@ -24,9 +15,9 @@ export const metadata = {
     'online career counselling',
   ],
   openGraph: {
-    title: 'Career Counselling & Career Guidance in India',
-    description:
-      'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
+    locale: 'en_IN',
+    title: meta.title,
+    description: meta.description,
     url: 'https://gcdassociation.org/',
     images: [
       {
@@ -39,10 +30,11 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling & Career Guidance in India',
-    description:
-      'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
+    title: meta.title,
+    description: meta.description,
   },
 };
 
-export { default } from './_HomeContent';
+export default function HomePage() {
+  return <PageContent lang="en" />;
+}

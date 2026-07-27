@@ -1,7 +1,5 @@
-// Auto-generated: extracted default export from plan/page.js
+// Localized Plan Content
 import CTASection from '@/components/CTASection';
-
-const SITE_URL = 'https://gcdassociation.org';
 import FAQList from '@/components/FAQList';
 import PlanCards from '@/components/PlanCards';
 import SectionHeader from '@/components/SectionHeader';
@@ -11,13 +9,17 @@ import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
 import { plans, siteFaqs } from '@/data/site';
 import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
-import { hreflang } from '@/data/hreflang';
+import { TRANSLATIONS, localizePath } from '@/data/i18n';
 
+const SITE_URL = 'https://gcdassociation.org';
 
-function PlanPage() {
+function PlanPage({ lang = 'en' }) {
+  const t = (TRANSLATIONS[lang] || TRANSLATIONS.en).plan;
+  const lp = (p) => localizePath(p, lang);
+
   const breadcrumbs = [
-    { name: 'Home', url: '/' },
-    { name: 'Plans', url: '/plan' },
+    { name: 'Home', url: lp('/') },
+    { name: 'Plans', url: lp('/plan') },
   ];
   return (
     <>
@@ -25,11 +27,9 @@ function PlanPage() {
         <div className="container page-hero-grid">
           <div>
             <Breadcrumbs items={breadcrumbs} />
-            <span className="eyebrow">Career counselling plans</span>
-            <h1>Choose the plan that matches your current stage.</h1>
-            <p className="page-hero-copy">
-              For students and professionals, our career assessment and counselling plans help narrow options and identify the right path based on interests, skills, values, and personality.
-            </p>
+            <span className="eyebrow">{t.eyebrow}</span>
+            <h1>{t.title}</h1>
+            <p className="page-hero-copy">{t.desc}</p>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/career-6.png" alt="Career counselling plans" />
@@ -53,7 +53,7 @@ function PlanPage() {
             description="Plan names, pricing, and included features are kept aligned with the current GCDA plan structure."
             center
           />
-          <PlanCards plans={plans} />
+          <PlanCards plans={plans} lang={lang} />
         </div>
         {plans.map((plan) => (
           <JsonLd key={plan.slug} id={`ld-product-${plan.slug}`} data={productSchema(plan)} />
@@ -71,15 +71,15 @@ function PlanPage() {
             <div className="stack-list">
               <article className="feature-row">
                 <h3>Stream Selector</h3>
-                <p>Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction. See <Link href="/career-counselling/stream-selection-guidance" className="text-link">stream selection guidance</Link>.</p>
+                <p>Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction. See <Link href={lp('/career-counselling/stream-selection-guidance')} className="text-link">stream selection guidance</Link>.</p>
               </article>
               <article className="feature-row">
                 <h3>Degree Selector</h3>
-                <p>Ideal when students need course, degree, and college-level clarity after school. See <Link href="/career-counselling/degree-selection-guidance" className="text-link">degree selection guidance</Link>.</p>
+                <p>Ideal when students need course, degree, and college-level clarity after school. See <Link href={lp('/career-counselling/degree-selection-guidance')} className="text-link">degree selection guidance</Link>.</p>
               </article>
               <article className="feature-row">
                 <h3>Working Professionals</h3>
-                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href="/career-counselling/working-professionals-guidance" className="text-link">working professional guidance</Link>.</p>
+                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href={lp('/career-counselling/working-professionals-guidance')} className="text-link">working professional guidance</Link>.</p>
               </article>
             </div>
           </div>
@@ -98,6 +98,7 @@ function PlanPage() {
       <CTASection
         title="Still unsure which plan fits you best?"
         description="Talk to GCDA and we will help you choose the right counselling path before you book."
+        lang={lang}
       />
 
       <JsonLd id="ld-breadcrumb-plans" data={breadcrumbSchema(breadcrumbs)} />

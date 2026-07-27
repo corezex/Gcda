@@ -1,4 +1,4 @@
-// Auto-generated: extracted default export from app/page.js
+// Localized Home Content - supports lang prop for i18n
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
@@ -10,28 +10,29 @@ import AnswerBlock from '@/components/AnswerBlock';
 import JsonLd from '@/components/JsonLd';
 import { audience, company, journeySteps, services, siteFaqs, statsHome, testimonials, valuePoints } from '@/data/site';
 import { faqSchema, howToSchema } from '@/data/schema';
-import { hreflang } from '@/data/hreflang';
+import { TRANSLATIONS, getLocaleDetails, localizePath } from '@/data/i18n';
 
+function HomePage({ lang = 'en' }) {
+  const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const locale = getLocaleDetails(lang);
+  const lp = (path) => localizePath(path, lang);
 
-function HomePage() {
   return (
     <>
       <section className="hero-section">
         <div className="container hero-grid">
           <div>
-            <span className="eyebrow">Empowering careers since 2013</span>
-            <h1>Career counselling that turns confusion into a clear plan.</h1>
-            <p className="page-hero-copy">
-              From stream selection after 10th and degree planning after 12th to professional growth and career transitions, GCDA helps students, parents, and working professionals across India make confident, well-informed career decisions.
-            </p>
+            <span className="eyebrow">{t.home.eyebrow}</span>
+            <h1>{t.home.title}</h1>
+            <p className="page-hero-copy">{t.home.description}</p>
             <div className="button-row">
-              <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
-              <Link href="/career-counselling" className="button button-secondary">Explore Services</Link>
+              <Link href={lp('/contact')} className="button button-primary">{t.common.bookConsultation}</Link>
+              <Link href={lp('/career-counselling')} className="button button-secondary">{t.common.exploreServices}</Link>
             </div>
             <div className="hero-proof">
-              <span>98% satisfied clients</span>
-              <span>50K+ career sessions</span>
-              <span>Online + in-person</span>
+              {t.home.heroProof.map((txt) => (
+                <span key={txt}>{txt}</span>
+              ))}
             </div>
           </div>
           <div className="hero-visual surface-card">
@@ -50,12 +51,14 @@ function HomePage() {
         <div className="container two-column">
           <div>
             <SectionHeader
-              eyebrow="About GCDA"
-              title="Personalised career guidance for every stage of growth"
-              description="We believe your career path should reflect your strengths, interests, and ambitions — not just pressure, trends, or guesswork."
+              eyebrow={t.home.aboutEyebrow}
+              title={t.home.aboutTitle}
+              description={t.home.aboutDesc}
             />
             <AnswerBlock>
-              GCDA is one of India&apos;s trusted career counselling and career guidance associations, helping 50,000+ students, parents, and working professionals make clear education and career decisions through assessments, structured counselling, and practical roadmaps since 2013.
+              {lang === 'en'
+                ? "GCDA is one of India's trusted career counselling and career guidance associations, helping 50,000+ students, parents, and working professionals make clear education and career decisions through assessments, structured counselling, and practical roadmaps since 2013."
+                : t.home.description}
             </AnswerBlock>
             <div className="stack-list">
               {valuePoints.map((point) => (
@@ -65,7 +68,7 @@ function HomePage() {
                 </article>
               ))}
             </div>
-            <Link href="/about" className="text-link">Learn more about GCDA →</Link>
+            <Link href={lp('/about')} className="text-link">{t.common.learnMore}</Link>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/career-2.png" alt="Career counselling session" />
@@ -76,12 +79,12 @@ function HomePage() {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
-            eyebrow="What we do"
-            title="Core services designed to bring clarity and direction"
-            description="Our service mix is built around assessment-led counselling, practical planning, and outcome-focused support."
+            eyebrow={t.home.whatWeDoEyebrow}
+            title={t.home.whatWeDoTitle}
+            description={t.home.whatWeDoDesc}
             center
           />
-          <ServiceGrid services={services} limit={6} />
+          <ServiceGrid services={services} limit={6} lang={lang} />
         </div>
       </section>
 
@@ -92,9 +95,9 @@ function HomePage() {
           </div>
           <div>
             <SectionHeader
-              eyebrow="Who we help"
-              title="Support for students, parents, graduates, and professionals"
-              description="Whether you are choosing a stream after 10th, selecting a degree after 12th, planning an MBA, or preparing for a career move, GCDA helps you decide with confidence."
+              eyebrow={t.home.whoWeHelpEyebrow}
+              title={t.home.whoWeHelpTitle}
+              description={t.home.whoWeHelpDesc}
             />
             <ul className="bullet-list">
               {audience.map((item) => (
@@ -108,9 +111,9 @@ function HomePage() {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Our process"
-            title="A simple 3-step journey"
-            description="We combine expert counselling with practical next-step planning so clients leave with clarity, not confusion."
+            eyebrow={t.home.processEyebrow}
+            title={t.home.processTitle}
+            description={t.home.processDesc}
             center
           />
           <div className="card-grid process-grid">
@@ -131,9 +134,9 @@ function HomePage() {
       <section className="section">
         <div className="container">
           <SectionHeader
-            eyebrow="Testimonials"
-            title="What our clients say"
-            description="Families, students, and professionals across India trust GCDA for clear and supportive guidance."
+            eyebrow={t.home.testimonialsEyebrow}
+            title={t.home.testimonialsTitle}
+            description={t.home.testimonialsDesc}
             center
           />
           <TestimonialGrid testimonials={testimonials} />
@@ -144,17 +147,15 @@ function HomePage() {
         <div className="container two-column">
           <div>
             <SectionHeader
-              eyebrow="FAQs"
-              title="Common questions about counselling and plans"
-              description="A few answers to help you understand how GCDA works before you book your consultation."
+              eyebrow={t.home.faqEyebrow}
+              title={t.home.faqTitle}
+              description={t.home.faqDesc}
             />
             <FAQList items={siteFaqs} />
           </div>
           <div className="info-panel">
             <h3>Need direct help?</h3>
-            <p>
-              Speak to the GCDA team to discuss your requirement, compare plans, or book a session.
-            </p>
+            <p>Speak to the GCDA team to discuss your requirement, compare plans, or book a session.</p>
             <div className="mini-contact-card">
               <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
               <a href={`mailto:${company.email}`}>{company.email}</a>
@@ -166,8 +167,9 @@ function HomePage() {
       </section>
 
       <CTASection
-        title="Ready to shape your career with clarity?"
-        description="Connect with GCDA experts for personalised counselling, assessments, and practical next-step guidance — online or in-person."
+        title={t.home.ctaTitle}
+        description={t.home.ctaDesc}
+        lang={lang}
       />
     </>
   );

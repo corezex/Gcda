@@ -4,7 +4,7 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { company } from '@/data/site';
 import { organizationSchema, websiteSchema, localBusinessSchema } from '@/data/schema';
-import { hreflang } from '@/data/hreflang';
+import { hreflang } from '@/data/i18n';
 
 const SITE_URL = 'https://gcdassociation.org';
 
