@@ -80,6 +80,10 @@ export default function Header() {
 
   const localizedBrandHref = currentLang === 'en' ? '/' : `/${currentLang}`;
 
+  // For Hindi, only show 2 service details (per user request) - the other 4 are same as topical which were deleted
+  const filteredServices = currentLang === 'hi' ? services.filter(s => ['personal-counselling','career-assessment'].includes(s.slug)) : services;
+  const showTopicalForLang = currentLang !== 'hi'; // don't show topical services for hi as they were deleted
+
   return (
     <header className="site-header">
       <div className="container header-inner">
@@ -131,7 +135,7 @@ export default function Header() {
                         All services
                       </Link>
                       <div className="nav-dropdown-divider" />
-                      {services.map((s) => (
+                      {filteredServices.map((s) => (
                         <Link
                           key={s.slug}
                           href={localizeHref(`/career-counselling/${s.slug}`)}
@@ -146,56 +150,60 @@ export default function Header() {
                           </span>
                         </Link>
                       ))}
-                      <div className="nav-dropdown-divider" />
-                      <span className="nav-dropdown-heading">Topical services</span>
-                      <Link
-                        href={localizeHref('/career-counselling-seminar')}
-                        className="nav-dropdown-item"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
-                        <span className="nav-dropdown-icon" aria-hidden="true">🎓</span>
-                        <span className="nav-dropdown-text">
-                          <strong>Career Counselling Seminar</strong>
-                          <small>Workshops & seminars for schools, colleges, and parents</small>
-                        </span>
-                      </Link>
-                      <Link
-                        href={localizeHref('/stream-selection-guidance')}
-                        className="nav-dropdown-item"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
-                        <span className="nav-dropdown-icon" aria-hidden="true">🧭</span>
-                        <span className="nav-dropdown-text">
-                          <strong>Stream Selection Guidance</strong>
-                          <small>Choose the right stream after 10th — Science, Commerce, or Arts</small>
-                        </span>
-                      </Link>
-                      <Link
-                        href={localizeHref('/degree-selection-guidance')}
-                        className="nav-dropdown-item"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
-                        <span className="nav-dropdown-icon" aria-hidden="true">🏫</span>
-                        <span className="nav-dropdown-text">
-                          <strong>Degree Selection Guidance</strong>
-                          <small>Pick the right degree and college after 12th</small>
-                        </span>
-                      </Link>
-                      <Link
-                        href={localizeHref('/guidance-for-working-professionals')}
-                        className="nav-dropdown-item"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
-                        <span className="nav-dropdown-icon" aria-hidden="true">💼</span>
-                        <span className="nav-dropdown-text">
-                          <strong>Guidance for Working Professionals</strong>
-                          <small>Career growth, transition, and MBA planning</small>
-                        </span>
-                      </Link>
+                      {showTopicalForLang ? (
+                        <>
+                          <div className="nav-dropdown-divider" />
+                          <span className="nav-dropdown-heading">Topical services</span>
+                          <Link
+                            href={localizeHref('/career-counselling-seminar')}
+                            className="nav-dropdown-item"
+                            role="menuitem"
+                            onClick={() => { setOpen(false); setServicesOpen(false); }}
+                          >
+                            <span className="nav-dropdown-icon" aria-hidden="true">🎓</span>
+                            <span className="nav-dropdown-text">
+                              <strong>Career Counselling Seminar</strong>
+                              <small>Workshops & seminars for schools, colleges, and parents</small>
+                            </span>
+                          </Link>
+                          <Link
+                            href={localizeHref('/stream-selection-guidance')}
+                            className="nav-dropdown-item"
+                            role="menuitem"
+                            onClick={() => { setOpen(false); setServicesOpen(false); }}
+                          >
+                            <span className="nav-dropdown-icon" aria-hidden="true">🧭</span>
+                            <span className="nav-dropdown-text">
+                              <strong>Stream Selection Guidance</strong>
+                              <small>Choose the right stream after 10th — Science, Commerce, or Arts</small>
+                            </span>
+                          </Link>
+                          <Link
+                            href={localizeHref('/degree-selection-guidance')}
+                            className="nav-dropdown-item"
+                            role="menuitem"
+                            onClick={() => { setOpen(false); setServicesOpen(false); }}
+                          >
+                            <span className="nav-dropdown-icon" aria-hidden="true">🏫</span>
+                            <span className="nav-dropdown-text">
+                              <strong>Degree Selection Guidance</strong>
+                              <small>Pick the right degree and college after 12th</small>
+                            </span>
+                          </Link>
+                          <Link
+                            href={localizeHref('/guidance-for-working-professionals')}
+                            className="nav-dropdown-item"
+                            role="menuitem"
+                            onClick={() => { setOpen(false); setServicesOpen(false); }}
+                          >
+                            <span className="nav-dropdown-icon" aria-hidden="true">💼</span>
+                            <span className="nav-dropdown-text">
+                              <strong>Guidance for Working Professionals</strong>
+                              <small>Career growth, transition, and MBA planning</small>
+                            </span>
+                          </Link>
+                        </>
+                      ) : null}
                       <div className="nav-dropdown-divider" />
                       <Link
                         href={localizeHref('/career-certification')}
