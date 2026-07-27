@@ -95,7 +95,7 @@ export default function ServiceDetailPageHi({ params }) {
 
       <section className="section section-tight-top">
         <div className="container narrow-center">
-          <AnswerBlock>
+          <AnswerBlock lang={LANG}>
             {service.longDescription}
           </AnswerBlock>
         </div>

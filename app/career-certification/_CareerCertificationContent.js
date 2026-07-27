@@ -46,7 +46,7 @@ function CareerCertificationPage({ lang = 'en' }) {
 
       <section className="section section-tight-top">
         <div className="container narrow-center">
-          <AnswerBlock>{t.answerBlock || "The GCDA Career Counselling Certification is a comprehensive programme."}</AnswerBlock>
+          <AnswerBlock lang={lang}>{t.answerBlock || "The GCDA Career Counselling Certification is a comprehensive programme."}</AnswerBlock>
         </div>
       </section>
 

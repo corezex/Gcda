@@ -68,7 +68,7 @@ function HomePage({ lang = 'en' }) {
               title={t.home.aboutTitle}
               description={t.home.aboutDesc}
             />
-            <AnswerBlock>
+            <AnswerBlock lang={lang}>
               {lang === 'en'
                 ? "GCDA is one of India's trusted career counselling and career guidance associations, helping 50,000+ students, parents, and working professionals make clear education and career decisions through assessments, structured counselling, and practical roadmaps since 2013."
                 : t.home.description}

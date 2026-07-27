@@ -133,7 +133,7 @@ export default function Header() {
                         role="menuitem"
                         onClick={() => { setOpen(false); setServicesOpen(false); }}
                       >
-                        All services
+                        {currentLang === 'hi' ? 'सभी सेवाएं' : 'All services'}
                       </Link>
                       <div className="nav-dropdown-divider" />
                       {filteredServices.map((s) => (
@@ -154,7 +154,7 @@ export default function Header() {
                       {showTopicalForLang ? (
                         <>
                           <div className="nav-dropdown-divider" />
-                          <span className="nav-dropdown-heading">Topical services</span>
+                          <span className="nav-dropdown-heading">{currentLang === 'hi' ? 'प्रासंगिक सेवाएं' : 'Topical services'}</span>
                           <Link
                             href={localizeHref('/career-counselling-seminar')}
                             className="nav-dropdown-item"

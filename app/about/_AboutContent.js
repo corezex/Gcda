@@ -44,7 +44,7 @@ function AboutPage({ lang = 'en' }) {
 
       <section className="section section-tight-top">
         <div className="container">
-          <AnswerBlock>
+          <AnswerBlock lang={lang}>
             GCDA is a Mumbai-headquartered career counselling association founded in 2013. We work with 50,000+ students, parents, and working professionals across India through 5,000+ certified counsellors, offering personal counselling, career assessments, stream and degree selection, and professional growth mentoring.
           </AnswerBlock>
         </div>

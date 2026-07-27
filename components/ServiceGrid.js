@@ -4,6 +4,7 @@ import { localizePath } from '@/data/i18n';
 export default function ServiceGrid({ services, limit, lang = 'en' }) {
   const list = limit ? services.slice(0, limit) : services;
   const lp = (p) => localizePath(p, lang);
+  const exploreText = lang === 'hi' ? 'सेवा देखें →' : 'Explore service →';
 
   return (
     <div className="card-grid service-grid">
@@ -19,7 +20,7 @@ export default function ServiceGrid({ services, limit, lang = 'en' }) {
             </h3>
             <p>{service.shortDescription}</p>
             <Link href={lp(`/career-counselling/${service.slug}`)} className="text-link">
-              Explore service →
+              {exploreText}
             </Link>
           </div>
         </article>

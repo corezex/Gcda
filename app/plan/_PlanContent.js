@@ -42,7 +42,7 @@ function PlanPage({ lang = 'en' }) {
 
       <section className="section section-tight-top">
         <div className="container">
-          <AnswerBlock>
+          <AnswerBlock lang={lang}>
             {t.answerBlock || "GCDA offers 3 career counselling plans: Stream Selector (Rs. 2,999) for school students choosing a stream, Degree Selector (Rs. 3,499) for students choosing a degree after 12th, and Working Professionals (Rs. 3,999) for career transitions and growth. All plans include assessments, mentor sessions, and a personalised report."}
           </AnswerBlock>
         </div>

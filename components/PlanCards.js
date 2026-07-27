@@ -3,6 +3,7 @@ import { localizePath } from '@/data/i18n';
 
 export default function PlanCards({ plans, lang = 'en' }) {
   const lp = (p) => localizePath(p, lang);
+  const selectText = lang === 'hi' ? 'योजना चुनें' : 'Select Plan';
   return (
     <div className="card-grid plan-grid">
       {plans.map((plan) => (
@@ -21,7 +22,7 @@ export default function PlanCards({ plans, lang = 'en' }) {
               ))}
             </ul>
             <Link href={lp('/contact')} className="button button-primary block-button">
-              Select Plan
+              {selectText}
             </Link>
           </div>
         </article>

@@ -41,8 +41,8 @@ function CareerCounsellingPage({ lang = 'en' }) {
             <h1>{t.title}</h1>
             <p className="page-hero-copy">{t.desc}</p>
             <div className="button-row">
-              <Link href={lp('/contact')} className="button button-primary">Book a Session</Link>
-              <Link href={lp('/plan')} className="button button-secondary">View Plans</Link>
+              <Link href={lp('/contact')} className="button button-primary">{fullT.common?.bookConsultation || "Book a Session"}</Link>
+              <Link href={lp('/plan')} className="button button-secondary">{fullT.common?.viewPlans || "View Plans"}</Link>
             </div>
           </div>
           <div className="surface-card media-card">
@@ -53,7 +53,7 @@ function CareerCounsellingPage({ lang = 'en' }) {
 
       <section className="section section-tight-top">
         <div className="container">
-          <AnswerBlock>GCDA offers 6 core career counselling services: Personal Counselling, Career Assessment, Workshops & Seminars, Stream Selection Guidance, Degree Selection Guidance, and Working Professional Guidance. All services are available online across India and in-person.</AnswerBlock>
+          <AnswerBlock lang={lang}>GCDA offers 6 core career counselling services: Personal Counselling, Career Assessment, Workshops & Seminars, Stream Selection Guidance, Degree Selection Guidance, and Working Professional Guidance. All services are available online across India and in-person.</AnswerBlock>
         </div>
       </section>
 
@@ -68,7 +68,7 @@ function CareerCounsellingPage({ lang = 'en' }) {
                   <div className="icon-badge">{service.icon}</div>
                   <h3><Link href={lp(`/career-counselling/${service.slug}`)}>{service.title}</Link></h3>
                   <p>{service.shortDescription}</p>
-                  <Link href={lp(`/career-counselling/${service.slug}`)} className="text-link">Learn more →</Link>
+                  <Link href={lp(`/career-counselling/${service.slug}`)} className="text-link">{lang === 'hi' ? 'और जानें →' : 'Learn more →'}</Link>
                 </div>
               </article>
             ))}
@@ -76,9 +76,9 @@ function CareerCounsellingPage({ lang = 'en' }) {
               <div className="service-card-media"><img src="/assets/career-7.png" alt="Career Counselling Certification" /></div>
               <div className="card-body">
                 <div className="icon-badge">🎓</div>
-                <h3><Link href={lp('/career-certification')}>Career Counselling Certification</Link></h3>
-                <p>A comprehensive offline + online certification programme for aspiring and practising career counsellors.</p>
-                <Link href={lp('/career-certification')} className="text-link">Learn more →</Link>
+                <h3><Link href={lp('/career-certification')}>{lang === 'hi' ? 'करियर काउंसलिंग प्रमाणन' : 'Career Counselling Certification'}</Link></h3>
+                <p>{lang === 'hi' ? 'आकांक्षी और अभ्यासरत करियर काउंसलर्स के लिए व्यापक ऑफलाइन + ऑनलाइन प्रमाणन कार्यक्रम।' : 'A comprehensive offline + online certification programme for aspiring and practising career counsellors.'}</p>
+                <Link href={lp('/career-certification')} className="text-link">{lang === 'hi' ? 'और जानें →' : 'Learn more →'}</Link>
               </div>
             </article>
           </div>
@@ -128,7 +128,7 @@ function CareerCounsellingPage({ lang = 'en' }) {
               );
             })}
           </div>
-          <div className="center-cta"><Link href={lp('/cities')} className="text-link">View all 346 cities →</Link></div>
+          <div className="center-cta"><Link href={lp('/cities')} className="text-link">{t.viewAllCities || "View all 346 cities →"}</Link></div>
         </div>
       </section>
 

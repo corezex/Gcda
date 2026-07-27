@@ -43,7 +43,7 @@ function ContactPage({ lang = 'en' }) {
 
       <section className="section">
         <div className="container">
-          <AnswerBlock>
+          <AnswerBlock lang={lang}>
             You can reach GCDA by phone at {company.phoneDisplay}, by email at {company.email}, or by WhatsApp. Our Mumbai office is at {company.addressLine1} and is open Monday to Saturday. We respond to all enquiries within one business day.
           </AnswerBlock>
         </div>
