@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import { company } from '@/data/site';
+import HtmlLang from '@/components/HtmlLang';
 import { organizationSchema, websiteSchema, localBusinessSchema } from '@/data/schema';
 import { hreflang } from '@/data/i18n';
 
@@ -113,6 +114,7 @@ export default function RootLayout({ children }) {
         <link rel="dns-prefetch" href="https://www.google.com" />
       </head>
       <body>
+        <HtmlLang />
         <JsonLd id="ld-organization" data={organizationSchema()} />
         <JsonLd id="ld-website" data={websiteSchema()} />
         <JsonLd id="ld-localbusiness" data={localBusinessSchema()} />

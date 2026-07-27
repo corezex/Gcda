@@ -25,6 +25,13 @@ const serviceOptions = [
 
 export default function ContactForm({ lang = 'en' }) {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
+
+  const fieldLabels = {
+    en: { name: 'Full Name *', phone: 'Phone Number *', email: 'Email Address *', service: 'Interested Service', message: 'Your Message *', namePh: 'Your full name', phonePh: '10-digit mobile number', emailPh: 'Your email address', messagePh: 'Tell us about your requirement, e.g., student in class 10 confused about stream, budget, timeline...', serviceDefault: 'Select a service (optional)', hintPhone: 'Indian format: 10 digits starting with 6-9', hintMessage: 'Minimum 10 characters, be as specific as possible', note: 'By submitting, you agree to be contacted by GCDA via phone, email, or WhatsApp. We respond within 1 business day.', submit: 'Send Email Enquiry', whatsapp: 'Chat on WhatsApp', sending: 'Sending...', thankTitle: 'Thank you! Enquiry ready.', thankDesc: 'Your email app should open with a pre-filled enquiry. If it didn’t, use the buttons below.', openEmail: 'Open Email Again', continueWa: 'Continue on WhatsApp', another: 'Send another enquiry' },
+    hi: { name: 'पूरा नाम *', phone: 'फोन नंबर *', email: 'ईमेल पता *', service: 'इच्छुक सेवा', message: 'आपका संदेश *', namePh: 'आपका पूरा नाम', phonePh: '10 अंकों का मोबाइल नंबर', emailPh: 'आपका ईमेल पता', messagePh: 'अपनी आवश्यकता बताएं, जैसे 10वीं कक्षा का छात्र स्ट्रीम को लेकर भ्रमित है...', serviceDefault: 'सेवा चुनें (वैकल्पिक)', hintPhone: 'भारतीय प्रारूप: 6-9 से शुरू होने वाले 10 अंक', hintMessage: 'न्यूनतम 10 अक्षर, जितना संभव हो उतना विशिष्ट रहें', note: 'सबमिट करके, आप फोन, ईमेल या WhatsApp के माध्यम से GCDA द्वारा संपर्क किए जाने के लिए सहमत होते हैं।', submit: 'ईमेल पूछताछ भेजें', whatsapp: 'WhatsApp पर चैट करें', sending: 'भेजा जा रहा है...', thankTitle: 'धन्यवाद! पूछताछ तैयार है।', thankDesc: 'आपका ईमेल ऐप प्री-फिल्ड पूछताछ के साथ खुलना चाहिए। यदि नहीं खुला, तो नीचे दिए बटन का उपयोग करें।', openEmail: 'ईमेल फिर से खोलें', continueWa: 'WhatsApp पर जारी रखें', another: 'एक और पूछताछ भेजें' },
+  };
+
+  const labels = fieldLabels[lang] || fieldLabels.en;
   const [form, setForm] = useState(initialState);
   const [errors, setErrors] = useState({});
   const [touched, setTouched] = useState({});
@@ -165,8 +172,8 @@ export default function ContactForm({ lang = 'en' }) {
       {submitted ? (
         <div className="success-panel">
           <div className="success-icon" aria-hidden="true">✅</div>
-          <h3>Thank you! Enquiry ready.</h3>
-          <p>Your email app should open with a pre-filled enquiry. If it didn’t, use the buttons below.</p>
+          <h3>{labels.thankTitle}</h3>
+          <p>{labels.thankDesc}</p>
           <div className="form-actions" style={{ marginTop: '1rem' }}>
             <a
               href={typeof window !== 'undefined' && window._lastEnquiry ? window._lastEnquiry.mailto : `mailto:${company.email}`}
@@ -177,26 +184,26 @@ export default function ContactForm({ lang = 'en' }) {
                 if (link) window.location.href = link;
               }}
             >
-              Open Email Again
+              {labels.openEmail}
             </a>
             <a href={typeof window !== 'undefined' && window._lastEnquiry ? window._lastEnquiry.whatsappLink : whatsappPrefill} target="_blank" rel="noreferrer" className="button button-secondary">
-              Continue on WhatsApp
+              {labels.continueWa}
             </a>
           </div>
-          <button className="text-link" style={{ marginTop: '1rem', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => setSubmitted(false)}>Send another enquiry</button>
+          <button className="text-link" style={{ marginTop: '1rem', background: 'none', border: 'none', cursor: 'pointer' }} onClick={() => setSubmitted(false)}>{labels.another}</button>
         </div>
       ) : (
       <form className="contact-form" onSubmit={handleSubmit} noValidate>
         <div className="form-grid">
           <label className="form-field">
-            <span className="field-label">Full Name *</span>
+            <span className="field-label">{labels.name}</span>
             <input
               name="name"
               type="text"
               value={form.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Your full name"
+              placeholder={labels.namePh}
               required
               aria-invalid={!!errors.name}
               aria-describedby={errors.name ? 'err-name' : undefined}
@@ -206,14 +213,14 @@ export default function ContactForm({ lang = 'en' }) {
             {errors.name ? <span className="field-error" id="err-name">{errors.name}</span> : null}
           </label>
           <label className="form-field">
-            <span className="field-label">Phone Number *</span>
+            <span className="field-label">{labels.phone}</span>
             <input
               name="phone"
               type="tel"
               value={form.phone}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="10-digit mobile number"
+              placeholder={labels.phonePh}
               required
               aria-invalid={!!errors.phone}
               aria-describedby={errors.phone ? 'err-phone' : undefined}
@@ -221,17 +228,17 @@ export default function ContactForm({ lang = 'en' }) {
               autoComplete="tel"
               inputMode="numeric"
             />
-            {errors.phone ? <span className="field-error" id="err-phone">{errors.phone}</span> : <span className="field-hint">Indian format: 10 digits starting with 6-9</span>}
+            {errors.phone ? <span className="field-error" id="err-phone">{errors.phone}</span> : <span className="field-hint">{labels.hintPhone}</span>}
           </label>
           <label className="form-field">
-            <span className="field-label">Email Address *</span>
+            <span className="field-label">{labels.email}</span>
             <input
               name="email"
               type="email"
               value={form.email}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Your email address"
+              placeholder={labels.emailPh}
               required
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'err-email' : undefined}
@@ -241,30 +248,30 @@ export default function ContactForm({ lang = 'en' }) {
             {errors.email ? <span className="field-error" id="err-email">{errors.email}</span> : null}
           </label>
           <label className="form-field">
-            <span className="field-label">Interested Service</span>
+            <span className="field-label">{labels.service}</span>
             <select name="service" value={form.service} onChange={handleChange} className="select-input">
-              <option value="">Select a service (optional)</option>
+              <option value="">{labels.serviceDefault}</option>
               {serviceOptions.map((s) => (
                 <option key={s} value={s}>{s}</option>
               ))}
             </select>
           </label>
           <label className="form-field full-width">
-            <span className="field-label">Your Message *</span>
+            <span className="field-label">{labels.message}</span>
             <textarea
               name="message"
               rows="6"
               value={form.message}
               onChange={handleChange}
               onBlur={handleBlur}
-              placeholder="Tell us about your requirement, e.g., student in class 10 confused about stream, budget, timeline..."
+              placeholder={labels.messagePh}
               required
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? 'err-message' : 'char-count'}
               className={errors.message ? 'input-error' : ''}
             />
             <div className="field-meta">
-              {errors.message ? <span className="field-error" id="err-message">{errors.message}</span> : <span className="field-hint">Minimum 10 characters, be as specific as possible</span>}
+              {errors.message ? <span className="field-error" id="err-message">{errors.message}</span> : <span className="field-hint">{labels.hintMessage}</span>}
               <span className="char-count" id="char-count">{charCount}/1000</span>
             </div>
           </label>
@@ -272,13 +279,13 @@ export default function ContactForm({ lang = 'en' }) {
         {errors.submit ? <p className="field-error" style={{ marginTop: '0.8rem' }}>{errors.submit}</p> : null}
         <div className="form-actions">
           <button type="submit" className="button button-primary" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Email Enquiry'}
+            {isSubmitting ? labels.sending : labels.submit}
           </button>
           <a href={whatsappPrefill} target="_blank" rel="noreferrer" className="button button-secondary">
-            Chat on WhatsApp
+            {labels.whatsapp}
           </a>
         </div>
-        <p className="form-note">By submitting, you agree to be contacted by GCDA via phone, email, or WhatsApp. We respond within 1 business day.</p>
+        <p className="form-note">{labels.note}</p>
       </form>
       )}
     </div>

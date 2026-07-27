@@ -8,7 +8,7 @@ import FAQList from '@/components/FAQList';
 import CTASection from '@/components/CTASection';
 import AnswerBlock from '@/components/AnswerBlock';
 import JsonLd from '@/components/JsonLd';
-import { audience, company, journeySteps, services, siteFaqs, statsHome, testimonials, valuePoints } from '@/data/site';
+import { audience as audienceEn, company, journeySteps as journeyStepsEn, services, siteFaqs as siteFaqsEn, statsHome as statsHomeEn, testimonials, valuePoints as valuePointsEn } from '@/data/site';
 import { faqSchema, howToSchema } from '@/data/schema';
 import { TRANSLATIONS, getLocaleDetails, localizePath } from '@/data/i18n';
 
@@ -16,6 +16,13 @@ function HomePage({ lang = 'en' }) {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
   const locale = getLocaleDetails(lang);
   const lp = (path) => localizePath(path, lang);
+
+  // Use translated arrays if available, else fallback to EN
+  const valuePoints = t.valuePoints || valuePointsEn;
+  const audience = t.audience || audienceEn;
+  const journeySteps = t.journeySteps || journeyStepsEn;
+  const siteFaqs = t.siteFaqs || siteFaqsEn;
+  const statsHome = t.statsHome || statsHomeEn;
 
   return (
     <>

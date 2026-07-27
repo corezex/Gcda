@@ -6,7 +6,7 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
-import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
+import { aboutTimeline as aboutTimelineEn, audience as audienceEn, company, statsHome as statsHomeEn, valuePoints as valuePointsEn } from '@/data/site';
 import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
 import { TRANSLATIONS, localizePath } from '@/data/i18n';
 
@@ -15,6 +15,11 @@ const SITE_URL = 'https://gcdassociation.org';
 function AboutPage({ lang = 'en' }) {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.en;
   const lp = (p) => localizePath(p, lang);
+
+  const valuePoints = t.valuePoints || valuePointsEn;
+  const audience = t.audience || audienceEn;
+  const aboutTimeline = t.aboutTimeline || aboutTimelineEn;
+  const statsHome = t.statsHome || statsHomeEn;
 
   const aboutBreadcrumbs = [
     { name: 'Home', url: lp('/') },
