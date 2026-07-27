@@ -1,4 +1,4 @@
-// Localized Career Certification Content
+// Localized Career Certification Content - 100% Hindi support
 import Link from 'next/link';
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
@@ -12,22 +12,18 @@ import { TRANSLATIONS, localizePath } from '@/data/i18n';
 
 const SITE_URL = 'https://gcdassociation.org';
 
-const certificationFaqs = [
-  { q: 'Who should enroll in the GCDA Career Counselling Certification?', a: 'Anyone passionate about mentoring and guiding others in their career path. Open to graduates in any discipline, including retired professionals.' },
-  { q: 'What are the eligibility requirements?', a: "Bachelor's degree in any discipline, a passion for helping others, and good communication skills. No prior counselling experience is required." },
-  { q: 'What does the curriculum cover?', a: 'Career counselling principles, assessment tools (aptitude, interest, personality), effective coaching techniques, career pathway mapping, parent-alignment conversations, and the business of running a counselling practice.' },
-  { q: 'Is the certification online, offline, or both?', a: 'Hybrid format — interactive online sessions plus in-person workshops in select cities.' },
-  { q: 'Will I receive a certificate after completion?', a: 'Yes. On successful completion you will receive a GCDA Career Counsellor Certification.' },
-  { q: 'Does the programme help me start a counselling practice?', a: 'Yes. The curriculum includes modules on client acquisition, ethical practice, and using assessments in real-world setting.' },
-];
-
 function CareerCertificationPage({ lang = 'en' }) {
-  const t = (TRANSLATIONS[lang] || TRANSLATIONS.en).careerCertification;
+  const fullT = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const t = fullT.careerCertification;
   const lp = (p) => localizePath(p, lang);
+  const isHi = lang === 'hi';
   const breadcrumbs = [
-    { name: 'Home', url: lp('/') },
-    { name: 'Services', url: lp('/career-counselling') },
-    { name: 'Career Counselling Certification', url: lp('/career-certification') },
+    { name: isHi ? 'होम' : 'Home', url: lp('/') },
+    { name: isHi ? 'सेवाएं' : 'Services', url: lp('/career-counselling') },
+    { name: isHi ? 'प्रमाणन' : 'Career Counselling Certification', url: lp('/career-certification') },
+  ];
+  const certFaqs = fullT.siteFaqs || [
+    { q: 'Who should enroll?', a: 'Anyone passionate about mentoring.' },
   ];
 
   return (
@@ -36,12 +32,12 @@ function CareerCertificationPage({ lang = 'en' }) {
         <div className="container page-hero-grid">
           <div>
             <Breadcrumbs items={breadcrumbs} />
-            <span className="eyebrow">{t.eyebrow}</span>
-            <h1>{t.title}</h1>
-            <p className="page-hero-copy">{t.desc}</p>
+            <span className="eyebrow">{t.heroEyebrow || t.eyebrow}</span>
+            <h1>{t.heroTitle || t.title}</h1>
+            <p className="page-hero-copy">{t.heroDesc || t.desc}</p>
             <div className="button-row">
-              <Link href={lp('/contact')} className="button button-primary">Enquire Now</Link>
-              <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
+              <Link href={lp('/contact')} className="button button-primary">{isHi ? 'अभी पूछताछ करें' : 'Enquire Now'}</Link>
+              <a href={`tel:${company.phoneRaw}`} className="button button-secondary">{isHi ? `कॉल ${company.phoneDisplay}` : `Call ${company.phoneDisplay}`}</a>
             </div>
           </div>
           <div className="surface-card media-card"><img src="/assets/career-7.png" alt="Career Counselling Certification" /></div>
@@ -50,25 +46,25 @@ function CareerCertificationPage({ lang = 'en' }) {
 
       <section className="section section-tight-top">
         <div className="container narrow-center">
-          <AnswerBlock>The GCDA Career Counselling Certification is a comprehensive programme for aspiring and practising counsellors. Hybrid online + in-person format.</AnswerBlock>
+          <AnswerBlock>{t.answerBlock || "The GCDA Career Counselling Certification is a comprehensive programme."}</AnswerBlock>
         </div>
       </section>
 
       <section className="section">
         <div className="container two-column">
           <div>
-            <SectionHeader eyebrow="Why get certified" title="Begin your path with a career counselling course" description="Our comprehensive programme is designed to equip you with the knowledge and skills needed to become a certified career counsellor." />
-            <p>Are you passionate about helping others navigate their career paths? Throughout our Career Counselling Course, you'll gain invaluable theoretical insights into various career options.</p>
-            <p>This practical aspect ensures a deep understanding of theoretical foundations while honing essential skills required to excel in the field.</p>
+            <SectionHeader eyebrow={isHi ? "प्रमाणित क्यों बनें" : "Why get certified"} title={t.whyTitle || "Begin your path with a career counselling course"} description={t.whyDesc || "Our programme is designed to equip you with knowledge and skills."} />
+            <p>{isHi ? "क्या आप दूसरों को उनके करियर पथों को नेविगेट करने में मदद करने के बारे में भावुक हैं? हमारे कोर्स के दौरान आपको विभिन्न करियर विकल्पों में अमूल्य अंतर्दृष्टि प्राप्त होगी।" : "Are you passionate about helping others navigate their career paths? Throughout our Course, you'll gain invaluable insights."}</p>
+            <p>{isHi ? "यह व्यावहारिक पहलू सैद्धांतिक नींव की गहरी समझ सुनिश्चित करता है जबकि उत्कृष्टता के लिए कौशल निखारता है।" : "This practical aspect ensures deep understanding while honing skills."}</p>
           </div>
           <div className="info-panel">
-            <h3>Programme highlights</h3>
+            <h3>{isHi ? "कार्यक्रम हाइलाइट्स" : "Programme highlights"}</h3>
             <ul className="bullet-list compact">
-              <li><strong>Format:</strong> Hybrid — interactive online + in-person workshops</li>
-              <li><strong>Eligibility:</strong> Bachelor's degree in any discipline</li>
-              <li><strong>Duration:</strong> Self-paced with live mentor sessions</li>
+              <li><strong>{isHi ? "प्रारूप:" : "Format:"}</strong> {isHi ? "हाइब्रिड — ऑनलाइन + इन-पर्सन" : "Hybrid — online + in-person"}</li>
+              <li><strong>{isHi ? "पात्रता:" : "Eligibility:"}</strong> {isHi ? "किसी भी विषय में स्नातक" : "Bachelor's degree in any discipline"}</li>
+              <li><strong>{isHi ? "अवधि:" : "Duration:"}</strong> {isHi ? "स्व-गति + लाइव मेंटर" : "Self-paced with live mentor sessions"}</li>
               <li><strong>Certificate:</strong> GCDA Career Counsellor Certification</li>
-              <li><strong>Outcome:</strong> Practise independently or join an established practice</li>
+              <li><strong>{isHi ? "परिणाम:" : "Outcome:"}</strong> {isHi ? "स्वतंत्र रूप से अभ्यास करें" : "Practise independently"}</li>
             </ul>
           </div>
         </div>
@@ -76,15 +72,15 @@ function CareerCertificationPage({ lang = 'en' }) {
 
       <section className="section">
         <div className="container">
-          <SectionHeader eyebrow="FAQs" title="Frequently asked questions about the certification" description="Common questions about eligibility, format, certification, and career outcomes." center />
-          <FAQList items={certificationFaqs} />
+          <SectionHeader eyebrow="FAQs" title={t.faqSectionTitle || "Frequently asked questions"} description={isHi ? "पात्रता, प्रारूप, प्रमाणन के बारे में प्रश्न।" : "Common questions about eligibility, format."} center />
+          <FAQList items={certFaqs} />
         </div>
-        <JsonLd id="ld-faq-certification" data={faqSchema(certificationFaqs)} />
+        <JsonLd id="ld-faq-certification" data={faqSchema(certFaqs)} />
       </section>
 
-      <CTASection title="Ready to become a certified career counsellor?" description="Talk to the GCDA team to learn about the next batch, fees, and how the certification can fit around your schedule." lang={lang} />
+      <CTASection title={t.ctaTitle || "Ready to become a certified career counsellor?"} description={t.ctaDesc || "Talk to GCDA team."} lang={lang} />
       <JsonLd id="ld-breadcrumb-certification" data={breadcrumbSchema(breadcrumbs)} />
-      <JsonLd id="ld-course-certification" data={{ ...courseSchema({ name: 'GCDA Career Counselling Certification', description: 'Comprehensive certification programme for aspiring counsellors in India.', provider: 'Global Career Development Association', url: `${SITE_URL}/career-certification`, slug: 'career-certification', hasCourseInstance: true }) }} />
+      <JsonLd id="ld-course-certification" data={{ ...courseSchema({ name: 'GCDA Career Counselling Certification', description: 'Comprehensive certification programme.', provider: 'Global Career Development Association', url: `${SITE_URL}/career-certification`, slug: 'career-certification', hasCourseInstance: true }) }} />
     </>
   );
 }

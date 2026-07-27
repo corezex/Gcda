@@ -15,7 +15,10 @@ const SITE_URL = 'https://gcdassociation.org';
 
 function PlanPage({ lang = 'en' }) {
   const t = (TRANSLATIONS[lang] || TRANSLATIONS.en).plan;
+  const fullT = TRANSLATIONS[lang] || TRANSLATIONS.en;
   const lp = (p) => localizePath(p, lang);
+  const plansData = fullT.plans || plans;
+  const siteFaqsData = fullT.siteFaqs || siteFaqs;
 
   const breadcrumbs = [
     { name: 'Home', url: lp('/') },
@@ -40,7 +43,7 @@ function PlanPage({ lang = 'en' }) {
       <section className="section section-tight-top">
         <div className="container">
           <AnswerBlock>
-            GCDA offers 3 career counselling plans: Stream Selector (Rs. 2,999) for school students choosing a stream, Degree Selector (Rs. 3,499) for students choosing a degree after 12th, and Working Professionals (Rs. 3,999) for career transitions and growth. All plans include assessments, mentor sessions, and a personalised report.
+            {t.answerBlock || "GCDA offers 3 career counselling plans: Stream Selector (Rs. 2,999) for school students choosing a stream, Degree Selector (Rs. 3,499) for students choosing a degree after 12th, and Working Professionals (Rs. 3,999) for career transitions and growth. All plans include assessments, mentor sessions, and a personalised report."}
           </AnswerBlock>
         </div>
       </section>
@@ -48,14 +51,14 @@ function PlanPage({ lang = 'en' }) {
       <section className="section">
         <div className="container">
           <SectionHeader
-            eyebrow="Plans"
-            title="Simple, transparent pricing"
-            description="Plan names, pricing, and included features are kept aligned with the current GCDA plan structure."
+            eyebrow={lang === 'hi' ? "योजनाएं" : "Plans"}
+            title={t.pricingTitle || "Simple, transparent pricing"}
+            description={t.pricingDesc || "Plan names, pricing, and included features are kept aligned with the current GCDA plan structure."}
             center
           />
-          <PlanCards plans={plans} lang={lang} />
+          <PlanCards plans={plansData} lang={lang} />
         </div>
-        {plans.map((plan) => (
+        {plansData.map((plan) => (
           <JsonLd key={plan.slug} id={`ld-product-${plan.slug}`} data={productSchema(plan)} />
         ))}
       </section>
@@ -64,40 +67,40 @@ function PlanPage({ lang = 'en' }) {
         <div className="container two-column">
           <div>
             <SectionHeader
-              eyebrow="Which plan should you choose?"
-              title="A quick way to decide"
-              description="Each plan builds on the previous one, so you can choose based on your current need and level of support."
+              eyebrow={lang === 'hi' ? "कौन सी योजना?" : "Which plan should you choose?"}
+              title={t.whichTitle || "A quick way to decide"}
+              description={t.whichDesc || "Each plan builds on the previous one, so you can choose based on your current need and level of support."}
             />
             <div className="stack-list">
               <article className="feature-row">
-                <h3>Stream Selector</h3>
-                <p>Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction. See <Link href={lp('/career-counselling/stream-selection-guidance')} className="text-link">stream selection guidance</Link>.</p>
+                <h3>{t.streamSelector || "Stream Selector"}</h3>
+                <p>{t.streamSelectorDesc || "Best for school students deciding between Science, Commerce, Arts, and future-fit academic direction."} <Link href={lp('/career-counselling/stream-selection-guidance')} className="text-link">{lang === 'hi' ? "स्ट्रीम चयन मार्गदर्शन देखें" : "stream selection guidance"}</Link>.</p>
               </article>
               <article className="feature-row">
-                <h3>Degree Selector</h3>
-                <p>Ideal when students need course, degree, and college-level clarity after school. See <Link href={lp('/career-counselling/degree-selection-guidance')} className="text-link">degree selection guidance</Link>.</p>
+                <h3>{t.degreeSelector || "Degree Selector"}</h3>
+                <p>{t.degreeSelectorDesc || "Ideal when students need course, degree, and college-level clarity after school."} <Link href={lp('/career-counselling/degree-selection-guidance')} className="text-link">{lang === 'hi' ? "डिग्री चयन मार्गदर्शन देखें" : "degree selection guidance"}</Link>.</p>
               </article>
               <article className="feature-row">
-                <h3>Working Professionals</h3>
-                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href={lp('/career-counselling/working-professionals-guidance')} className="text-link">working professional guidance</Link>.</p>
+                <h3>{t.workingProf || "Working Professionals"}</h3>
+                <p>{t.workingProfDesc || "Designed for employed individuals who want smarter positioning, transitions, and growth planning."} <Link href={lp('/career-counselling/working-professionals-guidance')} className="text-link">{lang === 'hi' ? "पेशेवर मार्गदर्शन देखें" : "working professional guidance"}</Link>.</p>
               </article>
             </div>
           </div>
           <div>
             <SectionHeader
               eyebrow="FAQ"
-              title="Questions about plans"
-              description="A few practical answers before you book or upgrade your counselling package."
+              title={t.faqTitle || "Questions about plans"}
+              description={t.faqDesc || "A few practical answers before you book or upgrade your counselling package."}
             />
-            <FAQList items={siteFaqs.slice(0, 3)} />
+            <FAQList items={siteFaqsData.slice(0, 3)} />
           </div>
         </div>
-        <JsonLd id="ld-faq-plans" data={faqSchema(siteFaqs.slice(0, 3))} />
+        <JsonLd id="ld-faq-plans" data={faqSchema(siteFaqsData.slice(0, 3))} />
       </section>
 
       <CTASection
-        title="Still unsure which plan fits you best?"
-        description="Talk to GCDA and we will help you choose the right counselling path before you book."
+        title={t.stillUnsureTitle || "Still unsure which plan fits you best?"}
+        description={t.stillUnsureDesc || "Talk to GCDA and we will help you choose the right counselling path before you book."}
         lang={lang}
       />
 

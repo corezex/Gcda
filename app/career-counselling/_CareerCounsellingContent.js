@@ -7,7 +7,7 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
-import { journeySteps, services, siteFaqs } from '@/data/site';
+import { journeySteps as journeyStepsEn, services as servicesEn, siteFaqs as siteFaqsEn } from '@/data/site';
 import { SEMINAR_TYPES } from '@/data/seminars';
 import { SERVICE_CITY_PATTERNS } from '@/data/servicePages';
 import { STATES } from '@/data/indiaLocations';
@@ -15,11 +15,20 @@ import { faqSchema, howToSchema, serviceSchema, breadcrumbSchema } from '@/data/
 import { TRANSLATIONS, localizePath } from '@/data/i18n';
 
 function CareerCounsellingPage({ lang = 'en' }) {
-  const t = (TRANSLATIONS[lang] || TRANSLATIONS.en).careerCounselling;
+  const fullT = TRANSLATIONS[lang] || TRANSLATIONS.en;
+  const t = fullT.careerCounselling;
   const lp = (p) => localizePath(p, lang);
+  const journeySteps = fullT.journeySteps || journeyStepsEn;
+  const siteFaqs = fullT.siteFaqs || siteFaqsEn;
+  const services = fullT.serviceDetails ? Object.keys(fullT.serviceDetails).map(k => {
+    const en = servicesEn.find(s => s.slug === k);
+    const hi = fullT.serviceDetails[k];
+    return en ? { ...en, title: hi.title || en.title, shortDescription: hi.shortDescription || en.shortDescription } : null;
+  }).filter(Boolean) : servicesEn;
+
   const breadcrumbs = [
-    { name: 'Home', url: lp('/') },
-    { name: 'Career Counselling', url: lp('/career-counselling') },
+    { name: lang === 'hi' ? 'होम' : 'Home', url: lp('/') },
+    { name: lang === 'hi' ? 'करियर काउंसलिंग' : 'Career Counselling', url: lp('/career-counselling') },
   ];
 
   return (
@@ -50,7 +59,7 @@ function CareerCounsellingPage({ lang = 'en' }) {
 
       <section className="section">
         <div className="container">
-          <SectionHeader eyebrow="What we offer" title="Career counselling services" description="Click any service to learn more about what's included, who it's for, and how it works." center />
+          <SectionHeader eyebrow={lang === 'hi' ? "हम क्या प्रदान करते हैं" : "What we offer"} title={t.whatWeOfferTitle || "Career counselling services"} description={t.whatWeOfferDesc || "Click any service to learn more about what's included, who it's for, and how it works."} center />
           <div className="card-grid service-grid" id="services">
             {services.map((service) => (
               <article className="card service-card" key={service.slug} id={service.slug}>
@@ -81,7 +90,7 @@ function CareerCounsellingPage({ lang = 'en' }) {
 
       <section className="section alt-section" id="all-cities">
         <div className="container">
-          <SectionHeader eyebrow="Explore by city × service" title="Find GCDA career counselling in your city" description="We deliver 7 core services across 346 cities. Click any combination below to find a counsellor in your city." center />
+          <SectionHeader eyebrow={lang === 'hi' ? "शहर × सेवा" : "Explore by city × service"} title={t.exploreCityTitle || "Find GCDA career counselling in your city"} description={t.exploreCityDesc || "We deliver 7 core services across 346 cities. Click any combination below to find a counsellor in your city."} center />
           <div className="services-mega-grid">
             {[
               ['maharashtra', 'mumbai'],
@@ -125,15 +134,15 @@ function CareerCounsellingPage({ lang = 'en' }) {
 
       <section className="section alt-section">
         <div className="container">
-          <SectionHeader eyebrow="Workshops & Seminars" title="4 types of seminars and workshops we offer" description="As part of our workshops and seminars service, GCDA runs 4 dedicated tracks." center />
-          <SeminarTypesGrid seminars={SEMINAR_TYPES} city="India" />
-          <div className="center-cta"><Link href={lp('/career-counselling-seminar')} className="text-link">See seminars in your city →</Link></div>
+          <SectionHeader eyebrow={lang === 'hi' ? "कार्यशालाएं" : "Workshops & Seminars"} title={t.workshopTitle || "4 types of seminars and workshops we offer"} description={t.workshopDesc || "As part of our workshops and seminars service, GCDA runs 4 dedicated tracks."} center />
+          <SeminarTypesGrid seminars={SEMINAR_TYPES} city={lang === 'hi' ? "भारत" : "India"} />
+          <div className="center-cta"><Link href={lp('/career-counselling-seminar')} className="text-link">{t.seeSeminars || "See seminars in your city →"}</Link></div>
         </div>
       </section>
 
       <section className="section">
         <div className="container">
-          <SectionHeader eyebrow="Our process" title="The same clear counselling framework across services" description="Whether you are selecting a stream or planning a professional transition, our process stays focused and structured." center />
+          <SectionHeader eyebrow={lang === 'hi' ? "हमारी प्रक्रिया" : "Our process"} title={t.processTitle || "The same clear counselling framework across services"} description={t.processDesc || "Whether you are selecting a stream or planning a professional transition, our process stays focused and structured."} center />
           <div className="card-grid process-grid">
             {journeySteps.map((step, index) => (
               <article className="card process-card" key={step.title}>
@@ -147,13 +156,13 @@ function CareerCounsellingPage({ lang = 'en' }) {
 
       <section className="section">
         <div className="container">
-          <SectionHeader eyebrow="FAQs" title="Common questions about GCDA services" center />
+          <SectionHeader eyebrow="FAQs" title={t.faqMainTitle || "Common questions about GCDA services"} center />
           <FAQList items={siteFaqs} />
         </div>
         <JsonLd id="ld-faq-services" data={faqSchema(siteFaqs)} />
       </section>
 
-      <CTASection title="Need help choosing the right service?" description="Tell GCDA where you are stuck, and we will guide you to the most suitable service or plan." lang={lang} />
+      <CTASection title={t.needHelpTitle || "Need help choosing the right service?"} description={t.needHelpDesc || "Tell GCDA where you are stuck, and we will guide you to the most suitable service or plan."} lang={lang} />
       <JsonLd id="ld-breadcrumb-services" data={breadcrumbSchema(breadcrumbs)} />
     </>
   );
