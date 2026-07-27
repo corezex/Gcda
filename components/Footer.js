@@ -114,7 +114,8 @@ export default function Footer() {
               <li><Link href="/plan">Plans & Pricing</Link></li>
               <li><Link href="/blog">Blog</Link></li>
               <li><Link href="/contact">Contact</Link></li>
-              <li><Link href="/cities">All Cities</Link></li>
+              <li><Link href="/cities">All Cities (438)</Link></li>
+              <li><Link href="/author/gcda-editorial-team">Our Editorial Team</Link></li>
             </ul>
           </div>
 
@@ -182,6 +183,14 @@ export default function Footer() {
             <Link href="/contact" className="footer-bottom-link">Contact</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
             <Link href="/plan" className="footer-bottom-link">Plans</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/privacy" className="footer-bottom-link">Privacy</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/terms" className="footer-bottom-link">Terms</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/refund-policy" className="footer-bottom-link">Refund</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/author/gcda-editorial-team" className="footer-bottom-link">Authors</Link>
           </nav>
           <div className="footer-bottom-socials" aria-label="Follow GCDA on social media">
             <span className="footer-bottom-label">Follow us:</span>

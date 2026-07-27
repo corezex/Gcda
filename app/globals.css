@@ -2078,3 +2078,102 @@ textarea { resize: vertical; min-height: 130px; }
   .stat-card { padding: 1.1rem 1.1rem; }
   .stat-card strong { font-size: 1.5rem; }
 }
+
+/* ============================================================
+   Additional styles for Recommendations implementation
+   - comparison-table (AI Overviews loves tables)
+   - author byline
+   - related services in article
+   - table-wrap responsive
+   ============================================================ */
+.table-wrap {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-2);
+  box-shadow: var(--shadow-sm);
+  background: #fff;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  min-width: 720px;
+}
+
+.comparison-table th,
+.comparison-table td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line-2);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.comparison-table th {
+  background: var(--bg-alt);
+  font-weight: 800;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  position: sticky;
+  top: 0;
+}
+
+.comparison-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.comparison-table tbody tr:hover {
+  background: var(--primary-softer);
+}
+
+.table-caption {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+.author-byline-note {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.related-services-in-article {
+  margin-top: 2.5rem;
+  padding: 1.3rem 1.5rem;
+  background: linear-gradient(135deg, rgba(15, 118, 110, 0.05), rgba(196, 91, 64, 0.03));
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius);
+}
+
+.related-services-in-article h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+  color: var(--ink);
+}
+
+.inline-link-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  align-items: center;
+  font-size: 0.95rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 860px) {
+  .comparison-table {
+    font-size: 0.85rem;
+    min-width: 600px;
+  }
+  .comparison-table th,
+  .comparison-table td {
+    padding: 0.6rem 0.7rem;
+  }
+}

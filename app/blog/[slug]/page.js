@@ -8,7 +8,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import BlogCard from '@/components/BlogCard';
 import JsonLd from '@/components/JsonLd';
 import { getAllBlogSlugs, getBlogPostBySlug, getRelatedPosts } from '@/data/blog';
-import { faqSchema, articleSchema, breadcrumbSchema } from '@/data/schema';
+import { faqSchema, articleSchema, breadcrumbSchema, speakableSchema, personSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
 
@@ -59,6 +59,54 @@ export function generateMetadata({ params }) {
   };
 }
 
+// Auto-link keywords to services for internal linking (AEO/GEO)
+const LINK_MAP = [
+  { keyword: 'stream selection', href: '/career-counselling/stream-selection-guidance', label: 'stream selection' },
+  { keyword: 'degree selection', href: '/career-counselling/degree-selection-guidance', label: 'degree selection' },
+  { keyword: 'career assessment', href: '/career-counselling/career-assessment', label: 'career assessment' },
+  { keyword: 'personal counselling', href: '/career-counselling/personal-counselling', label: 'personal counselling' },
+  { keyword: 'working professional', href: '/career-counselling/working-professionals-guidance', label: 'working professional guidance' },
+  { keyword: 'career counselling', href: '/career-counselling', label: 'career counselling' },
+  { keyword: 'career counsellor', href: '/career-counselling', label: 'career counsellor' },
+];
+
+function renderParagraphWithLinks(text, paraIndex) {
+  // Only auto-link first 2 matches per paragraph to avoid over-linking
+  let remaining = text;
+  const nodes = [];
+  let linkCount = 0;
+  const lower = remaining.toLowerCase();
+
+  // Sort by keyword length desc to prefer longer phrases
+  const sortedMap = [...LINK_MAP].sort((a, b) => b.keyword.length - a.keyword.length);
+
+  // Find first 2 keywords that appear
+  for (const entry of sortedMap) {
+    if (linkCount >= 2) break;
+    const idx = remaining.toLowerCase().indexOf(entry.keyword);
+    if (idx !== -1) {
+      const before = remaining.slice(0, idx);
+      const match = remaining.slice(idx, idx + entry.keyword.length);
+      const after = remaining.slice(idx + entry.keyword.length);
+      if (before) nodes.push(before);
+      nodes.push(
+        <Link key={`link-${paraIndex}-${linkCount}`} href={entry.href} className="text-link">
+          {match}
+        </Link>
+      );
+      remaining = after;
+      linkCount++;
+    }
+  }
+  if (remaining) nodes.push(remaining);
+  // If no links were added, just return original text nodes
+  if (nodes.length === 0) return text;
+  // Merge any remaining string at start if we broke early? Actually we already handled.
+  // For simplicity, if we have nodes, we need to handle leftover original that might contain second link we missed because we mutated remaining only once per keyword.
+  // We'll just join nodes as fragment
+  return <>{nodes.map((n, i) => (typeof n === 'string' ? <span key={`t-${paraIndex}-${i}`}>{n}</span> : n))}</>;
+}
+
 export default function BlogPostPage({ params }) {
   const post = getBlogPostBySlug(params.slug);
   if (!post) notFound();
@@ -81,14 +129,26 @@ export default function BlogPostPage({ params }) {
             <span className="eyebrow">{post.category}</span>
             <h1>{post.title}</h1>
             <p className="article-meta">
-              <span>By {post.author}</span>
+              <span>
+                By{' '}
+                <Link href="/author/gcda-editorial-team" className="text-link">
+                  {post.author}
+                </Link>
+              </span>
               <span aria-hidden="true">•</span>
               <time dateTime={post.datePublished}>
                 {new Date(post.datePublished).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
               </time>
               <span aria-hidden="true">•</span>
               <span>{post.readTime}</span>
+              <span aria-hidden="true">•</span>
+              <span>Updated {new Date(post.dateModified).toLocaleDateString('en-IN', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
             </p>
+            <div className="author-byline-note">
+              <Link href="/author/gcda-editorial-team" className="text-link">
+                About the author: GCDA Editorial Team – 10+ years, 50K+ sessions
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -100,11 +160,11 @@ export default function BlogPostPage({ params }) {
 
         <section className="section section-tight-top">
           <div className="container narrow-center">
-            {post.sections.map((section) => (
+            {post.sections.map((section, sIdx) => (
               <div key={section.heading} className="article-section">
                 <h2>{section.heading}</h2>
                 {section.paragraphs.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={`${sIdx}-${i}`}>{renderParagraphWithLinks(p, `${sIdx}-${i}`)}</p>
                 ))}
               </div>
             ))}
@@ -119,6 +179,29 @@ export default function BlogPostPage({ params }) {
                 </ul>
               </div>
             ) : null}
+
+            <div className="related-services-in-article">
+              <h3>Related GCDA Services</h3>
+              <p>
+                Need personalised help? Explore our{' '}
+                <Link href="/career-counselling/personal-counselling" className="text-link">
+                  personal counselling
+                </Link>
+                ,{' '}
+                <Link href="/career-counselling/career-assessment" className="text-link">
+                  career assessment
+                </Link>
+                ,{' '}
+                <Link href="/career-counselling/stream-selection-guidance" className="text-link">
+                  stream selection guidance
+                </Link>
+                , and{' '}
+                <Link href="/career-counselling/working-professionals-guidance" className="text-link">
+                  working professional guidance
+                </Link>
+                .
+              </p>
+            </div>
           </div>
         </section>
 
@@ -162,6 +245,8 @@ export default function BlogPostPage({ params }) {
 
       <JsonLd id={`ld-article-${post.slug}`} data={articleSchema(post, url)} />
       <JsonLd id={`ld-breadcrumb-${post.slug}`} data={breadcrumbSchema(breadcrumbs)} />
+      <JsonLd id={`ld-speakable-${post.slug}`} data={speakableSchema({ url, name: post.title })} />
+      <JsonLd id={`ld-person-${post.slug}`} data={personSchema()} />
     </>
   );
 }

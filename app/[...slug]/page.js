@@ -15,7 +15,7 @@ import {
 } from '@/data/indiaLocations';
 import { services as baseServices, company } from '@/data/site';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
-import { faqSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
+import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSchema } from '@/data/schema';
 import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -382,6 +382,23 @@ function StateHub({ stateSlug, state }) {
           primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
         })}
       />
+      <JsonLd id={`ld-speakable-state-${stateSlug}`} data={speakableSchema({ url: `${SITE_URL}/${stateSlug}`, name: `Career Counselling in ${state.name}` })} />
+      <JsonLd
+        id={`ld-itemlist-state-${stateSlug}`}
+        data={itemListSchema({
+          url: `${SITE_URL}/${stateSlug}`,
+          name: `Career counselling cities in ${state.name}`,
+          description: `${cities.length} cities in ${state.name} where GCDA offers career counselling`,
+          items: cities.slice(0, 20).map((c) => {
+            const slug = c.name.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            return {
+              name: `Career Counsellor in ${c.name}, ${state.name}`,
+              url: `${SITE_URL}/${stateSlug}/career-counsellor-${slug}`,
+              description: `Career counselling in ${c.name}, ${state.name}`,
+            };
+          }),
+        })}
+      />
     </>
   );
 }
@@ -678,7 +695,21 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             />
             {city.topColleges.length > 0 ? (
               <ul className="bullet-list">
-                {city.topColleges.map((c) => <li key={c}>{c}</li>)}
+                {city.topColleges.map((c, idx) => (
+                  <li key={c}>
+                    {idx < 2 ? (
+                      <Link href={`/blog/how-to-choose-the-right-stream-after-10th`} className="text-link" title={`Learn more about college options near ${city.name}`}>
+                        {c}
+                      </Link>
+                    ) : idx === 2 ? (
+                      <a href={`https://www.google.com/search?q=${encodeURIComponent(c + ' ' + city.name)}`} target="_blank" rel="noopener noreferrer" className="text-link">
+                        {c}
+                      </a>
+                    ) : (
+                      c
+                    )}
+                  </li>
+                ))}
               </ul>
             ) : (
               <p>{city.name} students typically consider a mix of local and regional colleges.</p>
@@ -697,7 +728,20 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             />
             {city.topExams.length > 0 ? (
               <ul className="bullet-list">
-                {city.topExams.map((e) => <li key={e}>{e}</li>)}
+                {city.topExams.map((e, idx) => (
+                  <li key={e}>
+                    {idx < 2 ? (
+                      <Link
+                        href={e.toLowerCase().includes('jee') ? '/blog/how-to-prepare-for-jee-main-while-in-12th' : e.toLowerCase().includes('neet') ? '/blog/career-options-after-12th-science' : '/career-counselling/stream-selection-guidance'}
+                        className="text-link"
+                      >
+                        {e}
+                      </Link>
+                    ) : (
+                      e
+                    )}
+                  </li>
+                ))}
               </ul>
             ) : (
               <p>For {city.name}, the most common entrance tracks are JEE Main, NEET, state CETs, and CAT.</p>
@@ -849,6 +893,36 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           },
         }}
       />
+      <JsonLd id={`ld-speakable-${serviceSlug}-${stateSlug}-${citySlug}`} data={speakableSchema({ url: pageUrl, name: `${servicePage.title} in ${city.name}, ${stateName}` })} />
+      <JsonLd
+        id={`ld-itemlist-othercities-${serviceSlug}-${stateSlug}-${citySlug}`}
+        data={itemListSchema({
+          url: pageUrl,
+          name: `${servicePage.title} in other ${stateName} cities`,
+          description: `Other cities in ${stateName} where GCDA offers ${servicePage.title.toLowerCase()}`,
+          items: otherCitySlugs.map((cSlug, idx) => ({
+            name: `${cityLabel} in ${cSlug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}, ${stateName}`,
+            url: `${SITE_URL}${pattern.urlPattern(stateSlug, cSlug)}`,
+            description: `${servicePage.title} in ${cSlug}, ${stateName}`,
+          })),
+        })}
+      />
+      <JsonLd
+        id={`ld-itemlist-services-${serviceSlug}-${stateSlug}-${citySlug}`}
+        data={itemListSchema({
+          url: pageUrl,
+          name: `GCDA services in ${city.name}`,
+          description: `All 8 GCDA career counselling services in ${city.name}, ${stateName}`,
+          items: SERVICE_SLUGS.map((sSlug) => {
+            const pat = SERVICE_CITY_PATTERNS[sSlug];
+            return {
+              name: `${pat ? pat.cityLabel : sSlug} in ${city.name}`,
+              url: `${SITE_URL}${pat ? pat.urlPattern(stateSlug, citySlug) : `/${stateSlug}/career-counsellor-${citySlug}`}`,
+              description: `${pat ? pat.cityLabel : sSlug} in ${city.name}, ${stateName}`,
+            };
+          }),
+        })}
+      />
     </>
   );
 }
@@ -911,7 +985,8 @@ function MainServicePage({ serviceSlug, servicePage }) {
   }));
 
   // Sample 3 cities for the "popular cities" cross-link
-  const allCities = (typeof window !== 'undefined') ? [] : [];
+  // All cities not needed on client
+  const allCities = [];
   // We can't import getAllCityUrls at module top without circular dep risk;
   // use a small set of major cities by hand.
   const sampleCities = [
@@ -946,7 +1021,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            {`GCDA provides ${servicePage.title.toLowerCase()} across India — online sessions in 300+ cities plus in-person sessions everywhere. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector.`}
+            {`GCDA provides ${servicePage.title.toLowerCase()} across India — online sessions in 438 cities plus in-person sessions everywhere. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector.`}
           </AnswerBlock>
         </div>
       </section>
@@ -1007,7 +1082,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
           <SectionHeader
             eyebrow="Popular cities"
             title={`Find ${servicePage.title.toLowerCase()} in major cities`}
-            description="We serve 300+ cities across India. Here are a few popular locations:"
+            description="We serve 438 cities across India. Here are a few popular locations:"
             center
           />
           <div className="card-grid city-grid">
@@ -1033,7 +1108,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
             })}
           </div>
           <div className="center-cta">
-            <Link href="/cities" className="text-link">View all 300+ cities →</Link>
+            <Link href="/cities" className="text-link">View all 438 cities →</Link>
           </div>
         </div>
       </section>
@@ -1057,7 +1132,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
           <SectionHeader
             eyebrow="Explore other services"
             title="Other GCDA services you may need"
-            description="Every service has its own main page and 346 city pages. Use the links below to explore the full GCDA service catalog."
+            description="Every service has its own main page and 438 city pages. Use the links below to explore the full GCDA service catalog."
             center
           />
           <div className="card-grid services-cross-grid">
@@ -1115,6 +1190,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
           url,
         }}
       />
+      <JsonLd id={`ld-speakable-main-${serviceSlug}`} data={speakableSchema({ url, name: `${servicePage.title} in India` })} />
     </>
   );
 }

@@ -49,6 +49,9 @@ export function organizationSchema() {
       'https://www.instagram.com/gcdaindia',
       'https://www.linkedin.com/company/global-career-development-association/',
       'https://twitter.com/gcdaindia',
+      'https://www.youtube.com/watch?v=ZQYxaC0pnZY',
+      'https://www.google.com/maps/search/GCDA+Global+Career+Development+Association+Mumbai',
+      'https://gcdassociation.org',
     ],
     knowsAbout: [
       'Career Counselling',
@@ -278,9 +281,13 @@ export function articleSchema(post, url) {
     dateModified: post.dateModified,
     inLanguage: 'en-IN',
     author: {
-      '@type': 'Organization',
+      '@type': 'Person',
+      '@id': `${SITE_URL}/author/gcda-editorial-team#person`,
       name: post.author || 'GCDA Editorial Team',
-      url: SITE_URL,
+      url: `${SITE_URL}/author/gcda-editorial-team`,
+      image: `${SITE_URL}/assets/logo.png`,
+      jobTitle: 'Career Guidance & Counselling',
+      worksFor: { '@id': `${SITE_URL}/#organization` },
     },
     publisher: {
       '@id': `${SITE_URL}/#organization`,
@@ -561,3 +568,114 @@ export function webPageSchema({ url, name, description, inLanguage = 'en-IN', pr
     publisher: { '@id': `${SITE_URL}/#organization` },
   };
 }
+
+// ----- Speakable schema (voice search / AEO) -----
+// Marks key sections as speakable for Google Assistant & voice search
+export function speakableSchema({ url, name, cssSelector = ['.answer-block', '.page-hero-copy', '.article-section p'] }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#speakable`,
+    url,
+    name: name || 'Speakable content',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector,
+    },
+  };
+}
+
+// ----- Person schema – GCDA Editorial Team (EEAT) -----
+export function personSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': `${SITE_URL}/author/gcda-editorial-team#person`,
+    name: 'GCDA Editorial Team',
+    alternateName: 'Global Career Development Association Editorial Team',
+    url: `${SITE_URL}/author/gcda-editorial-team`,
+    image: `${SITE_URL}/assets/logo.png`,
+    jobTitle: 'Career Guidance & Counselling – Editorial Team',
+    description:
+      'GCDA Editorial Team is a group of certified career counsellors, psychologists, and education experts with 10+ years of field experience, having guided 50,000+ students, parents, and working professionals across 438 Indian cities.',
+    worksFor: { '@id': `${SITE_URL}/#organization` },
+    sameAs: [
+      'https://www.linkedin.com/company/global-career-development-association/',
+      'https://twitter.com/gcdaindia',
+      'https://www.facebook.com/gcdaindia',
+      'https://www.instagram.com/gcdaindia',
+    ],
+    knowsAbout: [
+      'Career Counselling',
+      'Career Assessment',
+      'Stream Selection after 10th',
+      'Degree Selection after 12th',
+      'JEE Planning',
+      'NEET Planning',
+      'MBA Counselling',
+      'Working Professional Growth',
+    ],
+    award: [
+      '50,000+ career sessions delivered',
+      '5,000+ certified counsellors',
+      '10+ years of career guidance',
+      '98% client satisfaction',
+    ],
+  };
+}
+
+// ----- Author Person page schema wrapper -----
+export function authorPageSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': `${SITE_URL}/author/gcda-editorial-team#profile`,
+    url: `${SITE_URL}/author/gcda-editorial-team`,
+    name: 'GCDA Editorial Team – Career Counselling Experts',
+    description:
+      'Meet GCDA Editorial Team – certified career counsellors and psychologists guiding 50K+ students across India since 2013.',
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    mainEntity: personSchema(),
+  };
+}
+
+// ----- ItemList schema for city cross-links -----
+export function itemListSchema({ url, name, items, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${url}#itemlist`,
+    url,
+    name,
+    description: description || name,
+    numberOfItems: items.length,
+    itemListElement: items.map((it, idx) => ({
+      '@type': 'ListItem',
+      position: idx + 1,
+      name: it.name,
+      url: it.url,
+      description: it.description,
+    })),
+  };
+}
+
+// ----- Privacy/Terms/Refund WebPage schemas -----
+export function legalPageSchema({ url, name, description }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${url}#webpage`,
+    url,
+    name,
+    description,
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@id': `${SITE_URL}/#organization` },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+  };
+}
+

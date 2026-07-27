@@ -11,7 +11,7 @@ import { services, company } from '@/data/site';
 import { SEMINAR_TYPES } from '@/data/seminars';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
 import { STATES } from '@/data/indiaLocations';
-import { faqSchema, breadcrumbSchema, howToSchema, serviceSchema } from '@/data/schema';
+import { faqSchema, breadcrumbSchema, howToSchema, serviceSchema, speakableSchema, itemListSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
 
@@ -23,7 +23,15 @@ export function generateMetadata({ params }) {
   const service = services.find((s) => s.slug === params.slug);
   if (!service) return { title: 'Service not found' };
 
-  const title = `${service.title}`;
+  const RICH_TITLES = {
+    'personal-counselling': 'Personal Counselling in India | 1-on-1 Expert Guidance',
+    'career-assessment': 'Career Assessment in India | Aptitude, Interest & Personality Tests',
+    'workshops-seminars': 'Workshops & Seminars in India | Career Awareness for Schools & Colleges',
+    'stream-selection-guidance': 'Stream Selection Guidance in India | Science, Commerce, Arts after 10th',
+    'degree-selection-guidance': 'Degree Selection Guidance in India | Choose Right Course after 12th',
+    'working-professionals-guidance': 'Guidance for Working Professionals in India | Career Switch & MBA Planning',
+  };
+  const title = RICH_TITLES[service.slug] || `${service.title} in India | Expert Career Guidance`;
   const description = service.shortDescription;
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
 
@@ -287,6 +295,81 @@ export default function ServiceDetailPage({ params }) {
         </div>
       </section>
 
+      {/* ============ COMPARISON TABLE (AI Overviews loves tables) ============ */}
+      <section className="section alt-section" id="comparison-table">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Comparison"
+            title={`GCDA ${service.title} vs typical alternatives`}
+            description="See how GCDA compares to generic online quizzes, YouTube advice, and unstructured counselling – AI Overviews prefer tables for quick comparison."
+            center
+          />
+          <div className="table-wrap">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Feature</th>
+                  <th>GCDA {service.title}</th>
+                  <th>Free Online Quiz</th>
+                  <th>Generic Counsellor</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1-on-1 with certified mentor (8+ yrs)</td>
+                  <td>✅ Yes – 60-90 min</td>
+                  <td>❌ No – automated</td>
+                  <td>⚠️ Sometimes – 20-30 min</td>
+                </tr>
+                <tr>
+                  <td>Validated aptitude + interest + personality battery</td>
+                  <td>✅ Multi-instrument, psychologist scored</td>
+                  <td>❌ Single label</td>
+                  <td>⚠️ Single test</td>
+                </tr>
+                <tr>
+                  <td>Written action plan in 24h</td>
+                  <td>✅ 1-page PDF + checkpoints</td>
+                  <td>❌ No plan</td>
+                  <td>❌ Verbal only</td>
+                </tr>
+                <tr>
+                  <td>Real salary, growth, entrance-exam data</td>
+                  <td>✅ 2026 Indian market data</td>
+                  <td>❌ Generic</td>
+                  <td>⚠️ Outdated</td>
+                </tr>
+                <tr>
+                  <td>Parent-student alignment</td>
+                  <td>✅ 30-min family session</td>
+                  <td>❌ No</td>
+                  <td>❌ Rarely</td>
+                </tr>
+                <tr>
+                  <td>Follow-up + check-in</td>
+                  <td>✅ Within 14 days included</td>
+                  <td>❌ No</td>
+                  <td>⚠️ Extra charge</td>
+                </tr>
+                <tr>
+                  <td>City-specific college & exam shortlist</td>
+                  <td>✅ 438 cities – local industries, landmarks, topColleges, topExams</td>
+                  <td>❌ No</td>
+                  <td>❌ Generic list</td>
+                </tr>
+                <tr>
+                  <td>Price</td>
+                  <td>Rs. 2,999 – 3,999 transparent</td>
+                  <td>Free but no outcome</td>
+                  <td>Rs. 500-5,000 variable</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="table-caption">Table: GCDA {service.title} compared to alternatives – helps AI Overviews extract quick comparison.</p>
+        </div>
+      </section>
+
       {/* ============ PLANS & PRICING ============ */}
       <section className="section alt-section">
         <div className="container">
@@ -387,9 +470,11 @@ export default function ServiceDetailPage({ params }) {
           />
           <div className="card-grid city-grid">
             {popularCities.map(({ state, city }) => {
-              const stateSlug = STATES.find((s) => s.name === state)?.slug;
+              const stateObj = STATES.find((s) => s.name === state);
+              const stateSlug = stateObj?.slug;
               const citySlug = city.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-              const serviceUrl = stateSlug ? `/career-counselling/${service.slug}` : '#';
+              const pattern = SERVICE_CITY_PATTERNS[service.slug] || SERVICE_CITY_PATTERNS['career-counselling'];
+              const serviceUrl = stateSlug && pattern ? pattern.urlPattern(stateSlug, citySlug) : `/career-counselling/${service.slug}`;
               return (
                 <article className="card city-card" key={`${state}-${city}`}>
                   <div className="card-body">
@@ -397,7 +482,7 @@ export default function ServiceDetailPage({ params }) {
                     <h3>
                       <Link href={serviceUrl}>{service.title} in {city}</Link>
                     </h3>
-                    <p className="city-blurb">Online sessions across {city} + in-person where needed.</p>
+                    <p className="city-blurb">Online sessions across {city} + in-person where needed. Local industries, top colleges, entrance exams tailored to {city}.</p>
                     <Link href={serviceUrl} className="text-link">Explore {city} →</Link>
                   </div>
                 </article>
@@ -405,7 +490,7 @@ export default function ServiceDetailPage({ params }) {
             })}
           </div>
           <div className="center-cta">
-            <Link href="/cities" className="text-link">View all 346 cities →</Link>
+            <Link href="/cities" className="text-link">View all 438 cities →</Link>
           </div>
         </div>
       </section>
@@ -460,7 +545,7 @@ export default function ServiceDetailPage({ params }) {
           <SectionHeader
             eyebrow="Explore other services"
             title="Other GCDA services you may need"
-            description="Every service has its own main page and 346 city pages. Use the links below to explore the full GCDA service catalog."
+            description="Every service has its own main page and 438 city pages. Use the links below to explore the full GCDA service catalog."
             center
           />
           <div className="card-grid services-cross-grid">
@@ -493,6 +578,20 @@ export default function ServiceDetailPage({ params }) {
       <JsonLd
         id={`ld-service-${service.slug}`}
         data={serviceSchema(service)}
+      />
+      <JsonLd id={`ld-speakable-${service.slug}`} data={speakableSchema({ url, name: `${service.title} – GCDA` })} />
+      <JsonLd
+        id={`ld-itemlist-cities-${service.slug}`}
+        data={itemListSchema({
+          url,
+          name: `${service.title} in major Indian cities`,
+          description: `Popular cities for ${service.title} – GCDA serves 438 cities across India.`,
+          items: popularCities.map(({ state, city }) => ({
+            name: `${service.title} in ${city}, ${state}`,
+            url: `${SITE_URL}/career-counselling/${service.slug}`,
+            description: `${service.title} in ${city}, ${state} – online and in-person.`,
+          })),
+        })}
       />
     </>
   );
