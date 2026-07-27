@@ -38,8 +38,16 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling Across India: 36 States, 346+ Cities',
-    description: 'GCDA career counselling across 36 states and 346+ cities in India.',
+    title: 'Career Counselling Across India: 36 States, 438 Cities',
+    description: 'GCDA career counselling across 36 states and 438 cities in India – online and in-person.',
+    images: [
+      {
+        url: '/assets/hero-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'Career counselling across India – 36 states, 438 cities',
+      },
+    ],
   },
 };
 

@@ -173,7 +173,15 @@ export function generateMetadata({ params }) {
       twitter: {
         card: 'summary_large_image',
         title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
-        description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities.`,
+        description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}.`,
+        images: [
+          {
+            url: '/assets/hero-illustration.png',
+            width: 1200,
+            height: 630,
+            alt: `Career counselling in ${state.name} – ${cityCount} cities`,
+          },
+        ],
       },
     };
   }
@@ -847,7 +855,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
 
 /* ----------------- Top-level Service Main Page ----------------- */
 function generateServicePageMetadata(serviceSlug, servicePage) {
-  const title = `${servicePage.title} in India: 346+ Cities`;
+  const title = `${servicePage.title} in India: 438 Cities`;
   const description = servicePage.shortDescription;
   const url = `${SITE_URL}/${serviceSlug}`;
   return {

@@ -41,6 +41,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Career Counselling Plans & Pricing',
     description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
+    images: [
+      {
+        url: '/assets/career-6.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling plans and pricing',
+      },
+    ],
   },
 };
 

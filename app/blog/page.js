@@ -42,6 +42,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET',
     description: 'Practical, India-specific career guidance from the GCDA editorial team.',
+    images: [
+      {
+        url: '/assets/service-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career guidance blog – India',
+      },
+    ],
   },
 };
 

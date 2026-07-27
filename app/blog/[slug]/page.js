@@ -34,6 +34,14 @@ export function generateMetadata({ params }) {
       modifiedTime: post.dateModified,
       authors: [post.author],
       section: post.category,
+      images: [
+        {
+          url: post.image || '/assets/service-illustration.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

@@ -41,6 +41,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'About GCDA – Career Counselling Association in India',
     description: 'GCDA team, mission, and how we help students and professionals across India.',
+    images: [
+      {
+        url: '/assets/career-8.png',
+        width: 1200,
+        height: 630,
+        alt: 'About GCDA – Career Counselling Association India',
+      },
+    ],
   },
 };
 

@@ -42,6 +42,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Career Counselling Certification in India',
     description: 'Become a certified career counsellor with GCDA. Comprehensive certification programme for aspiring and practising counsellors.',
+    images: [
+      {
+        url: '/assets/career-7.png',
+        width: 1200,
+        height: 630,
+        alt: 'Career Counselling Certification – GCDA',
+      },
+    ],
   },
 };
 

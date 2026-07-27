@@ -38,6 +38,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Contact GCDA – Career Counselling in Mumbai & Across India',
     description: 'Mumbai office address, phone, email, WhatsApp, and contact form for GCDA.',
+    images: [
+      {
+        url: '/assets/hero-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'Contact GCDA – Mumbai office and team',
+      },
+    ],
   },
 };
 

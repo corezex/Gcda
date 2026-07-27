@@ -45,6 +45,14 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Career Counselling Services in India',
     description: 'Personal counselling, career assessments, stream and degree selection, workshops, and professional mentoring across India.',
+    images: [
+      {
+        url: '/assets/service-illustration.png',
+        width: 1200,
+        height: 630,
+        alt: 'Career Counselling Services in India – GCDA',
+      },
+    ],
   },
 };
 
