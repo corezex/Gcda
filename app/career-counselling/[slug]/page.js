@@ -295,13 +295,13 @@ export default function ServiceDetailPage({ params }) {
         </div>
       </section>
 
-      {/* ============ COMPARISON TABLE (AI Overviews loves tables) ============ */}
+      {/* ============ COMPARISON TABLE ============ */}
       <section className="section alt-section" id="comparison-table">
         <div className="container">
           <SectionHeader
             eyebrow="Comparison"
             title={`GCDA ${service.title} vs typical alternatives`}
-            description="See how GCDA compares to generic online quizzes, YouTube advice, and unstructured counselling – AI Overviews prefer tables for quick comparison."
+            description="See how GCDA compares to generic online quizzes, YouTube advice, and unstructured counselling."
             center
           />
           <div className="table-wrap">
@@ -366,7 +366,7 @@ export default function ServiceDetailPage({ params }) {
               </tbody>
             </table>
           </div>
-          <p className="table-caption">Table: GCDA {service.title} compared to alternatives – helps AI Overviews extract quick comparison.</p>
+          <p className="table-caption">Clear comparison of GCDA {service.title} with typical alternatives available in the market.</p>
         </div>
       </section>
 

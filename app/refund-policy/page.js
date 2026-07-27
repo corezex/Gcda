@@ -39,12 +39,12 @@ export default function RefundPage() {
       <section className="page-hero">
         <div className="container narrow-center">
           <Breadcrumbs items={breadcrumbs} />
-          <span className="eyebrow">Legal – Trust & EEAT</span>
+          <span className="eyebrow">Legal – Refunds & Returns</span>
           <h1>Refund & Return Policy</h1>
           <p className="page-hero-copy">
             Transparent 7-day return window, fair rescheduling, and upgrade options – no hidden clauses. Designed to be student and professional friendly.
           </p>
-          <p className="article-meta">Last updated: 27 July 2026 • Returns: MerchantReturnFiniteReturnWindow 7 days</p>
+          <p className="article-meta">Last updated: 27 July 2026 • 7-day return window</p>
         </div>
       </section>
 

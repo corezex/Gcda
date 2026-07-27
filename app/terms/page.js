@@ -38,7 +38,7 @@ export default function TermsPage() {
       <section className="page-hero">
         <div className="container narrow-center">
           <Breadcrumbs items={breadcrumbs} />
-          <span className="eyebrow">Legal – Trust & EEAT</span>
+          <span className="eyebrow">Legal – Terms of Service</span>
           <h1>Terms of Service</h1>
           <p className="page-hero-copy">Clear, fair terms for GCDA career counselling services, assessments, workshops, and website use – designed for Indian students, parents, and professionals.</p>
           <p className="article-meta">Last updated: 27 July 2026</p>

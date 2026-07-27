@@ -55,7 +55,7 @@ export default function PrivacyPage() {
       <section className="page-hero">
         <div className="container narrow-center">
           <Breadcrumbs items={breadcrumbs} />
-          <span className="eyebrow">Legal – Trust & EEAT</span>
+          <span className="eyebrow">Legal – Privacy & Trust</span>
           <h1>Privacy Policy</h1>
           <p className="page-hero-copy">
             Your privacy matters. GCDA has been handling sensitive student, parent, and working professional data since 2013 with confidentiality, assessment security, and transparent practices.

@@ -66,7 +66,7 @@ export default function AuthorPage() {
         <div className="container page-hero-grid">
           <div>
             <Breadcrumbs items={breadcrumbs} />
-            <span className="eyebrow">Author Profile – EEAT</span>
+            <span className="eyebrow">Author Profile</span>
             <h1>GCDA Editorial Team – Career Counselling Experts</h1>
             <p className="page-hero-copy">
               Certified career counsellors, psychologists, and education experts with 10+ years of field experience.
@@ -95,7 +95,7 @@ export default function AuthorPage() {
           <div>
             <SectionHeader
               eyebrow="Our expertise"
-              title="What we know about – knowsAbout"
+              title="What we know about"
               description="Our editorial expertise spans the full Indian career decision journey, from stream selection after 10th to working professional transitions."
             />
             <ul className="bullet-list">
@@ -115,7 +115,7 @@ export default function AuthorPage() {
             </p>
           </div>
           <div className="info-panel">
-            <h3>Author credentials – EEAT</h3>
+            <h3>Author credentials</h3>
             <ul className="bullet-list compact">
               <li><strong>Experience:</strong> 50K+ sessions delivered across 438 cities</li>
               <li><strong>Network:</strong> 5K+ certified counsellors trained in GCDA framework</li>

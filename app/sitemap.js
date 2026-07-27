@@ -8,7 +8,7 @@ const SITE_URL = 'https://gcdassociation.org';
 export default function sitemap() {
   const now = new Date();
 
-  // Top-level static routes – updated for 438 cities + legal + author EEAT pages
+  // Top-level static routes – updated for 438 cities + legal + author pages
   const staticRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly' },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
