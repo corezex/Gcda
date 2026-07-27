@@ -117,9 +117,9 @@ function AboutPage({ lang = 'en' }) {
         <div className="container two-column">
           <div>
             <SectionHeader
-              eyebrow="Who we serve"
-              title="Built for real student and career decisions"
-              description="Our counselling is most valuable at the moments when choices feel high-stakes and clarity matters most."
+              eyebrow={t.about.whoWeServeEyebrow || "Who we serve"}
+              title={t.about.whoWeServeTitle || "Built for real student and career decisions"}
+              description={t.about.whoWeServeDesc || "Our counselling is most valuable at the moments when choices feel high-stakes and clarity matters most."}
             />
             <ul className="bullet-list">
               {audience.map((item) => (
@@ -128,10 +128,10 @@ function AboutPage({ lang = 'en' }) {
             </ul>
           </div>
           <div className="info-panel">
-            <h3>Visit our Mumbai office</h3>
+            <h3>{t.about.visitOffice || "Visit our Mumbai office"}</h3>
             <p>{company.addressLine1}</p>
             <p>
-              Reach us by phone, email, or WhatsApp to discuss counselling plans, institutional workshops, or guidance programs.
+              {t.about.visitOfficeDesc || "Reach us by phone, email, or WhatsApp to discuss counselling plans, institutional workshops, or guidance programs."}
             </p>
             <div className="mini-contact-card">
               <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
@@ -144,28 +144,28 @@ function AboutPage({ lang = 'en' }) {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Our credentials"
-            title="Why our guidance is trusted across India"
-            description="Our methods, content, and recommendations are grounded in established frameworks, validated assessments, and a decade of field experience."
+            eyebrow={t.about.credentialsEyebrow || "Our credentials"}
+            title={t.about.credentialsTitle || "Why our guidance is trusted across India"}
+            description={t.about.credentialsDesc || "Our methods, content, and recommendations are grounded in established frameworks, validated assessments, and a decade of field experience."}
             center
           />
           <div className="card-grid process-grid">
             <article className="card process-card">
               <div className="card-body">
-                <h3>Standardised assessment tools</h3>
-                <p>We use validated instruments — RIASEC-style interest inventories, Big-Five personality traits, numerical / verbal / abstract aptitude batteries — to translate strengths into fit scores, not personality labels.</p>
+                <h3>{t.about.standardisedTitle || "Standardised assessment tools"}</h3>
+                <p>{t.about.standardisedDesc || "We use validated instruments — RIASEC-style interest inventories, Big-Five personality traits, numerical / verbal / abstract aptitude batteries — to translate strengths into fit scores, not personality labels."}</p>
               </div>
             </article>
             <article className="card process-card">
               <div className="card-body">
-                <h3>Certified counsellor network</h3>
-                <p>Our 5,000+ counsellor network is trained in the GCDA framework and supervised by senior mentors. Every session is structured, written, and reviewed for quality.</p>
+                <h3>{t.about.certifiedTitle || "Certified counsellor network"}</h3>
+                <p>{t.about.certifiedDesc || "Our 5,000+ counsellor network is trained in the GCDA framework and supervised by senior mentors. Every session is structured, written, and reviewed for quality."}</p>
               </div>
             </article>
             <article className="card process-card">
               <div className="card-body">
-                <h3>Updated with 2026 data</h3>
-                <p>Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months. See our latest analysis in the <Link href={lp('/blog')} className="text-link">career guidance blog</Link>.</p>
+                <h3>{t.about.updatedTitle || "Updated with 2026 data"}</h3>
+                <p>{t.about.updatedDesc || "Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months."} <Link href={lp('/blog')} className="text-link">career guidance blog</Link>.</p>
               </div>
             </article>
           </div>
@@ -173,8 +173,8 @@ function AboutPage({ lang = 'en' }) {
       </section>
 
       <CTASection
-        title="Let’s help you make the next decision easier"
-        description="Book a consultation with GCDA to get expert support for the path ahead."
+        title={lang === 'hi' ? "आइए अगला निर्णय आसान बनाएं" : "Let’s help you make the next decision easier"}
+        description={lang === 'hi' ? "पथ के आगे विशेषज्ञ समर्थन के लिए GCDA के साथ परामर्श बुक करें।" : "Book a consultation with GCDA to get expert support for the path ahead."}
         lang={lang}
       />
 
