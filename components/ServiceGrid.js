@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import { localizePath } from '@/data/i18n';
 
-export default function ServiceGrid({ services, limit }) {
+export default function ServiceGrid({ services, limit, lang = 'en' }) {
   const list = limit ? services.slice(0, limit) : services;
+  const lp = (p) => localizePath(p, lang);
 
   return (
     <div className="card-grid service-grid">
@@ -12,9 +14,11 @@ export default function ServiceGrid({ services, limit }) {
           </div>
           <div className="card-body">
             <div className="icon-badge">{service.icon}</div>
-            <h3>{service.title}</h3>
+            <h3>
+              <Link href={lp(`/career-counselling/${service.slug}`)}>{service.title}</Link>
+            </h3>
             <p>{service.shortDescription}</p>
-            <Link href={`/services/${service.slug}`} className="text-link">
+            <Link href={lp(`/career-counselling/${service.slug}`)} className="text-link">
               Explore service →
             </Link>
           </div>

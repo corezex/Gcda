@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import { localizePath } from '@/data/i18n';
 
-export default function PlanCards({ plans }) {
+export default function PlanCards({ plans, lang = 'en' }) {
+  const lp = (p) => localizePath(p, lang);
   return (
     <div className="card-grid plan-grid">
       {plans.map((plan) => (
@@ -18,7 +20,7 @@ export default function PlanCards({ plans }) {
                 <li key={feature}>{feature}</li>
               ))}
             </ul>
-            <Link href="/contact" className="button button-primary block-button">
+            <Link href={lp('/contact')} className="button button-primary block-button">
               Select Plan
             </Link>
           </div>
