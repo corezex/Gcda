@@ -155,7 +155,7 @@ export default function BlogPaginatedPage({ params }) {
           <div>
             <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }, { name: `Page ${currentPage}`, url: `/blog/p/${currentPage}` }]} />
             <span className="eyebrow">GCDA Blog – Page {currentPage} of {totalPages}</span>
-            <h1>Career guidance blog – Page {currentPage}</h1>
+            <h1>{`Career guidance blog – Page ${currentPage}`}</h1>
             <p className="page-hero-copy">
               Page {currentPage} of {totalPages} – {blogPosts.length} practical, India-specific career guidance articles. Continue reading stream selection, degree choices, JEE/NEET, MBA, and career growth guides.
             </p>

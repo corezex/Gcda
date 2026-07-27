@@ -289,7 +289,7 @@ function StateHub({ stateSlug, state }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{state.region}</span>
-            <h1>Career Counselling in {state.name}</h1>
+            <h1>{`Career Counselling in ${state.name}`}</h1>
             <p className="page-hero-copy">
               Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person.
             </p>
@@ -492,7 +492,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{stateName}</span>
-            <h1>{cityLabel} in {city.name}, {stateName}</h1>
+            <h1>{`${cityLabel} in ${city.name}, ${stateName}`}</h1>
             <p className="page-hero-copy">{longDescription}</p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
@@ -534,7 +534,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             </div>
           </div>
           <div className="info-panel">
-            <h3>{city.name} at a glance</h3>
+            <h3>{`${city.name} at a glance`}</h3>
             <ul className="bullet-list compact">
               <li><strong>State:</strong> {stateName}</li>
               <li><strong>District:</strong> {city.district}</li>
@@ -557,15 +557,15 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           />
           <div className="stack-list">
             <article className="feature-row">
-              <h3>For students in {city.name}</h3>
+              <h3>{`For students in ${city.name}`}</h3>
               <p>{studentNote}</p>
             </article>
             <article className="feature-row">
-              <h3>For working professionals in {city.name}</h3>
+              <h3>{`For working professionals in ${city.name}`}</h3>
               <p>{professionalNote}</p>
             </article>
             <article className="feature-row">
-              <h3>How we deliver in {city.name}</h3>
+              <h3>{`How we deliver in ${city.name}`}</h3>
               <p>{deliveryNote}</p>
             </article>
           </div>
@@ -847,7 +847,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
       <section className="section alt-section">
         <div className="container narrow-center cta-band-inner">
           <div>
-            <h2>Ready to plan your {servicePage.title.toLowerCase()} in {city.name}?</h2>
+            <h2>{`Ready to plan your ${servicePage.title.toLowerCase()} in ${city.name}?`}</h2>
             <p>Speak to a GCDA counsellor and get a structured plan tailored to {city.name} — from assessments to a clear roadmap.</p>
           </div>
           <div className="cta-actions">
