@@ -14,7 +14,7 @@ const SITE_URL = 'https://gcdassociation.org';
 export const metadata = {
   title: 'Career Counselling Plans & Pricing',
   description:
-    'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals. Transparent pricing, structured plans.',
+    'Compare GCDA plans – Stream Selector Rs. 2,999, Degree Selector Rs. 3,499, Working Professionals Rs. 3,999. Transparent pricing.',
   keywords: [
     'career counselling plans',
     'career counselling pricing',
@@ -26,11 +26,12 @@ export const metadata = {
   alternates: { canonical: '/plan' },
   openGraph: {
     title: 'Career Counselling Plans & Pricing',
-    description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
+    description:
+      'Plans – Stream Selector Rs. 2,999, Degree Selector Rs. 3,499, Working Pros Rs. 3,999.',
     url: 'https://gcdassociation.org/plan',
     images: [
       {
-        url: '/assets/career-6.png',
+        url: '/assets/career-6.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling plans and pricing',
@@ -40,10 +41,10 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Career Counselling Plans & Pricing',
-    description: 'Compare GCDA career counselling plans for stream selection, degree selection, and working professionals.',
+    description: 'GCDA plans – Stream, Degree, Working Professionals – transparent pricing.',
     images: [
       {
-        url: '/assets/career-6.png',
+        url: '/assets/career-6.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling plans and pricing',
@@ -70,7 +71,7 @@ export default function PlanPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-6.png" alt="Career counselling plans" />
+            <img src="/assets/career-6.webp" alt="Career counselling plans" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -145,7 +146,7 @@ export default function PlanPage() {
           url: `${SITE_URL}/plan`,
           name: 'Career Counselling Plans & Pricing',
           description: 'Compare GCDA career counselling plans for stream selection after 10th, degree selection after 12th, and working professionals.',
-          primaryImage: `${SITE_URL}/assets/career-6.png`,
+          primaryImage: `${SITE_URL}/assets/career-6.webp`,
         })}
       />
     </>

@@ -145,10 +145,14 @@ export function generateMetadata({ params }) {
     const { state, stateSlug } = parsed;
     const cities = CITIES_BY_STATE[stateSlug] || [];
     const cityCount = cities.length;
-    const topCities = cities.slice(0, 5).map((c) => c.name).join(', ');
+    const topCities = cities.slice(0, 3).map((c) => c.name).join(', ');
+    const shortStateName = state.name
+      .replace('Andaman and Nicobar Islands', 'Andaman & Nicobar')
+      .replace('Dadra and Nagar Haveli and Daman and Diu', 'Dadra & Nagar Haveli')
+      .replace('Jammu and Kashmir', 'Jammu & Kashmir');
     return {
-      title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
-      description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}. Online sessions across ${state.name} and in-person sessions everywhere in ${state.name}.`,
+      title: `Career Counselling in ${shortStateName}: ${cityCount} Cities`,
+      description: `Career counselling in ${shortStateName} – ${cityCount} cities incl. ${topCities}. Online & in-person for students & professionals.`,
       keywords: [
         `career counselling in ${state.name}`,
         `career counselling ${state.name} cities`,
@@ -158,12 +162,12 @@ export function generateMetadata({ params }) {
       ],
       alternates: { canonical: `/${stateSlug}` },
       openGraph: {
-        title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
-        description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities.`,
+        title: `Career Counselling in ${shortStateName}: ${cityCount} Cities`,
+        description: `Career counselling in ${shortStateName} – ${cityCount} cities. Online & in-person.`,
         url: `${SITE_URL}/${stateSlug}`,
         images: [
           {
-            url: '/assets/hero-illustration.png',
+            url: '/assets/hero-illustration.webp',
             width: 1200,
             height: 630,
             alt: `Career counselling in ${state.name}`,
@@ -172,11 +176,11 @@ export function generateMetadata({ params }) {
       },
       twitter: {
         card: 'summary_large_image',
-        title: `Career Counselling in ${state.name}: ${cityCount} Cities Covered`,
-        description: `GCDA offers career counselling and career assessments in ${cityCount} ${state.name} cities including ${topCities}.`,
+        title: `Career Counselling in ${shortStateName}: ${cityCount} Cities`,
+        description: `Career counselling in ${shortStateName} – ${cityCount} cities incl. ${topCities}.`,
         images: [
           {
-            url: '/assets/hero-illustration.png',
+            url: '/assets/hero-illustration.webp',
             width: 1200,
             height: 630,
             alt: `Career counselling in ${state.name} – ${cityCount} cities`,
@@ -186,14 +190,19 @@ export function generateMetadata({ params }) {
     };
   }
 
-  // City page (one of 6 service types)
+  // City page (one of 6 service types) – SEO friendly concise
   const { city, citySlug, state, stateSlug, serviceSlug } = parsed;
   const servicePage = getServicePage(serviceSlug);
   if (!servicePage) return { title: 'Not found' };
 
-  const title = `${pageTitle(city, servicePage.title)} – ${state.name}`;
-  const description = `${servicePage.shortDescription} Available for students, graduates, and working professionals in ${city.name}, ${state.name}.`;
   const pattern = SERVICE_CITY_PATTERNS[serviceSlug];
+  const shortStateName = state.name
+    .replace('Andaman and Nicobar Islands', 'Andaman & Nicobar')
+    .replace('Dadra and Nagar Haveli and Daman and Diu', 'Dadra & Nagar Haveli')
+    .replace('Jammu and Kashmir', 'Jammu & Kashmir');
+  const cityLabelMeta = pattern.cityLabel;
+  const title = `${cityLabelMeta} in ${city.name}`;
+  const description = `${cityLabelMeta} in ${city.name}, ${shortStateName} – online & in-person counselling for students & professionals.`;
   const url = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
 
   return {
@@ -214,7 +223,7 @@ export function generateMetadata({ params }) {
       type: 'article',
       images: [
         {
-          url: '/assets/hero-illustration.png',
+          url: '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${servicePage.title} in ${city.name}, ${state.name}`,
@@ -227,7 +236,7 @@ export function generateMetadata({ params }) {
       description,
       images: [
         {
-          url: '/assets/hero-illustration.png',
+          url: '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${servicePage.title} in ${city.name}, ${state.name}`,
@@ -299,7 +308,7 @@ function StateHub({ stateSlug, state }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.png" alt={`Career counselling in ${state.name}`} />
+            <img src="/assets/hero-illustration.webp" alt={`Career counselling in ${state.name}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -379,7 +388,7 @@ function StateHub({ stateSlug, state }) {
           url: `${SITE_URL}/${stateSlug}`,
           name: `Career Counselling in ${state.name}`,
           description: `GCDA offers career counselling and career assessments in ${cities.length} ${state.name} cities.`,
-          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.webp`,
         })}
       />
       <JsonLd id={`ld-speakable-state-${stateSlug}`} data={speakableSchema({ url: `${SITE_URL}/${stateSlug}`, name: `Career Counselling in ${state.name}` })} />
@@ -505,7 +514,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.png" alt={`${servicePage.title} in ${city.name}`} />
+            <img src="/assets/hero-illustration.webp" alt={`${servicePage.title} in ${city.name}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -864,7 +873,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           url: pageUrl,
           name: `${servicePage.title} in ${city.name}, ${stateName}`,
           description: `${servicePage.title} in ${city.name}, ${stateName}. ${servicePage.shortDescription}`,
-          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.webp`,
         })}
       />
       <JsonLd
@@ -950,7 +959,7 @@ function generateServicePageMetadata(serviceSlug, servicePage) {
       type: 'article',
       images: [
         {
-          url: '/assets/hero-illustration.png',
+          url: '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${servicePage.title} in India – GCDA`,
@@ -963,7 +972,7 @@ function generateServicePageMetadata(serviceSlug, servicePage) {
       description,
       images: [
         {
-          url: '/assets/hero-illustration.png',
+          url: '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${servicePage.title} in India – GCDA`,
@@ -1013,7 +1022,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.png" alt={servicePage.title} />
+            <img src="/assets/hero-illustration.webp" alt={servicePage.title} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -1173,7 +1182,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
           url,
           name: `${servicePage.title} in India`,
           description: servicePage.shortDescription,
-          primaryImage: `${SITE_URL}/assets/hero-illustration.png`,
+          primaryImage: `${SITE_URL}/assets/hero-illustration.webp`,
         })}
       />
       <JsonLd

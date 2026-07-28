@@ -10,13 +10,14 @@ const url = `${SITE_URL}/privacy`;
 export const metadata = {
   title: 'Privacy Policy – GCDA Career Counselling',
   description:
-    'GCDA Privacy Policy – how we collect, use, and protect your personal information when you use career counselling services, assessments, and website across India.',
+    'GCDA privacy policy – how we collect, use, protect your data for counselling, assessments, website. Confidential & secure.',
   alternates: { canonical: '/privacy' },
   openGraph: {
     title: 'Privacy Policy – GCDA',
-    description: 'How GCDA handles your personal data – counselling confidentiality, assessments, and website data.',
+    description:
+      'How GCDA handles your personal data – counselling confidentiality, assessments.',
     url,
-    images: [{ url: '/assets/logo.png', width: 600, height: 600, alt: 'GCDA Privacy Policy' }],
+    images: [{ url: '/assets/logo.webp', width: 600, height: 600, alt: 'GCDA Privacy Policy' }],
   },
   twitter: {
     card: 'summary',

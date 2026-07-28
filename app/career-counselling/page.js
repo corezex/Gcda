@@ -17,7 +17,7 @@ const SITE_URL = 'https://gcdassociation.org';
 export const metadata = {
   title: 'Career Counselling Services in India',
   description:
-    'GCDA offers expert career counselling in India: personal counselling, career assessments, stream and degree selection guidance, workshops, and professional mentoring for students, parents, and working professionals.',
+    '6 career counselling services – personal, assessment, workshops, stream & degree guidance, working professionals. Online & in-person.',
   keywords: [
     'career counselling services India',
     'personal counselling',
@@ -30,11 +30,12 @@ export const metadata = {
   alternates: { canonical: '/career-counselling' },
   openGraph: {
     title: 'Career Counselling Services in India',
-    description: 'Personal counselling, career assessments, stream and degree selection, workshops, and professional mentoring across India.',
+    description:
+      '6 services – personal, assessment, workshops, stream & degree guidance, working professionals.',
     url: 'https://gcdassociation.org/career-counselling',
     images: [
       {
-        url: '/assets/service-illustration.png',
+        url: '/assets/service-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling services overview',
@@ -44,10 +45,10 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Career Counselling Services in India',
-    description: 'Personal counselling, career assessments, stream and degree selection, workshops, and professional mentoring across India.',
+    description: '6 career services in India – personal, assessment, stream & degree, working pros.',
     images: [
       {
-        url: '/assets/service-illustration.png',
+        url: '/assets/service-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'Career Counselling Services in India – GCDA',
@@ -79,7 +80,7 @@ export default function CareerCounsellingPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.png" alt="GCDA career counselling services" />
+            <img src="/assets/service-illustration.webp" alt="GCDA career counselling services" width="1200" height="896" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -104,7 +105,7 @@ export default function CareerCounsellingPage() {
             {services.map((service) => (
               <article className="card service-card" key={service.slug} id={service.slug}>
                 <div className="service-card-media">
-                  <img src={service.image} alt={service.title} />
+                  <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />
                 </div>
                 <div className="card-body">
                   <div className="icon-badge">{service.icon}</div>
@@ -120,7 +121,7 @@ export default function CareerCounsellingPage() {
             {/* Career Counselling Certification — separate programme */}
             <article className="card service-card" id="career-certification">
               <div className="service-card-media">
-                <img src="/assets/career-7.png" alt="Career Counselling Certification" />
+                <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="lazy" decoding="async" />
               </div>
               <div className="card-body">
                 <div className="icon-badge">🎓</div>

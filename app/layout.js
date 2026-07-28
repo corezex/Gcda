@@ -66,7 +66,7 @@ export const metadata = {
       'Expert career counselling, career assessments, stream and degree selection, and professional growth mentoring across India.',
     images: [
       {
-        url: '/assets/hero-illustration.png',
+        url: '/assets/hero-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling and guidance across India',
@@ -78,7 +78,7 @@ export const metadata = {
     title: 'GCDA | Career Counselling & Career Guidance Association India',
     description:
       'Expert career counselling, career assessments, stream and degree selection, and professional growth mentoring across India.',
-    images: ['/assets/hero-illustration.png'],
+    images: ['/assets/hero-illustration.webp'],
     creator: '@gcdaindia',
   },
   robots: {
@@ -93,9 +93,9 @@ export const metadata = {
     },
   },
   icons: {
-    icon: '/assets/logo.png',
-    shortcut: '/assets/logo.png',
-    apple: '/assets/logo.png',
+    icon: '/assets/logo.webp',
+    shortcut: '/assets/logo.webp',
+    apple: '/assets/logo.webp',
   },
   // Note: Add real Google Search Console verification token here when available
   // verification: { google: '...' },

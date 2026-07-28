@@ -36,7 +36,7 @@ export function generateMetadata({ params }) {
       section: post.category,
       images: [
         {
-          url: post.image || '/assets/service-illustration.png',
+          url: post.image || '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: post.title,
@@ -49,7 +49,7 @@ export function generateMetadata({ params }) {
       description: post.description,
       images: [
         {
-          url: post.image || '/assets/service-illustration.png',
+          url: post.image || '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: post.title,

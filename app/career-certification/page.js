@@ -13,7 +13,7 @@ const SITE_URL = 'https://gcdassociation.org';
 export const metadata = {
   title: 'Career Counselling Certification in India',
   description:
-    'Become a certified career counsellor with GCDA. Our comprehensive offline + online certification programme equips you with the skills, assessments, and mentoring techniques to guide students and working professionals across India.',
+    'Become certified career counsellor – hybrid online + in-person training, assessments, coaching, business setup across India.',
   keywords: [
     'career counselling certification',
     'career counsellor course',
@@ -26,12 +26,12 @@ export const metadata = {
   openGraph: {
     title: 'Career Counselling Certification in India',
     description:
-      'Become a certified career counsellor with GCDA. Comprehensive certification programme for aspiring and practising counsellors.',
+      'Become certified counsellor – hybrid training, assessments, coaching, business setup.',
     url: 'https://gcdassociation.org/career-certification',
     type: 'article',
     images: [
       {
-        url: '/assets/career-7.png',
+        url: '/assets/career-7.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling certification programme',
@@ -41,10 +41,10 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Career Counselling Certification in India',
-    description: 'Become a certified career counsellor with GCDA. Comprehensive certification programme for aspiring and practising counsellors.',
+    description: 'Certified career counsellor training – hybrid, assessments, coaching.',
     images: [
       {
-        url: '/assets/career-7.png',
+        url: '/assets/career-7.webp',
         width: 1200,
         height: 630,
         alt: 'Career Counselling Certification – GCDA',
@@ -104,7 +104,7 @@ export default function CareerCertificationPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-7.png" alt="Career Counselling Certification" />
+            <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -236,7 +236,7 @@ export default function CareerCertificationPage() {
       <section className="section alt-section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-3.png" alt="GCDA Career Counselling Workshop" />
+            <img src="/assets/career-3.webp" alt="GCDA Career Counselling Workshop" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
           <div>
             <SectionHeader

@@ -24,12 +24,12 @@ export function generateMetadata({ params }) {
   if (!service) return { title: 'Service not found' };
 
   const RICH_TITLES = {
-    'personal-counselling': 'Personal Counselling in India | 1-on-1 Expert Guidance',
-    'career-assessment': 'Career Assessment in India | Aptitude, Interest & Personality Tests',
-    'workshops-seminars': 'Workshops & Seminars in India | Career Awareness for Schools & Colleges',
-    'stream-selection-guidance': 'Stream Selection Guidance in India | Science, Commerce, Arts after 10th',
-    'degree-selection-guidance': 'Degree Selection Guidance in India | Choose Right Course after 12th',
-    'working-professionals-guidance': 'Guidance for Working Professionals in India | Career Switch & MBA Planning',
+    'personal-counselling': 'Personal Counselling India – 1-on-1 Guidance',
+    'career-assessment': 'Career Assessment India – Aptitude Tests',
+    'workshops-seminars': 'Workshops & Seminars India – Schools',
+    'stream-selection-guidance': 'Stream Selection India – Science, Commerce, Arts',
+    'degree-selection-guidance': 'Degree Selection India – After 12th Course',
+    'working-professionals-guidance': 'Working Professionals Guidance India',
   };
   const title = RICH_TITLES[service.slug] || `${service.title} in India | Expert Career Guidance`;
   const description = service.shortDescription;
@@ -53,7 +53,7 @@ export function generateMetadata({ params }) {
       type: 'article',
       images: [
         {
-          url: service.image || '/assets/hero-illustration.png',
+          url: service.image || '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${service.title} – GCDA career counselling`,
@@ -66,7 +66,7 @@ export function generateMetadata({ params }) {
       description,
       images: [
         {
-          url: service.image || '/assets/hero-illustration.png',
+          url: service.image || '/assets/hero-illustration.webp',
           width: 1200,
           height: 630,
           alt: `${service.title} – GCDA career counselling`,
@@ -135,7 +135,7 @@ export default function ServiceDetailPage({ params }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src={service.image} alt={service.title} />
+            <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -522,7 +522,7 @@ export default function ServiceDetailPage({ params }) {
               {related.map((rel) => (
                 <article className="card service-card" key={rel.slug}>
                   <div className="service-card-media">
-                    <img src={rel.image} alt={rel.title} />
+                    <img src={rel.image} alt={rel.title} width="1376" height="768" loading="lazy" decoding="async" />
                   </div>
                   <div className="card-body">
                     <div className="icon-badge">{rel.icon}</div>

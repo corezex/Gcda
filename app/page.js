@@ -13,7 +13,7 @@ import { faqSchema, howToSchema } from '@/data/schema';
 export const metadata = {
   title: 'Career Counselling & Career Guidance in India',
   description:
-    'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
+    'Expert career counselling in India – assessments, stream & degree guidance for students, parents & professionals. Online & in-person.',
   alternates: { canonical: '/' },
   keywords: [
     'career counselling India',
@@ -25,11 +25,11 @@ export const metadata = {
   openGraph: {
     title: 'Career Counselling & Career Guidance in India',
     description:
-      'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
+      'Expert career counselling India – assessments, stream & degree guidance for students, parents & professionals.',
     url: 'https://gcdassociation.org/',
     images: [
       {
-        url: '/assets/hero-illustration.png',
+        url: '/assets/hero-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling homepage',
@@ -39,8 +39,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Career Counselling & Career Guidance in India',
-    description:
-      'GCDA provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring across India.',
+    description: 'Expert career counselling India – assessments, stream & degree guidance. Online & in-person.',
   },
 };
 
@@ -66,7 +65,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-visual surface-card">
-            <img src="/assets/hero-illustration.png" alt="Career guidance and counselling illustration" />
+            <img src="/assets/hero-illustration.webp" alt="Career guidance and counselling illustration" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -99,7 +98,7 @@ export default function HomePage() {
             <Link href="/about" className="text-link">Learn more about GCDA →</Link>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-2.png" alt="Career counselling session" />
+            <img src="/assets/career-2.webp" alt="Career counselling session" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -119,7 +118,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.png" alt="Services illustration" />
+            <img src="/assets/service-illustration.webp" alt="Services illustration" width="1200" height="896" loading="lazy" decoding="async" />
           </div>
           <div>
             <SectionHeader

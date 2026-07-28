@@ -49,7 +49,7 @@ export default function Header() {
     <header className="site-header">
       <div className="container header-inner">
         <Link href="/" className="brand" onClick={() => { setOpen(false); setServicesOpen(false); }}>
-          <img src="/assets/logo.png" alt="GCDA logo" className="brand-logo" />
+          <img src="/assets/logo.webp" alt="GCDA logo" className="brand-logo" width="1024" height="1024" loading="eager" fetchPriority="high" decoding="async" />
         </Link>
 
         <button

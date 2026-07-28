@@ -9,9 +9,9 @@ import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Contact GCDA – Career Counselling in Mumbai & Across India: Phone, Email, WhatsApp',
+  title: 'Contact GCDA – Career Counselling Mumbai, Phone, Email',
   description:
-    'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Visit our Mumbai office at 102, Citi Mall, Link Road, Andheri West, or reach us by phone (+91 91360 05039), email (gcda.career@gmail.com), or WhatsApp.',
+    'Contact GCDA Mumbai at Citi Mall, Andheri West. Call +91 91360 05039, email gcda.career@gmail.com or WhatsApp.',
   keywords: [
     'contact GCDA',
     'GCDA Mumbai office',
@@ -21,13 +21,13 @@ export const metadata = {
   ],
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact GCDA – Career Counselling in Mumbai & Across India',
+    title: 'Contact GCDA – Career Counselling Mumbai',
     description:
-      'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Mumbai office + phone, email, WhatsApp.',
+      'Contact GCDA Mumbai – office address, phone, email, WhatsApp for counselling.',
     url: 'https://gcdassociation.org/contact',
     images: [
       {
-        url: '/assets/hero-illustration.png',
+        url: '/assets/hero-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'Contact GCDA career counselling team',
@@ -36,11 +36,11 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact GCDA – Career Counselling in Mumbai & Across India',
-    description: 'Mumbai office address, phone, email, WhatsApp, and contact form for GCDA.',
+    title: 'Contact GCDA – Career Counselling Mumbai',
+    description: 'Mumbai office, phone, email, WhatsApp for GCDA counselling.',
     images: [
       {
-        url: '/assets/hero-illustration.png',
+        url: '/assets/hero-illustration.webp',
         width: 1200,
         height: 630,
         alt: 'Contact GCDA – Mumbai office and team',

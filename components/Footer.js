@@ -78,7 +78,7 @@ export default function Footer() {
         <div className="container footer-grid">
           <div className="footer-brand-col">
             <div className="footer-brand-row">
-              <img src="/assets/logo.png" alt="GCDA logo" className="footer-logo" />
+              <img src="/assets/logo.webp" alt="GCDA logo" className="footer-logo" width="1024" height="1024" loading="lazy" decoding="async" />
               <div>
                 <h3>{company.shortName}</h3>
                 <p className="footer-tagline">{company.tagline}</p>

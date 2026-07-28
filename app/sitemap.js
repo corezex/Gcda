@@ -27,7 +27,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
-    images: [`${SITE_URL}/assets/hero-illustration.png`],
+    images: [`${SITE_URL}/assets/hero-illustration.webp`],
   }));
 
   // Top-level service main pages (4 of them — /career-certification has its own page)
@@ -41,7 +41,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.85,
-    images: [`${SITE_URL}/assets/hero-illustration.png`],
+    images: [`${SITE_URL}/assets/hero-illustration.webp`],
   }));
 
   // State hub pages
@@ -50,7 +50,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
-    images: [`${SITE_URL}/assets/hero-illustration.png`],
+    images: [`${SITE_URL}/assets/hero-illustration.webp`],
   }));
 
   // All city pages for all 8 services
@@ -65,7 +65,7 @@ export default function sitemap() {
         lastModified: now,
         changeFrequency: 'monthly',
         priority: 0.7,
-        images: [`${SITE_URL}/assets/hero-illustration.png`],
+        images: [`${SITE_URL}/assets/hero-illustration.webp`],
       });
     }
   }
@@ -76,7 +76,7 @@ export default function sitemap() {
     lastModified: now,
     changeFrequency: 'monthly',
     priority: 0.8,
-    images: [`${SITE_URL}${service.image || '/assets/hero-illustration.png'}`],
+    images: [`${SITE_URL}${service.image || '/assets/hero-illustration.webp'}`],
   }));
 
   // Blog posts (with article-specific images for better image SEO)
@@ -85,7 +85,7 @@ export default function sitemap() {
     lastModified: new Date(post.dateModified),
     changeFrequency: 'monthly',
     priority: 0.7,
-    images: [`${SITE_URL}/assets/service-illustration.png`],
+    images: [`${SITE_URL}/assets/service-illustration.webp`],
   }));
 
   // Paginated blog hub pages – SEO optimized pagination (20 per page)
@@ -100,7 +100,7 @@ export default function sitemap() {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.6,
-      images: [`${SITE_URL}/assets/service-illustration.png`],
+      images: [`${SITE_URL}/assets/service-illustration.webp`],
     });
     // Query param version – secondary (kept for compatibility, lower priority)
     blogPaginatedRoutes.push({
@@ -108,7 +108,7 @@ export default function sitemap() {
       lastModified: now,
       changeFrequency: 'weekly',
       priority: 0.4,
-      images: [`${SITE_URL}/assets/service-illustration.png`],
+      images: [`${SITE_URL}/assets/service-illustration.webp`],
     });
   }
 

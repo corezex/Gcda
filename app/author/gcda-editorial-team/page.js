@@ -10,9 +10,9 @@ const SITE_URL = 'https://gcdassociation.org';
 const url = `${SITE_URL}/author/gcda-editorial-team`;
 
 export const metadata = {
-  title: 'GCDA Editorial Team – Career Counselling Experts & Authors',
+  title: 'GCDA Editorial Team – Career Counselling Experts',
   description:
-    'Meet GCDA Editorial Team – certified career counsellors, psychologists, and education experts with 10+ years of field experience, guiding 50K+ students, parents, and working professionals across 438 Indian cities since 2013.',
+    'GCDA Editorial Team – certified counsellors, psychologists, 10+ years, 50K+ sessions across 438 cities since 2013.',
   keywords: [
     'GCDA Editorial Team',
     'career counselling experts',
@@ -24,12 +24,12 @@ export const metadata = {
   openGraph: {
     title: 'GCDA Editorial Team – Career Counselling Experts',
     description:
-      'Certified career counsellors & psychologists guiding 50K+ students across 438 cities since 2013.',
+      'Certified counsellors & psychologists guiding 50K+ students across 438 cities since 2013.',
     url,
     type: 'profile',
     images: [
       {
-        url: '/assets/logo.png',
+        url: '/assets/logo.webp',
         width: 600,
         height: 600,
         alt: 'GCDA Editorial Team',
@@ -42,7 +42,7 @@ export const metadata = {
     description: 'Certified counsellors guiding 50K+ students across India since 2013.',
     images: [
       {
-        url: '/assets/logo.png',
+        url: '/assets/logo.webp',
         width: 600,
         height: 600,
         alt: 'GCDA Editorial Team',
@@ -85,7 +85,7 @@ export default function AuthorPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/logo.png" alt="GCDA Editorial Team – career counselling experts" />
+            <img src="/assets/logo.webp" alt="GCDA Editorial Team – career counselling experts" width="1024" height="1024" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ export default function AuthorPage() {
           url,
           name: 'GCDA Editorial Team – Career Counselling Experts',
           description: 'Certified career counsellors & psychologists guiding 50K+ students across 438 cities since 2013.',
-          primaryImage: `${SITE_URL}/assets/logo.png`,
+          primaryImage: `${SITE_URL}/assets/logo.webp`,
         })}
       />
     </>

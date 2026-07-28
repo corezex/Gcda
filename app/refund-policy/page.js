@@ -8,15 +8,16 @@ const SITE_URL = 'https://gcdassociation.org';
 const url = `${SITE_URL}/refund-policy`;
 
 export const metadata = {
-  title: 'Refund & Return Policy – GCDA Career Counselling',
+  title: 'Refund Policy – GCDA Career Counselling',
   description:
-    'GCDA refund policy – transparent 7-day return window, rescheduling policy, and conditions for career counselling plans and certification programmes.',
+    'GCDA refund policy – 7-day return window, rescheduling, upgrades. Transparent, fair for students & professionals.',
   alternates: { canonical: '/refund-policy' },
   openGraph: {
     title: 'Refund Policy – GCDA',
-    description: 'Transparent refund and rescheduling policy for GCDA counselling plans.',
+    description:
+      'Refund and rescheduling policy for GCDA counselling plans.',
     url,
-    images: [{ url: '/assets/logo.png', width: 600, height: 600, alt: 'GCDA Refund Policy' }],
+    images: [{ url: '/assets/logo.webp', width: 600, height: 600, alt: 'GCDA Refund Policy' }],
   },
   twitter: { card: 'summary', title: 'Refund Policy – GCDA', description: 'GCDA refund and return policy.' },
 };

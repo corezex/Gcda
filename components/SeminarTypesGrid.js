@@ -18,7 +18,7 @@ export default function SeminarTypesGrid({ seminars, city }) {
         <article className="card seminar-card" key={seminar.slug} id={seminar.slug}>
           <div className="seminar-card-media">
             {seminar.heroImage ? (
-              <img src={seminar.heroImage} alt={seminar.title} loading="lazy" />
+              <img src={seminar.heroImage} alt={seminar.title} width="1376" height="768" loading="lazy" decoding="async" />
             ) : (
               <div className="seminar-card-media-placeholder" aria-hidden="true">🎤</div>
             )}

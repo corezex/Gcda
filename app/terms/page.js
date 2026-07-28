@@ -10,13 +10,14 @@ const url = `${SITE_URL}/terms`;
 export const metadata = {
   title: 'Terms of Service – GCDA Career Counselling',
   description:
-    'GCDA Terms of Service – rules for using career counselling services, assessments, workshops, and website. Transparent, fair, and India-specific.',
+    'GCDA terms – rules for counselling services, assessments, workshops, website. Transparent, fair, India-specific.',
   alternates: { canonical: '/terms' },
   openGraph: {
     title: 'Terms of Service – GCDA',
-    description: 'Terms for GCDA counselling services and website use.',
+    description:
+      'Terms for GCDA counselling services and website use.',
     url,
-    images: [{ url: '/assets/logo.png', width: 600, height: 600, alt: 'GCDA Terms' }],
+    images: [{ url: '/assets/logo.webp', width: 600, height: 600, alt: 'GCDA Terms' }],
   },
   twitter: { card: 'summary', title: 'Terms of Service – GCDA', description: 'GCDA terms of service.' },
 };

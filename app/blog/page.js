@@ -21,16 +21,16 @@ export async function generateMetadata({ searchParams }) {
   const totalPages = Math.ceil(blogPosts.length / PAGE_SIZE);
 
   if (page < 1 || page > totalPages) {
-    return { title: 'Page not found – GCDA Blog' };
+    return { title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET' };
   }
 
   const isFirstPage = page === 1;
   const title = isFirstPage
     ? 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET'
-    : `Career Guidance Blog India: Page ${page} – Stream, Degree, MBA, JEE/NEET`;
+    : `Blog Page ${page} – Career Guidance India`;
   const description = isFirstPage
-    ? 'Practical, India-specific career guidance for students, parents, and working professionals. Read GCDA blog posts on stream selection after 10th, degree choices after 12th, JEE/NEET planning, MBA, career transitions, and working professional growth.'
-    : `Page ${page} of GCDA career guidance blog – ${blogPosts.length} articles on stream selection, degree choices, JEE/NEET, MBA, career growth. Practical guides for Indian students, parents, and professionals.`;
+    ? 'Career guidance blog – stream after 10th, degree after 12th, JEE/NEET, MBA, growth. 310 guides for students, parents & professionals.'
+    : `Blog Page ${page} – ${blogPosts.length} guides on stream, degree, JEE/NEET, MBA, career growth.`;
   const canonical = isFirstPage ? '/blog' : `/blog?page=${page}`;
   const url = `${SITE_URL}${canonical}`;
 
@@ -57,7 +57,7 @@ export async function generateMetadata({ searchParams }) {
       url,
       images: [
         {
-          url: '/assets/service-illustration.png',
+          url: '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: `GCDA career guidance blog – Page ${page}`,
@@ -72,7 +72,7 @@ export async function generateMetadata({ searchParams }) {
         : `Page ${page} – Career guidance guides from GCDA.`,
       images: [
         {
-          url: '/assets/service-illustration.png',
+          url: '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: `GCDA career guidance blog – Page ${page}`,
@@ -206,7 +206,7 @@ export default function BlogIndexPage({ searchParams }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.png" alt="GCDA career guidance blog" />
+            <img src="/assets/service-illustration.webp" alt="GCDA career guidance blog" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -280,7 +280,7 @@ export default function BlogIndexPage({ searchParams }) {
             currentPage === 1
               ? 'Practical, India-specific career guidance for students, parents, and working professionals.'
               : `Page ${currentPage} of GCDA career guidance blog – ${blogPosts.length} articles.`,
-          primaryImage: `${SITE_URL}/assets/service-illustration.png`,
+          primaryImage: `${SITE_URL}/assets/service-illustration.webp`,
         })}
       />
       <JsonLd

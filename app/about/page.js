@@ -11,9 +11,9 @@ import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'About GCDA – Career Counselling Association in India: Our Mission & Team',
+  title: 'About GCDA – Career Counselling Experts Since 2013',
   description:
-    'Learn about GCDA – Global Career Development Association, our mission since 2013, our certified counsellor team, and how we guide students, parents, and working professionals through smarter career decisions across India.',
+    'GCDA Mumbai-based since 2013. 5K+ counsellors, 50K+ sessions for students, parents & professionals across India.',
   keywords: [
     'about GCDA',
     'career counselling association India',
@@ -24,13 +24,13 @@ export const metadata = {
   alternates: { canonical: '/about' },
   openGraph: {
     type: 'profile',
-    title: 'About GCDA – Career Counselling Association in India',
+    title: 'About GCDA – Career Counselling Experts Since 2013',
     description:
-      'Learn about GCDA, our certified counsellor team, and our mission to make career guidance accessible across India.',
+      'Mumbai-based career counselling association since 2013. 5K+ certified counsellors, 50K+ sessions.',
     url: 'https://gcdassociation.org/about',
     images: [
       {
-        url: '/assets/career-8.png',
+        url: '/assets/career-8.webp',
         width: 1200,
         height: 630,
         alt: 'GCDA career counselling team and mission',
@@ -39,11 +39,11 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About GCDA – Career Counselling Association in India',
-    description: 'GCDA team, mission, and how we help students and professionals across India.',
+    title: 'About GCDA – Career Counselling Experts Since 2013',
+    description: 'GCDA since 2013 – 5K+ counsellors, 50K+ sessions across India.',
     images: [
       {
-        url: '/assets/career-8.png',
+        url: '/assets/career-8.webp',
         width: 1200,
         height: 630,
         alt: 'About GCDA – Career Counselling Association India',
@@ -71,7 +71,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-8.png" alt="About GCDA - career counselling session" />
+            <img src="/assets/career-8.webp" alt="About GCDA - career counselling session" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -124,7 +124,7 @@ export default function AboutPage() {
       <section className="section alt-section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-6.png" alt="GCDA growth journey" />
+            <img src="/assets/career-6.webp" alt="GCDA growth journey" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
           <div>
             <SectionHeader

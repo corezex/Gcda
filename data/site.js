@@ -111,7 +111,7 @@ export const services = [
     slug: 'personal-counselling',
     title: 'Personal Counselling',
     icon: '🎯',
-    image: '/assets/career-1.png',
+    image: '/assets/career-1.webp',
     shortDescription:
       'One-on-one guidance sessions designed around the individual student or professional — assessment-led, mentor-driven, and structured for real outcomes.',
     heroDescription:
@@ -234,7 +234,7 @@ export const services = [
     slug: 'career-assessment',
     title: 'Career Assessment',
     icon: '📊',
-    image: '/assets/career-2.png',
+    image: '/assets/career-2.webp',
     shortDescription:
       'Structured aptitude, interest, and personality assessments that turn data into the right stream, degree, or career shortlist — not a personality quiz.',
     heroDescription:
@@ -352,7 +352,7 @@ export const services = [
     slug: 'workshops-seminars',
     title: 'Workshops & Seminars',
     icon: '🎓',
-    image: '/assets/career-3.png',
+    image: '/assets/career-3.webp',
     shortDescription:
       'Interactive career awareness sessions for schools, colleges, parents, and institutions — delivered on-campus or online across India.',
     heroDescription:
@@ -470,9 +470,9 @@ export const services = [
     slug: 'stream-selection-guidance',
     title: 'Stream Selection Guidance',
     icon: '🧭',
-    image: '/assets/career-4.png',
+    image: '/assets/career-4.webp',
     shortDescription:
-      'Expert support for choosing the right stream after class 10 (Science, Commerce, Arts, or new-age options) based on aptitude, interest, and long-term career fit.',
+      'Stream selection after 10th – Science, Commerce, Arts guidance based on aptitude, interest & career fit.',
     heroDescription:
       'Choose between Science, Commerce, Arts, and emerging pathways with clarity instead of pressure or confusion — and a plan both you and your parents can defend.',
     longDescription:
@@ -586,9 +586,9 @@ export const services = [
     slug: 'degree-selection-guidance',
     title: 'Degree Selection Guidance',
     icon: '🏫',
-    image: '/assets/career-5.png',
+    image: '/assets/career-5.webp',
     shortDescription:
-      'Choose the right undergraduate or professional course after 12th — engineering, medical, design, law, commerce, liberal arts, and beyond — with expert college and career guidance.',
+      'Degree selection after 12th – engineering, medical, design, law, commerce, liberal arts. Expert college guidance.',
     heroDescription:
       'Compare degree pathways, institutions, and future opportunities before committing to a college plan — and align with your family on budget, location, and goals.',
     longDescription:
@@ -703,7 +703,7 @@ export const services = [
     slug: 'working-professionals-guidance',
     title: 'Guidance for Working Professionals',
     icon: '💼',
-    image: '/assets/career-6.png',
+    image: '/assets/career-6.webp',
     shortDescription:
       'Career growth, transition, MBA, and skill-alignment support for employed professionals — online sessions designed around work hours.',
     heroDescription:

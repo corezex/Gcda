@@ -28,8 +28,8 @@ export async function generateMetadata({ params }) {
     return { title: 'Page not found – GCDA Blog' };
   }
 
-  const title = `Career Guidance Blog India: Page ${page} – Stream, Degree, MBA, JEE/NEET`;
-  const description = `Page ${page} of GCDA career guidance blog – ${blogPosts.length} articles on stream selection, degree choices, JEE/NEET, MBA, career growth. Practical guides for Indian students, parents, and professionals.`;
+  const title = `Blog Page ${page} – Career Guidance India`;
+  const description = `Blog Page ${page} – ${blogPosts.length} guides on stream, degree, JEE/NEET, MBA, career growth. Practical for students & professionals.`;
   const canonical = `/blog/p/${page}`;
   const url = `${SITE_URL}${canonical}`;
 
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
       url,
       images: [
         {
-          url: '/assets/service-illustration.png',
+          url: '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: `GCDA career guidance blog – Page ${page}`,
@@ -56,7 +56,7 @@ export async function generateMetadata({ params }) {
       description: `Page ${page} – Career guidance guides from GCDA.`,
       images: [
         {
-          url: '/assets/service-illustration.png',
+          url: '/assets/service-illustration.webp',
           width: 1200,
           height: 630,
           alt: `GCDA career guidance blog – Page ${page}`,
@@ -166,7 +166,7 @@ export default function BlogPaginatedPage({ params }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.png" alt={`GCDA career guidance blog – Page ${currentPage}`} />
+            <img src="/assets/service-illustration.webp" alt={`GCDA career guidance blog – Page ${currentPage}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -223,7 +223,7 @@ export default function BlogPaginatedPage({ params }) {
           url: pageUrl,
           name: `Career Guidance Blog India: Page ${currentPage}`,
           description: `Page ${currentPage} of GCDA career guidance blog – ${blogPosts.length} articles.`,
-          primaryImage: `${SITE_URL}/assets/service-illustration.png`,
+          primaryImage: `${SITE_URL}/assets/service-illustration.webp`,
         })}
       />
       <JsonLd

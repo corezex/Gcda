@@ -18,7 +18,7 @@ export function organizationSchema() {
     name: company.name,
     alternateName: company.shortName,
     url: SITE_URL,
-    logo: `${SITE_URL}/assets/logo.png`,
+    logo: `${SITE_URL}/assets/logo.webp`,
     description:
       'Global Career Development Association (GCDA) provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
     foundingDate: '2013',
@@ -107,7 +107,7 @@ export function localBusinessSchema() {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#localbusiness`,
     name: `${company.name} - Mumbai Office`,
-    image: `${SITE_URL}/assets/logo.png`,
+    image: `${SITE_URL}/assets/logo.webp`,
     url: SITE_URL,
     telephone: `+${company.phoneRaw}`,
     email: company.email,
@@ -163,7 +163,7 @@ export function websiteSchema() {
       name: company.name,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/assets/logo.png`,
+        url: `${SITE_URL}/assets/logo.webp`,
       },
     },
     inLanguage: 'en-IN',
@@ -225,13 +225,6 @@ export function productSchema(plan) {
         merchantReturnDays: 7,
       },
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '1200',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
 }
 
@@ -276,7 +269,7 @@ export function articleSchema(post, url) {
     '@id': `${url}#article`,
     headline: post.title,
     description: post.description,
-    image: `${SITE_URL}/assets/hero-illustration.png`,
+    image: `${SITE_URL}/assets/hero-illustration.webp`,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
     inLanguage: 'en-IN',
@@ -285,7 +278,7 @@ export function articleSchema(post, url) {
       '@id': `${SITE_URL}/author/gcda-editorial-team#person`,
       name: post.author || 'GCDA Editorial Team',
       url: `${SITE_URL}/author/gcda-editorial-team`,
-      image: `${SITE_URL}/assets/logo.png`,
+      image: `${SITE_URL}/assets/logo.webp`,
       jobTitle: 'Career Guidance & Counselling',
       worksFor: { '@id': `${SITE_URL}/#organization` },
     },
@@ -373,7 +366,7 @@ export function cityServiceSchema(city, url) {
     '@id': `${url}#service`,
     name: `GCDA Career Counselling in ${city.name}`,
     description: `Expert career counselling, career assessments, stream and degree selection guidance, and professional mentoring for students, parents, and working professionals in ${city.name}, ${city.state}.`,
-    image: `${SITE_URL}/assets/hero-illustration.png`,
+    image: `${SITE_URL}/assets/hero-illustration.webp`,
     url,
     telephone: `+${company.phoneRaw}`,
     email: company.email,
@@ -421,7 +414,7 @@ export function aboutPageSchema(url) {
     about: { '@id': `${SITE_URL}/#organization` },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/assets/career-8.png`,
+      url: `${SITE_URL}/assets/career-8.webp`,
       width: 1200,
       height: 630,
     },
@@ -468,7 +461,7 @@ export function contactPageSchema(url) {
     about: { '@id': `${SITE_URL}/#localbusiness` },
     primaryImageOfPage: {
       '@type': 'ImageObject',
-      url: `${SITE_URL}/assets/hero-illustration.png`,
+      url: `${SITE_URL}/assets/hero-illustration.webp`,
       width: 1200,
       height: 630,
     },
@@ -596,7 +589,7 @@ export function personSchema() {
     name: 'GCDA Editorial Team',
     alternateName: 'Global Career Development Association Editorial Team',
     url: `${SITE_URL}/author/gcda-editorial-team`,
-    image: `${SITE_URL}/assets/logo.png`,
+    image: `${SITE_URL}/assets/logo.webp`,
     jobTitle: 'Career Guidance & Counselling – Editorial Team',
     description:
       'GCDA Editorial Team is a group of certified career counsellors, psychologists, and education experts with 10+ years of field experience, having guided 50,000+ students, parents, and working professionals across 438 Indian cities.',
