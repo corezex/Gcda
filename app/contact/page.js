@@ -1,11 +1,58 @@
 import ContactForm from '@/components/ContactForm';
 import SectionHeader from '@/components/SectionHeader';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
 import { company } from '@/data/site';
+import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Contact',
-  description: 'Contact GCDA for career counselling, assessments, plans, and workshops.',
+  title: 'Contact GCDA – Career Counselling Mumbai, Phone, Email',
+  description:
+    'Contact GCDA Mumbai at Citi Mall, Andheri West. Call +91 91360 05039, email gcda.career@gmail.com or WhatsApp.',
+  keywords: [
+    'contact GCDA',
+    'GCDA Mumbai office',
+    'career counselling contact',
+    'career counsellor phone number',
+    'GCDA address',
+  ],
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact GCDA – Career Counselling Mumbai',
+    description:
+      'Contact GCDA Mumbai – office address, phone, email, WhatsApp for counselling.',
+    url: 'https://gcdassociation.org/contact',
+    images: [
+      {
+        url: '/assets/hero-illustration.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Contact GCDA career counselling team',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact GCDA – Career Counselling Mumbai',
+    description: 'Mumbai office, phone, email, WhatsApp for GCDA counselling.',
+    images: [
+      {
+        url: '/assets/hero-illustration.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Contact GCDA – Mumbai office and team',
+      },
+    ],
+  },
 };
+
+const contactBreadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'Contact GCDA', url: '/contact' },
+];
 
 export default function ContactPage() {
   const mapQuery = encodeURIComponent(company.addressLine1);
@@ -15,9 +62,10 @@ export default function ContactPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }]} />
             <span className="eyebrow">Contact us</span>
             <h1>Get in touch with GCDA for counselling, plans, and guidance.</h1>
-            <p>
+            <p className="page-hero-copy">
               Reach out for student counselling, professional guidance, institution workshops, or plan-related questions. We would love to hear from you.
             </p>
           </div>
@@ -33,6 +81,14 @@ export default function ContactPage() {
       </section>
 
       <section className="section">
+        <div className="container">
+          <AnswerBlock>
+            You can reach GCDA by phone at {company.phoneDisplay}, by email at {company.email}, or by WhatsApp. Our Mumbai office is at {company.addressLine1} and is open Monday to Saturday. We respond to all enquiries within one business day.
+          </AnswerBlock>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
         <div className="container two-column contact-layout">
           <div>
             <SectionHeader
@@ -76,6 +132,9 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <JsonLd id="ld-breadcrumb-contact" data={breadcrumbSchema(contactBreadcrumbs)} />
+      <JsonLd id="ld-contact" data={contactPageSchema(`${SITE_URL}/contact`)} />
     </>
   );
 }

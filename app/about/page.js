@@ -1,12 +1,61 @@
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
+import AnswerBlock from '@/components/AnswerBlock';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import Link from 'next/link';
 import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
+import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
+
+const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'About',
-  description: 'Learn about GCDA, our mission, and how we guide students and professionals through smarter career decisions.',
+  title: 'About GCDA – Career Counselling Experts Since 2013',
+  description:
+    'GCDA Mumbai-based since 2013. 5K+ counsellors, 50K+ sessions for students, parents & professionals across India.',
+  keywords: [
+    'about GCDA',
+    'career counselling association India',
+    'GCDA mission',
+    'career counsellor team',
+    'career guidance experts',
+  ],
+  alternates: { canonical: '/about' },
+  openGraph: {
+    type: 'profile',
+    title: 'About GCDA – Career Counselling Experts Since 2013',
+    description:
+      'Mumbai-based career counselling association since 2013. 5K+ certified counsellors, 50K+ sessions.',
+    url: 'https://gcdassociation.org/about',
+    images: [
+      {
+        url: '/assets/career-8.webp',
+        width: 1200,
+        height: 630,
+        alt: 'GCDA career counselling team and mission',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'About GCDA – Career Counselling Experts Since 2013',
+    description: 'GCDA since 2013 – 5K+ counsellors, 50K+ sessions across India.',
+    images: [
+      {
+        url: '/assets/career-8.webp',
+        width: 1200,
+        height: 630,
+        alt: 'About GCDA – Career Counselling Association India',
+      },
+    ],
+  },
 };
+
+const aboutBreadcrumbs = [
+  { name: 'Home', url: '/' },
+  { name: 'About GCDA', url: '/about' },
+];
 
 export default function AboutPage() {
   return (
@@ -14,15 +63,24 @@ export default function AboutPage() {
       <section className="page-hero">
         <div className="container page-hero-grid">
           <div>
+            <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }]} />
             <span className="eyebrow">About GCDA</span>
             <h1>Trusted career guidance with a practical, student-first approach.</h1>
-            <p>
-              GCDA exists to help individuals explore, plan, and pursue the right education and career path with confidence. We combine counselling, assessments, mentoring, and practical decision support.
+            <p className="page-hero-copy">
+              GCDA – Global Career Development Association – has been helping Indian students, parents, and working professionals make confident education and career decisions since 2013. We combine structured assessments, personal counselling, and practical roadmaps to turn confusion into clarity.
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-1.png" alt="About GCDA" />
+            <img src="/assets/career-8.webp" alt="About GCDA - career counselling session" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
           </div>
+        </div>
+      </section>
+
+      <section className="section section-tight-top">
+        <div className="container">
+          <AnswerBlock>
+            GCDA is a Mumbai-headquartered career counselling association founded in 2013. We work with 50,000+ students, parents, and working professionals across India through 5,000+ certified counsellors, offering personal counselling, career assessments, stream and degree selection, and professional growth mentoring.
+          </AnswerBlock>
         </div>
       </section>
 
@@ -46,6 +104,9 @@ export default function AboutPage() {
             <p>
               Our counselling style balances emotional reassurance with practical action. The result is a roadmap clients can actually follow.
             </p>
+            <p className="inline-link-row">
+              Explore our <Link href="/career-counselling/personal-counselling" className="text-link">personal counselling</Link>, <Link href="/career-counselling/career-assessment" className="text-link">career assessment</Link>, <Link href="/career-counselling/stream-selection-guidance" className="text-link">stream selection</Link>, <Link href="/career-counselling/degree-selection-guidance" className="text-link">degree selection</Link>, <Link href="/career-counselling/workshops-seminars" className="text-link">workshops</Link>, <Link href="/career-counselling/working-professionals-guidance" className="text-link">working professional</Link>, and <Link href="/career-certification" className="text-link">career counsellor certification</Link> programmes.
+            </p>
           </div>
           <div className="card-grid simple-grid">
             {valuePoints.map((point) => (
@@ -63,7 +124,7 @@ export default function AboutPage() {
       <section className="section alt-section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-5.png" alt="GCDA timeline" />
+            <img src="/assets/career-6.webp" alt="GCDA growth journey" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
           <div>
             <SectionHeader
@@ -114,10 +175,82 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Our credentials"
+            title="Why our guidance is trusted across India"
+            description="Our methods, content, and recommendations are grounded in established frameworks, validated assessments, and a decade of field experience."
+            center
+          />
+          <div className="card-grid process-grid">
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Standardised assessment tools</h3>
+                <p>
+                  We use validated instruments — RIASEC-style interest inventories, Big-Five personality traits, numerical / verbal / abstract aptitude batteries — to translate strengths into fit scores, not personality labels.
+                </p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Certified counsellor network</h3>
+                <p>
+                  Our 5,000+ counsellor network is trained in the GCDA framework and supervised by senior mentors. Every session is structured, written, and reviewed for quality.
+                </p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Updated with 2026 data</h3>
+                <p>
+                  Salary bands, entrance exam cutoffs, college admission criteria, and emerging careers are refreshed every 6 months so the guidance reflects the current Indian market, not stale 2018 data. See our latest analysis in the <Link href="/blog" className="text-link">career guidance blog</Link>.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow="Editorial standards"
+              title="How we keep our content honest and useful"
+              description="Our blog posts, service descriptions, and city pages follow a strict editorial standard so families can trust what they read."
+            />
+            <p>
+              Every public article on GCDA is reviewed by the editorial team against a checklist: is the data current, is the advice balanced, are the alternatives honestly presented, and is the language accessible to parents and students.
+            </p>
+            <p>
+              We update articles when exams change, salary ranges shift, or new policy rules appear. Each blog post shows a "last updated" date and an author byline. If we get something wrong, we say so and correct it publicly.
+            </p>
+            <p>
+              For a private consultation, the same standard applies: evidence-based recommendations, written session summaries, and a clear action plan you can act on.
+            </p>
+          </div>
+          <div className="info-panel">
+            <h3>Editorial checklist</h3>
+            <ul className="bullet-list compact">
+              <li>Reviewed against 2026 salary and exam data</li>
+              <li>Balanced view of all realistic options</li>
+              <li>Clear separation of fact vs. opinion</li>
+              <li>Family-friendly language (parent + student readable)</li>
+              <li>Honest about limitations and when to seek more help</li>
+              <li>Original content, no AI-generated filler</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="Let’s help you make the next decision easier"
         description="Book a consultation with GCDA to get expert support for the path ahead."
       />
+
+      <JsonLd id="ld-breadcrumb-about" data={breadcrumbSchema(aboutBreadcrumbs)} />
+      <JsonLd id="ld-about" data={aboutPageSchema(SITE_URL)} />
     </>
   );
 }

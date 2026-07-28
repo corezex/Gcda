@@ -8,7 +8,7 @@ export default function ServiceGrid({ services, limit }) {
       {list.map((service) => (
         <article className="card service-card" key={service.slug}>
           <div className="service-card-media">
-            <img src={service.image} alt={service.title} />
+            <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />
           </div>
           <div className="card-body">
             <div className="icon-badge">{service.icon}</div>
