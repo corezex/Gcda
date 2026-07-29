@@ -6,6 +6,8 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
+import '@/styles/non-homepage.css';
+import '@/styles/non-homepage.css';
 import { plans } from '@/data/site';
 import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
 

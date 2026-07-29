@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { company, navLinks, services } from '@/data/site';
+import { company } from '@/data/site';
+import { navLinks, serviceMenuItems } from '@/data/navigation';
 
 export default function Header() {
   const pathname = usePathname();
@@ -67,7 +68,7 @@ export default function Header() {
         All services
       </Link>
       <div className="nav-dropdown-divider" />
-      {services.map((s) => (
+      {serviceMenuItems.map((s) => (
         <Link key={s.slug} href={`/career-counselling/${s.slug}`} className="nav-dropdown-item" role="menuitem" onClick={closeMenus}>
           <span className="nav-dropdown-icon" aria-hidden="true">{s.icon}</span>
           <span className="nav-dropdown-text">

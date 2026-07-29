@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import '@/styles/non-homepage.css';
 import SectionHeader from '@/components/SectionHeader';
 import FAQList from '@/components/FAQList';
 import AnswerBlock from '@/components/AnswerBlock';

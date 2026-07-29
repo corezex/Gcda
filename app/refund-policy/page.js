@@ -1,3 +1,4 @@
+import '@/styles/non-homepage.css';
 import SectionHeader from '@/components/SectionHeader';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';

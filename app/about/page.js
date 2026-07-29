@@ -5,6 +5,7 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
+import '@/styles/non-homepage.css';
 import { aboutTimeline, audience, company, statsHome, valuePoints } from '@/data/site';
 import { aboutPageSchema, breadcrumbSchema } from '@/data/schema';
 
