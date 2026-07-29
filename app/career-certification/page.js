@@ -284,24 +284,6 @@ export default function CareerCertificationPage() {
                 <li>Good communication skills</li>
               </ul>
             </div>
-            <div className="stack-list" style={{ marginTop: '1.5rem' }}>
-              <article className="feature-row">
-                <h3>Qualification</h3>
-                <p>A bachelor&apos;s degree gives the minimum base; specialised training builds counselling capability.</p>
-              </article>
-              <article className="feature-row">
-                <h3>Psychology degree</h3>
-                <p>Helpful, but not mandatory for every role. Education, HR, and other graduates can still enter the field with structured certification.</p>
-              </article>
-              <article className="feature-row">
-                <h3>Practical readiness</h3>
-                <p>Assessment interpretation, communication, and ethical practice matter as much as theory when you begin guiding real students and professionals.</p>
-              </article>
-              <article className="feature-row">
-                <h3>Career path</h3>
-                <p>You can work independently or with schools, colleges, NGOs, edtech platforms, and broader guidance ecosystems once your training converts into credible practice.</p>
-              </article>
-            </div>
             <div className="button-row" style={{ marginTop: '1.5rem' }}>
               <a
                 href="https://allegiance-educare.in/storage/uploads/career-counselling-course-module_z21Ca.pdf"
@@ -336,6 +318,35 @@ export default function CareerCertificationPage() {
               <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
               <a href={`mailto:${company.email}`}>{company.email}</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container narrow-center-wide">
+          <SectionHeader
+            eyebrow="Qualification details"
+            title="What matters most before you start this path"
+            description="These four checkpoints help aspiring counsellors judge eligibility, practical readiness, and the kind of career path they can realistically build after training."
+            center
+          />
+          <div className="stack-list">
+            <article className="feature-row">
+              <h3>Qualification</h3>
+              <p>A bachelor&apos;s degree gives the minimum base; specialised training builds counselling capability.</p>
+            </article>
+            <article className="feature-row">
+              <h3>Psychology degree</h3>
+              <p>Helpful, but not mandatory for every role. Education, HR, and other graduates can still enter the field with structured certification.</p>
+            </article>
+            <article className="feature-row">
+              <h3>Practical readiness</h3>
+              <p>Assessment interpretation, communication, and ethical practice matter as much as theory when you begin guiding real students and professionals.</p>
+            </article>
+            <article className="feature-row">
+              <h3>Career path</h3>
+              <p>You can work independently or with schools, colleges, NGOs, edtech platforms, and broader guidance ecosystems once your training converts into credible practice.</p>
+            </article>
           </div>
         </div>
       </section>
