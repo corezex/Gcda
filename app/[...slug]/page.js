@@ -133,6 +133,75 @@ function pageDescription(city, servicePage) {
   return `${servicePage.cityLead.replace('{city}', city.name).replace('{district}', city.district)}`;
 }
 
+function formatList(items = [], limit = 3) {
+  const clean = items.filter(Boolean).slice(0, limit);
+  if (clean.length === 0) return '';
+  if (clean.length === 1) return clean[0];
+  if (clean.length === 2) return `${clean[0]} and ${clean[1]}`;
+  return `${clean.slice(0, -1).join(', ')}, and ${clean[clean.length - 1]}`;
+}
+
+function normalizeCopy(text = '') {
+  return text
+    .replace(/the local the local economy economy/gi, 'the local economy')
+    .replace(/the local economy economy/gi, 'the local economy')
+    .replace(/the a mix of local industries economy/gi, 'the local economy')
+    .replace(/a mix of local industries economy/gi, 'local economy')
+    .replace(/\bbfsi\b/g, 'BFSI')
+    .replace(/\baiims\b/g, 'AIIMS')
+    .replace(/\biit\b/g, 'IIT')
+    .replace(/\biim\b/g, 'IIM')
+    .replace(/\bit\b(?=\s+and|\s+services|\s+sector|\s+industry|,|\.)/g, 'IT')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function buildFallbackLongDescription(city, stateName, servicePage) {
+  const examLead = formatList(city.topExams || [], 3) || 'the entrance exams students commonly plan for';
+  const industryLead = city.industries || 'the local economy';
+  return `${servicePage.title} in ${city.name} is delivered with local context built around ${industryLead}, nearby colleges, and entrance pathways such as ${examLead}. GCDA offers online sessions across ${city.district} and ${stateName}, with in-person support when needed.`;
+}
+
+function buildFallbackWhyItMatters(city, servicePage) {
+  const examLead = formatList(city.topExams || [], 2) || 'major entrance exams';
+  return `In ${city.name}, ${servicePage.title.toLowerCase()} works best when advice reflects local colleges, budget realities, and exam timelines such as ${examLead}. GCDA combines assessment-led guidance with city-specific context so families and professionals get decisions they can actually act on.`;
+}
+
+function buildStudentNote(city, stateName) {
+  const examLead = formatList(city.topExams || [], 3) || 'relevant entrance exams';
+  const collegeLead = formatList(city.topColleges || [], 2) || 'nearby colleges';
+  return `Students in ${city.name}, ${stateName} usually compare local options like ${collegeLead} while planning for ${examLead}. GCDA helps families connect aptitude, interests, and realistic pathways so decisions are based on fit and evidence instead of only marks or peer pressure.`;
+}
+
+function buildProfessionalNote(city) {
+  const industryLead = city.industries || 'the local economy';
+  return `Working professionals in ${city.name} commonly use GCDA for career transitions, MBA or executive-program planning, resume positioning, and interview preparation. Guidance is calibrated to ${industryLead} and is scheduled around work hours through flexible online sessions.`;
+}
+
+function buildDeliveryNote(city, stateName) {
+  return `GCDA delivers this service through secure online video sessions across ${city.name}, ${city.district}, and ${stateName}, with in-person support available on request. Families typically use evening or weekend slots, while working professionals often prefer short consults outside office hours.`;
+}
+
+function getCleanCityText(text, fallbackBuilder) {
+  const raw = text || '';
+  const normalized = normalizeCopy(raw);
+  if (
+    !normalized ||
+    /the local the local economy economy|the local economy economy|the a mix of local industries economy|a mix of local industries economy|\bbfsi\b|\btypically plan around\s+[a-z]/i.test(raw)
+  ) {
+    return fallbackBuilder();
+  }
+  return normalized;
+}
+
+function getCoverageArea(city, stateName) {
+  const district = (city.district || '').trim();
+  if (!district || district.toLowerCase() === city.name.toLowerCase()) {
+    return `${city.name} and ${stateName}`;
+  }
+  return `${city.name} and ${district}`;
+}
+
 export function generateMetadata({ params }) {
   const parsed = parseSlug(params.slug);
   if (!parsed) return { title: 'Not found' };
@@ -300,7 +369,7 @@ function StateHub({ stateSlug, state }) {
             <span className="eyebrow">{state.region}</span>
             <h1>{`Career Counselling in ${state.name}`}</h1>
             <p className="page-hero-copy">
-              Looking for career counselling in {state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across {cities.length} {state.name} cities. Sessions are available online across {state.name} and in-person.
+              {`Looking for career counselling in ${state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across ${cities.length} ${state.name} cities. Sessions are available online across ${state.name} and in-person.`}
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
@@ -316,7 +385,7 @@ function StateHub({ stateSlug, state }) {
       <section className="section section-tight-top">
         <div className="container">
           <AnswerBlock>
-            GCDA provides career counselling in {state.name} across {cities.length} cities. We offer online video sessions for students, parents, and working professionals in {state.name}, plus in-person sessions when needed. Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a personalised roadmap.
+            {`GCDA provides career counselling in ${state.name} across ${cities.length} cities. We offer online video sessions for students, parents, and working professionals in ${state.name}, plus in-person sessions when needed. Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a personalised roadmap.`}
           </AnswerBlock>
         </div>
       </section>
@@ -326,7 +395,7 @@ function StateHub({ stateSlug, state }) {
           <SectionHeader
             eyebrow={`${state.name} cities`}
             title={`Career counselling across ${state.name}`}
-            description={`We serve ${cities.length} cities in ${state.name}. Click any city to see locally relevant guidance, top colleges, entrance exams, and city-specific FAQs — across all 7 GCDA services.`}
+            description={`We serve ${cities.length} cities in ${state.name}. Click any city to see locally relevant guidance, top colleges, entrance exams, and city-specific FAQs — across all ${SERVICE_SLUGS.length} GCDA services.`}
           />
           {cities.length > 0 ? (
             <div className="card-grid city-grid">
@@ -474,24 +543,31 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     .slice(0, 6);
 
   // Local notes from indiaLocations.js (city-specific for student/professional)
-  // These are pre-generated unique paragraphs per city. We keep them as the
-  // "Why this matters in {city}" section content.
-  const studentNote = city.studentNote;
-  const professionalNote = city.professionalNote;
-  const deliveryNote = city.deliveryNote;
+  // We normalize visible copy and fall back to controlled templates when
+  // generated content contains scaling artifacts.
+  const studentNote = buildStudentNote(city, stateName);
+  const professionalNote = buildProfessionalNote(city);
+  const deliveryNote = buildDeliveryNote(city, stateName);
 
   // Per-service, per-city unique longDescription and whyItMatters from
-  // /data/cityServiceContent.js. Falls back to the shared base service
-  // description if no per-city content is found.
+  // /data/cityServiceContent.js. We normalize text and fall back to cleaner
+  // service-aware templates when generated content contains artifacts.
   const cityKey = stateSlug + '/' + citySlug;
   const serviceCityContent = (CITY_SERVICE_CONTENT[serviceSlug] || {})[cityKey];
-  const longDescription = serviceCityContent?.longDescription
+  const rawLongDescription = serviceCityContent?.longDescription
     || baseService?.longDescription
     || servicePage.heroLead
     || servicePage.shortDescription;
-  const whyItMatters = serviceCityContent?.whyItMatters
+  const rawWhyItMatters = serviceCityContent?.whyItMatters
     || baseService?.whyItMatters
     || null;
+  const longDescription = getCleanCityText(
+    rawLongDescription,
+    () => buildFallbackLongDescription(city, stateName, servicePage)
+  );
+  const whyItMatters = rawWhyItMatters
+    ? getCleanCityText(rawWhyItMatters, () => buildFallbackWhyItMatters(city, servicePage))
+    : buildFallbackWhyItMatters(city, servicePage);
 
   return (
     <>
@@ -508,9 +584,9 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
             <div className="hero-proof">
-              <span>Online sessions across {city.name}</span>
-              <span>in-person {city.name}</span>
-              <span>50K+ career sessions delivered</span>
+              <span>{`Online sessions across ${city.name}`}</span>
+              <span>{`· In-person in ${city.name}`}</span>
+              <span>· 50K+ career sessions delivered</span>
             </div>
           </div>
           <div className="surface-card media-card">
@@ -523,7 +599,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            {`${servicePage.title} in ${city.name} from GCDA is a structured, mentor-led service available online across ${city.name} and ${city.district}, with in-person sessions when needed. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a written action plan.`}
+            {`${servicePage.title} in ${city.name} from GCDA is a structured, mentor-led service available online across ${getCoverageArea(city, stateName)}, with in-person sessions when needed. ${servicePage.shortDescription} Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a written action plan.`}
           </AnswerBlock>
         </div>
       </section>
@@ -827,7 +903,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           <SectionHeader
             eyebrow="All GCDA services"
             title={`Other GCDA services in ${city.name}`}
-            description="Every city page covers one GCDA service. Use the links below to switch to any of the other 6 services for the same city."
+            description={`Every city page covers one GCDA service. Use the links below to switch to any of the other ${SERVICE_SLUGS.length - 1} services for the same city.`}
             center
           />
           <div className="card-grid services-cross-grid">

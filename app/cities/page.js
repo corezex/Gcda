@@ -57,6 +57,8 @@ const citiesBreadcrumbs = [
 ];
 
 export default function CitiesHubPage() {
+  const visibleStates = STATES.filter((s) => (s.cityCount || 0) > 0);
+
   return (
     <>
       <section className="page-hero">
@@ -94,14 +96,14 @@ export default function CitiesHubPage() {
       <section className="section">
         <div className="container">
           <div className="card-grid city-grid">
-            {STATES.map((s) => (
+            {visibleStates.map((s) => (
               <article className="card city-card" key={s.slug}>
                 <div className="card-body">
                   <span className="mini-label">{s.region}</span>
                   <h3><Link href={`/${s.slug}`}>{s.name}</Link></h3>
-                  <p className="city-state">Capital: {s.capital} • {s.cityCount} cities</p>
+                  <p className="city-state">{`Capital: ${s.capital} • ${s.cityCount} cities`}</p>
                   <p className="city-blurb">
-                    GCDA offers online career counselling and career assessments across {s.cityCount} {s.name} cities. Sessions are available online and in-person.
+                    {`GCDA offers online career counselling and career assessments across ${s.cityCount} ${s.name} cities. Sessions are available online and in-person.`}
                   </p>
                   <Link href={`/${s.slug}`} className="text-link">View {s.name} cities →</Link>
                 </div>
@@ -117,7 +119,7 @@ export default function CitiesHubPage() {
       />
 
       <JsonLd id="ld-breadcrumb-cities" data={breadcrumbSchema(citiesBreadcrumbs)} />
-      <JsonLd id="ld-cities-collection" data={citiesCollectionSchema(STATES)} />
+      <JsonLd id="ld-cities-collection" data={citiesCollectionSchema(visibleStates)} />
     </>
   );
 }
