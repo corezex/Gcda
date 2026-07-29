@@ -476,7 +476,10 @@ h4 {
 }
 
 @media (max-width: 860px) {
-  .nav-dropdown { display: block; width: 100%; }
+  .nav-dropdown {
+    display: block;
+    width: 100%;
+  }
   .nav-dropdown-label {
     width: 100%;
     justify-content: space-between;
@@ -485,15 +488,24 @@ h4 {
   .nav-dropdown-label.active { background: var(--secondary-softer); }
   .nav-dropdown-menu {
     position: static;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
     box-shadow: none;
     border: 0;
     background: var(--secondary-softer);
     border-radius: 14px;
     margin-top: 0.4rem;
-    min-width: 0;
-    max-width: none;
-    max-height: none;
-    overflow: visible;
+    padding: 0.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .nav-dropdown-item {
+    width: 100%;
+    align-items: flex-start;
   }
 }
 
