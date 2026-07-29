@@ -107,6 +107,43 @@ export default function HomePage() {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
+            eyebrow="Why families trust GCDA"
+            title="Trust signals that matter before you book"
+            description="We use real process signals — not review-star markup — to help students, parents, and professionals understand why our guidance is dependable."
+            center
+          />
+          <div className="card-grid process-grid">
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Mumbai-based since 2013</h3>
+                <p>GCDA has been supporting Indian students, parents, and professionals for over a decade with a structured, guidance-first approach.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>50K+ career sessions delivered</h3>
+                <p>Our experience comes from thousands of real education and career decisions across stream selection, degree planning, and working-professional transitions.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Assessment-led, not guesswork-led</h3>
+                <p>We use structured assessments, mentor conversations, and practical option shortlists so recommendations are grounded in evidence rather than opinion alone.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Transparent plans and real contact details</h3>
+                <p>Pricing, address, phone, WhatsApp, legal pages, and contact methods are visible on the site so families know exactly how to reach and evaluate us.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
             eyebrow="What we do"
             title="Core services designed to bring clarity and direction"
             description="Our service mix is built around assessment-led counselling, practical planning, and outcome-focused support."

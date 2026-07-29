@@ -731,6 +731,41 @@ export default function ServiceDetailPage({ params }) {
         </div>
       </section>
 
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
+              eyebrow="Privacy and trust"
+              title="What to expect from the process"
+              description="Good counselling should feel structured, transparent, and respectful of personal information from the first interaction onward."
+            />
+            <div className="stack-list">
+              <article className="feature-row">
+                <h3>Confidentiality matters</h3>
+                <p>Student, parent, graduate, and working-professional discussions are treated as private. We only use the information necessary to assess the situation, guide the decision, and provide the right next steps.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Clear scope before booking</h3>
+                <p>We try to make the right service and plan clear before the session begins, so clients know whether they need stream support, degree selection, assessment, or working-professional guidance.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Evidence over guesswork</h3>
+                <p>Where useful, assessments support the conversation — but they do not replace judgment, context, or practical planning. The aim is better decisions, not personality labels.</p>
+              </article>
+            </div>
+          </div>
+          <div className="info-panel">
+            <h3>What happens after you enquire</h3>
+            <ul className="bullet-list compact">
+              <li>Your requirement is reviewed and matched to the right service area</li>
+              <li>The most suitable plan or session format is suggested clearly</li>
+              <li>A consultation, assessment, or next-step conversation is scheduled</li>
+              <li>You receive structured guidance and a clearer action path</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       {/* ============ FAQ ============ */}
       <section className="section alt-section" id="faq">
         <div className="container narrow-center-wide">

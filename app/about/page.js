@@ -216,6 +216,47 @@ export default function AboutPage() {
         <div className="container two-column">
           <div>
             <SectionHeader
+              eyebrow="How trust is earned"
+              title="The practical trust signals families look for"
+              description="In counselling, trust should come from visible process quality, real contactability, and honest guidance — not only from claims."
+            />
+            <div className="stack-list">
+              <article className="feature-row">
+                <h3>Real operating footprint</h3>
+                <p>GCDA is Mumbai-based, publicly contactable, and visible through its address, phone, email, plans, legal pages, and service structure. Families can verify how to reach us before they ever book.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Structured, not improvised counselling</h3>
+                <p>Our work is built around intake, assessment where relevant, mentor interpretation, shortlisting, and written next steps. That structure is what makes the guidance more dependable than one-off advice.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Audience-specific expertise</h3>
+                <p>We do not treat class 10 students, class 12 students, graduates, and working professionals as the same use case. Different stages need different guidance frameworks.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Honest limits and practical recommendations</h3>
+                <p>Good counselling is not about overpromising certainty. It is about narrowing options honestly, identifying realistic next steps, and explaining trade-offs clearly enough for families to act on them.</p>
+              </article>
+            </div>
+          </div>
+          <div className="info-panel">
+            <h3>What we do to keep trust strong</h3>
+            <ul className="bullet-list compact">
+              <li>Keep pricing, service scope, and contact information visible</li>
+              <li>Use assessment data to support, not replace, judgment</li>
+              <li>Review public content against updated exam and salary context</li>
+              <li>Provide written summaries and next steps where relevant</li>
+              <li>Encourage parent-student alignment instead of pressure-driven decisions</li>
+              <li>Link core trust pages openly: privacy, terms, refund policy, and author information</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container two-column">
+          <div>
+            <SectionHeader
               eyebrow="Editorial standards"
               title="How we keep our content honest and useful"
               description="Our blog posts, service descriptions, and city pages follow a strict editorial standard so families can trust what they read."

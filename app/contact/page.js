@@ -115,6 +115,44 @@ export default function ContactPage() {
                 <li><a href={company.whatsappLink} target="_blank" rel="noreferrer">Chat on WhatsApp</a></li>
               </ul>
             </div>
+            <div className="info-panel">
+              <h3>Confidentiality</h3>
+              <p>We treat enquiries, assessment details, and session summaries as private. Only the information needed to schedule and deliver the right guidance is used during the counselling process.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="What happens next"
+            title="What to expect after you contact GCDA"
+            description="A simple process helps families and professionals know how the enquiry moves from first contact to the right service recommendation."
+            center
+          />
+          <div className="card-grid process-grid">
+            <article className="card process-card">
+              <div className="card-body">
+                <span className="step-number">01</span>
+                <h3>We review your requirement</h3>
+                <p>We look at whether the enquiry is about stream selection, degree planning, career assessment, working-professional guidance, or certification.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <span className="step-number">02</span>
+                <h3>We suggest the right service or plan</h3>
+                <p>You are guided toward the most relevant service or pricing option instead of being pushed into a generic package.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <span className="step-number">03</span>
+                <h3>We schedule the next step</h3>
+                <p>Once the fit is clear, we help schedule the consultation, assessment, or follow-up based on the family or professional timeline.</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
