@@ -11,9 +11,9 @@ import { faqSchema, breadcrumbSchema, courseSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Certification in India',
+  title: 'Become a Career Counsellor in India',
   description:
-    'Become certified career counsellor – hybrid online + in-person training, assessments, coaching, business setup across India.',
+    'Learn how to become a career counsellor in India with GCDA certification, training, assessments, mentoring, and practice-ready guidance.',
   keywords: [
     'career counselling certification',
     'career counsellor course',
@@ -21,12 +21,14 @@ export const metadata = {
     'certified career counsellor',
     'career counselling training India',
     'career counsellor certification online',
+    'how to become a career counsellor in India',
+    'qualification for career counsellor in India',
   ],
   alternates: { canonical: '/career-certification' },
   openGraph: {
-    title: 'Career Counselling Certification in India',
+    title: 'Become a Career Counsellor in India',
     description:
-      'Become certified counsellor – hybrid training, assessments, coaching, business setup.',
+      'Learn how to become a career counsellor in India through GCDA certification, hybrid training, and practice-ready mentoring.',
     url: 'https://gcdassociation.org/career-certification',
     type: 'article',
     images: [
@@ -40,8 +42,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling Certification in India',
-    description: 'Certified career counsellor training – hybrid, assessments, coaching.',
+    title: 'Become a Career Counsellor in India',
+    description: 'How to become a career counsellor in India through GCDA certification, training, and mentoring.',
     images: [
       {
         url: '/assets/career-7.webp',
@@ -52,6 +54,33 @@ export const metadata = {
     ],
   },
 };
+
+const counsellorPathRows = [
+  {
+    step: 'Step 1',
+    action: 'Build your foundation',
+    timeline: '0–3 months',
+    outcome: 'Understand counselling principles, the role, and whether this path fits your strengths and interests.',
+  },
+  {
+    step: 'Step 2',
+    action: 'Complete structured certification',
+    timeline: '1–6 months',
+    outcome: 'Learn assessments, career frameworks, ethical practice, and how to work with students, parents, and professionals.',
+  },
+  {
+    step: 'Step 3',
+    action: 'Practice with supervised application',
+    timeline: '1–3 months',
+    outcome: 'Translate theory into real counselling conversations, case handling, and career roadmap creation.',
+  },
+  {
+    step: 'Step 4',
+    action: 'Start or grow your practice',
+    timeline: 'Ongoing',
+    outcome: 'Begin working independently, with institutions, or inside an established counselling ecosystem.',
+  },
+];
 
 const certificationFaqs = [
   {
@@ -78,6 +107,22 @@ const certificationFaqs = [
     q: 'Does the programme help me start a counselling practice?',
     a: 'Yes. The curriculum includes modules on client acquisition, ethical practice, and using assessments in a real-world setting, so you are ready to start practising as soon as you complete the programme.',
   },
+  {
+    q: 'What qualification is required to become a career counsellor in India?',
+    a: 'A bachelor’s degree is the minimum base for the GCDA certification pathway. What matters next is structured training in counselling principles, assessments, ethical practice, and how to guide real student or professional decisions.',
+  },
+  {
+    q: 'Do I need a psychology degree to become a career counsellor?',
+    a: 'No. A psychology background helps, but it is not mandatory for every career counselling role. Graduates from education, HR, business, and other disciplines can still build competence through proper certification, mentoring, and supervised practice.',
+  },
+  {
+    q: 'How long does it take to become a career counsellor?',
+    a: 'The timeline depends on your background and how quickly you move from training into practice. Most candidates need a structured learning phase, followed by guided application and case handling before they feel confident advising independently.',
+  },
+  {
+    q: 'What kind of career path can a certified career counsellor build?',
+    a: 'Certified career counsellors can work independently, with schools, colleges, NGOs, edtech companies, training institutes, and coaching ecosystems. Some focus on students after 10th or 12th, while others build expertise in working-professional guidance or assessments.',
+  },
 ];
 
 export default function CareerCertificationPage() {
@@ -94,9 +139,9 @@ export default function CareerCertificationPage() {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">Certification Programme</span>
-            <h1>Begin your journey to become a certified career counsellor.</h1>
+            <h1>How to Become a Certified Career Counsellor in India</h1>
             <p className="page-hero-copy">
-              A comprehensive certification programme designed to equip you with the knowledge, hands-on practice, and confidence to guide students and working professionals towards informed, fulfilling career decisions.
+              Learn how to become a career counsellor in India through a structured certification programme that covers counselling foundations, assessment tools, mentoring techniques, and the practical steps required to start guiding students and professionals with confidence.
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Enquire Now</Link>
@@ -112,7 +157,7 @@ export default function CareerCertificationPage() {
       <section className="section section-tight-top">
         <div className="container narrow-center">
           <AnswerBlock>
-            The GCDA Career Counselling Certification is a comprehensive programme for aspiring and practising counsellors. It covers career counselling principles, assessment tools, coaching techniques, and the business of running a counselling practice — delivered in a hybrid (online + in-person) format so you can practise as soon as you complete the programme. Open to graduates in any discipline.
+            To become a career counsellor in India, you need a strong foundation in guidance frameworks, assessment interpretation, counselling conversations, and ethical practice. The GCDA Career Counselling Certification is designed to build those skills through hybrid training, practical application, and a practice-ready roadmap for graduates from any discipline.
           </AnswerBlock>
         </div>
       </section>
@@ -122,14 +167,14 @@ export default function CareerCertificationPage() {
           <div>
             <SectionHeader
               eyebrow="Why get certified"
-              title="Begin your path with a career counselling course"
-              description="Our comprehensive programme is designed to equip you with the knowledge and skills needed to become a certified career counsellor."
+              title="How to become a career counsellor in India"
+              description="Our certification is designed for people who want a practical route into career counselling, not only a theoretical overview."
             />
             <p>
-              Are you passionate about helping others navigate their career paths? Throughout our Career Counselling Course, you&apos;ll gain invaluable theoretical insights into various career options. What sets us apart? Our hands-on approach integrates interactive sessions where you can apply counselling techniques in simulated scenarios.
+              A strong career counsellor needs more than good intentions. The role requires structured listening, assessment literacy, career-pathway knowledge, parent and student communication skills, and the ability to turn confusion into a practical action plan.
             </p>
             <p>
-              This practical aspect ensures a deep understanding of theoretical foundations while honing essential skills required to excel in the field. By the programme&apos;s conclusion, you&apos;ll be fully prepared to embark on a career as a professional career counsellor, guiding individuals towards informed and fulfilling career decisions.
+              GCDA&apos;s certification helps you build that foundation step by step. The programme combines theory, application, and practice so you can understand the role clearly and move toward real counselling work with more confidence.
             </p>
           </div>
           <div className="info-panel">
@@ -148,9 +193,43 @@ export default function CareerCertificationPage() {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
+            eyebrow="Step-by-step path"
+            title="A practical roadmap to becoming a career counsellor"
+            description="Use this pathway to understand the qualification base, the certification stage, and how practice usually develops after training."
+            center
+          />
+          <div className="table-wrap">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Step</th>
+                  <th>What to do</th>
+                  <th>Typical timeline</th>
+                  <th>Main outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                {counsellorPathRows.map((row) => (
+                  <tr key={row.step}>
+                    <td><strong>{row.step}</strong></td>
+                    <td>{row.action}</td>
+                    <td>{row.timeline}</td>
+                    <td>{row.outcome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="table-caption">Step-by-step path for aspiring career counsellors in India.</p>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader
             eyebrow="The role"
             title="What does a career counsellor do?"
-            description="As a career counsellor, you play a crucial role in guiding students and working professionals through their career journeys."
+            description="As a career counsellor, you guide students, parents, graduates, and professionals through high-stakes education and career decisions."
             center
           />
           <div className="card-grid process-grid">
@@ -179,13 +258,13 @@ export default function CareerCertificationPage() {
         </div>
       </section>
 
-      <section className="section">
+      <section className="section alt-section">
         <div className="container two-column">
           <div>
             <SectionHeader
               eyebrow="Who should enroll"
-              title="Who is this certification for?"
-              description="Ideal for individuals passionate about mentoring and guiding others in their career paths."
+              title="Qualifications and fit for aspiring career counsellors"
+              description="This programme is designed for people who want to understand the role seriously and build the capability to guide real education and career decisions."
             />
             <ul className="bullet-list">
               <li><strong>Open to all:</strong> Welcomes anyone eager to help others navigate their careers, including retired professionals looking to leverage their experience.</li>
@@ -199,6 +278,34 @@ export default function CareerCertificationPage() {
                 <li>Passion for helping others</li>
                 <li>Good communication skills</li>
               </ul>
+            </div>
+            <div className="table-wrap" style={{ marginTop: '1.5rem' }}>
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    <th>Area</th>
+                    <th>What matters most</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Qualification</strong></td>
+                    <td>A bachelor&apos;s degree gives the minimum base; specialised training builds counselling capability.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Psychology degree</strong></td>
+                    <td>Helpful, but not mandatory for every role. Education, HR, and other graduates can still enter the field with structured certification.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Practical readiness</strong></td>
+                    <td>Assessment interpretation, communication, and ethical practice matter as much as theory.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Career path</strong></td>
+                    <td>You can work independently or with schools, colleges, NGOs, edtech platforms, and guidance ecosystems.</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="button-row" style={{ marginTop: '1.5rem' }}>
               <a
@@ -233,19 +340,22 @@ export default function CareerCertificationPage() {
         </div>
       </section>
 
-      <section className="section alt-section">
+      <section className="section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
             <img src="/assets/career-3.webp" alt="GCDA Career Counselling Workshop" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
           <div>
             <SectionHeader
-              eyebrow="Transform your career"
-              title="Become a certified career counsellor in India"
-              description="Discover a comprehensive training programme designed to equip you with a thorough grasp of career counselling principles, assessment tools, and effective coaching techniques."
+              eyebrow="Career path"
+              title="What kind of career can a certified counsellor build?"
+              description="Career counsellors in India can work with students, parents, institutions, or professionals, depending on their strengths, network, and the depth of practice they develop after training."
             />
             <p>
-              Delve into diverse counselling strategies and personalized approaches tailored to enhance your skills as a proficient career counsellor. Enrol today to expand your expertise and advance your career in guiding individuals towards successful professional paths.
+              Some certified counsellors build independent practices, while others work with schools, colleges, NGOs, edtech firms, training institutes, or broader guidance ecosystems. Your growth depends on the audience you want to serve, your credibility, and how consistently you convert training into practice.
+            </p>
+            <p>
+              The strongest long-term outcomes usually come from combining certification with supervised case work, strong communication, ethical standards, and specialisation in areas like stream selection, after-12th planning, assessments, or working-professional transitions.
             </p>
             <div className="button-row" style={{ marginTop: '1rem' }}>
               <Link href="/contact" className="button button-primary">Apply Now</Link>

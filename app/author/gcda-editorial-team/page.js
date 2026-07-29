@@ -60,6 +60,10 @@ const breadcrumbs = [
 export default function AuthorPage() {
   const posts = blogPosts;
   const hasPosts = posts.length > 0;
+  const latestPosts = posts
+    .slice()
+    .sort((a, b) => new Date(b.dateModified) - new Date(a.dateModified))
+    .slice(0, 5);
 
   return (
     <>
@@ -145,17 +149,22 @@ export default function AuthorPage() {
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
-            eyebrow="Our articles"
-            title="Career guidance written by GCDA Editorial Team"
-            description={hasPosts ? `${posts.length} curated guides appear below across stream selection, courses, exams, working professionals, and career counselling.` : 'There are no published GCDA blog articles right now. New curated content can be added later.'}
+            eyebrow="Latest articles"
+            title="Recent career guidance from GCDA Editorial Team"
+            description={hasPosts ? `Showing the latest 5 of ${posts.length} curated guides across stream selection, courses, exams, working professionals, and career counselling.` : 'There are no published GCDA blog articles right now. New curated content can be added later.'}
             center
           />
           {hasPosts ? (
-            <div className="card-grid blog-grid">
-              {posts.map((post) => (
-                <BlogCard key={post.slug} post={post} />
-              ))}
-            </div>
+            <>
+              <div className="card-grid blog-grid">
+                {latestPosts.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
+                ))}
+              </div>
+              <div className="center-cta" style={{ marginTop: '1.5rem' }}>
+                <Link href="/blog" className="button button-secondary">View All Blogs</Link>
+              </div>
+            </>
           ) : (
             <div className="narrow-center" style={{ textAlign: 'center' }}>
               <p>The editorial team page remains live, but all current blog posts have been removed.</p>

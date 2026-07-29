@@ -37,6 +37,180 @@ function getServiceCityUrl(serviceSlug, stateName, cityName) {
   return pattern.urlPattern(stateSlug, citySlug);
 }
 
+const SERVICE_INTENT_CONTENT = {
+  'career-assessment': {
+    metadataTitle: 'Career Assessment Test India – Aptitude & Psychometric',
+    metadataDescription:
+      'Career assessment test in India with aptitude, interest, and psychometric tools for students choosing streams, degrees, and careers.',
+    answerBlock:
+      'GCDA offers a career assessment test in India that combines aptitude, interest, and psychometric inputs for students, parents, and graduates. Instead of a generic personality quiz, the service helps you understand fit for streams, degrees, and career paths through structured assessment plus mentor interpretation.',
+    section: {
+      eyebrow: 'Assessment clarity',
+      title: 'Career assessment test for students: what to expect',
+      description: 'This page already covers career assessment in India. The key is to make the student-facing decision language more explicit: what is tested, what the report means, and when to use it.',
+      items: [
+        {
+          title: 'What does a career assessment test for students include?',
+          body: 'A serious student assessment should combine aptitude, interests, and psychometric indicators instead of relying on a single label. At GCDA, the goal is not to tell a student they are only “creative” or “analytical”, but to show which streams, degrees, and career clusters fit best and why.',
+        },
+        {
+          title: 'Aptitude test vs psychometric test vs career assessment',
+          body: 'An aptitude test measures capacity in areas like numbers, logic, or verbal reasoning. A psychometric test looks at behavioural and motivational traits. A full career assessment combines both, then translates them into educational and career decisions with context and mentoring.',
+        },
+        {
+          title: 'When should a class 10 or class 12 student take a career assessment?',
+          body: 'The best time is before a high-stakes decision like stream selection after class 10 or degree selection after class 12. It is also useful when a student is stuck between multiple options and the family wants evidence rather than opinions.',
+        },
+      ],
+    },
+    table: {
+      headers: ['Option', 'What it measures', 'Best used for'],
+      rows: [
+        ['Aptitude test', 'Numerical, verbal, abstract, and reasoning strengths', 'Checking subject and problem-solving fit'],
+        ['Psychometric test', 'Behavioural tendencies, interests, work style, and motivation', 'Understanding preference and personality patterns'],
+        ['Full career assessment', 'Aptitude + psychometric + mentor interpretation', 'Choosing streams, degrees, colleges, and career pathways'],
+      ],
+      caption: 'Assessment formats compared for students and parents making education decisions.',
+    },
+    extraFaqs: [
+      {
+        q: 'What is a career assessment test for students?',
+        a: 'A career assessment test for students is a structured process that evaluates aptitude, interests, and psychometric factors so the student can choose the right stream, degree, or career direction with evidence instead of guesswork.',
+      },
+      {
+        q: 'What is a psychometric test for students?',
+        a: 'A psychometric test looks at behavioural patterns, preferences, and traits that influence how a student learns, decides, and works. It is useful when combined with aptitude and mentor interpretation, not as a standalone final answer.',
+      },
+      {
+        q: 'Is an aptitude test enough to choose a stream?',
+        a: 'Usually no. Aptitude is important, but stream and degree decisions are better when aptitude is combined with interests, motivation, personality, and the practical realities of the student’s goals and family context.',
+      },
+      {
+        q: 'How long does a career assessment take from test to recommendation?',
+        a: 'Most students complete the test in 90 to 120 minutes, followed by scoring, report preparation, and a mentor debrief. The outcome is not just a score sheet but a practical shortlist and next-step direction.',
+      },
+    ],
+  },
+  'stream-selection-guidance': {
+    metadataTitle: 'Career Counselling for Class 10 – Stream Selection',
+    metadataDescription:
+      'Career counselling for class 10 students choosing Science, Commerce, Arts, diploma, and after-10th pathways with assessment-led guidance.',
+    answerBlock:
+      'GCDA provides career counselling for class 10 students who need clarity on Science, Commerce, Arts, diploma, and after-10th pathways. The service combines assessment, parent-student alignment, and realistic career mapping so the stream decision is based on fit, not only marks or pressure.',
+    section: {
+      eyebrow: 'After class 10',
+      title: 'Career counselling for class 10 students choosing a stream',
+      description: 'This page already solves the class-10 stream decision. The goal is to state that clearly in exact parent and student language so search intent and page intent match perfectly.',
+      items: [
+        {
+          title: 'Career counselling for class 10 students',
+          body: 'Class 10 students usually need help with one specific decision: which stream or pathway keeps the strongest future options open without creating a poor-fit workload. Good counselling helps students and parents compare fit, effort, and long-term consequences together.',
+        },
+        {
+          title: 'How to choose a stream after 10th',
+          body: 'The correct way to choose a stream after 10th is to compare aptitude, interest, future pathways, and family context. Marks matter, but they should not be treated as the only signal because long-term success depends on sustained fit and motivation.',
+        },
+        {
+          title: 'Science, Commerce, Arts, or diploma after class 10',
+          body: 'The best path depends on the student’s profile. Science offers flexibility for technical and medical routes, Commerce supports business and finance paths, Arts supports law, design, psychology, and public-facing careers, while diploma routes can be smart for hands-on learners who want earlier technical specialization.',
+        },
+      ],
+    },
+    table: {
+      headers: ['Path after class 10', 'Best for', 'Typical next step'],
+      rows: [
+        ['Science', 'Students strong in math, science, and analytical work', 'JEE, NEET, research, engineering, medicine, and tech-related degrees'],
+        ['Commerce', 'Students interested in business, finance, economics, or management', 'BCom, BBA, CA, CMA, CS, finance, analytics, and law-linked routes'],
+        ['Arts / Humanities', 'Students drawn to people, writing, design, law, psychology, or public issues', 'BA, law, design, psychology, media, liberal arts, and policy paths'],
+        ['Diploma / vocational', 'Students who prefer applied learning or earlier specialization', 'Polytechnic, ITI, lateral-entry, and skill-first professional routes'],
+      ],
+      caption: 'Class-10 stream and pathway comparison for students and parents.',
+    },
+    extraFaqs: [
+      {
+        q: 'Does a class 10 student really need career counselling?',
+        a: 'Career counselling is useful when the student is confused between multiple streams, when family pressure is high, or when marks alone are not enough to make a confident decision. It reduces costly mistakes before class 11 begins.',
+      },
+      {
+        q: 'How do we choose between Science and Commerce after class 10?',
+        a: 'Compare aptitude, interest, academic stamina, and the careers each path opens. If the student is only choosing Science because it sounds prestigious, that is usually a weak reason. A structured comparison is much safer.',
+      },
+      {
+        q: 'Can counselling help if my child wants Arts but the family wants Science?',
+        a: 'Yes. This is exactly where stream-selection guidance helps. A structured assessment plus family alignment conversation gives parents and students a more defensible basis for the decision.',
+      },
+      {
+        q: 'Do you cover diploma and vocational routes after 10th?',
+        a: 'Yes. Students do not always need a default class 11–12 route. In some cases, polytechnic, ITI, or other diploma pathways are more practical, affordable, and better aligned to the student’s style of learning.',
+      },
+    ],
+  },
+  'degree-selection-guidance': {
+    metadataTitle: 'Career Counselling for Class 12 – Degree Selection',
+    metadataDescription:
+      'Career counselling for class 12 students choosing the right course, degree, and college after 12th with exam and shortlist guidance.',
+    answerBlock:
+      'GCDA provides career counselling for class 12 students who need help choosing the right course, degree, and college after 12th. The service combines profile fit, entrance-exam planning, and college shortlisting so students and parents can compare after-12th options with more clarity and less confusion.',
+    section: {
+      eyebrow: 'After class 12',
+      title: 'Career counselling for class 12 students choosing a course',
+      description: 'This page already handles after-12th decision support. The improvement needed is explicit wording around class 12, course selection, degree fit, and stream-specific outcomes.',
+      items: [
+        {
+          title: 'Career counselling for class 12 students',
+          body: 'Class 12 students usually need help with course selection, college shortlisting, and entrance-exam planning all at the same time. The strongest counselling process narrows options quickly without forcing the student into a degree that looks prestigious but fits poorly.',
+        },
+        {
+          title: 'How to choose the right course after 12th',
+          body: 'The best way to choose a course after 12th is to compare aptitude, interest, employability, cost, and exit options. Students should not evaluate a degree only by brand or salary claims — they should evaluate how the course fits the student’s strengths and long-term direction.',
+        },
+        {
+          title: 'Degree selection after PCM, PCB, Commerce, and Arts',
+          body: 'After-12th decisions differ by stream. PCM students compare engineering, design, architecture, defence, and pure sciences; PCB students compare medicine, allied health, and life sciences; Commerce students compare CA, BCom, BBA, and analytics; Arts students compare law, psychology, design, media, and liberal arts pathways.',
+        },
+      ],
+    },
+    table: {
+      headers: ['Class 12 background', 'Typical degree families', 'Key exams or decisions'],
+      rows: [
+        ['PCM', 'Engineering, design, architecture, pure sciences, defence, computing', 'JEE Main, JEE Advanced, BITSAT, UCEED, NATA, NDA'],
+        ['PCB', 'MBBS, allied health, biotech, psychology, nutrition, life sciences', 'NEET, CUET, health-university admissions'],
+        ['Commerce', 'BCom, BBA, BMS, CA, CMA, CS, economics, analytics, law', 'CUET, IPMAT, CA Foundation, CLAT'],
+        ['Arts', 'Law, psychology, design, media, liberal arts, policy, social sciences', 'CUET, CLAT, design entrances, university admissions'],
+      ],
+      caption: 'After-12th degree and exam map by academic background.',
+    },
+    extraFaqs: [
+      {
+        q: 'Do class 12 students need career counselling before college admissions?',
+        a: 'Yes, especially when they are choosing between multiple degrees, colleges, or exam paths. Counselling helps the student avoid making a 3- to 4-year decision based only on marks, hype, or peer movement.',
+      },
+      {
+        q: 'How do I choose the right course after 12th?',
+        a: 'Start by comparing aptitude, interests, budget, entrance-exam routes, and long-term options. A good course choice should make sense not only today, but also if the student later wants internships, placements, or higher studies.',
+      },
+      {
+        q: 'Can career counselling help with college shortlisting after 12th?',
+        a: 'Yes. College shortlisting is one of the most valuable parts of after-12th counselling because it converts general preference into realistic options matched to marks, rank, budget, board, and location.',
+      },
+      {
+        q: 'How many colleges should a student shortlist after class 12?',
+        a: 'Most students should build a shortlist with aspirational, realistic, and safe options. The right number depends on exam route and stream, but the shortlist should protect against overconfidence and last-minute panic.',
+      },
+    ],
+  },
+};
+
+function getServiceIntentContent(serviceSlug) {
+  return SERVICE_INTENT_CONTENT[serviceSlug] || null;
+}
+
+function getServiceAnswerBlock(service) {
+  const content = getServiceIntentContent(service.slug);
+  if (content?.answerBlock) return content.answerBlock;
+  return `${service.title} at GCDA is a structured, mentor-led service that helps students, parents, and working professionals make confident, evidence-based career decisions. Sessions are available online across India and in-person in your city, with personalised plans, certified mentors, and proven frameworks.`;
+}
+
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -47,14 +221,14 @@ export function generateMetadata({ params }) {
 
   const RICH_TITLES = {
     'personal-counselling': 'Personal Counselling India – 1-on-1 Guidance',
-    'career-assessment': 'Career Assessment India – Aptitude Tests',
+    'career-assessment': 'Career Assessment India – Aptitude & Psychometric',
     'workshops-seminars': 'Workshops & Seminars India – Schools',
-    'stream-selection-guidance': 'Stream Selection India – Science, Commerce, Arts',
-    'degree-selection-guidance': 'Degree Selection India – After 12th Course',
+    'stream-selection-guidance': 'Career Counselling for Class 10 – Stream Selection',
+    'degree-selection-guidance': 'Career Counselling for Class 12 – Degree Selection',
     'working-professionals-guidance': 'Working Professionals Guidance India',
   };
   const title = RICH_TITLES[service.slug] || `${service.title} in India | Expert Career Guidance`;
-  const description = service.shortDescription;
+  const description = getServiceIntentContent(service.slug)?.metadataDescription || service.shortDescription;
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
 
   return {
@@ -119,6 +293,8 @@ export default function ServiceDetailPage({ params }) {
   });
   const faqs = service.faqs || [];
   const popularCities = service.popularCities || [];
+  const intentContent = getServiceIntentContent(service.slug);
+  const pageFaqs = [...faqs, ...(intentContent?.extraFaqs || [])];
 
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
   const pageHeading = getServicePageHeading(service);
@@ -167,9 +343,7 @@ export default function ServiceDetailPage({ params }) {
       {/* ============ ANSWER BLOCK (AEO) ============ */}
       <section className="section section-tight-top">
         <div className="container narrow-center">
-          <AnswerBlock>
-            {`${service.title} at GCDA is a structured, mentor-led service that helps students, parents, and working professionals make confident, evidence-based career decisions. Sessions are available online across India and in-person in your city, with personalised plans, certified mentors, and proven frameworks.`}
-          </AnswerBlock>
+          <AnswerBlock>{getServiceAnswerBlock(service)}</AnswerBlock>
         </div>
       </section>
 
@@ -222,6 +396,48 @@ export default function ServiceDetailPage({ params }) {
           </div>
         </div>
       </section>
+
+      {intentContent ? (
+        <section className="section">
+          <div className="container">
+            <SectionHeader
+              eyebrow={intentContent.section.eyebrow}
+              title={intentContent.section.title}
+              description={intentContent.section.description}
+              center
+            />
+            <div className="stack-list">
+              {intentContent.section.items.map((item) => (
+                <article className="feature-row" key={item.title}>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </article>
+              ))}
+            </div>
+            <div className="table-wrap" style={{ marginTop: '1.5rem' }}>
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    {intentContent.table.headers.map((header) => (
+                      <th key={header}>{header}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {intentContent.table.rows.map((row) => (
+                    <tr key={row[0]}>
+                      {row.map((cell, idx) => (
+                        idx === 0 ? <td key={cell}><strong>{cell}</strong></td> : <td key={cell}>{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="table-caption">{intentContent.table.caption}</p>
+          </div>
+        </section>
+      ) : null}
 
       {/* ============ WHO THIS IS FOR + OUTCOMES ============ */}
       <section className="section">
@@ -524,9 +740,9 @@ export default function ServiceDetailPage({ params }) {
             description="Common questions we receive from students, parents, and working professionals. Don't see yours? Contact us and we will answer."
             center
           />
-          <FAQList items={faqs} />
+          <FAQList items={pageFaqs} />
         </div>
-        <JsonLd id={`ld-faq-${service.slug}`} data={faqSchema(faqs)} />
+        <JsonLd id={`ld-faq-${service.slug}`} data={faqSchema(pageFaqs)} />
       </section>
 
       {/* ============ RELATED SERVICES ============ */}
