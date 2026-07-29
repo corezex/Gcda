@@ -1,5 +1,5 @@
 import { ImageResponse } from 'next/og';
-import { getBlogPostBySlug } from '@/data/blog';
+import { getBlogMetaBySlug } from '@/data/blogMeta';
 
 export const runtime = 'edge';
 export const alt = 'GCDA Career Guidance Blog';
@@ -8,7 +8,7 @@ export const contentType = 'image/png';
 
 // Generate per-post OG image for better CTR (Recommendation #4)
 export default async function Image({ params }) {
-  const post = getBlogPostBySlug(params.slug);
+  const post = getBlogMetaBySlug(params.slug);
 
   const title = post?.title || 'GCDA Career Guidance Blog';
   const category = post?.category || 'Career Guidance';
