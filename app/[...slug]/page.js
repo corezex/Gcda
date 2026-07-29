@@ -311,8 +311,9 @@ export function generateMetadata({ params }) {
     .replace('Dadra and Nagar Haveli and Daman and Diu', 'Dadra & Nagar Haveli')
     .replace('Jammu and Kashmir', 'Jammu & Kashmir');
   const cityLabelMeta = pattern.cityLabel;
-  const title = `${cityLabelMeta} in ${city.name}`;
-  const description = `${cityLabelMeta} in ${city.name}, ${shortStateName} – online & in-person counselling for students & professionals.`;
+  const cityTitleLabel = serviceSlug === 'career-certification' ? 'Career Certification' : cityLabelMeta;
+  const title = `${cityTitleLabel} in ${city.name}`;
+  const description = `${cityTitleLabel} in ${city.name}, ${shortStateName} – online & in-person counselling for students & professionals.`;
   const url = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
 
   return {
@@ -1109,8 +1110,20 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
 
 /* ----------------- Top-level Service Main Page ----------------- */
 function generateServicePageMetadata(serviceSlug, servicePage) {
-  const title = `${servicePage.title} in India: 438 Cities`;
-  const description = servicePage.shortDescription;
+  const TITLE_MAP = {
+    'career-counselling-seminar': 'Career Seminars in India: 438 Cities',
+    'stream-selection-guidance': 'Stream Selection Guidance in India',
+    'degree-selection-guidance': 'Degree Selection Guidance in India',
+    'guidance-for-working-professionals': 'Working Professional Guidance India',
+  };
+  const DESCRIPTION_MAP = {
+    'career-counselling-seminar': 'Interactive career counselling seminars for schools, colleges, parents, and institutions across India.',
+    'stream-selection-guidance': 'Stream selection after 10th for Science, Commerce, Arts, diploma, and future-fit academic choices.',
+    'degree-selection-guidance': 'Degree selection after 12th with course, college, entrance-exam, and long-term career planning support.',
+    'guidance-for-working-professionals': 'Career growth, transition, MBA, and role-positioning support for working professionals across India.',
+  };
+  const title = TITLE_MAP[serviceSlug] || `${servicePage.title} in India`;
+  const description = DESCRIPTION_MAP[serviceSlug] || servicePage.shortDescription;
   const url = `${SITE_URL}/${serviceSlug}`;
   return {
     title,
@@ -1316,7 +1329,7 @@ function MainServicePage({ serviceSlug, servicePage }) {
             center
           />
           <div className="card-grid services-cross-grid">
-            {SERVICE_SLUGS.filter((s) => s !== serviceSlug).map((sSlug) => {
+            {SERVICE_SLUGS.filter((s) => s !== serviceSlug && s !== 'career-counselling').map((sSlug) => {
               const sp = getServicePage(sSlug);
               if (!sp) return null;
               // If this is career-counselling, certification, or any service that has a standalone main page
