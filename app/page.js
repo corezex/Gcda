@@ -112,7 +112,7 @@ export default function HomePage() {
             description="We use real process signals — not review-star markup — to help students, parents, and professionals understand why our guidance is dependable."
             center
           />
-          <div className="card-grid process-grid">
+          <div className="card-grid process-grid trust-grid">
             <article className="card process-card">
               <div className="card-body">
                 <h3>Mumbai-based since 2013</h3>
