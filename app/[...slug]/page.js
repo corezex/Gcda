@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import FAQList from '@/components/FAQList';
@@ -6,7 +6,6 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
-import CityFeePage, { buildCityFeeMetadata } from '@/components/CityFeePage';
 import {
   STATES,
   CITIES_BY_STATE,
@@ -15,7 +14,7 @@ import {
   getStateBySlug,
 } from '@/data/indiaLocations';
 import { services as baseServices, company } from '@/data/site';
-import { CITY_FEE_PAGES, getCityFeePageByRouteSlug, getCityFeePageByStateCity } from '@/data/cityFeePages';
+import { getCityFeePageByRouteSlug } from '@/data/cityFeePages';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
 import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSchema } from '@/data/schema';
 import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
@@ -70,7 +69,7 @@ function parseSlug(slug) {
     const sl = slug[0];
     const cityFeePage = getCityFeePageByRouteSlug(sl);
     if (cityFeePage) {
-      return { type: 'city-fees', page: cityFeePage };
+      return { type: 'city-fees-redirect', page: cityFeePage };
     }
     // Reserved for static pages (handled by their own route)
     if (STANDALONE_SERVICE_SLUGS.has(sl)) return null;
@@ -118,10 +117,6 @@ export function generateStaticParams() {
   // State hub pages
   for (const s of STATES) {
     params.push({ slug: [s.slug] });
-  }
-  // Dedicated city fees pages
-  for (const page of CITY_FEE_PAGES) {
-    params.push({ slug: [page.slug] });
   }
   // City pages for every (service, state, city) combination
   for (const u of getAllCityUrls()) {
@@ -212,12 +207,44 @@ function getCoverageArea(city, stateName) {
   return `${city.name} and ${district}`;
 }
 
+const CITY_PRICE_ROWS = [
+  {
+    plan: 'Stream Selector',
+    fees: 'Rs. 2,999',
+    bestFor: 'Class 8–10 students choosing a stream',
+    outcome: 'A clear stream decision and backup options',
+  },
+  {
+    plan: 'Degree Selector',
+    fees: 'Rs. 3,499',
+    bestFor: 'Class 11–12 students choosing a degree or college path',
+    outcome: 'A realistic after-12th degree and college plan',
+  },
+  {
+    plan: 'Working Professionals',
+    fees: 'Rs. 3,999',
+    bestFor: 'Professionals planning transitions, MBA, or growth strategy',
+    outcome: 'A 90-day professional action plan',
+  },
+];
+
+function getSuggestedPlan(serviceSlug) {
+  if (serviceSlug === 'stream-selection-guidance') return 'Stream Selector';
+  if (serviceSlug === 'degree-selection-guidance') return 'Degree Selector';
+  if (serviceSlug === 'guidance-for-working-professionals') return 'Working Professionals';
+  return 'the plan that matches the decision stage';
+}
+
 export function generateMetadata({ params }) {
   const parsed = parseSlug(params.slug);
   if (!parsed) return { title: 'Not found' };
 
-  if (parsed.type === 'city-fees') {
-    return buildCityFeeMetadata(parsed.page);
+  if (parsed.type === 'city-fees-redirect') {
+    return {
+      title: 'Redirecting...',
+      robots: { index: false, follow: true },
+      alternates: { canonical: parsed.page.cityPage },
+    };
   }
 
   if (parsed.type === 'service-page') {
@@ -333,8 +360,8 @@ export default function DynamicPage({ params }) {
   const parsed = parseSlug(params.slug);
   if (!parsed) notFound();
 
-  if (parsed.type === 'city-fees') {
-    return <CityFeePage page={parsed.page} />;
+  if (parsed.type === 'city-fees-redirect') {
+    permanentRedirect(parsed.page.cityPage);
   }
 
   if (parsed.type === 'service-page') {
@@ -507,7 +534,6 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const stateName = state.name;
   const pageUrl = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
   const cityLabel = pattern.cityLabel;
-  const cityFeePage = getCityFeePageByStateCity(stateSlug, citySlug);
 
   // Get the rich base-service data (for personal-counselling, career-assessment
   // which don't have a servicePages entry) so city pages have full content.
@@ -546,7 +572,17 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const cityUniqueFaqs = (city.faqs && city.faqs.length && typeof city.faqs[0] === 'object')
     ? city.faqs
     : [];
-  const cityFaqs = [...serviceBaseFaqsCity, ...cityUniqueFaqs];
+  const priceFaqs = [
+    {
+      q: `How much does career counselling cost in ${city.name}?`,
+      a: `GCDA career counselling cost in ${city.name} starts at Rs. 2,999 for Stream Selector, Rs. 3,499 for Degree Selector, and Rs. 3,999 for Working Professionals. The right plan depends on whether the decision is after 10th, after 12th, or a working-professional transition.`,
+    },
+    {
+      q: `Are online career counselling charges different in ${city.name}?`,
+      a: `Most clients in ${city.name} use online sessions because they are easier to schedule and still include the same structured decision support. Pricing is based more on guidance scope than on format alone.`,
+    },
+  ];
+  const cityFaqs = [...serviceBaseFaqsCity, ...cityUniqueFaqs, ...priceFaqs];
 
   // Breadcrumbs
   const breadcrumbs = [
@@ -859,24 +895,45 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
-      {cityFeePage ? (
-        <section className="section">
-          <div className="container">
-            <SectionHeader
-              eyebrow="Fees in your city"
-              title={`Career counselling fees in ${city.name}`}
-              description={`Need pricing clarity for ${city.name}? Compare GCDA plans, online guidance, and the right support level for students or professionals in ${city.name}.`}
-              center
-            />
-            <div className="narrow-center" style={{ textAlign: 'center' }}>
-              <p>Use the city pricing page to compare plan fees, understand what affects counselling cost, and see which option usually fits families and professionals in {city.name} best.</p>
-              <div className="button-row" style={{ justifyContent: 'center', marginTop: '1rem' }}>
-                <Link href={`/${cityFeePage.slug}`} className="button button-secondary">View {city.name} Fees</Link>
-              </div>
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Pricing in your city"
+            title={`Career counselling cost in ${city.name}`}
+            description={`GCDA uses the same transparent national pricing in ${city.name}, while the right plan depends on whether you need stream selection, degree planning, or working-professional guidance.`}
+            center
+          />
+          <div className="table-wrap">
+            <table className="comparison-table">
+              <thead>
+                <tr>
+                  <th>Plan</th>
+                  <th>Fees</th>
+                  <th>Best for</th>
+                  <th>Typical outcome</th>
+                </tr>
+              </thead>
+              <tbody>
+                {CITY_PRICE_ROWS.map((row) => (
+                  <tr key={row.plan}>
+                    <td><strong>{row.plan}</strong></td>
+                    <td>{row.fees}</td>
+                    <td>{row.bestFor}</td>
+                    <td>{row.outcome}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="table-caption">{`Career counselling cost in ${city.name}, with the same transparent GCDA plans available online and in-person where relevant.`}</p>
+          <div className="narrow-center" style={{ textAlign: 'center', marginTop: '1.2rem' }}>
+            <p>{`Most clients in ${city.name} choose ${getSuggestedPlan(serviceSlug)} first, but the right choice depends on the decision stage, assessment depth, and whether the family or professional needs a broader action plan.`}</p>
+            <div className="button-row" style={{ justifyContent: 'center', marginTop: '1rem' }}>
+              <Link href="/plan" className="button button-secondary">Compare All Plans</Link>
             </div>
           </div>
-        </section>
-      ) : null}
+        </div>
+      </section>
 
       {/* Seminar types — only on the seminar service city page */}
       {serviceSlug === 'career-counselling-seminar' && servicePage.seminarTypes ? (

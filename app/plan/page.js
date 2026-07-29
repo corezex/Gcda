@@ -7,7 +7,6 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import Link from 'next/link';
 import { plans } from '@/data/site';
-import { CITY_FEE_PAGES } from '@/data/cityFeePages';
 import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -217,29 +216,6 @@ export default function PlanPage() {
           </div>
         </div>
         <JsonLd id="ld-faq-plans" data={faqSchema(planFaqs)} />
-      </section>
-
-      <section className="section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="City pricing"
-            title="Explore career counselling fees in major Indian cities"
-            description="If you want a city-specific pricing page with local exam and college context, use the links below."
-            center
-          />
-          <div className="card-grid city-grid">
-            {CITY_FEE_PAGES.map((page) => (
-              <article className="card city-card" key={page.slug}>
-                <div className="card-body">
-                  <span className="mini-label">{page.state.name}</span>
-                  <h3><Link href={`/${page.slug}`}>Career Counselling Fees in {page.city.name}</Link></h3>
-                  <p className="city-blurb">Compare pricing, plan fit, online vs in-person guidance, and the most relevant local context for {page.city.name}.</p>
-                  <Link href={`/${page.slug}`} className="text-link">Explore {page.city.name} fees →</Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
       </section>
 
       <CTASection
