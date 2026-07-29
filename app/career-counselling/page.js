@@ -147,7 +147,7 @@ export default function CareerCounsellingPage() {
           <SectionHeader
             eyebrow="Explore by city × service"
             title="Find GCDA career counselling in your city"
-            description="We deliver 7 core services across 346 cities. Click any combination below to find a counsellor, assessment, stream, degree, working-professional, seminar, or certification programme in your city."
+            description="We deliver 8 core services across 438 cities. Click any combination below to find a counsellor, assessment, stream, degree, working-professional, seminar, or certification programme in your city."
             center
           />
           <div className="services-mega-grid">
@@ -198,7 +198,7 @@ export default function CareerCounsellingPage() {
             })}
           </div>
           <div className="center-cta">
-            <Link href="/cities" className="text-link">View all 346 cities →</Link>
+            <Link href="/cities" className="text-link">View all 438 cities →</Link>
           </div>
         </div>
       </section>
@@ -239,6 +239,36 @@ export default function CareerCounsellingPage() {
           </div>
         </div>
         <JsonLd id="ld-howto-services" data={howToSchema('How GCDA Career Counselling Works', journeySteps.map((s) => ({ title: s.title, description: s.description })), 'PT90M')} />
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Popular guidance pages"
+            title="Explore high-intent counselling topics"
+            description="These supporting pages answer common search-driven questions around online counselling, parents, assessments, and choosing the right kind of help."
+            center
+          />
+          <div className="card-grid city-grid">
+            {[
+              { href: '/career-counselling-online-india', label: 'Online Career Counselling in India' },
+              { href: '/career-counsellor-near-me', label: 'Career Counsellor Near Me' },
+              { href: '/best-career-counselling-in-india', label: 'Best Career Counselling in India' },
+              { href: '/career-counselling-for-parents', label: 'Career Counselling for Parents' },
+              { href: '/psychometric-test-for-students', label: 'Psychometric Test for Students' },
+              { href: '/aptitude-test-for-students', label: 'Aptitude Test for Students' },
+              { href: '/career-counselling-vs-aptitude-test', label: 'Career Counselling vs Aptitude Test' },
+              { href: '/online-vs-offline-career-counselling', label: 'Online vs Offline Career Counselling' },
+            ].map((item) => (
+              <article className="card city-card" key={item.href}>
+                <div className="card-body">
+                  <h3><Link href={item.href}>{item.label}</Link></h3>
+                  <Link href={item.href} className="text-link">Explore topic →</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
       </section>
 
       <section className="section">

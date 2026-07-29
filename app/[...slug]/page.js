@@ -783,7 +783,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
                 {city.topColleges.map((c, idx) => (
                   <li key={c}>
                     {idx < 2 ? (
-                      <Link href={`/blog/how-to-choose-the-right-stream-after-10th`} className="text-link" title={`Learn more about college options near ${city.name}`}>
+                      <Link href="/blog/how-to-choose-stream-after-10th-2027" className="text-link" title={`Learn more about college options near ${city.name}`}>
                         {c}
                       </Link>
                     ) : idx === 2 ? (
@@ -817,7 +817,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
                   <li key={e}>
                     {idx < 2 ? (
                       <Link
-                        href={e.toLowerCase().includes('jee') ? '/blog/how-to-prepare-for-jee-main-while-in-12th' : e.toLowerCase().includes('neet') ? '/blog/career-options-after-12th-science' : '/career-counselling/stream-selection-guidance'}
+                        href={e.toLowerCase().includes('jee') ? '/blog/jee-main-preparation-2027-guide' : e.toLowerCase().includes('neet') ? '/blog/career-options-after-12th-pcb-2027' : '/career-counselling/stream-selection-guidance'}
                         className="text-link"
                       >
                         {e}
@@ -832,7 +832,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
               <p>For {city.name}, the most common entrance tracks are JEE Main, NEET, state CETs, and CAT.</p>
             )}
             <p className="inline-link-row">
-              <Link href="/blog/how-to-choose-the-right-stream-after-10th" className="text-link">Stream selection guide →</Link>
+              <Link href="/blog/how-to-choose-stream-after-10th-2027" className="text-link">Stream selection guide →</Link>
               <span aria-hidden="true"> · </span>
               <Link href="/career-counselling/stream-selection-guidance" className="text-link">Stream guidance service →</Link>
             </p>

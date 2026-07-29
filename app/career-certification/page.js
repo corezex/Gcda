@@ -383,6 +383,31 @@ export default function CareerCertificationPage() {
         </div>
       </section>
 
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Career counsellor resources"
+            title="Explore related qualification and salary topics"
+            description="These support pages help aspiring counsellors understand the role, qualification path, and salary realities before choosing a certification route."
+            center
+          />
+          <div className="card-grid city-grid">
+            {[
+              { href: '/how-to-become-career-counsellor-in-india', label: 'How to Become a Career Counsellor in India' },
+              { href: '/career-counsellor-salary-in-india', label: 'Career Counsellor Salary in India' },
+              { href: '/qualification-for-career-counsellor-in-india', label: 'Qualification for Career Counsellor in India' },
+            ].map((item) => (
+              <article className="card city-card" key={item.href}>
+                <div className="card-body">
+                  <h3><Link href={item.href}>{item.label}</Link></h3>
+                  <Link href={item.href} className="text-link">Explore topic →</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="section">
         <div className="container">
           <SectionHeader
