@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
@@ -75,7 +76,14 @@ export default function CitiesHubPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/hero-illustration.webp" alt="Career counselling across India" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/hero-illustration.webp"
+              alt="Career counselling across India"
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>

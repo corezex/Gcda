@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
@@ -72,7 +73,14 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-8.webp" alt="About GCDA - career counselling session" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/career-8.webp"
+              alt="About GCDA - career counselling session"
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -125,7 +133,13 @@ export default function AboutPage() {
       <section className="section alt-section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-6.webp" alt="GCDA growth journey" width="1376" height="768" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/career-6.webp"
+              alt="GCDA growth journey"
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+            />
           </div>
           <div>
             <SectionHeader

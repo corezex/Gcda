@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import '@/styles/non-homepage.css';
 import SectionHeader from '@/components/SectionHeader';
@@ -76,7 +77,14 @@ export default function SeoSupportPage({ page }) {
             </ul>
           </div>
           <div className="surface-card media-card">
-            <img src={page.image || '/assets/service-illustration.webp'} alt={page.imageAlt || page.title} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src={page.image || '/assets/service-illustration.webp'}
+              alt={page.imageAlt || page.title}
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>

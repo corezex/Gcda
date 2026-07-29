@@ -3,6 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   compress: true,
   poweredByHeader: false,
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1536],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
 
   // 301 redirects to protect SEO equity from old URL patterns and to
   // canonicalise duplicate paths. The new build matches the live

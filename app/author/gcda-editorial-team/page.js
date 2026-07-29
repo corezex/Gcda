@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -90,7 +91,14 @@ export default function AuthorPage() {
             </ul>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/logo.webp" alt="GCDA Editorial Team – career counselling experts" width="1024" height="1024" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/logo.webp"
+              alt="GCDA Editorial Team – career counselling experts"
+              width={1024}
+              height={1024}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), 420px"
+              priority
+            />
           </div>
         </div>
       </section>

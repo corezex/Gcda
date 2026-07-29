@@ -5,8 +5,8 @@ import SectionHeader from '@/components/SectionHeader';
 import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
+import Image from 'next/image';
 import Link from 'next/link';
-import '@/styles/non-homepage.css';
 import '@/styles/non-homepage.css';
 import { plans } from '@/data/site';
 import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
@@ -117,7 +117,14 @@ export default function PlanPage() {
             </p>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-6.webp" alt="Career counselling plans" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/career-6.webp"
+              alt="Career counselling plans"
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>

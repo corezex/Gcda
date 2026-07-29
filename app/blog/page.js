@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import SectionHeader from '@/components/SectionHeader';
@@ -206,14 +207,21 @@ export default function BlogIndexPage({ searchParams }) {
                 ? `Practical, India-specific career guidance — covering stream selection after 10th, degree choices after 12th, exam planning, career growth, working professional decisions, and career counselling. ${totalPosts} definitive guides, prepared for 2027 decisions – page ${currentPage} of ${totalPages}.`
                 : 'We have removed the current blog library and are preparing a new curated set of articles. Please check back soon for updated career guidance content.'}
             </p>
-            <div className="hero-proof">
-              <span>{totalPosts} published guides</span>
-              <span>Page {currentPage} of {totalPages}</span>
-              <span>{hasPosts ? `${Math.max(blogCategories.length - 1, 0)} categories` : 'New content coming soon'}</span>
-            </div>
+            <ul className="hero-proof" aria-label="Blog overview">
+              <li>{totalPosts} published guides</li>
+              <li>Page {currentPage} of {totalPages}</li>
+              <li>{hasPosts ? `${Math.max(blogCategories.length - 1, 0)} categories` : 'New content coming soon'}</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.webp" alt="GCDA career guidance blog" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/service-illustration.webp"
+              alt="GCDA career guidance blog"
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>

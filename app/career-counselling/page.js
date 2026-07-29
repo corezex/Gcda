@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
@@ -80,7 +81,14 @@ export default function CareerCounsellingPage() {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.webp" alt="GCDA career counselling services" width="1200" height="896" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/service-illustration.webp"
+              alt="GCDA career counselling services"
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -105,7 +113,13 @@ export default function CareerCounsellingPage() {
             {services.map((service) => (
               <article className="card service-card" key={service.slug} id={service.slug}>
                 <div className="service-card-media">
-                  <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    width={1376}
+                    height={768}
+                    sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1080px) 50vw, 33vw"
+                  />
                 </div>
                 <div className="card-body">
                   <div className="icon-badge">{service.icon}</div>
@@ -121,7 +135,13 @@ export default function CareerCounsellingPage() {
             {/* Career Counselling Certification — separate programme */}
             <article className="card service-card" id="career-certification">
               <div className="service-card-media">
-                <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="lazy" decoding="async" />
+                <Image
+                  src="/assets/career-7.webp"
+                  alt="Career Counselling Certification"
+                  width={1376}
+                  height={768}
+                  sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1080px) 50vw, 33vw"
+                />
               </div>
               <div className="card-body">
                 <div className="icon-badge">🎓</div>

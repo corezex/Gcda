@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SectionHeader from '@/components/SectionHeader';
@@ -166,7 +167,14 @@ export default function BlogPaginatedPage({ params }) {
             </ul>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.webp" alt={`GCDA career guidance blog – Page ${currentPage}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/service-illustration.webp"
+              alt={`GCDA career guidance blog – Page ${currentPage}`}
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>

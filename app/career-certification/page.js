@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import CTASection from '@/components/CTASection';
 import SectionHeader from '@/components/SectionHeader';
@@ -154,7 +155,14 @@ export default function CareerCertificationPage() {
             </ul>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/career-7.webp"
+              alt="Career Counselling Certification"
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -354,7 +362,13 @@ export default function CareerCertificationPage() {
       <section className="section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/career-3.webp" alt="GCDA Career Counselling Workshop" width="1376" height="768" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/career-3.webp"
+              alt="GCDA Career Counselling Workshop"
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+            />
           </div>
           <div>
             <SectionHeader
