@@ -385,7 +385,10 @@ h4 {
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
-  min-width: 380px;
+  min-width: 420px;
+  max-width: 460px;
+  max-height: min(78vh, 620px);
+  overflow-y: auto;
   background: #fff;
   border: 1px solid var(--line-2);
   border-radius: var(--radius);
@@ -394,6 +397,7 @@ h4 {
   z-index: 50;
   display: grid;
   gap: 0.1rem;
+  overscroll-behavior: contain;
 }
 
 .nav-dropdown-item {
@@ -487,6 +491,10 @@ h4 {
     border-radius: 14px;
     margin-top: 0.4rem;
     min-width: 0;
+    max-width: none;
+    max-height: min(55vh, 420px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -2064,6 +2072,10 @@ textarea { resize: vertical; min-height: 130px; }
     border: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
     gap: 0.15rem;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
   .nav.nav-open { display: flex; }
   .header-cta { margin: 0.4rem 0 0; align-self: stretch; justify-content: center; }

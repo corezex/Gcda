@@ -45,6 +45,19 @@ export default function Header() {
     setServicesOpen(false);
   }, [pathname]);
 
+  // Prevent the background page from scrolling when the mobile menu is open.
+  useEffect(() => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth <= 860;
+    if (open && isMobile) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [open]);
+
   return (
     <header className="site-header">
       <div className="container header-inner">
