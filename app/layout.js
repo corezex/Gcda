@@ -6,7 +6,7 @@ import { company } from '@/data/site';
 import { organizationSchema, websiteSchema, localBusinessSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
-const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION || process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
+const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION || process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'lK9Y7J4JL6jWWkg-xavrP2qgrzgOIJ4gavXPPprCi_o';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),

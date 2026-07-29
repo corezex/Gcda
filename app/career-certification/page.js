@@ -147,6 +147,11 @@ export default function CareerCertificationPage() {
               <Link href="/contact" className="button button-primary">Enquire Now</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
+            <div className="hero-proof">
+              <span>Hybrid online + in-person</span>
+              <span>Bachelor's degree eligible</span>
+              <span>Practice-ready certification</span>
+            </div>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />
@@ -279,33 +284,23 @@ export default function CareerCertificationPage() {
                 <li>Good communication skills</li>
               </ul>
             </div>
-            <div className="table-wrap" style={{ marginTop: '1.5rem' }}>
-              <table className="comparison-table">
-                <thead>
-                  <tr>
-                    <th>Area</th>
-                    <th>What matters most</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Qualification</strong></td>
-                    <td>A bachelor&apos;s degree gives the minimum base; specialised training builds counselling capability.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Psychology degree</strong></td>
-                    <td>Helpful, but not mandatory for every role. Education, HR, and other graduates can still enter the field with structured certification.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Practical readiness</strong></td>
-                    <td>Assessment interpretation, communication, and ethical practice matter as much as theory.</td>
-                  </tr>
-                  <tr>
-                    <td><strong>Career path</strong></td>
-                    <td>You can work independently or with schools, colleges, NGOs, edtech platforms, and guidance ecosystems.</td>
-                  </tr>
-                </tbody>
-              </table>
+            <div className="stack-list" style={{ marginTop: '1.5rem' }}>
+              <article className="feature-row">
+                <h3>Qualification</h3>
+                <p>A bachelor&apos;s degree gives the minimum base; specialised training builds counselling capability.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Psychology degree</h3>
+                <p>Helpful, but not mandatory for every role. Education, HR, and other graduates can still enter the field with structured certification.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Practical readiness</h3>
+                <p>Assessment interpretation, communication, and ethical practice matter as much as theory when you begin guiding real students and professionals.</p>
+              </article>
+              <article className="feature-row">
+                <h3>Career path</h3>
+                <p>You can work independently or with schools, colleges, NGOs, edtech platforms, and broader guidance ecosystems once your training converts into credible practice.</p>
+              </article>
             </div>
             <div className="button-row" style={{ marginTop: '1.5rem' }}>
               <a
@@ -336,6 +331,11 @@ export default function CareerCertificationPage() {
               <li>Ethical practice and client-acquisition modules</li>
               <li>Recognised certification across India</li>
             </ul>
+            <div className="mini-contact-card" style={{ marginTop: '1rem' }}>
+              <span>Need help deciding if this course fits you?</span>
+              <a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a>
+              <a href={`mailto:${company.email}`}>{company.email}</a>
+            </div>
           </div>
         </div>
       </section>

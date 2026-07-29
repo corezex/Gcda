@@ -383,7 +383,7 @@ export function cityServiceSchema(city, url) {
         itemOffered: {
           '@type': 'Service',
           name: s.title,
-          url: `${SITE_URL}/services/${s.slug}`,
+          url: `${SITE_URL}/career-counselling/${s.slug}`,
         },
       })),
     },

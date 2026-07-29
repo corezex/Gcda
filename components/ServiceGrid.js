@@ -14,7 +14,7 @@ export default function ServiceGrid({ services, limit }) {
             <div className="icon-badge">{service.icon}</div>
             <h3>{service.title}</h3>
             <p>{service.shortDescription}</p>
-            <Link href={`/services/${service.slug}`} className="text-link">
+            <Link href={`/career-counselling/${service.slug}`} className="text-link">
               Explore service →
             </Link>
           </div>
