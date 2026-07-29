@@ -192,21 +192,6 @@ export default function Footer() {
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
             <Link href="/author/gcda-editorial-team" className="footer-bottom-link">Authors</Link>
           </nav>
-          <div className="footer-bottom-socials" aria-label="Follow GCDA on social media">
-            <span className="footer-bottom-label">Follow us:</span>
-            {socials.map((s) => (
-              <a
-                key={`bottom-${s.label}`}
-                href={s.href}
-                target="_blank"
-                rel="noreferrer"
-                className="footer-bottom-social"
-                aria-label={`GCDA on ${s.label}`}
-              >
-                {s.icon}
-              </a>
-            ))}
-          </div>
         </div>
       </div>
     </footer>
