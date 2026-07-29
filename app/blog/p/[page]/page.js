@@ -28,8 +28,8 @@ export async function generateMetadata({ params }) {
     return { title: 'Page not found – GCDA Blog' };
   }
 
-  const title = `Blog Page ${page} – Career Guidance India`;
-  const description = `Blog Page ${page} – ${blogPosts.length} guides on stream, degree, JEE/NEET, MBA, career growth. Practical for students & professionals.`;
+  const title = `GCDA Blog Page ${page}`;
+  const description = `GCDA Blog Page ${page} – ${blogPosts.length} definitive guides on stream selection, courses, exams, career growth, and counselling.`;
   const canonical = `/blog/p/${page}`;
   const url = `${SITE_URL}${canonical}`;
 
@@ -157,12 +157,12 @@ export default function BlogPaginatedPage({ params }) {
             <span className="eyebrow">GCDA Blog – Page {currentPage} of {totalPages}</span>
             <h1>{`Career guidance blog – Page ${currentPage}`}</h1>
             <p className="page-hero-copy">
-              Page {currentPage} of {totalPages} – {blogPosts.length} practical, India-specific career guidance articles. Continue reading stream selection, degree choices, JEE/NEET, MBA, and career growth guides.
+              Page {currentPage} of {totalPages} – {blogPosts.length} practical, India-specific career guidance guides for 2027 decisions. Continue reading stream selection, course planning, exam strategy, working professional, and counselling content.
             </p>
             <div className="hero-proof">
               <span>{blogPosts.length} total guides</span>
               <span>Page {currentPage} of {totalPages}</span>
-              <span>10 categories</span>
+              <span>{Math.max(blogCategories.length - 1, 0)} categories</span>
             </div>
           </div>
           <div className="surface-card media-card">
@@ -176,7 +176,7 @@ export default function BlogPaginatedPage({ params }) {
           <SectionHeader
             eyebrow="Categories"
             title="Browse by topic"
-            description={`Page ${currentPage} – All blog posts are written for Indian students, parents, and professionals.`}
+            description={`Page ${currentPage} – Definitive, India-specific guides for students, parents, and working professionals.`}
             center
           />
           <div className="category-chips">
@@ -221,8 +221,8 @@ export default function BlogPaginatedPage({ params }) {
         id="ld-webpage-blog-p"
         data={webPageSchema({
           url: pageUrl,
-          name: `Career Guidance Blog India: Page ${currentPage}`,
-          description: `Page ${currentPage} of GCDA career guidance blog – ${blogPosts.length} articles.`,
+          name: `GCDA Career Guidance Blog: Page ${currentPage}`,
+          description: `Page ${currentPage} of GCDA career guidance blog – ${blogPosts.length} definitive guides.`,
           primaryImage: `${SITE_URL}/assets/service-illustration.webp`,
         })}
       />

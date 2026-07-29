@@ -9,7 +9,7 @@ import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Contact GCDA – Career Counselling Mumbai, Phone, Email',
+  title: 'Contact GCDA Career Counselling',
   description:
     'Contact GCDA Mumbai at Citi Mall, Andheri West. Call +91 91360 05039, email gcda.career@gmail.com or WhatsApp.',
   keywords: [
@@ -21,7 +21,7 @@ export const metadata = {
   ],
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: 'Contact GCDA – Career Counselling Mumbai',
+    title: 'Contact GCDA Career Counselling',
     description:
       'Contact GCDA Mumbai – office address, phone, email, WhatsApp for counselling.',
     url: 'https://gcdassociation.org/contact',
@@ -36,7 +36,7 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Contact GCDA – Career Counselling Mumbai',
+    title: 'Contact GCDA Career Counselling',
     description: 'Mumbai office, phone, email, WhatsApp for GCDA counselling.',
     images: [
       {
@@ -51,7 +51,7 @@ export const metadata = {
 
 const contactBreadcrumbs = [
   { name: 'Home', url: '/' },
-  { name: 'Contact GCDA', url: '/contact' },
+  { name: 'Contact', url: '/contact' },
 ];
 
 export default function ContactPage() {

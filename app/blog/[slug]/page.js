@@ -20,6 +20,8 @@ export function generateMetadata({ params }) {
   const post = getBlogPostBySlug(params.slug);
   if (!post) return { title: 'Article not found' };
 
+  const ogImage = post.image || `/blog/${post.slug}/opengraph-image`;
+
   return {
     title: post.title,
     description: post.description,
@@ -36,7 +38,7 @@ export function generateMetadata({ params }) {
       section: post.category,
       images: [
         {
-          url: post.image || '/assets/service-illustration.webp',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -49,7 +51,7 @@ export function generateMetadata({ params }) {
       description: post.description,
       images: [
         {
-          url: post.image || '/assets/service-illustration.webp',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -155,6 +157,28 @@ export default function BlogPostPage({ params }) {
         <section className="section section-tight-top">
           <div className="container narrow-center">
             <AnswerBlock>{post.answerBlock}</AnswerBlock>
+
+            {post.quickFacts && post.quickFacts.length > 0 ? (
+              <div className="table-wrap" style={{ marginTop: '1.5rem' }}>
+                <table className="comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Decision Snapshot</th>
+                      <th>What to know</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {post.quickFacts.map((fact) => (
+                      <tr key={fact.label}>
+                        <td><strong>{fact.label}</strong></td>
+                        <td>{fact.value}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <p className="table-caption">Quick comparison table for fast scanning, AI extraction, and parent discussion.</p>
+              </div>
+            ) : null}
           </div>
         </section>
 

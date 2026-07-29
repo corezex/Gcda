@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import SectionHeader from '@/components/SectionHeader';
 import CTASection from '@/components/CTASection';
 import BlogCard from '@/components/BlogCard';
@@ -18,20 +18,23 @@ const blogBreadcrumbs = [
 
 export async function generateMetadata({ searchParams }) {
   const page = parseInt(searchParams?.page) || 1;
-  const totalPages = Math.ceil(blogPosts.length / PAGE_SIZE);
+  const totalPosts = blogPosts.length;
+  const totalPages = Math.max(1, Math.ceil(totalPosts / PAGE_SIZE));
 
   if (page < 1 || page > totalPages) {
-    return { title: 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET' };
+    return { title: 'GCDA Blog' };
   }
 
   const isFirstPage = page === 1;
   const title = isFirstPage
-    ? 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET'
-    : `Blog Page ${page} – Career Guidance India`;
-  const description = isFirstPage
-    ? 'Career guidance blog – stream after 10th, degree after 12th, JEE/NEET, MBA, growth. 310 guides for students, parents & professionals.'
-    : `Blog Page ${page} – ${blogPosts.length} guides on stream, degree, JEE/NEET, MBA, career growth.`;
-  const canonical = isFirstPage ? '/blog' : `/blog?page=${page}`;
+    ? 'GCDA Career Guidance Blog: 80 Definitive Guides'
+    : `GCDA Blog Page ${page}`;
+  const description = totalPosts === 0
+    ? 'The GCDA blog is being refreshed. New career guidance articles will be published soon.'
+    : isFirstPage
+      ? `Career guidance blog with ${totalPosts} definitive guides on stream selection, courses, exams, working professionals, and career counselling.`
+      : `GCDA Blog Page ${page} – ${totalPosts} definitive career guidance guides for students, parents, and professionals.`;
+  const canonical = isFirstPage ? '/blog' : `/blog/p/${page}`;
   const url = `${SITE_URL}${canonical}`;
 
   return {
@@ -159,30 +162,34 @@ function Pagination({ currentPage, totalPages }) {
 }
 
 function PaginationMeta({ currentPage, totalPages }) {
-  // SEO: rel prev/next links (Google deprecated but Bing still uses, also for crawlers)
   return (
     <>
       {currentPage > 1 && <link rel="prev" href={currentPage === 2 ? `${SITE_URL}/blog` : `${SITE_URL}/blog/p/${currentPage - 1}`} />}
       {currentPage < totalPages && <link rel="next" href={`${SITE_URL}/blog/p/${currentPage + 1}`} />}
-      {currentPage > 1 && <link rel="canonical" href={`${SITE_URL}/blog?page=${currentPage}`} />}
     </>
   );
 }
 
 export default function BlogIndexPage({ searchParams }) {
   const rawPage = parseInt(searchParams?.page) || 1;
-  const totalPages = Math.ceil(blogPosts.length / PAGE_SIZE);
+  const totalPosts = blogPosts.length;
+  const totalPages = Math.max(1, Math.ceil(totalPosts / PAGE_SIZE));
 
   if (isNaN(rawPage) || rawPage < 1 || rawPage > totalPages) {
     notFound();
   }
 
-  const currentPage = rawPage;
+  if (rawPage > 1) {
+    redirect(`/blog/p/${rawPage}`);
+  }
+
+  const currentPage = 1;
   const start = (currentPage - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
   const currentPosts = blogPosts.slice(start, end);
+  const hasPosts = totalPosts > 0;
 
-  const pageUrl = currentPage === 1 ? `${SITE_URL}/blog` : `${SITE_URL}/blog?page=${currentPage}`;
+  const pageUrl = `${SITE_URL}/blog`;
 
   return (
     <>
@@ -192,17 +199,17 @@ export default function BlogIndexPage({ searchParams }) {
         <div className="container page-hero-grid">
           <div>
             <Breadcrumbs items={[{ name: 'Home', url: '/' }, { name: 'Blog', url: '/blog' }]} />
-            <span className="eyebrow">GCDA Blog – {blogPosts.length} articles</span>
-            <h1>Career guidance, written for Indian students, parents, and professionals.</h1>
+            <span className="eyebrow">GCDA Blog</span>
+            <h1>{hasPosts ? 'Career guidance, written for Indian students, parents, and professionals.' : 'The GCDA blog is being refreshed.'}</h1>
             <p className="page-hero-copy">
-              Practical, India-specific career guidance — covering stream selection after 10th, degree choices after
-              12th, JEE/NEET planning, MBA, career transitions, and working professional growth. {blogPosts.length}{' '}
-              guides, updated for 2026 – page {currentPage} of {totalPages}.
+              {hasPosts
+                ? `Practical, India-specific career guidance — covering stream selection after 10th, degree choices after 12th, exam planning, career growth, working professional decisions, and career counselling. ${totalPosts} definitive guides, prepared for 2027 decisions – page ${currentPage} of ${totalPages}.`
+                : 'We have removed the current blog library and are preparing a new curated set of articles. Please check back soon for updated career guidance content.'}
             </p>
             <div className="hero-proof">
-              <span>{blogPosts.length} total guides</span>
+              <span>{totalPosts} published guides</span>
               <span>Page {currentPage} of {totalPages}</span>
-              <span>10 categories</span>
+              <span>{hasPosts ? `${Math.max(blogCategories.length - 1, 0)} categories` : 'New content coming soon'}</span>
             </div>
           </div>
           <div className="surface-card media-card">
@@ -214,48 +221,63 @@ export default function BlogIndexPage({ searchParams }) {
       <section className="section">
         <div className="container">
           <SectionHeader
-            eyebrow="Categories"
-            title="Browse by topic"
-            description="All blog posts are written for Indian students, parents, and professionals. Click a category to filter (coming soon) – currently showing all categories with pagination."
+            eyebrow={hasPosts ? 'Categories' : 'Status'}
+            title={hasPosts ? 'Browse by topic' : 'No blog posts are currently published'}
+            description={hasPosts ? 'All blog posts are written for Indian students, parents, and professionals. Click a category to filter (coming soon) – currently showing all categories with pagination.' : 'The blog section is still live, but all current posts have been removed. Fresh curated articles can be added here later without rebuilding the whole feature.'}
             center
           />
-          <div className="category-chips">
-            {blogCategories.map((cat) => (
-              <span key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
-                {cat}
-              </span>
-            ))}
-          </div>
-          <p style={{ textAlign: 'center', marginTop: '0.8rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
-            Showing {start + 1}–{Math.min(end, blogPosts.length)} of {blogPosts.length} articles
-          </p>
+          {hasPosts ? (
+            <>
+              <div className="category-chips">
+                {blogCategories.map((cat) => (
+                  <span key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
+                    {cat}
+                  </span>
+                ))}
+              </div>
+              <p style={{ textAlign: 'center', marginTop: '0.8rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
+                Showing {start + 1}–{Math.min(end, totalPosts)} of {totalPosts} articles
+              </p>
+            </>
+          ) : null}
         </div>
       </section>
 
       <section className="section alt-section">
         <div className="container">
           <SectionHeader
-            eyebrow={currentPage === 1 ? 'Latest posts' : `Page ${currentPage} – All posts`}
-            title={currentPage === 1 ? 'Recent career guidance articles' : `Career guidance – Page ${currentPage}`}
+            eyebrow={hasPosts ? (currentPage === 1 ? 'Latest posts' : `Page ${currentPage} – All posts`) : 'Coming soon'}
+            title={hasPosts ? (currentPage === 1 ? 'Recent career guidance articles' : `Career guidance – Page ${currentPage}`) : 'We’re preparing a new blog library'}
             description={
-              currentPage === 1
-                ? 'Read the latest from the GCDA editorial team – 20 per page, 310+ total, SEO optimized pagination.'
-                : `Page ${currentPage} of ${totalPages} – Continue reading practical, India-specific career guidance from GCDA.`
+              hasPosts
+                ? currentPage === 1
+                  ? `Read the latest from the GCDA editorial team – 20 per page, ${totalPosts} total, SEO optimized pagination.`
+                  : `Page ${currentPage} of ${totalPages} – Continue reading practical, India-specific career guidance from GCDA.`
+                : 'Once a new curated set of articles is ready, it will appear here.'
             }
           />
-          <div className="card-grid blog-grid">
-            {currentPosts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          {hasPosts ? (
+            <>
+              <div className="card-grid blog-grid">
+                {currentPosts.map((post) => (
+                  <BlogCard key={post.slug} post={post} />
+                ))}
+              </div>
 
-          <Pagination currentPage={currentPage} totalPages={totalPages} />
+              <Pagination currentPage={currentPage} totalPages={totalPages} />
 
-          {currentPage > 1 && (
-            <div className="center-cta" style={{ marginTop: '1.5rem' }}>
-              <Link href="/blog" className="text-link">
-                ← Back to first page
-              </Link>
+              {currentPage > 1 && (
+                <div className="center-cta" style={{ marginTop: '1.5rem' }}>
+                  <Link href="/blog" className="text-link">
+                    ← Back to first page
+                  </Link>
+                </div>
+              )}
+            </>
+          ) : (
+            <div className="narrow-center" style={{ textAlign: 'center' }}>
+              <p>No blog posts are published right now.</p>
+              <p style={{ color: 'var(--muted)' }}>You can still contact GCDA directly for personalised career guidance.</p>
             </div>
           )}
         </div>
@@ -274,12 +296,12 @@ export default function BlogIndexPage({ searchParams }) {
           url: pageUrl,
           name:
             currentPage === 1
-              ? 'Career Guidance Blog India: Stream, Degree, MBA, JEE/NEET'
-              : `Career Guidance Blog India: Page ${currentPage}`,
+              ? 'GCDA Career Guidance Blog: 80 Definitive Guides'
+              : `GCDA Career Guidance Blog: Page ${currentPage}`,
           description:
             currentPage === 1
-              ? 'Practical, India-specific career guidance for students, parents, and working professionals.'
-              : `Page ${currentPage} of GCDA career guidance blog – ${blogPosts.length} articles.`,
+              ? `Practical, India-specific career guidance across ${totalPosts} definitive guides.`
+              : `Page ${currentPage} of GCDA career guidance blog – ${totalPosts} definitive guides.`,
           primaryImage: `${SITE_URL}/assets/service-illustration.webp`,
         })}
       />

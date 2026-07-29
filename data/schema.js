@@ -49,9 +49,6 @@ export function organizationSchema() {
       'https://www.instagram.com/gcdaindia',
       'https://www.linkedin.com/company/global-career-development-association/',
       'https://twitter.com/gcdaindia',
-      'https://www.youtube.com/watch?v=ZQYxaC0pnZY',
-      'https://www.google.com/maps/search/GCDA+Global+Career+Development+Association+Mumbai',
-      'https://gcdassociation.org',
     ],
     knowsAbout: [
       'Career Counselling',
@@ -146,7 +143,7 @@ export function localBusinessSchema() {
   };
 }
 
-// ----- WebSite (for sitelinks search box) -----
+// ----- WebSite -----
 export function websiteSchema() {
   return {
     '@context': 'https://schema.org',
@@ -167,11 +164,6 @@ export function websiteSchema() {
       },
     },
     inLanguage: 'en-IN',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${SITE_URL}/blog?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
@@ -269,7 +261,7 @@ export function articleSchema(post, url) {
     '@id': `${url}#article`,
     headline: post.title,
     description: post.description,
-    image: `${SITE_URL}/assets/hero-illustration.webp`,
+    image: post.image || `${SITE_URL}/blog/${post.slug}/opengraph-image`,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
     inLanguage: 'en-IN',
@@ -530,7 +522,12 @@ export function blogListSchema(posts) {
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.datePublished,
       dateModified: post.dateModified,
-      author: { '@type': 'Organization', name: post.author || 'GCDA Editorial Team' },
+      author: {
+        '@type': 'Person',
+        '@id': `${SITE_URL}/author/gcda-editorial-team#person`,
+        name: post.author || 'GCDA Editorial Team',
+        url: `${SITE_URL}/author/gcda-editorial-team`,
+      },
       keywords: (post.keywords || []).join(', '),
     })),
   };

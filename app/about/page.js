@@ -250,7 +250,7 @@ export default function AboutPage() {
       />
 
       <JsonLd id="ld-breadcrumb-about" data={breadcrumbSchema(aboutBreadcrumbs)} />
-      <JsonLd id="ld-about" data={aboutPageSchema(SITE_URL)} />
+      <JsonLd id="ld-about" data={aboutPageSchema(`${SITE_URL}/about`)} />
     </>
   );
 }

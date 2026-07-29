@@ -4,27 +4,38 @@ import { blogPosts } from '@/data/blog';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS } from '@/data/servicePages';
 
 const SITE_URL = 'https://gcdassociation.org';
+const CORE_LAST_MODIFIED = new Date('2026-07-29T00:00:00+05:30');
+const LEGAL_LAST_MODIFIED = new Date('2026-07-27T00:00:00+05:30');
+const AUTHOR_LAST_MODIFIED = new Date('2026-07-27T00:00:00+05:30');
+const SERVICE_LAST_MODIFIED = new Date('2026-07-29T00:00:00+05:30');
+const LOCATION_LAST_MODIFIED = new Date('2026-07-29T00:00:00+05:30');
 
 export default function sitemap() {
-  const now = new Date();
+  const latestBlogDate = blogPosts.length
+    ? new Date(
+        blogPosts.reduce((latest, post) =>
+          post.dateModified > latest ? post.dateModified : latest,
+        blogPosts[0].dateModified)
+      )
+    : CORE_LAST_MODIFIED;
 
   // Top-level static routes – updated for 438 cities + legal + author pages
   const staticRoutes = [
-    { path: '', priority: 1.0, changeFrequency: 'weekly' },
-    { path: '/about', priority: 0.8, changeFrequency: 'monthly' },
-    { path: '/career-counselling', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/career-certification', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/cities', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/plan', priority: 0.9, changeFrequency: 'monthly' },
-    { path: '/blog', priority: 0.9, changeFrequency: 'weekly' },
-    { path: '/contact', priority: 0.7, changeFrequency: 'monthly' },
-    { path: '/privacy', priority: 0.5, changeFrequency: 'yearly' },
-    { path: '/terms', priority: 0.5, changeFrequency: 'yearly' },
-    { path: '/refund-policy', priority: 0.5, changeFrequency: 'yearly' },
-    { path: '/author/gcda-editorial-team', priority: 0.7, changeFrequency: 'monthly' },
+    { path: '', priority: 1.0, changeFrequency: 'weekly', lastModified: CORE_LAST_MODIFIED },
+    { path: '/about', priority: 0.8, changeFrequency: 'monthly', lastModified: CORE_LAST_MODIFIED },
+    { path: '/career-counselling', priority: 0.9, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
+    { path: '/career-certification', priority: 0.9, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
+    { path: '/cities', priority: 0.9, changeFrequency: 'monthly', lastModified: LOCATION_LAST_MODIFIED },
+    { path: '/plan', priority: 0.9, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
+    { path: '/blog', priority: 0.9, changeFrequency: 'weekly', lastModified: latestBlogDate },
+    { path: '/contact', priority: 0.7, changeFrequency: 'monthly', lastModified: CORE_LAST_MODIFIED },
+    { path: '/privacy', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
+    { path: '/terms', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
+    { path: '/refund-policy', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
+    { path: '/author/gcda-editorial-team', priority: 0.7, changeFrequency: 'monthly', lastModified: AUTHOR_LAST_MODIFIED },
   ].map((route) => ({
     url: `${SITE_URL}${route.path}`,
-    lastModified: now,
+    lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
     images: [`${SITE_URL}/assets/hero-illustration.webp`],
@@ -38,7 +49,7 @@ export default function sitemap() {
     'guidance-for-working-professionals',
   ].map((slug) => ({
     url: `${SITE_URL}/${slug}`,
-    lastModified: now,
+    lastModified: SERVICE_LAST_MODIFIED,
     changeFrequency: 'monthly',
     priority: 0.85,
     images: [`${SITE_URL}/assets/hero-illustration.webp`],
@@ -47,7 +58,7 @@ export default function sitemap() {
   // State hub pages
   const stateRoutes = STATES.map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
-    lastModified: now,
+    lastModified: LOCATION_LAST_MODIFIED,
     changeFrequency: 'monthly',
     priority: 0.8,
     images: [`${SITE_URL}/assets/hero-illustration.webp`],
@@ -62,7 +73,7 @@ export default function sitemap() {
       if (!pattern) continue;
       cityRoutes.push({
         url: `${SITE_URL}${pattern.urlPattern(u.stateSlug, u.citySlug)}`,
-        lastModified: now,
+        lastModified: LOCATION_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.7,
         images: [`${SITE_URL}/assets/hero-illustration.webp`],
@@ -73,7 +84,7 @@ export default function sitemap() {
   // Service detail pages (under /career-counselling/[slug])
   const serviceDetailRoutes = services.map((service) => ({
     url: `${SITE_URL}/career-counselling/${service.slug}`,
-    lastModified: now,
+    lastModified: SERVICE_LAST_MODIFIED,
     changeFrequency: 'monthly',
     priority: 0.8,
     images: [`${SITE_URL}${service.image || '/assets/hero-illustration.webp'}`],
@@ -85,29 +96,19 @@ export default function sitemap() {
     lastModified: new Date(post.dateModified),
     changeFrequency: 'monthly',
     priority: 0.7,
-    images: [`${SITE_URL}/assets/service-illustration.webp`],
+    images: [`${SITE_URL}/blog/${post.slug}/opengraph-image`],
   }));
 
-  // Paginated blog hub pages – SEO optimized pagination (20 per page)
-  // Two URL formats for SEO: clean path /blog/p/[page] (static) + query ?page= (fallback)
+  // Paginated blog hub pages – primary clean-path pagination only
   const PAGE_SIZE = 20;
   const totalBlogPages = Math.ceil(blogPosts.length / PAGE_SIZE);
   const blogPaginatedRoutes = [];
   for (let p = 2; p <= totalBlogPages; p++) {
-    // Clean path version – primary for SEO
     blogPaginatedRoutes.push({
       url: `${SITE_URL}/blog/p/${p}`,
-      lastModified: now,
+      lastModified: latestBlogDate,
       changeFrequency: 'weekly',
       priority: 0.6,
-      images: [`${SITE_URL}/assets/service-illustration.webp`],
-    });
-    // Query param version – secondary (kept for compatibility, lower priority)
-    blogPaginatedRoutes.push({
-      url: `${SITE_URL}/blog?page=${p}`,
-      lastModified: now,
-      changeFrequency: 'weekly',
-      priority: 0.4,
       images: [`${SITE_URL}/assets/service-illustration.webp`],
     });
   }

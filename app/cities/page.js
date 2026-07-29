@@ -10,9 +10,9 @@ import { citiesCollectionSchema, breadcrumbSchema } from '@/data/schema';
 const SITE_URL = 'https://gcdassociation.org';
 
 export const metadata = {
-  title: 'Career Counselling Across India: 36 States, 438 Cities',
+  title: 'Career Counselling in 438 Indian Cities',
   description:
-    'Career counselling across 36 states, 438 cities – Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, Kolkata. Online & in-person.',
+    'Career counselling across 36 states and 438 cities – Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, and more. Online & in-person.',
   keywords: [
     'career counselling cities India',
     'career counsellor near me',
@@ -23,9 +23,9 @@ export const metadata = {
   ],
   alternates: { canonical: '/cities' },
   openGraph: {
-    title: 'Career Counselling Across India: 36 States, 438 Cities',
+    title: 'Career Counselling in 438 Indian Cities',
     description:
-      'Career counselling across 36 states, 438 cities – online & in-person mentoring.',
+      'Career counselling across 36 states and 438 cities – online and in-person mentoring.',
     url: 'https://gcdassociation.org/cities',
     images: [
       {
@@ -38,8 +38,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Career Counselling Across India: 36 States, 438 Cities',
-    description: 'Career counselling in 36 states, 438 cities – online & in-person.',
+    title: 'Career Counselling in 438 Indian Cities',
+    description: 'Career counselling in 36 states and 438 cities – online and in-person.',
     images: [
       {
         url: '/assets/hero-illustration.webp',
@@ -65,7 +65,7 @@ export default function CitiesHubPage() {
             <span className="eyebrow">Career Counselling in India</span>
             <h1>Find GCDA career counselling in your state and city.</h1>
             <p className="page-hero-copy">
-              GCDA offers structured career counselling, career assessments, stream and degree selection, and professional growth mentoring across 36 Indian states and union territories, covering 300+ cities. Pick your state to see locally relevant guidance.
+              GCDA offers structured career counselling, career assessments, stream and degree selection, and professional growth mentoring across 36 Indian states and union territories, covering 438 cities. Pick your state to see locally relevant guidance.
             </p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
@@ -86,7 +86,7 @@ export default function CitiesHubPage() {
             description="Click any state to see all cities we cover in that state."
           />
           <AnswerBlock>
-            GCDA career counselling is available across 36 Indian states and union territories, covering 300+ cities — including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, Kolkata, and Ahmedabad. We offer online video sessions across India and in-person sessions everywhere.
+            GCDA career counselling is available across 36 Indian states and union territories, covering 438 cities — including metros like Mumbai, Delhi, Bengaluru, Chennai, Hyderabad, Pune, Kolkata, and Ahmedabad. We offer online video sessions across India and in-person sessions everywhere.
           </AnswerBlock>
         </div>
       </section>

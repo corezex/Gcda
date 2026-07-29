@@ -15,6 +15,28 @@ import { faqSchema, breadcrumbSchema, howToSchema, serviceSchema, speakableSchem
 
 const SITE_URL = 'https://gcdassociation.org';
 
+const SERVICE_PAGE_HEADINGS = {
+  'personal-counselling': 'Personal Counselling in India',
+  'career-assessment': 'Career Assessment in India',
+  'workshops-seminars': 'Workshops & Seminars in India',
+  'stream-selection-guidance': 'Stream Selection Guidance in India',
+  'degree-selection-guidance': 'Degree Selection Guidance in India',
+  'working-professionals-guidance': 'Guidance for Working Professionals in India',
+};
+
+function getServicePageHeading(service) {
+  return SERVICE_PAGE_HEADINGS[service.slug] || `${service.title} in India`;
+}
+
+function getServiceCityUrl(serviceSlug, stateName, cityName) {
+  const stateObj = STATES.find((s) => s.name === stateName);
+  const stateSlug = stateObj?.slug;
+  const citySlug = cityName.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  const pattern = SERVICE_CITY_PATTERNS[serviceSlug] || SERVICE_CITY_PATTERNS['career-counselling'];
+  if (!stateSlug || !pattern) return `/career-counselling/${serviceSlug}`;
+  return pattern.urlPattern(stateSlug, citySlug);
+}
+
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
 }
@@ -99,6 +121,7 @@ export default function ServiceDetailPage({ params }) {
   const popularCities = service.popularCities || [];
 
   const url = `${SITE_URL}/career-counselling/${service.slug}`;
+  const pageHeading = getServicePageHeading(service);
   const breadcrumbs = [
     { name: 'Home', url: '/' },
     { name: 'Services', url: '/career-counselling' },
@@ -122,8 +145,9 @@ export default function ServiceDetailPage({ params }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{service.icon} {service.title}</span>
-            <h1>{service.heroDescription}</h1>
-            <p className="page-hero-copy">{longDescription}</p>
+            <h1>{pageHeading}</h1>
+            <p className="page-hero-copy">{service.heroDescription}</p>
+            <p>{longDescription}</p>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
               <Link href="#how-it-works" className="button button-secondary">How it Works</Link>
@@ -470,11 +494,7 @@ export default function ServiceDetailPage({ params }) {
           />
           <div className="card-grid city-grid">
             {popularCities.map(({ state, city }) => {
-              const stateObj = STATES.find((s) => s.name === state);
-              const stateSlug = stateObj?.slug;
-              const citySlug = city.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-              const pattern = SERVICE_CITY_PATTERNS[service.slug] || SERVICE_CITY_PATTERNS['career-counselling'];
-              const serviceUrl = stateSlug && pattern ? pattern.urlPattern(stateSlug, citySlug) : `/career-counselling/${service.slug}`;
+              const serviceUrl = getServiceCityUrl(service.slug, state, city);
               return (
                 <article className="card city-card" key={`${state}-${city}`}>
                   <div className="card-body">
@@ -588,7 +608,7 @@ export default function ServiceDetailPage({ params }) {
           description: `Popular cities for ${service.title} – GCDA serves 438 cities across India.`,
           items: popularCities.map(({ state, city }) => ({
             name: `${service.title} in ${city}, ${state}`,
-            url: `${SITE_URL}/career-counselling/${service.slug}`,
+            url: `${SITE_URL}${getServiceCityUrl(service.slug, state, city)}`,
             description: `${service.title} in ${city}, ${state} – online and in-person.`,
           })),
         })}

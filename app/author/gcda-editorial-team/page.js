@@ -59,6 +59,7 @@ const breadcrumbs = [
 
 export default function AuthorPage() {
   const posts = blogPosts;
+  const hasPosts = posts.length > 0;
 
   return (
     <>
@@ -146,14 +147,20 @@ export default function AuthorPage() {
           <SectionHeader
             eyebrow="Our articles"
             title="Career guidance written by GCDA Editorial Team"
-            description="10 in-depth, India-specific guides with answer blocks, FAQs, and key takeaways – each reviewed against 2026 data."
+            description={hasPosts ? `${posts.length} curated guides appear below across stream selection, courses, exams, working professionals, and career counselling.` : 'There are no published GCDA blog articles right now. New curated content can be added later.'}
             center
           />
-          <div className="card-grid blog-grid">
-            {posts.map((post) => (
-              <BlogCard key={post.slug} post={post} />
-            ))}
-          </div>
+          {hasPosts ? (
+            <div className="card-grid blog-grid">
+              {posts.map((post) => (
+                <BlogCard key={post.slug} post={post} />
+              ))}
+            </div>
+          ) : (
+            <div className="narrow-center" style={{ textAlign: 'center' }}>
+              <p>The editorial team page remains live, but all current blog posts have been removed.</p>
+            </div>
+          )}
         </div>
       </section>
 

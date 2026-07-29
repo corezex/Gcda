@@ -6,6 +6,7 @@ import { company } from '@/data/site';
 import { organizationSchema, websiteSchema, localBusinessSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
+const GOOGLE_SITE_VERIFICATION = process.env.GOOGLE_SITE_VERIFICATION || process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION;
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -97,8 +98,9 @@ export const metadata = {
     shortcut: '/assets/logo.webp',
     apple: '/assets/logo.webp',
   },
-  // Note: Add real Google Search Console verification token here when available
-  // verification: { google: '...' },
+  verification: GOOGLE_SITE_VERIFICATION
+    ? { google: GOOGLE_SITE_VERIFICATION }
+    : undefined,
   category: 'Education',
 };
 
