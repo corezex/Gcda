@@ -11,6 +11,11 @@ export default function Header() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const servicesRef = useRef(null);
 
+  const closeMenus = () => {
+    setOpen(false);
+    setServicesOpen(false);
+  };
+
   const isActive = (href) => {
     if (href === '/') return pathname === '/';
     if (href === '/career-counselling') {
@@ -21,8 +26,6 @@ export default function Header() {
 
   const isServicesActive = () => pathname.startsWith('/career-counselling');
 
-  // Close services dropdown when clicking outside, when route changes,
-  // or when the user presses Escape.
   useEffect(() => {
     function onClickOutside(event) {
       if (servicesRef.current && !servicesRef.current.contains(event.target)) {
@@ -30,7 +33,9 @@ export default function Header() {
       }
     }
     function onKeyDown(event) {
-      if (event.key === 'Escape') setServicesOpen(false);
+      if (event.key === 'Escape') {
+        closeMenus();
+      }
     }
     document.addEventListener('mousedown', onClickOutside);
     document.addEventListener('keydown', onKeyDown);
@@ -40,12 +45,10 @@ export default function Header() {
     };
   }, []);
 
-  // Close dropdown on route change
   useEffect(() => {
-    setServicesOpen(false);
+    closeMenus();
   }, [pathname]);
 
-  // Prevent the background page from scrolling when the mobile menu is open.
   useEffect(() => {
     const isMobile = typeof window !== 'undefined' && window.innerWidth <= 860;
     if (open && isMobile) {
@@ -59,63 +62,48 @@ export default function Header() {
   }, [open]);
 
   return (
-    <header className="site-header">
-      <div className="container header-inner">
-        <Link href="/" className="brand" onClick={() => { setOpen(false); setServicesOpen(false); }}>
-          <img src="/assets/logo.webp" alt="GCDA logo" className="brand-logo" width="1024" height="1024" loading="eager" fetchPriority="high" decoding="async" />
-        </Link>
+    <>
+      <header className="site-header">
+        <div className="container header-inner">
+          <Link href="/" className="brand" onClick={closeMenus}>
+            <img src="/assets/logo.webp" alt="GCDA logo" className="brand-logo" width="1024" height="1024" loading="eager" fetchPriority="high" decoding="async" />
+          </Link>
 
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((prev) => !prev)}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
+          <button
+            className={`menu-toggle ${open ? 'is-open' : ''}`}
+            type="button"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            aria-controls="primary-navigation"
+            onClick={() => setOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
 
-        <nav className={`nav ${open ? 'nav-open' : ''}`}>
-          {navLinks.map((link) => {
-            // Render Services as a click-to-toggle dropdown
-            if (link.href === '/career-counselling') {
-              return (
-                <div
-                  key={link.href}
-                  className="nav-dropdown"
-                  ref={servicesRef}
-                >
-                  <button
-                    type="button"
-                    className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
-                    onClick={() => setServicesOpen((v) => !v)}
-                    aria-expanded={servicesOpen}
-                    aria-haspopup="true"
-                  >
-                    {link.label}
-                    <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
-                  </button>
-                  {servicesOpen ? (
-                    <div className="nav-dropdown-menu" role="menu">
-                      <Link
-                        href="/career-counselling"
-                        className="nav-dropdown-item nav-dropdown-all"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
+          <nav id="primary-navigation" className={`nav ${open ? 'nav-open' : ''}`}>
+            {navLinks.map((link) => {
+              if (link.href === '/career-counselling') {
+                return (
+                  <div key={link.href} className={`nav-dropdown ${servicesOpen ? 'is-open' : ''}`} ref={servicesRef}>
+                    <button
+                      type="button"
+                      className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
+                      onClick={() => setServicesOpen((v) => !v)}
+                      aria-expanded={servicesOpen}
+                      aria-haspopup="true"
+                    >
+                      {link.label}
+                      <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
+                    </button>
+                    <div className={`nav-dropdown-menu ${servicesOpen ? 'is-visible' : ''}`} role="menu" aria-hidden={!servicesOpen}>
+                      <Link href="/career-counselling" className="nav-dropdown-item nav-dropdown-all" role="menuitem" onClick={closeMenus}>
                         All services
                       </Link>
                       <div className="nav-dropdown-divider" />
                       {services.map((s) => (
-                        <Link
-                          key={s.slug}
-                          href={`/career-counselling/${s.slug}`}
-                          className="nav-dropdown-item"
-                          role="menuitem"
-                          onClick={() => { setOpen(false); setServicesOpen(false); }}
-                        >
+                        <Link key={s.slug} href={`/career-counselling/${s.slug}`} className="nav-dropdown-item" role="menuitem" onClick={closeMenus}>
                           <span className="nav-dropdown-icon" aria-hidden="true">{s.icon}</span>
                           <span className="nav-dropdown-text">
                             <strong>{s.title}</strong>
@@ -124,12 +112,7 @@ export default function Header() {
                         </Link>
                       ))}
                       <div className="nav-dropdown-divider" />
-                      <Link
-                        href="/career-certification"
-                        className="nav-dropdown-item nav-dropdown-feature"
-                        role="menuitem"
-                        onClick={() => { setOpen(false); setServicesOpen(false); }}
-                      >
+                      <Link href="/career-certification" className="nav-dropdown-item nav-dropdown-feature" role="menuitem" onClick={closeMenus}>
                         <span className="nav-dropdown-icon" aria-hidden="true">🏅</span>
                         <span className="nav-dropdown-text">
                           <strong>Career Counselling Certification</strong>
@@ -137,26 +120,23 @@ export default function Header() {
                         </span>
                       </Link>
                     </div>
-                  ) : null}
-                </div>
+                  </div>
+                );
+              }
+
+              return (
+                <Link key={link.href} href={link.href} className={`nav-link ${isActive(link.href) ? 'active' : ''}`} onClick={closeMenus}>
+                  {link.label}
+                </Link>
               );
-            }
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={`nav-link ${isActive(link.href) ? 'active' : ''}`}
-                onClick={() => { setOpen(false); setServicesOpen(false); }}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <a className="button button-primary header-cta" href={company.whatsappLink} target="_blank" rel="noreferrer">
-            Book Consultation
-          </a>
-        </nav>
-      </div>
-    </header>
+            })}
+            <a className="button button-primary header-cta" href={company.whatsappLink} target="_blank" rel="noreferrer">
+              Book Consultation
+            </a>
+          </nav>
+        </div>
+      </header>
+      {open ? <button className="nav-backdrop" type="button" aria-label="Close menu" onClick={closeMenus} /> : null}
+    </>
   );
 }

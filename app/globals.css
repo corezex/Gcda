@@ -283,7 +283,7 @@ h4 {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 40;
+  z-index: 90;
   background: rgba(255, 255, 255, 0.92);
   border-bottom: 1px solid var(--line-2);
   backdrop-filter: blur(14px);
@@ -394,10 +394,14 @@ h4 {
   border-radius: var(--radius);
   box-shadow: var(--shadow-lg);
   padding: 0.5rem;
-  z-index: 50;
-  display: grid;
+  z-index: 95;
+  display: none;
   gap: 0.1rem;
   overscroll-behavior: contain;
+}
+
+.nav-dropdown-menu.is-visible {
+  display: grid;
 }
 
 .nav-dropdown-item {
@@ -499,9 +503,12 @@ h4 {
     border-radius: 14px;
     margin-top: 0.4rem;
     padding: 0.35rem;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.2rem;
+  }
+  .nav-dropdown-menu.is-visible {
+    display: flex;
   }
   .nav-dropdown-item {
     width: 100%;
@@ -528,7 +535,14 @@ h4 {
   height: 2px;
   background: var(--ink);
   border-radius: 999px;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.menu-toggle.is-open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+.menu-toggle.is-open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+.nav-backdrop {
+  display: none;
 }
 
 /* ============================================================
@@ -2073,6 +2087,19 @@ textarea { resize: vertical; min-height: 130px; }
 @media (max-width: 860px) {
   .menu-toggle { display: inline-flex; }
 
+  .nav-backdrop {
+    display: block;
+    position: fixed;
+    inset: 77px 0 0;
+    background: rgba(23, 32, 51, 0.28);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    z-index: 70;
+  }
+
   .nav {
     position: fixed;
     left: 0.75rem;
@@ -2092,10 +2119,11 @@ textarea { resize: vertical; min-height: 130px; }
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+    z-index: 91;
   }
   .nav.nav-open { display: flex; }
-  .header-cta { margin: 0.4rem 0 0; align-self: stretch; justify-content: center; }
-  .nav-link { padding: 0.65rem 0.85rem; }
+  .header-cta { margin: 0.6rem 0 0; align-self: stretch; justify-content: center; }
+  .nav-link { padding: 0.7rem 0.85rem; }
 
   .hero-grid,
   .page-hero-grid,
