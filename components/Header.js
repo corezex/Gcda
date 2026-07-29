@@ -1,5 +1,6 @@
 "use client";
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
@@ -91,7 +92,14 @@ export default function Header() {
       <header className="site-header">
         <div className="container header-inner">
           <Link href="/" className="brand" onClick={closeMenus}>
-            <img src="/assets/logo.webp" alt="GCDA logo" className="brand-logo" width="1024" height="1024" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/logo.webp"
+              alt="GCDA logo"
+              className="brand-logo"
+              width={110}
+              height={110}
+              sizes="110px"
+            />
           </Link>
 
           <button

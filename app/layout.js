@@ -114,10 +114,6 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
-      <head>
-        <link rel="preconnect" href="https://www.google.com" />
-        <link rel="dns-prefetch" href="https://www.google.com" />
-      </head>
       <body>
         <JsonLd id="ld-organization" data={organizationSchema()} />
         <JsonLd id="ld-website" data={websiteSchema()} />

@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import SectionHeader from '@/components/SectionHeader';
 import StatsBar from '@/components/StatsBar';
@@ -66,7 +67,14 @@ export default function HomePage() {
             </ul>
           </div>
           <div className="hero-visual surface-card">
-            <img src="/assets/homepage-hero-banner.webp" alt="GCDA career counselling session with student and parent" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <Image
+              src="/assets/homepage-hero-banner.webp"
+              alt="GCDA career counselling session with student and parent"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+              priority
+            />
           </div>
         </div>
       </section>
@@ -99,7 +107,13 @@ export default function HomePage() {
             <Link href="/about" className="text-link">Learn more about GCDA →</Link>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/homepage-about-section.webp" alt="GCDA counsellor guiding a student and parent" width="1376" height="768" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/homepage-about-section.webp"
+              alt="GCDA counsellor guiding a student and parent"
+              width={1536}
+              height={1024}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+            />
           </div>
         </div>
       </section>
@@ -156,7 +170,13 @@ export default function HomePage() {
       <section className="section">
         <div className="container two-column reverse-mobile">
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.webp" alt="Services illustration" width="1200" height="896" loading="lazy" decoding="async" />
+            <Image
+              src="/assets/service-illustration.webp"
+              alt="Services illustration"
+              width={1200}
+              height={896}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1180px) 50vw, 560px"
+            />
           </div>
           <div>
             <SectionHeader

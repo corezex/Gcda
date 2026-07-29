@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ServiceGrid({ services, limit }) {
@@ -8,7 +9,13 @@ export default function ServiceGrid({ services, limit }) {
       {list.map((service) => (
         <article className="card service-card" key={service.slug}>
           <div className="service-card-media">
-            <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />
+            <Image
+              src={service.image}
+              alt={service.title}
+              width={1376}
+              height={768}
+              sizes="(max-width: 860px) calc(100vw - 1.2rem), (max-width: 1080px) 50vw, 33vw"
+            />
           </div>
           <div className="card-body">
             <div className="icon-badge">{service.icon}</div>

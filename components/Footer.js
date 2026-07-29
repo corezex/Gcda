@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { company } from '@/data/site';
 import { ALL_CITIES } from '@/data/indiaLocations';
@@ -78,7 +79,14 @@ export default function Footer() {
         <div className="container footer-grid">
           <div className="footer-brand-col">
             <div className="footer-brand-row">
-              <img src="/assets/logo.webp" alt="GCDA logo" className="footer-logo" width="1024" height="1024" loading="lazy" decoding="async" />
+              <Image
+                src="/assets/logo.webp"
+                alt="GCDA logo"
+                className="footer-logo"
+                width={96}
+                height={96}
+                sizes="96px"
+              />
               <div>
                 <h3>{company.shortName}</h3>
                 <p className="footer-tagline">{company.tagline}</p>
