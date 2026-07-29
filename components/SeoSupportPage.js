@@ -10,6 +10,9 @@ import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSc
 const SITE_URL = 'https://gcdassociation.org';
 
 export function buildSeoSupportMetadata(page) {
+  const image = page.image || '/assets/service-illustration.webp';
+  const imageAlt = page.imageAlt || page.title;
+
   return {
     title: page.title,
     description: page.description,
@@ -22,10 +25,10 @@ export function buildSeoSupportMetadata(page) {
       type: 'article',
       images: [
         {
-          url: '/assets/service-illustration.webp',
+          url: image,
           width: 1200,
           height: 630,
-          alt: page.title,
+          alt: imageAlt,
         },
       ],
     },
@@ -35,10 +38,10 @@ export function buildSeoSupportMetadata(page) {
       description: page.description,
       images: [
         {
-          url: '/assets/service-illustration.webp',
+          url: image,
           width: 1200,
           height: 630,
-          alt: page.title,
+          alt: imageAlt,
         },
       ],
     },
@@ -72,7 +75,7 @@ export default function SeoSupportPage({ page }) {
             </div>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/service-illustration.webp" alt={page.title} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <img src={page.image || '/assets/service-illustration.webp'} alt={page.imageAlt || page.title} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -164,7 +167,7 @@ export default function SeoSupportPage({ page }) {
       />
 
       <JsonLd id={`ld-breadcrumb-${page.slug}`} data={breadcrumbSchema(breadcrumbs)} />
-      <JsonLd id={`ld-webpage-${page.slug}`} data={webPageSchema({ url, name: page.title, description: page.description, primaryImage: `${SITE_URL}/assets/service-illustration.webp` })} />
+      <JsonLd id={`ld-webpage-${page.slug}`} data={webPageSchema({ url, name: page.title, description: page.description, primaryImage: `${SITE_URL}${page.image || '/assets/service-illustration.webp'}` })} />
       <JsonLd id={`ld-speakable-${page.slug}`} data={speakableSchema({ url, name: page.title })} />
       <JsonLd id={`ld-itemlist-${page.slug}`} data={itemListSchema({
         url,

@@ -769,8 +769,21 @@ export const seoSupportPages = {
   },
 };
 
-export function getSeoSupportPage(slug) {
-  return seoSupportPages[slug] || null;
+function getSeoSupportPageImage(slug) {
+  if (slug === 'qualification-for-career-counsellor-in-india') {
+    return '/assets/seo-support/qualification-for-career-counsellor-in-india.svg';
+  }
+  return `/assets/seo-support/${slug}.webp`;
 }
 
-export const seoSupportPageList = Object.values(seoSupportPages);
+export function getSeoSupportPage(slug) {
+  const page = seoSupportPages[slug] || null;
+  if (!page) return null;
+  return {
+    ...page,
+    image: getSeoSupportPageImage(slug),
+    imageAlt: page.title,
+  };
+}
+
+export const seoSupportPageList = Object.keys(seoSupportPages).map((slug) => getSeoSupportPage(slug));

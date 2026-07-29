@@ -1,6 +1,7 @@
 import { services } from '@/data/site';
 import { STATES, getAllCityUrls } from '@/data/indiaLocations';
 import { blogPosts } from '@/data/blog';
+import { seoSupportPageList } from '@/data/seoSupportPages';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS } from '@/data/servicePages';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -20,7 +21,7 @@ export default function sitemap() {
     : CORE_LAST_MODIFIED;
 
   // Top-level static routes – updated for 438 cities + legal + author pages
-  const staticRoutes = [
+  const baseStaticRoutes = [
     { path: '', priority: 1.0, changeFrequency: 'weekly', lastModified: CORE_LAST_MODIFIED },
     { path: '/about', priority: 0.8, changeFrequency: 'monthly', lastModified: CORE_LAST_MODIFIED },
     { path: '/career-counselling', priority: 0.9, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
@@ -33,23 +34,22 @@ export default function sitemap() {
     { path: '/terms', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
     { path: '/refund-policy', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
     { path: '/author/gcda-editorial-team', priority: 0.7, changeFrequency: 'monthly', lastModified: AUTHOR_LAST_MODIFIED },
-    { path: '/psychometric-test-for-students', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/career-counselling-online-india', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/career-counsellor-near-me', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/best-career-counselling-in-india', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/career-counselling-for-parents', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/aptitude-test-for-students', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/career-counselling-vs-aptitude-test', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/online-vs-offline-career-counselling', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/how-to-become-career-counsellor-in-india', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/career-counsellor-salary-in-india', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-    { path: '/qualification-for-career-counsellor-in-india', priority: 0.75, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
-  ].map((route) => ({
+  ];
+
+  const seoSupportRoutes = seoSupportPageList.map((page) => ({
+    path: `/${page.slug}`,
+    priority: 0.75,
+    changeFrequency: 'monthly',
+    lastModified: SERVICE_LAST_MODIFIED,
+    image: page.image,
+  }));
+
+  const staticRoutes = [...baseStaticRoutes, ...seoSupportRoutes].map((route) => ({
     url: `${SITE_URL}${route.path}`,
     lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
     priority: route.priority,
-    images: [`${SITE_URL}/assets/hero-illustration.webp`],
+    images: [`${SITE_URL}${route.image || '/assets/hero-illustration.webp'}`],
   }));
 
   // Top-level service main pages (4 of them — /career-certification has its own page)

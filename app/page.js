@@ -29,10 +29,10 @@ export const metadata = {
     url: 'https://gcdassociation.org/',
     images: [
       {
-        url: '/assets/hero-illustration.webp',
+        url: '/assets/homepage-hero-banner.webp',
         width: 1200,
         height: 630,
-        alt: 'GCDA career counselling homepage',
+        alt: 'GCDA career counselling homepage hero banner',
       },
     ],
   },
@@ -40,6 +40,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Career Counselling & Career Guidance in India',
     description: 'Expert career counselling India – assessments, stream & degree guidance. Online & in-person.',
+    images: ['/assets/homepage-hero-banner.webp'],
   },
 };
 
@@ -65,7 +66,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="hero-visual surface-card">
-            <img src="/assets/hero-illustration.webp" alt="Career guidance and counselling illustration" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
+            <img src="/assets/homepage-hero-banner.webp" alt="GCDA career counselling session with student and parent" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
           </div>
         </div>
       </section>
@@ -98,7 +99,7 @@ export default function HomePage() {
             <Link href="/about" className="text-link">Learn more about GCDA →</Link>
           </div>
           <div className="surface-card media-card">
-            <img src="/assets/career-2.webp" alt="Career counselling session" width="1376" height="768" loading="lazy" decoding="async" />
+            <img src="/assets/homepage-about-section.webp" alt="GCDA counsellor guiding a student and parent" width="1376" height="768" loading="lazy" decoding="async" />
           </div>
         </div>
       </section>
