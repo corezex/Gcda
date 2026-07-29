@@ -148,12 +148,7 @@ export default function ContactPage() {
             </div>
             <div className="info-panel">
               <h3>Quick Contact</h3>
-              <ul className="footer-contact compact">
-                <li><a href={`tel:${company.phoneRaw}`}>{company.phoneDisplay}</a></li>
-                <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
-                <li><a href={company.whatsappLink} target="_blank" rel="noreferrer">Chat on WhatsApp</a></li>
-              </ul>
-              <div className="footer-socials contact-socials" aria-label="GCDA social media" style={{ marginTop: '1rem' }}>
+              <div className="footer-socials contact-socials" aria-label="GCDA social media" style={{ marginTop: '0.5rem' }}>
                 {socials.map((s) => (
                   <a
                     key={s.label}
