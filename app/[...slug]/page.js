@@ -6,6 +6,7 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import SeminarTypesGrid from '@/components/SeminarTypesGrid';
 import JsonLd from '@/components/JsonLd';
+import CityFeePage, { buildCityFeeMetadata } from '@/components/CityFeePage';
 import {
   STATES,
   CITIES_BY_STATE,
@@ -14,6 +15,7 @@ import {
   getStateBySlug,
 } from '@/data/indiaLocations';
 import { services as baseServices, company } from '@/data/site';
+import { CITY_FEE_PAGES, getCityFeePageByRouteSlug, getCityFeePageByStateCity } from '@/data/cityFeePages';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
 import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSchema } from '@/data/schema';
 import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
@@ -66,6 +68,10 @@ function parseSlug(slug) {
   // Top-level service page: /<service-slug>
   if (slug.length === 1) {
     const sl = slug[0];
+    const cityFeePage = getCityFeePageByRouteSlug(sl);
+    if (cityFeePage) {
+      return { type: 'city-fees', page: cityFeePage };
+    }
     // Reserved for static pages (handled by their own route)
     if (STANDALONE_SERVICE_SLUGS.has(sl)) return null;
     // Top-level service main page → render as service page
@@ -112,6 +118,10 @@ export function generateStaticParams() {
   // State hub pages
   for (const s of STATES) {
     params.push({ slug: [s.slug] });
+  }
+  // Dedicated city fees pages
+  for (const page of CITY_FEE_PAGES) {
+    params.push({ slug: [page.slug] });
   }
   // City pages for every (service, state, city) combination
   for (const u of getAllCityUrls()) {
@@ -205,6 +215,10 @@ function getCoverageArea(city, stateName) {
 export function generateMetadata({ params }) {
   const parsed = parseSlug(params.slug);
   if (!parsed) return { title: 'Not found' };
+
+  if (parsed.type === 'city-fees') {
+    return buildCityFeeMetadata(parsed.page);
+  }
 
   if (parsed.type === 'service-page') {
     return generateServicePageMetadata(parsed.serviceSlug, parsed.servicePage);
@@ -318,6 +332,10 @@ export function generateMetadata({ params }) {
 export default function DynamicPage({ params }) {
   const parsed = parseSlug(params.slug);
   if (!parsed) notFound();
+
+  if (parsed.type === 'city-fees') {
+    return <CityFeePage page={parsed.page} />;
+  }
 
   if (parsed.type === 'service-page') {
     return <MainServicePage serviceSlug={parsed.serviceSlug} servicePage={parsed.servicePage} />;
@@ -489,6 +507,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const stateName = state.name;
   const pageUrl = `${SITE_URL}${pattern.urlPattern(stateSlug, citySlug)}`;
   const cityLabel = pattern.cityLabel;
+  const cityFeePage = getCityFeePageByStateCity(stateSlug, citySlug);
 
   // Get the rich base-service data (for personal-counselling, career-assessment
   // which don't have a servicePages entry) so city pages have full content.
@@ -839,6 +858,25 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           </div>
         </div>
       </section>
+
+      {cityFeePage ? (
+        <section className="section">
+          <div className="container">
+            <SectionHeader
+              eyebrow="Fees in your city"
+              title={`Career counselling fees in ${city.name}`}
+              description={`Need pricing clarity for ${city.name}? Compare GCDA plans, online guidance, and the right support level for students or professionals in ${city.name}.`}
+              center
+            />
+            <div className="narrow-center" style={{ textAlign: 'center' }}>
+              <p>Use the city pricing page to compare plan fees, understand what affects counselling cost, and see which option usually fits families and professionals in {city.name} best.</p>
+              <div className="button-row" style={{ justifyContent: 'center', marginTop: '1rem' }}>
+                <Link href={`/${cityFeePage.slug}`} className="button button-secondary">View {city.name} Fees</Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* Seminar types — only on the seminar service city page */}
       {serviceSlug === 'career-counselling-seminar' && servicePage.seminarTypes ? (

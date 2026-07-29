@@ -1,6 +1,7 @@
 import { services } from '@/data/site';
 import { STATES, getAllCityUrls } from '@/data/indiaLocations';
 import { blogPosts } from '@/data/blog';
+import { CITY_FEE_PAGES } from '@/data/cityFeePages';
 import { seoSupportPageList } from '@/data/seoSupportPages';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS } from '@/data/servicePages';
 
@@ -44,7 +45,15 @@ export default function sitemap() {
     image: page.image,
   }));
 
-  const staticRoutes = [...baseStaticRoutes, ...seoSupportRoutes].map((route) => ({
+  const cityFeeRoutes = CITY_FEE_PAGES.map((page) => ({
+    path: `/${page.slug}`,
+    priority: 0.72,
+    changeFrequency: 'monthly',
+    lastModified: SERVICE_LAST_MODIFIED,
+    image: '/assets/career-6.webp',
+  }));
+
+  const staticRoutes = [...baseStaticRoutes, ...seoSupportRoutes, ...cityFeeRoutes].map((route) => ({
     url: `${SITE_URL}${route.path}`,
     lastModified: route.lastModified,
     changeFrequency: route.changeFrequency,
