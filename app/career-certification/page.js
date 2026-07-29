@@ -147,11 +147,11 @@ export default function CareerCertificationPage() {
               <Link href="/contact" className="button button-primary">Enquire Now</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
-            <div className="hero-proof">
-              <span>Hybrid online + in-person</span>
-              <span>Bachelor's degree eligible</span>
-              <span>Practice-ready certification</span>
-            </div>
+            <ul className="hero-proof" aria-label="Programme highlights">
+              <li>Hybrid online + in-person</li>
+              <li>Bachelor's degree eligible</li>
+              <li>Practice-ready certification</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/career-7.webp" alt="Career Counselling Certification" width="1376" height="768" loading="eager" fetchPriority="high" decoding="async" />

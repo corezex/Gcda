@@ -159,11 +159,11 @@ export default function BlogPaginatedPage({ params }) {
             <p className="page-hero-copy">
               Page {currentPage} of {totalPages} – {blogPosts.length} practical, India-specific career guidance guides for 2027 decisions. Continue reading stream selection, course planning, exam strategy, working professional, and counselling content.
             </p>
-            <div className="hero-proof">
-              <span>{blogPosts.length} total guides</span>
-              <span>Page {currentPage} of {totalPages}</span>
-              <span>{Math.max(blogCategories.length - 1, 0)} categories</span>
-            </div>
+            <ul className="hero-proof" aria-label="Blog page overview">
+              <li>{blogPosts.length} total guides</li>
+              <li>{`Page ${currentPage} of ${totalPages}`}</li>
+              <li>{`${Math.max(blogCategories.length - 1, 0)} categories`}</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/service-illustration.webp" alt={`GCDA career guidance blog – Page ${currentPage}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
@@ -179,13 +179,13 @@ export default function BlogPaginatedPage({ params }) {
             description={`Page ${currentPage} – Definitive, India-specific guides for students, parents, and working professionals.`}
             center
           />
-          <div className="category-chips">
+          <ul className="category-chips" aria-label="Blog categories">
             {blogCategories.map((cat) => (
-              <span key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
+              <li key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
                 {cat}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
           <p style={{ textAlign: 'center', marginTop: '0.8rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
             Showing {start + 1}–{Math.min(end, blogPosts.length)} of {blogPosts.length} articles
           </p>

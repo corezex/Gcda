@@ -639,11 +639,11 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
             </div>
-            <div className="hero-proof">
-              <span>{`Online sessions across ${city.name}`}</span>
-              <span>{`· In-person in ${city.name}`}</span>
-              <span>· 50K+ career sessions delivered</span>
-            </div>
+            <ul className="hero-proof" aria-label="City service proof points">
+              <li>{`Online sessions across ${city.name}`}</li>
+              <li>{`In-person in ${city.name}`}</li>
+              <li>50K+ career sessions delivered</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/hero-illustration.webp" alt={`${servicePage.title} in ${city.name}`} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />

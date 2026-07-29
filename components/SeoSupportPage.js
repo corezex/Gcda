@@ -68,11 +68,11 @@ export default function SeoSupportPage({ page }) {
               <Link href="/contact" className="button button-primary">Book a Consultation</Link>
               <Link href="/career-counselling" className="button button-secondary">Explore Services</Link>
             </div>
-            <div className="hero-proof">
-              <span>Evidence-based guidance</span>
-              <span>India-wide online access</span>
-              <span>50K+ career sessions</span>
-            </div>
+            <ul className="hero-proof" aria-label="Support page proof points">
+              <li>Evidence-based guidance</li>
+              <li>India-wide online access</li>
+              <li>50K+ career sessions</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src={page.image || '/assets/service-illustration.webp'} alt={page.imageAlt || page.title} width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />

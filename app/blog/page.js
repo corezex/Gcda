@@ -228,13 +228,13 @@ export default function BlogIndexPage({ searchParams }) {
           />
           {hasPosts ? (
             <>
-              <div className="category-chips">
+              <ul className="category-chips" aria-label="Blog categories">
                 {blogCategories.map((cat) => (
-                  <span key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
+                  <li key={cat} className={`chip ${cat === 'All' ? 'chip-active' : ''}`}>
                     {cat}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
               <p style={{ textAlign: 'center', marginTop: '0.8rem', fontSize: '0.9rem', color: 'var(--muted)' }}>
                 Showing {start + 1}–{Math.min(end, totalPosts)} of {totalPosts} articles
               </p>

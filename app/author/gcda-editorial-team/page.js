@@ -82,12 +82,12 @@ export default function AuthorPage() {
               <Link href="/about" className="button button-primary">About GCDA</Link>
               <Link href="/contact" className="button button-secondary">Contact Us</Link>
             </div>
-            <div className="hero-proof">
-              <span>50K+ career sessions</span>
-              <span>5K+ certified counsellors</span>
-              <span>10+ years experience</span>
-              <span>98% satisfaction</span>
-            </div>
+            <ul className="hero-proof" aria-label="Editorial team trust signals">
+              <li>50K+ career sessions</li>
+              <li>5K+ certified counsellors</li>
+              <li>10+ years experience</li>
+              <li>98% satisfaction</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src="/assets/logo.webp" alt="GCDA Editorial Team – career counselling experts" width="1024" height="1024" loading="lazy" decoding="async" />

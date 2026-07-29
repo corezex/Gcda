@@ -328,11 +328,11 @@ export default function ServiceDetailPage({ params }) {
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
               <Link href="#how-it-works" className="button button-secondary">How it Works</Link>
             </div>
-            <div className="hero-proof">
-              <span>98% satisfied clients</span>
-              <span>50K+ career sessions delivered</span>
-              <span>Online + in-person</span>
-            </div>
+            <ul className="hero-proof" aria-label="Service proof points">
+              <li>98% satisfied clients</li>
+              <li>50K+ career sessions delivered</li>
+              <li>Online + in-person</li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <img src={service.image} alt={service.title} width="1376" height="768" loading="lazy" decoding="async" />

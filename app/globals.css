@@ -611,8 +611,10 @@ h4 {
   flex-wrap: wrap;
   gap: 0.55rem;
   margin-top: 1.4rem;
+  list-style: none;
+  padding: 0;
 }
-.hero-proof span {
+.hero-proof li {
   padding: 0.45rem 0.8rem;
   border-radius: 999px;
   background: var(--surface);
@@ -1536,6 +1538,8 @@ textarea { resize: vertical; min-height: 130px; }
   gap: 0.4rem;
   justify-content: center;
   margin-top: 1.4rem;
+  list-style: none;
+  padding: 0;
 }
 .chip {
   display: inline-flex;
@@ -2120,7 +2124,7 @@ textarea { resize: vertical; min-height: 130px; }
   .container { width: min(var(--max), calc(100% - 1.2rem)); }
   .timeline-item { grid-template-columns: 1fr; }
   .hero-proof { gap: 0.45rem; }
-  .hero-proof span { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
+  .hero-proof li { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
   .hero-visual img,
   .media-card img { aspect-ratio: auto; max-height: 400px; object-fit: contain; }
   .cta-band-inner { padding: 1.5rem 1.4rem; }

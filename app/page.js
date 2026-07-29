@@ -59,11 +59,11 @@ export default function HomePage() {
               <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
               <Link href="/career-counselling" className="button button-secondary">Explore Services</Link>
             </div>
-            <div className="hero-proof">
-              <span>98% satisfied clients</span>
-              <span>50K+ career sessions</span>
-              <span>Online + in-person</span>
-            </div>
+            <ul className="hero-proof" aria-label="Trust signals">
+              <li>98% satisfied clients</li>
+              <li>50K+ career sessions</li>
+              <li>Online + in-person</li>
+            </ul>
           </div>
           <div className="hero-visual surface-card">
             <img src="/assets/homepage-hero-banner.webp" alt="GCDA career counselling session with student and parent" width="1200" height="896" loading="eager" fetchPriority="high" decoding="async" />
