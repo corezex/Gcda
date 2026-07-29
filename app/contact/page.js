@@ -4,6 +4,7 @@ import AnswerBlock from '@/components/AnswerBlock';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import { company } from '@/data/site';
+import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
 
 const socials = [
   {
@@ -43,7 +44,6 @@ const socials = [
     ),
   },
 ];
-import { contactPageSchema, breadcrumbSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
 
@@ -153,7 +153,7 @@ export default function ContactPage() {
                 <li><a href={`mailto:${company.email}`}>{company.email}</a></li>
                 <li><a href={company.whatsappLink} target="_blank" rel="noreferrer">Chat on WhatsApp</a></li>
               </ul>
-              <div className="footer-socials" aria-label="GCDA social media" style={{ marginTop: '1rem' }}>
+              <div className="footer-socials contact-socials" aria-label="GCDA social media" style={{ marginTop: '1rem' }}>
                 {socials.map((s) => (
                   <a
                     key={s.label}

@@ -201,7 +201,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="Testimonials"
             title="What our clients say"
-            description="Families, students, and professionals across India trust GCDA for clear and supportive guidance."
+            description="Families, students, and professionals across India trust GCDA for clearer, more structured guidance. Selected testimonials are anonymized to protect client privacy."
             center
           />
           <TestimonialGrid testimonials={testimonials} />

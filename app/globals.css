@@ -677,6 +677,15 @@ h4 {
 .trust-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+.trust-grid .card-body {
+  padding: 1.1rem 1.05rem 1.2rem;
+}
+.trust-grid h3 {
+  font-size: 1.02rem;
+}
+.trust-grid .card-body > p {
+  font-size: 0.9rem;
+}
 
 .service-card {
   display: flex;
@@ -1613,6 +1622,16 @@ textarea { resize: vertical; min-height: 130px; }
   background: var(--primary);
   color: #fff;
   transform: translateY(-2px);
+}
+
+.contact-socials .footer-social-link {
+  background: var(--secondary-softer);
+  color: var(--secondary);
+  border: 1px solid rgba(15, 118, 110, 0.12);
+}
+.contact-socials .footer-social-link:hover {
+  background: var(--secondary);
+  color: #fff;
 }
 
 /* Get-in-touch column */

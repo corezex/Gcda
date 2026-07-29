@@ -820,22 +820,22 @@ export const services = [
 
 export const testimonials = [
   {
-    name: 'Samantha H.',
-    role: 'Client',
+    name: 'Parent of a Class 10 student',
+    role: 'Pune • Stream Selection Guidance',
     quote:
-      'Working with GCDA was a game-changer for me. Their career assessments helped me understand my strengths and align them with my career goals. The coaching sessions were insightful and motivating, leading me to a job that truly fits my passion.',
+      'GCDA helped us move from daily arguments about Science versus Commerce to one clear, evidence-based plan. The assessment plus parent-student alignment conversation gave our family the confidence to choose without panic.',
   },
   {
-    name: 'Hirendra S.',
-    role: 'Client',
+    name: 'Working professional',
+    role: 'Bengaluru • MBA & Career Transition Planning',
     quote:
-      'I highly recommend GCDA to anyone feeling stuck in their career. The one-on-one counselling sessions helped me develop a clear action plan and regain my professional confidence. I now have a renewed sense of purpose and direction.',
+      'I went into the process confused about whether I needed an MBA, a role switch, or both. GCDA helped me compare the options honestly, improve my positioning, and walk away with a practical 90-day execution roadmap.',
   },
   {
-    name: 'Tom H.',
-    role: 'Client',
+    name: 'Class 12 student',
+    role: 'Delhi • Career Assessment + Degree Selection',
     quote:
-      'The career counselling I received from GCDA was outstanding. They provided me with the tools, resources, and confidence to pursue my career aspirations. I am grateful for their support and highly recommend their services.',
+      'The biggest value for me was that GCDA turned a long list of random college ideas into a realistic shortlist I could actually defend to my parents. The guidance felt structured, specific, and much more useful than generic online advice.',
   },
 ];
 
