@@ -2062,10 +2062,11 @@ textarea { resize: vertical; min-height: 130px; }
   .menu-toggle { display: inline-flex; }
 
   .nav {
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
-    top: calc(100% + 0.5rem);
+    position: fixed;
+    left: 0.75rem;
+    right: 0.75rem;
+    top: 84px;
+    bottom: 0.75rem;
     display: none;
     flex-direction: column;
     align-items: stretch;
@@ -2075,10 +2076,10 @@ textarea { resize: vertical; min-height: 130px; }
     border: 1px solid var(--line);
     box-shadow: var(--shadow-lg);
     gap: 0.15rem;
-    max-height: calc(100vh - 100px);
     overflow-y: auto;
     overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
   .nav.nav-open { display: flex; }
   .header-cta { margin: 0.4rem 0 0; align-self: stretch; justify-content: center; }
