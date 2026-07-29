@@ -9,7 +9,7 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
-  const servicesRef = useRef(null);
+  const desktopServicesRef = useRef(null);
 
   const closeMenus = () => {
     setOpen(false);
@@ -28,14 +28,13 @@ export default function Header() {
 
   useEffect(() => {
     function onClickOutside(event) {
-      if (servicesRef.current && !servicesRef.current.contains(event.target)) {
+      if (window.innerWidth <= 860) return;
+      if (desktopServicesRef.current && !desktopServicesRef.current.contains(event.target)) {
         setServicesOpen(false);
       }
     }
     function onKeyDown(event) {
-      if (event.key === 'Escape') {
-        closeMenus();
-      }
+      if (event.key === 'Escape') closeMenus();
     }
     document.addEventListener('mousedown', onClickOutside);
     document.addEventListener('keydown', onKeyDown);
@@ -61,6 +60,32 @@ export default function Header() {
     };
   }, [open]);
 
+  const serviceItems = (
+    <>
+      <Link href="/career-counselling" className="nav-dropdown-item nav-dropdown-all" role="menuitem" onClick={closeMenus}>
+        All services
+      </Link>
+      <div className="nav-dropdown-divider" />
+      {services.map((s) => (
+        <Link key={s.slug} href={`/career-counselling/${s.slug}`} className="nav-dropdown-item" role="menuitem" onClick={closeMenus}>
+          <span className="nav-dropdown-icon" aria-hidden="true">{s.icon}</span>
+          <span className="nav-dropdown-text">
+            <strong>{s.title}</strong>
+            <small>{s.shortDescription}</small>
+          </span>
+        </Link>
+      ))}
+      <div className="nav-dropdown-divider" />
+      <Link href="/career-certification" className="nav-dropdown-item nav-dropdown-feature" role="menuitem" onClick={closeMenus}>
+        <span className="nav-dropdown-icon" aria-hidden="true">🏅</span>
+        <span className="nav-dropdown-text">
+          <strong>Career Counselling Certification</strong>
+          <small>Become a certified career counsellor — hybrid online + in-person</small>
+        </span>
+      </Link>
+    </>
+  );
+
   return (
     <>
       <header className="site-header">
@@ -74,7 +99,7 @@ export default function Header() {
             type="button"
             aria-label="Toggle menu"
             aria-expanded={open}
-            aria-controls="primary-navigation"
+            aria-controls="mobile-navigation"
             onClick={() => setOpen((prev) => !prev)}
           >
             <span />
@@ -82,11 +107,11 @@ export default function Header() {
             <span />
           </button>
 
-          <nav id="primary-navigation" className={`nav ${open ? 'nav-open' : ''}`}>
+          <nav className="nav-desktop" aria-label="Desktop navigation">
             {navLinks.map((link) => {
               if (link.href === '/career-counselling') {
                 return (
-                  <div key={link.href} className={`nav-dropdown ${servicesOpen ? 'is-open' : ''}`} ref={servicesRef}>
+                  <div key={link.href} className={`nav-dropdown ${servicesOpen ? 'is-open' : ''}`} ref={desktopServicesRef}>
                     <button
                       type="button"
                       className={`nav-link nav-dropdown-label ${isServicesActive() ? 'active' : ''}`}
@@ -98,34 +123,14 @@ export default function Header() {
                       <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
                     </button>
                     <div className={`nav-dropdown-menu ${servicesOpen ? 'is-visible' : ''}`} role="menu" aria-hidden={!servicesOpen}>
-                      <Link href="/career-counselling" className="nav-dropdown-item nav-dropdown-all" role="menuitem" onClick={closeMenus}>
-                        All services
-                      </Link>
-                      <div className="nav-dropdown-divider" />
-                      {services.map((s) => (
-                        <Link key={s.slug} href={`/career-counselling/${s.slug}`} className="nav-dropdown-item" role="menuitem" onClick={closeMenus}>
-                          <span className="nav-dropdown-icon" aria-hidden="true">{s.icon}</span>
-                          <span className="nav-dropdown-text">
-                            <strong>{s.title}</strong>
-                            <small>{s.shortDescription}</small>
-                          </span>
-                        </Link>
-                      ))}
-                      <div className="nav-dropdown-divider" />
-                      <Link href="/career-certification" className="nav-dropdown-item nav-dropdown-feature" role="menuitem" onClick={closeMenus}>
-                        <span className="nav-dropdown-icon" aria-hidden="true">🏅</span>
-                        <span className="nav-dropdown-text">
-                          <strong>Career Counselling Certification</strong>
-                          <small>Become a certified career counsellor — hybrid online + in-person</small>
-                        </span>
-                      </Link>
+                      {serviceItems}
                     </div>
                   </div>
                 );
               }
 
               return (
-                <Link key={link.href} href={link.href} className={`nav-link ${isActive(link.href) ? 'active' : ''}`} onClick={closeMenus}>
+                <Link key={link.href} href={link.href} className={`nav-link ${isActive(link.href) ? 'active' : ''}`}>
                   {link.label}
                 </Link>
               );
@@ -136,7 +141,40 @@ export default function Header() {
           </nav>
         </div>
       </header>
+
       {open ? <button className="nav-backdrop" type="button" aria-label="Close menu" onClick={closeMenus} /> : null}
+
+      <nav id="mobile-navigation" className={`nav-mobile ${open ? 'nav-mobile-open' : ''}`} aria-label="Mobile navigation">
+        {navLinks.map((link) => {
+          if (link.href === '/career-counselling') {
+            return (
+              <div key={link.href} className={`mobile-nav-group ${servicesOpen ? 'is-open' : ''}`}>
+                <button
+                  type="button"
+                  className={`nav-link mobile-services-toggle ${isServicesActive() ? 'active' : ''}`}
+                  onClick={() => setServicesOpen((v) => !v)}
+                  aria-expanded={servicesOpen}
+                >
+                  {link.label}
+                  <span className="nav-dropdown-caret" aria-hidden="true">▾</span>
+                </button>
+                <div className={`mobile-services-panel ${servicesOpen ? 'is-visible' : ''}`}>
+                  {serviceItems}
+                </div>
+              </div>
+            );
+          }
+
+          return (
+            <Link key={link.href} href={link.href} className={`nav-link mobile-nav-link ${isActive(link.href) ? 'active' : ''}`} onClick={closeMenus}>
+              {link.label}
+            </Link>
+          );
+        })}
+        <a className="button button-primary mobile-nav-cta" href={company.whatsappLink} target="_blank" rel="noreferrer" onClick={closeMenus}>
+          Book Consultation
+        </a>
+      </nav>
     </>
   );
 }
