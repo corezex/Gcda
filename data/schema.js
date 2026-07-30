@@ -667,7 +667,7 @@ export function webPageSchema({ url, name, description, inLanguage = 'en-IN', pr
 
 // ----- Speakable schema (voice search / AEO) -----
 // Marks key sections as speakable for Google Assistant & voice search
-export function speakableSchema({ url, name, cssSelector = ['.answer-block', '.page-hero-copy', '.article-section p'] }) {
+export function speakableSchema({ url, name, cssSelector = ['.answer-block p', '.page-hero-copy', '.answer-block-label'] }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
