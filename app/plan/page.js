@@ -9,7 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import '@/styles/non-homepage.css';
 import { plans } from '@/data/site';
-import { faqSchema, productSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
+import { faqSchema, planCatalogSchema, breadcrumbSchema, webPageSchema } from '@/data/schema';
 
 const SITE_URL = 'https://gcdassociation.org';
 
@@ -147,9 +147,7 @@ export default function PlanPage() {
           />
           <PlanCards plans={plans} />
         </div>
-        {plans.map((plan) => (
-          <JsonLd key={plan.slug} id={`ld-product-${plan.slug}`} data={productSchema(plan)} />
-        ))}
+        <JsonLd id="ld-plan-catalog" data={planCatalogSchema(plans)} />
       </section>
 
       <section className="section alt-section" id="pricing-breakdown">

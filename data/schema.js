@@ -223,30 +223,39 @@ export function serviceSchema(service) {
 }
 
 // ----- Product schema (for plans) -----
-export function productSchema(plan) {
+export function planCatalogSchema(plansList) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Product',
-    name: `GCDA ${plan.name} Plan`,
-    description: plan.eyebrow,
-    brand: { '@type': 'Brand', name: 'GCDA' },
+    '@type': 'OfferCatalog',
+    '@id': `${SITE_URL}/plan#catalog`,
+    name: 'GCDA Career Counselling Plans',
     url: `${SITE_URL}/plan`,
-    offers: {
+    itemListElement: plansList.map((plan, idx) => ({
       '@type': 'Offer',
+      position: idx + 1,
       price: plan.price.replace(/[^0-9]/g, ''),
       priceCurrency: 'INR',
       availability: 'https://schema.org/InStock',
       url: `${SITE_URL}/plan`,
-      priceValidUntil: '2027-12-31',
-      seller: { '@id': `${SITE_URL}/#organization`, '@type': 'Organization', name: company.name, url: SITE_URL },
-      itemCondition: 'https://schema.org/NewCondition',
-      eligibleRegion: { '@type': 'Country', name: 'India' },
-      hasMerchantReturnPolicy: {
-        '@type': 'MerchantReturnPolicy',
-        returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
-        merchantReturnDays: 7,
+      seller: {
+        '@id': `${SITE_URL}/#organization`,
+        '@type': 'Organization',
+        name: company.name,
+        url: SITE_URL,
       },
-    },
+      itemOffered: {
+        '@type': 'Service',
+        name: `GCDA ${plan.name}`,
+        description: plan.eyebrow,
+        areaServed: { '@type': 'Country', name: 'India' },
+        provider: {
+          '@id': `${SITE_URL}/#organization`,
+          '@type': 'Organization',
+          name: company.name,
+          url: SITE_URL,
+        },
+      },
+    })),
   };
 }
 
@@ -312,7 +321,7 @@ export function articleSchema(post, url) {
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': url,
+      '@id': absoluteUrl(url),
     },
     articleSection: post.category,
     keywords: (post.keywords || []).join(', '),
@@ -346,7 +355,7 @@ export function courseSchema({
   const course = {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    '@id': `${url}#course`,
+    '@id': `${canonicalUrl}#course`,
     name,
     description,
     provider: {
@@ -513,11 +522,12 @@ export function cityServicePageSchema({
 // ----- AboutPage schema (for /about) -----
 // Used by AI Overviews and Google to verify GCDA's identity, mission, and team.
 export function aboutPageSchema(url) {
+  const canonicalUrl = absoluteUrl(url);
   return {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
-    '@id': `${url}#about`,
-    url,
+    '@id': `${canonicalUrl}#about`,
+    url: canonicalUrl,
     name: 'About GCDA – Career Counselling Association in India',
     description:
       'GCDA is a Mumbai-headquartered career counselling association founded in 2013. We work with 50,000+ students, parents, and working professionals across India through 5,000+ certified counsellors, offering personal counselling, career assessments, stream and degree selection, and professional growth mentoring.',
@@ -560,11 +570,12 @@ export function aboutPageSchema(url) {
 
 // ----- ContactPage schema (for /contact) -----
 export function contactPageSchema(url) {
+  const canonicalUrl = absoluteUrl(url);
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
-    '@id': `${url}#contact`,
-    url,
+    '@id': `${canonicalUrl}#contact`,
+    url: canonicalUrl,
     name: 'Contact GCDA – Career Counselling in Mumbai & Across India',
     description:
       'Contact GCDA for career counselling, career assessments, plans, and institutional workshops. Visit our Mumbai office at 102, Citi Mall, Link Road, Andheri West, or reach us by phone, email, or WhatsApp.',
@@ -675,7 +686,12 @@ export function webPageSchema({ url, name, description, inLanguage = 'en-IN', pr
           height: 630,
         }
       : undefined,
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: company.name,
+      url: SITE_URL,
+    },
   };
 }
 
@@ -763,6 +779,7 @@ export function itemListSchema({ url, name, items, description }) {
     name,
     description: description || name,
     numberOfItems: items.length,
+    itemListOrder: 'https://schema.org/ItemListOrderAscending',
     itemListElement: items.map((it, idx) => ({
       '@type': 'ListItem',
       position: idx + 1,
@@ -785,7 +802,12 @@ export function legalPageSchema({ url, name, description }) {
     inLanguage: 'en-IN',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     about: { '@id': `${SITE_URL}/#organization` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: company.name,
+      url: SITE_URL,
+    },
   };
 }
 
