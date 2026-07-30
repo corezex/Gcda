@@ -371,7 +371,7 @@ export function cityServiceSchema(city, url) {
     telephone: `+${company.phoneRaw}`,
     email: company.email,
     priceRange: '₹₹',
-    provider: { '@id': `${SITE_URL}/#organization` },
+    parentOrganization: { '@id': `${SITE_URL}/#organization` },
     areaServed: [
       { '@type': 'City', name: city.name },
       { '@type': 'AdministrativeArea', name: city.state },
@@ -449,8 +449,7 @@ export function cityServicePageSchema({
     telephone: `+${company.phoneRaw}`,
     email: company.email,
     priceRange: '₹₹',
-    serviceType: serviceName,
-    provider: { '@id': `${SITE_URL}/#organization` },
+    parentOrganization: { '@id': `${SITE_URL}/#organization` },
     areaServed: [
       { '@type': 'City', name: city.name },
       { '@type': 'AdministrativeArea', name: stateName },
@@ -462,23 +461,6 @@ export function cityServicePageSchema({
       addressRegion: stateName,
       addressCountry: 'IN',
     },
-    audience: [
-      { '@type': 'Audience', audienceType: 'Students' },
-      { '@type': 'Audience', audienceType: 'Parents' },
-      { '@type': 'Audience', audienceType: 'Working professionals' },
-    ],
-    availableChannel: [
-      {
-        '@type': 'ServiceChannel',
-        serviceUrl: url,
-        availableLanguage: ['en', 'hi'],
-      },
-      {
-        '@type': 'ServiceChannel',
-        serviceUrl: company.whatsappLink,
-        availableLanguage: ['en', 'hi'],
-      },
-    ],
     hasOfferCatalog: cityServiceLinks.length
       ? {
           '@type': 'OfferCatalog',
