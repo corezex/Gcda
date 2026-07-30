@@ -9,6 +9,14 @@ import { company, services, plans, siteFaqs } from '@/data/site';
 
 const SITE_URL = 'https://gcdassociation.org';
 
+function slugifyLocation(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/['\s,&.]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 // ----- Organization (site-wide, identity & E-E-A-T) -----
 export function organizationSchema() {
   return {
@@ -387,6 +395,104 @@ export function cityServiceSchema(city, url) {
         },
       })),
     },
+  };
+}
+
+// ----- State hub CollectionPage schema -----
+export function stateHubSchema({ state, stateSlug, cities }) {
+  const url = `${SITE_URL}/${stateSlug}`;
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${url}#collection`,
+    url,
+    name: `Career Counselling in ${state.name}`,
+    description: `GCDA offers career counselling, career assessments, and related guidance across ${cities.length} cities in ${state.name}.`,
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${SITE_URL}/#website` },
+    about: { '@type': 'AdministrativeArea', name: state.name },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    mainEntity: {
+      '@type': 'ItemList',
+      name: `GCDA city pages in ${state.name}`,
+      numberOfItems: cities.length,
+      itemListOrder: 'https://schema.org/ItemListOrderAscending',
+      itemListElement: cities.slice(0, 100).map((city, idx) => ({
+        '@type': 'ListItem',
+        position: idx + 1,
+        name: `Career Counsellor in ${city.name}, ${state.name}`,
+        url: `${SITE_URL}/${stateSlug}/career-counsellor-${slugifyLocation(city.name)}`,
+        description: `Career counselling in ${city.name}, ${state.name}`,
+      })),
+    },
+  };
+}
+
+// ----- City + service ProfessionalService schema -----
+export function cityServicePageSchema({
+  url,
+  city,
+  stateName,
+  serviceName,
+  description,
+  cityServiceLinks = [],
+  image = `${SITE_URL}/assets/hero-illustration.webp`,
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': `${url}#service`,
+    name: `${serviceName} in ${city.name}, ${stateName}`,
+    description,
+    image,
+    url,
+    telephone: `+${company.phoneRaw}`,
+    email: company.email,
+    priceRange: '₹₹',
+    serviceType: serviceName,
+    provider: { '@id': `${SITE_URL}/#organization` },
+    areaServed: [
+      { '@type': 'City', name: city.name },
+      { '@type': 'AdministrativeArea', name: stateName },
+      { '@type': 'Country', name: 'India' },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: city.name,
+      addressRegion: stateName,
+      addressCountry: 'IN',
+    },
+    audience: [
+      { '@type': 'Audience', audienceType: 'Students' },
+      { '@type': 'Audience', audienceType: 'Parents' },
+      { '@type': 'Audience', audienceType: 'Working professionals' },
+    ],
+    availableChannel: [
+      {
+        '@type': 'ServiceChannel',
+        serviceUrl: url,
+        availableLanguage: ['en', 'hi'],
+      },
+      {
+        '@type': 'ServiceChannel',
+        serviceUrl: company.whatsappLink,
+        availableLanguage: ['en', 'hi'],
+      },
+    ],
+    hasOfferCatalog: cityServiceLinks.length
+      ? {
+          '@type': 'OfferCatalog',
+          name: `GCDA services in ${city.name}`,
+          itemListElement: cityServiceLinks.map((item) => ({
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: item.name,
+              url: item.url,
+            },
+          })),
+        }
+      : undefined,
   };
 }
 

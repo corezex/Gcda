@@ -17,7 +17,7 @@ import {
 import { services as baseServices, company } from '@/data/site';
 import { getCityFeePageByRouteSlug } from '@/data/cityFeePages';
 import { SERVICE_CITY_PATTERNS, SERVICE_SLUGS, getServicePage } from '@/data/servicePages';
-import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSchema } from '@/data/schema';
+import { faqSchema, breadcrumbSchema, webPageSchema, speakableSchema, itemListSchema, stateHubSchema, cityServicePageSchema } from '@/data/schema';
 import CITY_SERVICE_CONTENT from '@/data/cityServiceContent';
 
 const SITE_URL = 'https://gcdassociation.org';
@@ -139,6 +139,37 @@ function pageDescription(city, servicePage) {
   return `${servicePage.cityLead.replace('{city}', city.name).replace('{district}', city.district)}`;
 }
 
+function slugifyLocation(value) {
+  return String(value || '')
+    .toLowerCase()
+    .replace(/['\s,&.]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
+function getDistrictLabel(city) {
+  const district = (city.district || '').trim();
+  if (!district) return city.name;
+  return district;
+}
+
+function getDistrictContextLabel(city) {
+  const district = (city.district || '').trim();
+  if (!district) return city.name;
+  return district.toLowerCase() === city.name.toLowerCase() ? `${district} district` : district;
+}
+
+function buildStateCityBlurb(city, stateName) {
+  const examLead = formatList(city.topExams || [], 2) || 'important entrance exams';
+  const collegeLead = formatList(city.topColleges || [], 2) || 'nearby colleges';
+  return `Online career counselling, career assessment, and planning support in ${city.name}, ${stateName}. Students here often compare ${examLead} and colleges such as ${collegeLead}.`;
+}
+
+function buildStatePageSummary(state, cities) {
+  const cityLead = formatList(cities.map((city) => city.name), 3) || state.capital || state.name;
+  return `GCDA offers career counselling across ${cities.length} cities in ${state.name}, including ${cityLead}. Each state hub links to city pages with local college, exam, FAQ, and service-variant details.`;
+}
+
 function formatList(items = [], limit = 3) {
   const clean = items.filter(Boolean).slice(0, limit);
   if (clean.length === 0) return '';
@@ -165,7 +196,7 @@ function normalizeCopy(text = '') {
 function buildFallbackLongDescription(city, stateName, servicePage) {
   const examLead = formatList(city.topExams || [], 3) || 'the entrance exams students commonly plan for';
   const industryLead = city.industries || 'the local economy';
-  return `${servicePage.title} in ${city.name} is delivered with local context built around ${industryLead}, nearby colleges, and entrance pathways such as ${examLead}. GCDA offers online sessions across ${city.district} and ${stateName}, with in-person support when needed.`;
+  return `${servicePage.title} in ${city.name} is delivered with local context built around ${industryLead}, nearby colleges, and entrance pathways such as ${examLead}. GCDA offers online sessions across ${getCoverageArea(city, stateName)}, with in-person support when needed.`;
 }
 
 function buildFallbackWhyItMatters(city, servicePage) {
@@ -185,7 +216,7 @@ function buildProfessionalNote(city) {
 }
 
 function buildDeliveryNote(city, stateName) {
-  return `GCDA delivers this service through secure online video sessions across ${city.name}, ${city.district}, and ${stateName}, with in-person support available on request. Families typically use evening or weekend slots, while working professionals often prefer short consults outside office hours.`;
+  return `GCDA delivers this service through secure online video sessions across ${getCoverageArea(city, stateName)} and wider ${stateName}, with in-person support available on request. Families typically use evening or weekend slots, while working professionals often prefer short consults outside office hours.`;
 }
 
 function getCleanCityText(text, fallbackBuilder) {
@@ -203,7 +234,7 @@ function getCleanCityText(text, fallbackBuilder) {
 function getCoverageArea(city, stateName) {
   const district = (city.district || '').trim();
   if (!district || district.toLowerCase() === city.name.toLowerCase()) {
-    return `${city.name} and ${stateName}`;
+    return city.name;
   }
   return `${city.name} and ${district}`;
 }
@@ -387,6 +418,7 @@ export default function DynamicPage({ params }) {
 /* ----------------- State Hub ----------------- */
 function StateHub({ stateSlug, state }) {
   const cities = CITIES_BY_STATE[stateSlug] || [];
+  const stateSummary = buildStatePageSummary(state, cities);
   const breadcrumbs = [
     { name: 'Home', url: '/' },
     { name: 'India', url: '/cities' },
@@ -418,6 +450,11 @@ function StateHub({ stateSlug, state }) {
             <p className="page-hero-copy">
               {`Looking for career counselling in ${state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across ${cities.length} ${state.name} cities. Sessions are available online across ${state.name} and in-person.`}
             </p>
+            <ul className="hero-proof" aria-label={`Coverage signals for ${state.name}`}>
+              <li>{`${cities.length} city pages available`}</li>
+              <li>{`Online across ${state.name}`}</li>
+              <li>All 8 GCDA service variants linked</li>
+            </ul>
             <div className="button-row">
               <Link href="/contact" className="button button-primary">Book a Session</Link>
               <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
@@ -441,6 +478,7 @@ function StateHub({ stateSlug, state }) {
           <AnswerBlock>
             {`GCDA provides career counselling in ${state.name} across ${cities.length} cities. We offer online video sessions for students, parents, and working professionals in ${state.name}, plus in-person sessions when needed. Plans start at Rs. 2,999 for the Stream Selector and include assessments, mentor sessions, and a personalised roadmap.`}
           </AnswerBlock>
+          <p className="author-byline-note">{stateSummary}</p>
         </div>
       </section>
 
@@ -454,7 +492,7 @@ function StateHub({ stateSlug, state }) {
           {cities.length > 0 ? (
             <div className="card-grid city-grid">
               {cities.map((c) => {
-                const cSlug = c.name.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+                const cSlug = slugifyLocation(c.name);
                 return (
                   <article className="card city-card" key={cSlug}>
                     <div className="card-body">
@@ -462,8 +500,8 @@ function StateHub({ stateSlug, state }) {
                       <h3>
                         <Link href={`/${stateSlug}/career-counsellor-${cSlug}`}>Career Counsellor in {c.name}</Link>
                       </h3>
-                      <p className="city-state">{c.district}</p>
-                      <p className="city-blurb">{c.tagline}</p>
+                      <p className="city-state">{`District: ${getDistrictLabel(c)}`}</p>
+                      <p className="city-blurb">{buildStateCityBlurb(c, state.name)}</p>
 
                       <div className="city-card-services">
                         <span className="city-card-services-label">All GCDA services in {c.name}:</span>
@@ -498,6 +536,37 @@ function StateHub({ stateSlug, state }) {
 
       <section className="section alt-section">
         <div className="container">
+          <SectionHeader
+            eyebrow="What each city page includes"
+            title={`What you will find on every ${state.name} city page`}
+            description="Each city page is built to be extractable for both families and AI systems: concise local summaries, service links, college and exam context, FAQs, and transparent plan information."
+            center
+          />
+          <div className="card-grid process-grid">
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Local education context</h3>
+                <p>City pages surface nearby colleges, commonly planned entrance exams, and the decision context most relevant to that city.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>All GCDA services for the same city</h3>
+                <p>Every city page links across counselling, assessment, stream, degree, seminar, certification, and working-professional variants for faster discovery.</p>
+              </div>
+            </article>
+            <article className="card process-card">
+              <div className="card-body">
+                <h3>Structured FAQs and pricing</h3>
+                <p>Each location includes plain-language FAQs plus transparent national pricing so answers are easier to extract and compare.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section className="section alt-section">
+        <div className="container">
           <SectionHeader eyebrow="FAQs" title={`About career counselling in ${state.name}`} center />
           <FAQList items={stateFaqs} />
         </div>
@@ -515,6 +584,7 @@ function StateHub({ stateSlug, state }) {
         })}
       />
       <JsonLd id={`ld-speakable-state-${stateSlug}`} data={speakableSchema({ url: `${SITE_URL}/${stateSlug}`, name: `Career Counselling in ${state.name}` })} />
+      <JsonLd id={`ld-statehub-${stateSlug}`} data={stateHubSchema({ state, stateSlug, cities })} />
       <JsonLd
         id={`ld-itemlist-state-${stateSlug}`}
         data={itemListSchema({
@@ -522,7 +592,7 @@ function StateHub({ stateSlug, state }) {
           name: `Career counselling cities in ${state.name}`,
           description: `${cities.length} cities in ${state.name} where GCDA offers career counselling`,
           items: cities.slice(0, 20).map((c) => {
-            const slug = c.name.toLowerCase().replace(/['\s,&.]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+            const slug = slugifyLocation(c.name);
             return {
               name: `Career Counsellor in ${c.name}, ${state.name}`,
               url: `${SITE_URL}/${stateSlug}/career-counsellor-${slug}`,
@@ -575,8 +645,8 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     ? baseService.faqs
     : servicePage.cityFaqs || [];
   const serviceBaseFaqsCity = serviceBaseFaqs.map((f) => ({
-    q: f.q.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
-    a: f.a.replace(/{city}/g, city.name).replace(/{district}/g, city.district),
+    q: f.q.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city)),
+    a: f.a.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city)),
   }));
   const cityUniqueFaqs = (city.faqs && city.faqs.length && typeof city.faqs[0] === 'object')
     ? city.faqs
@@ -592,6 +662,26 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     },
   ];
   const cityFaqs = [...serviceBaseFaqsCity, ...cityUniqueFaqs, ...priceFaqs];
+  const cityServiceItems = SERVICE_SLUGS.map((sSlug) => {
+    const servicePattern = SERVICE_CITY_PATTERNS[sSlug];
+    return servicePattern
+      ? {
+          name: `${servicePattern.cityLabel} in ${city.name}, ${stateName}`,
+          url: `${SITE_URL}${servicePattern.urlPattern(stateSlug, citySlug)}`,
+        }
+      : null;
+  }).filter(Boolean);
+  const topCollegeSummary = formatList(city.topColleges || [], 3) || 'local and regional colleges';
+  const topExamSummary = formatList(city.topExams || [], 3) || 'JEE Main, NEET, state CETs, and CAT';
+  const localSnapshotRows = [
+    ['City', `${city.name}, ${stateName}`],
+    ['Coverage area', `${getCoverageArea(city, stateName)} and nearby areas`],
+    ['Popular entrance exams', topExamSummary],
+    ['Nearby colleges often compared', topCollegeSummary],
+    ['Local industry context', city.industries || 'education, services, and local economy signals'],
+    ['Suggested starting plan', getSuggestedPlan(serviceSlug)],
+    ['Session format', `Online across ${stateName} + in-person in ${city.name} when needed`],
+  ];
 
   // Breadcrumbs
   const breadcrumbs = [
@@ -605,6 +695,14 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
   const otherCitySlugs = (state.cities || [])
     .filter((c) => c !== citySlug)
     .slice(0, 6);
+  const otherCityItems = otherCitySlugs.map((otherSlug) => {
+    const otherCityName = otherSlug.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
+    return {
+      name: `${cityLabel} in ${otherCityName}, ${stateName}`,
+      url: `${SITE_URL}${pattern.urlPattern(stateSlug, otherSlug)}`,
+      description: `${servicePage.title} in ${otherCityName}, ${stateName}`,
+    };
+  });
 
   // Local notes from indiaLocations.js (city-specific for student/professional)
   // We normalize visible copy and fall back to controlled templates when
@@ -675,6 +773,30 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         </div>
       </section>
 
+      <section className="section section-tight">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Quick local snapshot"
+            title={`${servicePage.title} in ${city.name}: key facts at a glance`}
+            description="A compact, extractable summary of the local decision context, delivery format, exams, colleges, and recommended starting point."
+            center
+          />
+          <div className="table-wrap">
+            <table className="comparison-table">
+              <tbody>
+                {localSnapshotRows.map(([label, value]) => (
+                  <tr key={label}>
+                    <td><strong>{label}</strong></td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="table-caption">Structured local summary for {city.name}, {stateName}.</p>
+        </div>
+      </section>
+
       {/* WHY IT MATTERS — always uses per-city, per-service unique paragraph */}
       <section className="section">
         <div className="container two-column">
@@ -693,7 +815,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
             <h3>{`${city.name} at a glance`}</h3>
             <ul className="bullet-list compact">
               <li><strong>State:</strong> {stateName}</li>
-              <li><strong>District:</strong> {city.district}</li>
+              <li><strong>District:</strong> {getDistrictLabel(city)}</li>
               <li><strong>Region:</strong> {state.region}</li>
               <li><strong>Top industries:</strong> {city.industries}</li>
               <li><strong>Landmarks:</strong> {city.landmarks}</li>
@@ -972,7 +1094,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           <SectionHeader
             eyebrow="FAQs"
             title={`Questions about ${servicePage.title.toLowerCase()} in ${city.name}`}
-            description={`Common questions from students, parents, and working professionals in ${city.name}, plus the questions we hear most often across ${city.district} and ${stateName}.`}
+            description={`Common questions from students, parents, and working professionals in ${city.name}, plus the questions we hear most often across ${getCoverageArea(city, stateName)} and nearby areas.`}
             center
           />
           <FAQList items={cityFaqs} />
@@ -1065,29 +1187,14 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
       />
       <JsonLd
         id={`ld-service-${serviceSlug}-${stateSlug}-${citySlug}`}
-        data={{
-          '@context': 'https://schema.org',
-          '@type': 'ProfessionalService',
-          '@id': `${pageUrl}#service`,
-          name: `${servicePage.title} in ${city.name}`,
-          description: `${servicePage.title} in ${city.name}, ${stateName}. ${servicePage.shortDescription}`,
+        data={cityServicePageSchema({
           url: pageUrl,
-          telephone: `+${company.phoneRaw}`,
-          email: company.email,
-          priceRange: '₹₹',
-          provider: { '@id': `${SITE_URL}/#organization` },
-          areaServed: [
-            { '@type': 'City', name: city.name },
-            { '@type': 'AdministrativeArea', name: stateName },
-            { '@type': 'Country', name: 'India' },
-          ],
-          address: {
-            '@type': 'PostalAddress',
-            addressLocality: city.name,
-            addressRegion: stateName,
-            addressCountry: 'IN',
-          },
-        }}
+          city,
+          stateName,
+          serviceName: servicePage.title,
+          description: `${servicePage.title} in ${city.name}, ${stateName}. ${servicePage.shortDescription}`,
+          cityServiceLinks: cityServiceItems,
+        })}
       />
       <JsonLd id={`ld-speakable-${serviceSlug}-${stateSlug}-${citySlug}`} data={speakableSchema({ url: pageUrl, name: `${servicePage.title} in ${city.name}, ${stateName}` })} />
       <JsonLd
@@ -1096,10 +1203,10 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           url: pageUrl,
           name: `${servicePage.title} in other ${stateName} cities`,
           description: `Other cities in ${stateName} where GCDA offers ${servicePage.title.toLowerCase()}`,
-          items: otherCitySlugs.map((cSlug, idx) => ({
-            name: `${cityLabel} in ${cSlug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}, ${stateName}`,
-            url: `${SITE_URL}${pattern.urlPattern(stateSlug, cSlug)}`,
-            description: `${servicePage.title} in ${cSlug}, ${stateName}`,
+          items: otherCityItems.map((item) => ({
+            name: item.name,
+            url: item.url,
+            description: item.description,
           })),
         })}
       />
@@ -1109,14 +1216,11 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           url: pageUrl,
           name: `GCDA services in ${city.name}`,
           description: `All 8 GCDA career counselling services in ${city.name}, ${stateName}`,
-          items: SERVICE_SLUGS.map((sSlug) => {
-            const pat = SERVICE_CITY_PATTERNS[sSlug];
-            return {
-              name: `${pat ? pat.cityLabel : sSlug} in ${city.name}`,
-              url: `${SITE_URL}${pat ? pat.urlPattern(stateSlug, citySlug) : `/${stateSlug}/career-counsellor-${citySlug}`}`,
-              description: `${pat ? pat.cityLabel : sSlug} in ${city.name}, ${stateName}`,
-            };
-          }),
+          items: cityServiceItems.map((item) => ({
+            name: item.name,
+            url: item.url,
+            description: item.name,
+          })),
         })}
       />
     </>
