@@ -4,7 +4,11 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   images: {
-    formats: ['image/avif', 'image/webp'],
+    // Keep image optimization enabled, but avoid AVIF on-the-fly encoding.
+    // On smaller/self-hosted deployments AVIF generation can be slow enough
+    // to trigger /_next/image timeouts for local assets.
+    formats: ['image/webp'],
+    minimumCacheTTL: 2678400,
     deviceSizes: [640, 750, 828, 1080, 1200, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
