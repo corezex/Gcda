@@ -171,7 +171,7 @@ function buildStatePageSummary(state, cities) {
 }
 
 function formatList(items = [], limit = 3) {
-  const clean = items.filter(Boolean).slice(0, limit);
+  const clean = items.filter(Boolean).map((item) => normalizeCopy(item)).slice(0, limit);
   if (clean.length === 0) return '';
   if (clean.length === 1) return clean[0];
   if (clean.length === 2) return `${clean[0]} and ${clean[1]}`;
@@ -179,23 +179,30 @@ function formatList(items = [], limit = 3) {
 }
 
 function normalizeCopy(text = '') {
-  return text
+  return String(text || '')
+    .replace(/&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&amp;/g, '&')
+    .replace(/军队/gi, 'military')
     .replace(/the local the local economy economy/gi, 'the local economy')
     .replace(/the local economy economy/gi, 'the local economy')
     .replace(/the a mix of local industries economy/gi, 'the local economy')
     .replace(/a mix of local industries economy/gi, 'local economy')
-    .replace(/\bbfsi\b/g, 'BFSI')
-    .replace(/\baiims\b/g, 'AIIMS')
-    .replace(/\biit\b/g, 'IIT')
-    .replace(/\biim\b/g, 'IIM')
-    .replace(/\bit\b(?=\s+and|\s+services|\s+sector|\s+industry|,|\.)/g, 'IT')
+    .replace(/local industries, the dominant local industries/gi, 'local industries')
+    .replace(/typically plan around local industries/gi, 'typically plan around the local economy')
+    .replace(/The class 10-to-12 decision is high-stakes because the local college and exam mix is narrow\./gi, 'Students usually compare streams, colleges, and entrance exams with family budget and aptitude in mind.')
+    .replace(/\bbfsi\b/gi, 'BFSI')
+    .replace(/\baiims\b/gi, 'AIIMS')
+    .replace(/\biit\b/gi, 'IIT')
+    .replace(/\biim\b/gi, 'IIM')
+    .replace(/\bit\b(?=\s+and|\s+services|\s+sector|\s+industry|,|\.)/gi, 'IT')
     .replace(/\s+/g, ' ')
     .trim();
 }
 
 function buildFallbackLongDescription(city, stateName, servicePage) {
   const examLead = formatList(city.topExams || [], 3) || 'the entrance exams students commonly plan for';
-  const industryLead = city.industries || 'the local economy';
+  const industryLead = normalizeCopy(city.industries || 'the local economy');
   return `${servicePage.title} in ${city.name} is delivered with local context built around ${industryLead}, nearby colleges, and entrance pathways such as ${examLead}. GCDA offers online sessions across ${getCoverageArea(city, stateName)}, with in-person support when needed.`;
 }
 
@@ -211,7 +218,7 @@ function buildStudentNote(city, stateName) {
 }
 
 function buildProfessionalNote(city) {
-  const industryLead = city.industries || 'the local economy';
+  const industryLead = normalizeCopy(city.industries || 'the local economy');
   return `Working professionals in ${city.name} commonly use GCDA for career transitions, MBA or executive-program planning, resume positioning, and interview preparation. Guidance is calibrated to ${industryLead} and is scheduled around work hours through flexible online sessions.`;
 }
 
@@ -645,11 +652,11 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     ? baseService.faqs
     : servicePage.cityFaqs || [];
   const serviceBaseFaqsCity = serviceBaseFaqs.map((f) => ({
-    q: f.q.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city)),
-    a: f.a.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city)),
+    q: normalizeCopy(f.q.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city))),
+    a: normalizeCopy(f.a.replace(/{city}/g, city.name).replace(/{district}/g, getDistrictContextLabel(city))),
   }));
   const cityUniqueFaqs = (city.faqs && city.faqs.length && typeof city.faqs[0] === 'object')
-    ? city.faqs
+    ? city.faqs.map((faq) => ({ q: normalizeCopy(faq.q), a: normalizeCopy(faq.a) }))
     : [];
   const priceFaqs = [
     {
@@ -678,7 +685,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
     ['Coverage area', `${getCoverageArea(city, stateName)} and nearby areas`],
     ['Popular entrance exams', topExamSummary],
     ['Nearby colleges often compared', topCollegeSummary],
-    ['Local industry context', city.industries || 'education, services, and local economy signals'],
+    ['Local industry context', normalizeCopy(city.industries || 'education, services, and local economy signals')],
     ['Suggested starting plan', getSuggestedPlan(serviceSlug)],
     ['Session format', `Online across ${stateName} + in-person in ${city.name} when needed`],
   ];
@@ -817,8 +824,8 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
               <li><strong>State:</strong> {stateName}</li>
               <li><strong>District:</strong> {getDistrictLabel(city)}</li>
               <li><strong>Region:</strong> {state.region}</li>
-              <li><strong>Top industries:</strong> {city.industries}</li>
-              <li><strong>Landmarks:</strong> {city.landmarks}</li>
+              <li><strong>Top industries:</strong> {normalizeCopy(city.industries)}</li>
+              <li><strong>Landmarks:</strong> {normalizeCopy(city.landmarks)}</li>
             </ul>
           </div>
         </div>
@@ -977,14 +984,14 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
                   <li key={c}>
                     {idx < 2 ? (
                       <Link href="/blog/how-to-choose-stream-after-10th-2027" className="text-link" title={`Learn more about college options near ${city.name}`}>
-                        {c}
+                        {normalizeCopy(c)}
                       </Link>
                     ) : idx === 2 ? (
                       <a href={`https://www.google.com/search?q=${encodeURIComponent(c + ' ' + city.name)}`} target="_blank" rel="noopener noreferrer" className="text-link">
-                        {c}
+                        {normalizeCopy(c)}
                       </a>
                     ) : (
-                      c
+                      normalizeCopy(c)
                     )}
                   </li>
                 ))}
@@ -1013,10 +1020,10 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
                         href={e.toLowerCase().includes('jee') ? '/blog/jee-main-preparation-2027-guide' : e.toLowerCase().includes('neet') ? '/blog/career-options-after-12th-pcb-2027' : '/career-counselling/stream-selection-guidance'}
                         className="text-link"
                       >
-                        {e}
+                        {normalizeCopy(e)}
                       </Link>
                     ) : (
-                      e
+                      normalizeCopy(e)
                     )}
                   </li>
                 ))}
@@ -1120,7 +1127,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
                         {cityLabel} in {cSlug.replace(/-/g, ' ').replace(/\b\w/g, (l) => l.toUpperCase())}
                       </Link>
                     </h3>
-                    <p className="city-blurb">{servicePage.shortDescription}</p>
+                    <p className="city-blurb">{normalizeCopy(servicePage.shortDescription)}</p>
                     <Link href={pattern.urlPattern(stateSlug, cSlug)} className="text-link">Explore →</Link>
                   </div>
                 </article>
