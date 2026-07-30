@@ -265,7 +265,7 @@ export function howToSchema(name, steps, totalTime) {
 export function articleSchema(post, url) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     '@id': `${url}#article`,
     headline: post.title,
     description: post.description,
@@ -348,8 +348,9 @@ export function courseSchema({
       inLanguage: 'en-IN',
       instructor: [
         {
-          '@type': 'Organization',
-          name: provider || company.name,
+          '@type': 'Person',
+          name: 'GCDA Senior Mentor Team',
+          worksFor: { '@id': `${SITE_URL}/#organization` },
         },
       ],
     };
