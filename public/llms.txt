@@ -57,8 +57,13 @@ GCDA provides career counselling, career assessments, stream selection guidance,
 The site includes a large set of state, city, and city-by-service pages. For full discovery, use these resources first:
 
 - [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+- [Core Sitemap](https://gcdassociation.org/core-sitemap.xml)
+- [Service Sitemap](https://gcdassociation.org/service-sitemap.xml)
+- [State Sitemap](https://gcdassociation.org/state-sitemap.xml)
+- [City Sitemap](https://gcdassociation.org/city-sitemap.xml)
 - [All Cities](https://gcdassociation.org/cities)
 - [All Services](https://gcdassociation.org/career-counselling)
+- [HTML Site Index](https://gcdassociation.org/site-index)
 - [Expanded LLM index](https://gcdassociation.org/llms-full.txt)
 
 ## Usage preferences

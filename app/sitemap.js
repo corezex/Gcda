@@ -30,6 +30,7 @@ export default function sitemap() {
     { path: '/plan', priority: 0.9, changeFrequency: 'monthly', lastModified: SERVICE_LAST_MODIFIED },
     { path: '/blog', priority: 0.9, changeFrequency: 'weekly', lastModified: latestBlogDate },
     { path: '/contact', priority: 0.7, changeFrequency: 'monthly', lastModified: CORE_LAST_MODIFIED },
+    { path: '/site-index', priority: 0.8, changeFrequency: 'weekly', lastModified: CORE_LAST_MODIFIED },
     { path: '/privacy', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
     { path: '/terms', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },
     { path: '/refund-policy', priority: 0.5, changeFrequency: 'yearly', lastModified: LEGAL_LAST_MODIFIED },

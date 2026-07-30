@@ -121,6 +121,32 @@ export default function CitiesHubPage() {
         </div>
       </section>
 
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Discovery resources"
+            title="Need a faster route into deeper city pages?"
+            description="Use the HTML site index and the topical XML sitemaps to move from state hubs into city and city-by-service pages more quickly."
+            center
+          />
+          <div className="card-grid city-grid">
+            {[
+              { href: '/site-index', label: 'Site Index', blurb: 'HTML crawl hub linking services, all state hubs, and representative deep pages.' },
+              { href: '/city-sitemap.xml', label: 'City Sitemap', blurb: 'Machine-readable index of all city and city-by-service URLs.' },
+              { href: '/state-sitemap.xml', label: 'State Sitemap', blurb: 'All state and union-territory hubs that branch into city pages.' },
+            ].map((item) => (
+              <article className="card city-card" key={item.href}>
+                <div className="card-body">
+                  <h3><Link href={item.href}>{item.label}</Link></h3>
+                  <p className="city-blurb">{item.blurb}</p>
+                  <Link href={item.href} className="text-link">Open resource</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="Don’t see your city?"
         description="GCDA offers online career counselling across India. Speak to a counsellor from any city in India and get the same quality of structured guidance."

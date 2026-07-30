@@ -299,6 +299,32 @@ export default function CareerCounsellingPage() {
         <JsonLd id="ld-faq-services" data={faqSchema(siteFaqs)} />
       </section>
 
+      <section className="section alt-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="Discovery resources"
+            title="Crawl and discovery routes for deeper location pages"
+            description="If you want to move beyond the main service pages into state hubs, city pages, and city-by-service pages, use these structured discovery resources."
+            center
+          />
+          <div className="card-grid city-grid">
+            {[
+              { href: '/site-index', label: 'Site Index', blurb: 'HTML hub linking services, state pages, and representative deep city URLs.' },
+              { href: '/service-sitemap.xml', label: 'Service Sitemap', blurb: 'Main service hubs plus the detailed counselling service pages.' },
+              { href: '/city-sitemap.xml', label: 'City Sitemap', blurb: 'All city and city-by-service URLs in one XML resource.' },
+            ].map((item) => (
+              <article className="card city-card" key={item.href}>
+                <div className="card-body">
+                  <h3><Link href={item.href}>{item.label}</Link></h3>
+                  <p className="city-blurb">{item.blurb}</p>
+                  <Link href={item.href} className="text-link">Open resource</Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTASection
         title="Need help choosing the right service?"
         description="Tell GCDA where you are stuck, and we will guide you to the most suitable service or plan."

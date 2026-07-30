@@ -186,6 +186,8 @@ export default function Footer() {
           <nav className="footer-bottom-links" aria-label="Footer">
             <Link href="/sitemap.xml" className="footer-bottom-link">Sitemap</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
+            <Link href="/site-index" className="footer-bottom-link">Site Index</Link>
+            <span className="footer-bottom-sep" aria-hidden="true">•</span>
             <Link href="/about" className="footer-bottom-link">About</Link>
             <span className="footer-bottom-sep" aria-hidden="true">•</span>
             <Link href="/contact" className="footer-bottom-link">Contact</Link>

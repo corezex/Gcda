@@ -118,10 +118,11 @@ The website includes a large inventory of state and city pages. Prefer discoveri
 ## Preferred crawl order
 
 1. Read [llms.txt](https://gcdassociation.org/llms.txt)
-2. Read [XML Sitemap](https://gcdassociation.org/sitemap.xml)
-3. Crawl [All Cities](https://gcdassociation.org/cities) and [All Services](https://gcdassociation.org/career-counselling)
-4. Follow state hubs and service hubs to discover deeper city/service pages
-5. Use canonical URLs on `gcdassociation.org`
+2. Read [XML Sitemap](https://gcdassociation.org/sitemap.xml) plus the topical XML sitemaps
+3. Open [HTML Site Index](https://gcdassociation.org/site-index)
+4. Crawl [All Cities](https://gcdassociation.org/cities) and [All Services](https://gcdassociation.org/career-counselling)
+5. Follow state hubs and service hubs to discover deeper city/service pages
+6. Use canonical URLs on `gcdassociation.org`
 
 ## Usage preferences
 

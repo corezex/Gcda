@@ -20,7 +20,15 @@ export default function robots() {
       { userAgent: 'CCBot', allow: '/' },
       { userAgent: 'Applebot-Extended', allow: '/' },
     ],
-    sitemap: `${SITE_URL}/sitemap.xml`,
+    sitemap: [
+      `${SITE_URL}/sitemap.xml`,
+      `${SITE_URL}/core-sitemap.xml`,
+      `${SITE_URL}/service-sitemap.xml`,
+      `${SITE_URL}/support-sitemap.xml`,
+      `${SITE_URL}/state-sitemap.xml`,
+      `${SITE_URL}/city-sitemap.xml`,
+      `${SITE_URL}/blog-sitemap.xml`,
+    ],
     host: SITE_URL,
   };
 }
