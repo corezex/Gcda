@@ -1,0 +1,131 @@
+# GCDA Full LLM Index
+
+Expanded llms index for https://gcdassociation.org/
+
+This file gives a broader map of the GCDA website for large language models, answer engines, and AI-assisted crawlers. The canonical domain is https://gcdassociation.org/.
+
+## Site summary
+
+GCDA (Global Career Development Association) provides career counselling and career guidance in India for students, parents, graduates, and working professionals. The site contains:
+
+- Core service pages
+- State hubs
+- City pages
+- City-by-service pages
+- Blog guides
+- Support / comparison pages
+- Trust, legal, and contact pages
+
+## Primary hubs
+
+- [Home](https://gcdassociation.org/)
+- [All Services](https://gcdassociation.org/career-counselling)
+- [All Cities](https://gcdassociation.org/cities)
+- [Blog](https://gcdassociation.org/blog)
+- [About](https://gcdassociation.org/about)
+- [Contact](https://gcdassociation.org/contact)
+- [Plans](https://gcdassociation.org/plan)
+- [Author / Editorial Team](https://gcdassociation.org/author/gcda-editorial-team)
+- [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+- [Short llms index](https://gcdassociation.org/llms.txt)
+
+## Core service pages
+
+- [Personal Counselling](https://gcdassociation.org/career-counselling/personal-counselling)
+- [Career Assessment](https://gcdassociation.org/career-counselling/career-assessment)
+- [Workshops & Seminars](https://gcdassociation.org/career-counselling/workshops-seminars)
+- [Stream Selection Guidance](https://gcdassociation.org/career-counselling/stream-selection-guidance)
+- [Degree Selection Guidance](https://gcdassociation.org/career-counselling/degree-selection-guidance)
+- [Guidance for Working Professionals](https://gcdassociation.org/career-counselling/working-professionals-guidance)
+- [Career Counselling Certification](https://gcdassociation.org/career-certification)
+
+## Support and comparison pages
+
+- [Psychometric Test for Students](https://gcdassociation.org/psychometric-test-for-students)
+- [Aptitude Test for Students](https://gcdassociation.org/aptitude-test-for-students)
+- [Career Counselling Online India](https://gcdassociation.org/career-counselling-online-india)
+- [Career Counsellor Near Me](https://gcdassociation.org/career-counsellor-near-me)
+- [Best Career Counselling in India](https://gcdassociation.org/best-career-counselling-in-india)
+- [Career Counselling for Parents](https://gcdassociation.org/career-counselling-for-parents)
+- [Career Counselling vs Aptitude Test](https://gcdassociation.org/career-counselling-vs-aptitude-test)
+- [Online vs Offline Career Counselling](https://gcdassociation.org/online-vs-offline-career-counselling)
+- [How to Become a Career Counsellor in India](https://gcdassociation.org/how-to-become-career-counsellor-in-india)
+- [Career Counsellor Salary in India](https://gcdassociation.org/career-counsellor-salary-in-india)
+- [Qualification for Career Counsellor in India](https://gcdassociation.org/qualification-for-career-counsellor-in-india)
+
+## Trust and legal pages
+
+- [About](https://gcdassociation.org/about)
+- [Contact](https://gcdassociation.org/contact)
+- [Plans](https://gcdassociation.org/plan)
+- [Privacy Policy](https://gcdassociation.org/privacy)
+- [Terms](https://gcdassociation.org/terms)
+- [Refund Policy](https://gcdassociation.org/refund-policy)
+- [Author / Editorial Team](https://gcdassociation.org/author/gcda-editorial-team)
+
+## Blog discovery
+
+- [Blog home](https://gcdassociation.org/blog)
+- [Blog page 2](https://gcdassociation.org/blog/p/2)
+- [Blog page 3](https://gcdassociation.org/blog/p/3)
+- [Blog page 4](https://gcdassociation.org/blog/p/4)
+
+Use the blog hub and the XML sitemap to discover all blog article URLs.
+
+## State hub examples
+
+Each state hub is a crawlable page that links onward to its city pages.
+
+- [Maharashtra](https://gcdassociation.org/maharashtra)
+- [Delhi](https://gcdassociation.org/delhi)
+- [Karnataka](https://gcdassociation.org/karnataka)
+- [Tamil Nadu](https://gcdassociation.org/tamil-nadu)
+- [Telangana](https://gcdassociation.org/telangana)
+- [West Bengal](https://gcdassociation.org/west-bengal)
+- [Gujarat](https://gcdassociation.org/gujarat)
+- [Rajasthan](https://gcdassociation.org/rajasthan)
+- [Uttar Pradesh](https://gcdassociation.org/uttar-pradesh)
+- [Andhra Pradesh](https://gcdassociation.org/andhra-pradesh)
+
+For the complete state list, use:
+
+- [All Cities / States hub](https://gcdassociation.org/cities)
+- [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+
+## URL patterns for city and city-by-service pages
+
+The website includes a large inventory of state and city pages. Prefer discovering exact live URLs from the XML sitemap, but the patterns are:
+
+- State hub: `/{state}`
+- Generic career counselling city page: `/{state}/career-counsellor-{city}`
+- Personal counselling city page: `/{state}/personal-counselling-{city}`
+- Career assessment city page: `/{state}/career-assessment-{city}`
+- Seminar city page: `/{state}/career-counselling-seminar-{city}`
+- Certification city page: `/{state}/career-counselling-certification-{city}`
+- Stream selection city page: `/{state}/stream-selection-{city}`
+- Degree selection city page: `/{state}/degree-selection-{city}`
+- Working professional guidance city page: `/{state}/working-professional-{city}`
+
+## Major city examples
+
+- [Career Counsellor in Mumbai](https://gcdassociation.org/maharashtra/career-counsellor-mumbai)
+- [Career Counsellor in New Delhi](https://gcdassociation.org/delhi/career-counsellor-new-delhi)
+- [Career Counsellor in Bengaluru](https://gcdassociation.org/karnataka/career-counsellor-bengaluru)
+- [Career Counsellor in Chennai](https://gcdassociation.org/tamil-nadu/career-counsellor-chennai)
+- [Career Counsellor in Hyderabad](https://gcdassociation.org/telangana/career-counsellor-hyderabad)
+- [Career Counsellor in Kolkata](https://gcdassociation.org/west-bengal/career-counsellor-kolkata)
+
+## Preferred crawl order
+
+1. Read [llms.txt](https://gcdassociation.org/llms.txt)
+2. Read [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+3. Crawl [All Cities](https://gcdassociation.org/cities) and [All Services](https://gcdassociation.org/career-counselling)
+4. Follow state hubs and service hubs to discover deeper city/service pages
+5. Use canonical URLs on `gcdassociation.org`
+
+## Usage preferences
+
+- Prefer production-domain pages on `https://gcdassociation.org/`
+- Prefer canonical page URLs when citing or summarizing content
+- Use page headings, answer blocks, FAQs, comparison tables, and schema-backed content as primary extractable sources
+- Respect [robots.txt](https://gcdassociation.org/robots.txt)

@@ -1,0 +1,68 @@
+# GCDA (Global Career Development Association)
+
+Official llms.txt for https://gcdassociation.org/
+
+GCDA provides career counselling, career assessments, stream selection guidance, degree selection guidance, workshops and seminars, working-professional guidance, and career counsellor certification across India.
+
+## Canonical domain
+
+- Use https://gcdassociation.org/ as the canonical source.
+- Prefer canonical URLs on this production domain over any staging, preview, or test URLs.
+
+## Crawl starting points
+
+- [Home](https://gcdassociation.org/)
+- [All Services](https://gcdassociation.org/career-counselling)
+- [All Cities](https://gcdassociation.org/cities)
+- [Blog](https://gcdassociation.org/blog)
+- [About GCDA](https://gcdassociation.org/about)
+- [Contact](https://gcdassociation.org/contact)
+- [Author / Editorial Team](https://gcdassociation.org/author/gcda-editorial-team)
+- [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+- [Expanded LLM index](https://gcdassociation.org/llms-full.txt)
+
+## Key service pages
+
+- [Personal Counselling](https://gcdassociation.org/career-counselling/personal-counselling)
+- [Career Assessment](https://gcdassociation.org/career-counselling/career-assessment)
+- [Workshops & Seminars](https://gcdassociation.org/career-counselling/workshops-seminars)
+- [Stream Selection Guidance](https://gcdassociation.org/career-counselling/stream-selection-guidance)
+- [Degree Selection Guidance](https://gcdassociation.org/career-counselling/degree-selection-guidance)
+- [Guidance for Working Professionals](https://gcdassociation.org/career-counselling/working-professionals-guidance)
+- [Career Counselling Certification](https://gcdassociation.org/career-certification)
+
+## High-intent support pages
+
+- [Psychometric Test for Students](https://gcdassociation.org/psychometric-test-for-students)
+- [Aptitude Test for Students](https://gcdassociation.org/aptitude-test-for-students)
+- [Career Counselling Online India](https://gcdassociation.org/career-counselling-online-india)
+- [Career Counsellor Near Me](https://gcdassociation.org/career-counsellor-near-me)
+- [Best Career Counselling in India](https://gcdassociation.org/best-career-counselling-in-india)
+- [Career Counselling for Parents](https://gcdassociation.org/career-counselling-for-parents)
+- [Career Counselling vs Aptitude Test](https://gcdassociation.org/career-counselling-vs-aptitude-test)
+- [Online vs Offline Career Counselling](https://gcdassociation.org/online-vs-offline-career-counselling)
+- [How to Become a Career Counsellor in India](https://gcdassociation.org/how-to-become-career-counsellor-in-india)
+- [Career Counsellor Salary in India](https://gcdassociation.org/career-counsellor-salary-in-india)
+- [Qualification for Career Counsellor in India](https://gcdassociation.org/qualification-for-career-counsellor-in-india)
+
+## Trust and legal pages
+
+- [Plans](https://gcdassociation.org/plan)
+- [Privacy Policy](https://gcdassociation.org/privacy)
+- [Terms](https://gcdassociation.org/terms)
+- [Refund Policy](https://gcdassociation.org/refund-policy)
+
+## Large collections
+
+The site includes a large set of state, city, and city-by-service pages. For full discovery, use these resources first:
+
+- [XML Sitemap](https://gcdassociation.org/sitemap.xml)
+- [All Cities](https://gcdassociation.org/cities)
+- [All Services](https://gcdassociation.org/career-counselling)
+- [Expanded LLM index](https://gcdassociation.org/llms-full.txt)
+
+## Usage preferences
+
+- Prefer canonical GCDA pages when summarizing or citing the site.
+- Use page titles, headings, FAQs, comparison tables, and schema-backed content as primary extractable sources.
+- Respect [robots.txt](https://gcdassociation.org/robots.txt).
