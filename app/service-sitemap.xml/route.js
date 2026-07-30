@@ -10,10 +10,6 @@ export function GET() {
   const topLevelServicePages = [
     '/career-counselling',
     '/career-certification',
-    '/career-counselling-seminar',
-    '/stream-selection-guidance',
-    '/degree-selection-guidance',
-    '/guidance-for-working-professionals',
   ];
 
   const entries = [

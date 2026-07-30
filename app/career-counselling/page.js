@@ -233,7 +233,7 @@ export default function CareerCounsellingPage() {
           />
           <SeminarTypesGrid seminars={SEMINAR_TYPES} city="India" />
           <div className="center-cta">
-            <Link href="/career-counselling-seminar" className="text-link">See seminars in your city →</Link>
+            <Link href="/career-counselling/workshops-seminars#cities" className="text-link">See seminars in your city →</Link>
           </div>
         </div>
       </section>

@@ -155,21 +155,21 @@ export default function SiteIndexPage() {
               <span className="service-cross-label">Career Counselling Certification</span>
               <span className="service-cross-state">standalone programme</span>
             </Link>
-            <Link href="/career-counselling-seminar" className="service-cross-link">
-              <span className="service-cross-label">Career Counselling Seminar</span>
-              <span className="service-cross-state">top-level seminar hub</span>
+            <Link href="/career-counselling/workshops-seminars" className="service-cross-link">
+              <span className="service-cross-label">Workshops & Seminars</span>
+              <span className="service-cross-state">service detail page</span>
             </Link>
-            <Link href="/stream-selection-guidance" className="service-cross-link">
+            <Link href="/career-counselling/stream-selection-guidance" className="service-cross-link">
               <span className="service-cross-label">Stream Selection Guidance</span>
-              <span className="service-cross-state">top-level stream hub</span>
+              <span className="service-cross-state">service detail page</span>
             </Link>
-            <Link href="/degree-selection-guidance" className="service-cross-link">
+            <Link href="/career-counselling/degree-selection-guidance" className="service-cross-link">
               <span className="service-cross-label">Degree Selection Guidance</span>
-              <span className="service-cross-state">top-level degree hub</span>
+              <span className="service-cross-state">service detail page</span>
             </Link>
-            <Link href="/guidance-for-working-professionals" className="service-cross-link">
+            <Link href="/career-counselling/working-professionals-guidance" className="service-cross-link">
               <span className="service-cross-label">Working Professional Guidance</span>
-              <span className="service-cross-state">top-level professional hub</span>
+              <span className="service-cross-state">service detail page</span>
             </Link>
           </div>
         </div>

@@ -50,17 +50,10 @@ const PATTERN_REGEXES = {
   'guidance-for-working-professionals': /^working-professional-(.+)$/,
 };
 
-// Top-level service pages that exist OUTSIDE this catch-all
-// (e.g. /career-certification has its own dedicated page.js).
-// The catch-all handles /career-counselling-seminar,
-// /stream-selection-guidance, etc. and dispatches to MainServicePage.
+// Top-level static pages that exist outside this catch-all.
+// /career-certification has its own dedicated page.js.
+// Other service routes should resolve to /career-counselling/{slug} instead.
 const STANDALONE_SERVICE_SLUGS = new Set(['career-certification']);
-const TOP_LEVEL_SERVICE_PAGE_SLUGS = new Set([
-  'career-counselling-seminar',
-  'stream-selection-guidance',
-  'degree-selection-guidance',
-  'guidance-for-working-professionals',
-]);
 
 function parseSlug(slug) {
   if (!slug || slug.length === 0) return null;
@@ -74,12 +67,6 @@ function parseSlug(slug) {
     }
     // Reserved for static pages (handled by their own route)
     if (STANDALONE_SERVICE_SLUGS.has(sl)) return null;
-    // Top-level service main page → render as service page
-    if (TOP_LEVEL_SERVICE_PAGE_SLUGS.has(sl)) {
-      const servicePage = getServicePage(sl);
-      if (!servicePage) return null;
-      return { type: 'service-page', serviceSlug: sl, servicePage };
-    }
     // Otherwise: state hub
     const state = getStateBySlug(sl);
     if (!state) return null;
@@ -286,10 +273,6 @@ export function generateMetadata({ params }) {
     };
   }
 
-  if (parsed.type === 'service-page') {
-    return generateServicePageMetadata(parsed.serviceSlug, parsed.servicePage);
-  }
-
   if (parsed.type === 'state') {
     const { state, stateSlug } = parsed;
     const cities = CITIES_BY_STATE[stateSlug] || [];
@@ -402,10 +385,6 @@ export default function DynamicPage({ params }) {
 
   if (parsed.type === 'city-fees-redirect') {
     permanentRedirect(parsed.page.cityPage);
-  }
-
-  if (parsed.type === 'service-page') {
-    return <MainServicePage serviceSlug={parsed.serviceSlug} servicePage={parsed.servicePage} />;
   }
 
   if (parsed.type === 'state') {
@@ -1465,9 +1444,15 @@ function MainServicePage({ serviceSlug, servicePage }) {
             {SERVICE_SLUGS.filter((s) => s !== serviceSlug && s !== 'career-counselling').map((sSlug) => {
               const sp = getServicePage(sSlug);
               if (!sp) return null;
-              // If this is career-counselling, certification, or any service that has a standalone main page
-              const isStandalone = ['career-counselling-seminar', 'career-certification', 'stream-selection-guidance', 'degree-selection-guidance', 'guidance-for-working-professionals'].includes(sSlug);
-              const href = isStandalone ? `/${sSlug}` : `/career-counselling/${sSlug}`;
+              // Historical note: these old top-level service hubs now redirect to
+              // their detail pages under /career-counselling/{slug}.
+              const href = sSlug === 'career-certification'
+                ? '/career-certification'
+                : sSlug === 'career-counselling-seminar'
+                  ? '/career-counselling/workshops-seminars'
+                  : sSlug === 'guidance-for-working-professionals'
+                    ? '/career-counselling/working-professionals-guidance'
+                    : `/career-counselling/${sSlug}`;
               return (
                 <Link key={sSlug} href={href} className="service-cross-link">
                   <span className="service-cross-label">{sp.title}</span>

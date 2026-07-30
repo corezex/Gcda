@@ -52,21 +52,6 @@ export default function sitemap() {
     priority: route.priority,
     images: [`${SITE_URL}${route.image || '/assets/hero-illustration.webp'}`],
   }));
-
-  // Top-level service main pages (4 of them — /career-certification has its own page)
-  const topLevelServicePages = [
-    'career-counselling-seminar',
-    'stream-selection-guidance',
-    'degree-selection-guidance',
-    'guidance-for-working-professionals',
-  ].map((slug) => ({
-    url: `${SITE_URL}/${slug}`,
-    lastModified: SERVICE_LAST_MODIFIED,
-    changeFrequency: 'monthly',
-    priority: 0.85,
-    images: [`${SITE_URL}/assets/hero-illustration.webp`],
-  }));
-
   // State hub pages
   const stateRoutes = STATES.map((s) => ({
     url: `${SITE_URL}/${s.slug}`,
@@ -127,7 +112,6 @@ export default function sitemap() {
 
   return [
     ...staticRoutes,
-    ...topLevelServicePages,
     ...stateRoutes,
     ...cityRoutes,
     ...serviceDetailRoutes,

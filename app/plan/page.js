@@ -207,7 +207,7 @@ export default function PlanPage() {
               </article>
               <article className="feature-row">
                 <h3>Working Professionals</h3>
-                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href="/guidance-for-working-professionals" className="text-link">working professional guidance</Link>.</p>
+                <p>Designed for employed individuals who want smarter positioning, transitions, and growth planning. See <Link href="/career-counselling/working-professionals-guidance" className="text-link">working professional guidance</Link>.</p>
               </article>
               <article className="feature-row">
                 <h3>Online vs in-person</h3>
