@@ -164,7 +164,7 @@ h4 {
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--primary);
+  color: var(--primary-dark);
   margin-bottom: 0.65rem;
 }
 
@@ -1304,14 +1304,14 @@ textarea { resize: vertical; min-height: 130px; }
   margin-top: 0.9rem;
   padding: 0.55rem 1rem;
   border-radius: 999px;
-  background: #25D366;
+  background: #127c39;
   color: #fff;
   font-weight: 700;
   font-size: 0.85rem;
   transition: background 0.18s ease, transform 0.18s ease;
 }
 .footer-whatsapp-btn:hover {
-  background: #1ea952;
+  background: #0f6a30;
   color: #fff;
   transform: translateY(-1px);
 }
