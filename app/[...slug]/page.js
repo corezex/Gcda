@@ -432,7 +432,7 @@ function StateHub({ stateSlug, state }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{state.region}</span>
-            <h1>{`Career Counselling in ${state.name}`}</h1>
+            <h1>{`Best Career Counselling in ${state.name}`}</h1>
             <p className="page-hero-copy">
               {`Looking for career counselling in ${state.name}? GCDA offers expert, assessment-led career guidance for students, graduates, parents, and working professionals across ${cities.length} ${state.name} cities. Sessions are available online across ${state.name} and in-person.`}
             </p>
@@ -441,10 +441,10 @@ function StateHub({ stateSlug, state }) {
               <li>{`Online across ${state.name}`}</li>
               <li>All 8 GCDA service variants linked</li>
             </ul>
-            <div className="button-row">
-              <Link href="/contact" className="button button-primary">Book a Session</Link>
-              <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
-            </div>
+            <ul className="button-row button-row-list" aria-label={`Primary actions for ${state.name}`}>
+              <li><Link href="/contact" className="button button-primary">Book a Session</Link></li>
+              <li><a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a></li>
+            </ul>
           </div>
           <div className="surface-card media-card">
             <Image
@@ -472,7 +472,7 @@ function StateHub({ stateSlug, state }) {
         <div className="container">
           <SectionHeader
             eyebrow={`${state.name} cities`}
-            title={`Career counselling across ${state.name}`}
+            title={`Best Career counselling across ${state.name}`}
             description={`We serve ${cities.length} cities in ${state.name}. Click any city to see locally relevant guidance, top colleges, entrance exams, and city-specific FAQs — across all ${SERVICE_SLUGS.length} GCDA services.`}
           />
           {cities.length > 0 ? (
@@ -725,12 +725,12 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
           <div>
             <Breadcrumbs items={breadcrumbs} />
             <span className="eyebrow">{stateName}</span>
-            <h1>{`${cityLabel} in ${city.name}, ${stateName}`}</h1>
+            <h1>{`Best ${cityLabel} in ${city.name}, ${stateName}`}</h1>
             <p className="page-hero-copy">{longDescription}</p>
-            <div className="button-row">
-              <Link href="/contact" className="button button-primary">Book a Free Consultation</Link>
-              <a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a>
-            </div>
+            <ul className="button-row button-row-list" aria-label={`Primary actions for ${city.name}`}>
+              <li><Link href="/contact" className="button button-primary">Book a Free Consultation</Link></li>
+              <li><a href={`tel:${company.phoneRaw}`} className="button button-secondary">Call {company.phoneDisplay}</a></li>
+            </ul>
             <ul className="hero-proof" aria-label="City service proof points">
               <li>{`Online sessions across ${city.name}`}</li>
               <li>{`In-person in ${city.name}`}</li>
@@ -763,7 +763,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         <div className="container">
           <SectionHeader
             eyebrow="Quick local snapshot"
-            title={`${servicePage.title} in ${city.name}: key facts at a glance`}
+            title={`Best ${servicePage.title} in ${city.name}: key facts at a glance`}
             description="A compact, extractable summary of the local decision context, delivery format, exams, colleges, and recommended starting point."
             center
           />
