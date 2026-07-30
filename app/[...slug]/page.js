@@ -1166,7 +1166,7 @@ function CityPage({ stateSlug, citySlug, city, state, serviceSlug }) {
         id={`ld-webpage-${serviceSlug}-${stateSlug}-${citySlug}`}
         data={webPageSchema({
           url: pageUrl,
-          name: `${servicePage.title} in ${city.name}, ${stateName}`,
+          name: `Best ${servicePage.title} in ${city.name}, ${stateName}`,
           description: `${servicePage.title} in ${city.name}, ${stateName}. ${servicePage.shortDescription}`,
           primaryImage: `${SITE_URL}/assets/hero-illustration.webp`,
         })}

@@ -17,6 +17,11 @@ function slugifyLocation(value) {
     .replace(/^-|-$/g, '');
 }
 
+function absoluteUrl(value) {
+  if (!value) return value;
+  return String(value).startsWith('http') ? value : `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`;
+}
+
 // ----- Organization (site-wide, identity & E-E-A-T) -----
 export function organizationSchema() {
   return {
@@ -26,9 +31,14 @@ export function organizationSchema() {
     name: company.name,
     alternateName: company.shortName,
     url: SITE_URL,
-    logo: `${SITE_URL}/assets/logo.webp`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/assets/logo.webp`,
+    },
     description:
       'Global Career Development Association (GCDA) provides expert career counselling, career assessments, stream and degree selection guidance, and professional growth mentoring for students, parents, and working professionals across India.',
+    email: company.email,
+    telephone: `+${company.phoneRaw}`,
     foundingDate: '2013',
     founder: {
       '@type': 'Person',
@@ -112,11 +122,15 @@ export function localBusinessSchema() {
     '@type': 'LocalBusiness',
     '@id': `${SITE_URL}/#localbusiness`,
     name: `${company.name} - Mumbai Office`,
-    image: `${SITE_URL}/assets/logo.webp`,
+    image: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/assets/logo.webp`,
+    },
     url: SITE_URL,
     telephone: `+${company.phoneRaw}`,
     email: company.email,
     priceRange: '₹₹',
+    description: 'Mumbai office of GCDA for career counselling, assessments, stream and degree guidance, and professional mentoring.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: '102, Citi Mall, Link Road, Andheri West',
@@ -148,6 +162,12 @@ export function localBusinessSchema() {
       '@id': `${SITE_URL}/#organization`,
     },
     areaServed: { '@type': 'Country', name: 'India' },
+    sameAs: [
+      'https://www.facebook.com/gcdaindia',
+      'https://www.instagram.com/gcdaindia',
+      'https://www.linkedin.com/company/global-career-development-association/',
+      'https://twitter.com/gcdaindia',
+    ],
   };
 }
 
@@ -184,8 +204,8 @@ export function serviceSchema(service) {
     name: service.title,
     description: service.shortDescription,
     serviceType: 'Career Counselling',
-    provider: { '@id': `${SITE_URL}/#organization` },
-    areaServed: { '@type': 'Country', name: 'India' },
+    provider: { '@id': `${SITE_URL}/#organization`, '@type': 'Organization', name: company.name, url: SITE_URL },
+    areaServed: [{ '@type': 'Country', name: 'India' }],
     url: `${SITE_URL}/career-counselling/${service.slug}`,
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
@@ -218,7 +238,9 @@ export function productSchema(plan) {
       availability: 'https://schema.org/InStock',
       url: `${SITE_URL}/plan`,
       priceValidUntil: '2027-12-31',
-      seller: { '@id': `${SITE_URL}/#organization` },
+      seller: { '@id': `${SITE_URL}/#organization`, '@type': 'Organization', name: company.name, url: SITE_URL },
+      itemCondition: 'https://schema.org/NewCondition',
+      eligibleRegion: { '@type': 'Country', name: 'India' },
       hasMerchantReturnPolicy: {
         '@type': 'MerchantReturnPolicy',
         returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
@@ -284,6 +306,9 @@ export function articleSchema(post, url) {
     },
     publisher: {
       '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: company.name,
+      url: SITE_URL,
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -303,7 +328,7 @@ export function breadcrumbSchema(items) {
       '@type': 'ListItem',
       position: idx + 1,
       name: item.name,
-      item: item.url,
+      item: absoluteUrl(item.url),
     })),
   };
 }
@@ -317,6 +342,7 @@ export function courseSchema({
   slug,
   hasCourseInstance = false,
 }) {
+  const canonicalUrl = absoluteUrl(url);
   const course = {
     '@context': 'https://schema.org',
     '@type': 'Course',
@@ -324,19 +350,23 @@ export function courseSchema({
     name,
     description,
     provider: {
+      '@id': `${SITE_URL}/#organization`,
       '@type': 'Organization',
       name: provider || company.name,
+      url: SITE_URL,
       sameAs: SITE_URL,
     },
-    url,
+    url: canonicalUrl,
     inLanguage: 'en-IN',
     isAccessibleForFree: false,
     offers: {
       '@type': 'Offer',
-      url,
+      url: canonicalUrl,
       availability: 'https://schema.org/InStock',
       priceCurrency: 'INR',
-      seller: { '@id': `${SITE_URL}/#organization` },
+      category: 'Career Counselling Certification',
+      eligibleRegion: { '@type': 'Country', name: 'India' },
+      seller: { '@id': `${SITE_URL}/#organization`, '@type': 'Organization', name: company.name, url: SITE_URL },
     },
   };
 
@@ -344,8 +374,9 @@ export function courseSchema({
     course.hasCourseInstance = {
       '@type': 'CourseInstance',
       courseMode: ['online', 'onsite'],
-      courseWorkload: 'PT40H',
+      courseWorkload: 'Approximately 40 hours of guided learning and practice',
       inLanguage: 'en-IN',
+      location: { '@type': 'Place', name: 'Mumbai and online across India' },
       instructor: [
         {
           '@type': 'Person',
@@ -367,8 +398,8 @@ export function cityServiceSchema(city, url) {
     '@id': `${url}#service`,
     name: `GCDA Career Counselling in ${city.name}`,
     description: `Expert career counselling, career assessments, stream and degree selection guidance, and professional mentoring for students, parents, and working professionals in ${city.name}, ${city.state}.`,
-    image: `${SITE_URL}/assets/hero-illustration.webp`,
-    url,
+    image: absoluteUrl('/assets/hero-illustration.webp'),
+    url: absoluteUrl(url),
     telephone: `+${company.phoneRaw}`,
     email: company.email,
     priceRange: '₹₹',
@@ -445,8 +476,8 @@ export function cityServicePageSchema({
     '@id': `${url}#service`,
     name: `${serviceName} in ${city.name}, ${stateName}`,
     description,
-    image,
-    url,
+    image: absoluteUrl(image),
+    url: absoluteUrl(url),
     telephone: `+${company.phoneRaw}`,
     email: company.email,
     priceRange: '₹₹',
@@ -471,7 +502,7 @@ export function cityServicePageSchema({
             itemOffered: {
               '@type': 'Service',
               name: item.name,
-              url: item.url,
+              url: absoluteUrl(item.url),
             },
           })),
         }
@@ -629,8 +660,8 @@ export function webPageSchema({ url, name, description, inLanguage = 'en-IN', pr
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${url}#webpage`,
-    url,
+    '@id': `${absoluteUrl(url)}#webpage`,
+    url: absoluteUrl(url),
     name,
     description,
     inLanguage,
@@ -639,7 +670,7 @@ export function webPageSchema({ url, name, description, inLanguage = 'en-IN', pr
     primaryImageOfPage: primaryImage
       ? {
           '@type': 'ImageObject',
-          url: primaryImage,
+          url: absoluteUrl(primaryImage),
           width: 1200,
           height: 630,
         }
@@ -654,8 +685,8 @@ export function speakableSchema({ url, name, cssSelector = ['.answer-block p', '
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${url}#speakable`,
-    url,
+    '@id': `${absoluteUrl(url)}#speakable`,
+    url: absoluteUrl(url),
     name: name || 'Speakable content',
     inLanguage: 'en-IN',
     isPartOf: { '@id': `${SITE_URL}/#website` },
@@ -727,8 +758,8 @@ export function itemListSchema({ url, name, items, description }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    '@id': `${url}#itemlist`,
-    url,
+    '@id': `${absoluteUrl(url)}#itemlist`,
+    url: absoluteUrl(url),
     name,
     description: description || name,
     numberOfItems: items.length,
@@ -736,7 +767,7 @@ export function itemListSchema({ url, name, items, description }) {
       '@type': 'ListItem',
       position: idx + 1,
       name: it.name,
-      url: it.url,
+      url: absoluteUrl(it.url),
       description: it.description,
     })),
   };
@@ -747,8 +778,8 @@ export function legalPageSchema({ url, name, description }) {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    '@id': `${url}#webpage`,
-    url,
+    '@id': `${absoluteUrl(url)}#webpage`,
+    url: absoluteUrl(url),
     name,
     description,
     inLanguage: 'en-IN',
