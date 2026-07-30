@@ -114,6 +114,17 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en-IN">
+      <head>
+        <link rel="preload" href="/deferred-global.css" as="style" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "(function(){function l(){if(document.querySelector('link[data-deferred-global]'))return;var s=document.createElement('link');s.rel='stylesheet';s.href='/deferred-global.css';s.setAttribute('data-deferred-global','true');document.head.appendChild(s)}if('requestAnimationFrame' in window){requestAnimationFrame(function(){setTimeout(l,0)})}else{window.addEventListener('load',l,{once:true})}})();",
+          }}
+        />
+        <noscript>
+          <link rel="stylesheet" href="/deferred-global.css" />
+        </noscript>
+      </head>
       <body>
         <JsonLd id="ld-organization" data={organizationSchema()} />
         <JsonLd id="ld-website" data={websiteSchema()} />

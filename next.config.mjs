@@ -83,6 +83,13 @@ const nextConfig = {
         ],
       },
       {
+        source: '/deferred-global.css',
+        headers: [
+          { key: 'Content-Type', value: 'text/css; charset=utf-8' },
+          { key: 'Cache-Control', value: 'public, max-age=3600, stale-while-revalidate=86400' },
+        ],
+      },
+      {
         source: '/:path*',
         headers: [
           { key: 'X-Content-Type-Options', value: 'nosniff' },
