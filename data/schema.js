@@ -619,6 +619,12 @@ export function citiesCollectionSchema(states) {
     inLanguage: 'en-IN',
     isPartOf: { '@id': `${SITE_URL}/#website` },
     about: { '@id': `${SITE_URL}/#organization` },
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: company.name,
+      url: SITE_URL,
+    },
     mainEntity: {
       '@type': 'ItemList',
       name: 'Indian states and cities where GCDA offers career counselling',
@@ -646,7 +652,12 @@ export function blogListSchema(posts) {
       'Practical, India-specific career guidance for students, parents, and working professionals from the GCDA editorial team.',
     inLanguage: 'en-IN',
     isPartOf: { '@id': `${SITE_URL}/#website` },
-    publisher: { '@id': `${SITE_URL}/#organization` },
+    publisher: {
+      '@id': `${SITE_URL}/#organization`,
+      '@type': 'Organization',
+      name: company.name,
+      url: SITE_URL,
+    },
     blogPost: posts.slice(0, 20).map((post) => ({
       '@type': 'BlogPosting',
       headline: post.title,
